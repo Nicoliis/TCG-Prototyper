@@ -28,6 +28,12 @@ function validateNonNegativeNumber(value, label) {
   return n;
 }
 
+function validateColor(value) {
+  const trimmed = (value ?? "").trim();
+  if (!trimmed) throw new Error("Color cannot be empty.");
+  return trimmed;
+}
+
 export function validateCardTypeName(name, existingNames) {
   const trimmed = validateNonEmpty(name, "Card type name");
   validateUnique(trimmed, existingNames, "A card type named");
@@ -94,6 +100,7 @@ export function createElement(kind, { x, y, width, height, rotation = 0, templat
     width: validatePositiveNumber(width, "width"),
     height: validatePositiveNumber(height, "height"),
     rotation: validateRotation(rotation),
+    style: defaultElementStyle(),
   };
   if (kind === "text" || kind === "image") return { ...base, template };
   if (kind === "label") return { ...base, text };
@@ -104,6 +111,27 @@ function validateRotation(degrees) {
   const n = Number(degrees);
   if (!Number.isFinite(n)) throw new Error("Rotation must be a number.");
   return ((n % 360) + 360) % 360;
+}
+
+export function defaultElementStyle() {
+  return {
+    background: { enabled: false, color: "#ffffff" },
+    border: { enabled: false, color: "#000000", thickness: 1 },
+    shadow: { enabled: false, color: "#000000", thickness: 4 },
+  };
+}
+
+export function getElementStyle(element) {
+  return element.style ?? defaultElementStyle();
+}
+
+export function setElementStyle(element, styleKey, patch) {
+  element.style ??= defaultElementStyle();
+  const next = { ...element.style[styleKey], ...patch };
+  if ("color" in patch) next.color = validateColor(patch.color);
+  if ("thickness" in patch) next.thickness = validatePositiveNumber(patch.thickness, "Thickness");
+  element.style[styleKey] = next;
+  return next;
 }
 
 export function addElement(cardType, kind, bounds) {
@@ -129,6 +157,10 @@ export function cloneCardType(cardType) {
     ...cardType,
     id: crypto.randomUUID(),
     properties: cardType.properties.map((p) => ({ ...p, id: crypto.randomUUID() })),
-    elements: cardType.elements.map((e) => ({ ...e, id: crypto.randomUUID() })),
+    elements: cardType.elements.map((e) => ({
+      ...e,
+      id: crypto.randomUUID(),
+      style: structuredClone(getElementStyle(e)),
+    })),
   };
 }
