@@ -194,3 +194,29 @@ Task: "Implement template substitution in js/templating/substitute.mjs"
 - Every file path above matches plan.md's Project Structure exactly
 - Commit after each task or logical group
 - Stop at each checkpoint to validate that story independently before continuing
+
+## Post-Implementation Refinements (2026-10-12)
+
+User review after the initial pass found the editor functional but rough.
+Fixed before moving to Slice 2:
+
+- [X] Card type creation now prefills width/height with MTG card size
+  (240x336px, i.e. 2.5in x 3.5in @96dpi) as editable defaults, instead of
+  empty required fields — `js/views/card-type-list/card-type-list.html`.
+- [X] Added `rotation` (degrees, normalized 0-360) to the layout-element
+  shape, with a drag-to-rotate handle per element — `js/models/card-type.mjs`
+  (`createElement`, `validateRotation`), `js/views/card-type-editor/layout-element.mjs`
+  (`makeRotatable`). Documented in data-model.md.
+- [X] Fixed a real bug: every element always rendered its raw template
+  stacked on top of its substituted value, so what you saw never matched
+  the actual output. Elements now have distinct `.element-edit-view` /
+  `.element-see-view` regions, and the canvas has an Edit/See mode toggle
+  that shows one or the other — never both — per the user's explicit ask.
+- [X] `.layout-element` now has rounded corners (`border-radius`) instead
+  of a sharp-edged box, as a baseline visual treatment.
+
+Verified by re-running `node --test` (20/20 passing, 2 new rotation tests
+in `tests/unit/card-type-model.test.mjs`) and a headless-browser pass
+confirming: MTG defaults prefilled, edit/see views are mutually exclusive
+and show the right content, and dragging the rotate handle updates the
+element's `transform` correctly.

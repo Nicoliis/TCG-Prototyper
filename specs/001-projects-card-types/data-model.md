@@ -45,6 +45,7 @@ Every element on a layout shares a position/size, independent of its kind
 | `id` | string | Generated. |
 | `x`, `y` | number (px) | Top-left corner, relative to the card type's canvas. |
 | `width`, `height` | number (px) | Element's own size. |
+| `rotation` | number (degrees, 0-360) | Clockwise rotation around the element's own center. Defaults to 0; normalized into [0, 360) on write. |
 
 ### TextDisplay (extends base)
 
