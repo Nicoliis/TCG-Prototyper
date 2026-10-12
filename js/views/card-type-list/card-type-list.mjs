@@ -1,11 +1,11 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs";
-import { mountCardTypeEditor } from "../card-type-editor/card-type-editor.mjs";
-import { createCardType } from "../../models/card-type.mjs";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=1";
+import { mountCardTypeEditor } from "../card-type-editor/card-type-editor.mjs?v=1";
+import { createCardType } from "../../models/card-type.mjs?v=1";
 
 let templatePromise;
 
 export async function mountCardTypeList(root, storage, projectId, onBack) {
-  const template = await (templatePromise ??= loadFragment("js/views/card-type-list/card-type-list.html"));
+  const template = await (templatePromise ??= loadFragment("js/views/card-type-list/card-type-list.html?v=1"));
   const view = cloneTemplate(template);
   const section = view.querySelector(".card-type-list-view");
 

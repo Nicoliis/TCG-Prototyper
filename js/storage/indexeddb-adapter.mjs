@@ -1,6 +1,6 @@
-import { StorageAdapter } from "./storage-adapter.mjs";
-import { createProject, validateProjectName, cloneProjectForDuplicate } from "../models/project.mjs";
-import { validateCardTypeName } from "../models/card-type.mjs";
+import { StorageAdapter } from "./storage-adapter.mjs?v=1";
+import { createProject, validateProjectName, cloneProjectForDuplicate } from "../models/project.mjs?v=1";
+import { validateCardTypeName } from "../models/card-type.mjs?v=1";
 
 const DB_VERSION = 1;
 const STORE_NAME = "projects";

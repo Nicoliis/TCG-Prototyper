@@ -1,4 +1,4 @@
-import { substitute } from "../../templating/substitute.mjs";
+import { substitute } from "../../templating/substitute.mjs?v=1";
 
 const MIN_SIZE = 10;
 const BROKEN_IMAGE_PLACEHOLDER =
