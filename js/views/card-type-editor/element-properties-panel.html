@@ -1,0 +1,44 @@
+<template id="element-properties-panel">
+  <div class="element-properties-panel">
+    <h3>Element Properties</h3>
+    <p class="element-properties-empty">Select an element on the canvas to edit it precisely.</p>
+
+    <form class="element-properties-fields" hidden>
+      <div class="field-grid">
+        <label>X <input type="number" name="x" step="1"></label>
+        <label>Y <input type="number" name="y" step="1"></label>
+        <label>Width <input type="number" name="width" min="1" step="1"></label>
+        <label>Height <input type="number" name="height" min="1" step="1"></label>
+        <label>Rotation (deg) <input type="number" name="rotation" step="1"></label>
+      </div>
+
+      <label class="content-field">
+        <span class="content-field-label">Content</span>
+        <input type="text" name="content">
+      </label>
+
+      <fieldset class="style-group" data-style="background">
+        <legend>
+          <label><input type="checkbox" name="backgroundEnabled"> Background</label>
+        </legend>
+        <label class="style-detail">Color <input type="color" name="backgroundColor"></label>
+      </fieldset>
+
+      <fieldset class="style-group" data-style="border">
+        <legend>
+          <label><input type="checkbox" name="borderEnabled"> Border</label>
+        </legend>
+        <label class="style-detail">Color <input type="color" name="borderColor"></label>
+        <label class="style-detail">Thickness <input type="number" name="borderThickness" min="1" step="1"></label>
+      </fieldset>
+
+      <fieldset class="style-group" data-style="shadow">
+        <legend>
+          <label><input type="checkbox" name="shadowEnabled"> Shadow</label>
+        </legend>
+        <label class="style-detail">Color <input type="color" name="shadowColor"></label>
+        <label class="style-detail">Thickness <input type="number" name="shadowThickness" min="1" step="1"></label>
+      </fieldset>
+    </form>
+  </div>
+</template>
