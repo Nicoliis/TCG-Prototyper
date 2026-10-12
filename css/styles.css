@@ -153,23 +153,42 @@ ul {
 .layout-element {
   position: absolute;
   border: 1px solid #5b7fd1;
+  border-radius: 8px;
   background: rgba(91, 127, 209, 0.08);
   overflow: hidden;
   touch-action: none;
 }
 
+.element-edit-view,
+.element-see-view {
+  position: absolute;
+  inset: 0;
+}
+
 .layout-element input {
   width: 100%;
+  height: 100%;
   border: none;
   background: transparent;
   font: inherit;
-  padding: 0.1rem 0.2rem;
+  padding: 0.1rem 0.3rem;
 }
 
-.layout-element .element-image-preview {
+.element-see-view {
+  display: flex;
+  align-items: center;
+  padding: 0.1rem 0.3rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+img.element-see-view {
   display: block;
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 0;
 }
 
 .layout-element .element-delete-button {
@@ -177,6 +196,7 @@ ul {
   top: 0;
   right: 0;
   border: none;
+  border-radius: 0 7px 0 4px;
   background: #b3261e;
   color: #fff;
   width: 1.1rem;
@@ -193,6 +213,57 @@ ul {
   height: 10px;
   background: #5b7fd1;
   cursor: nwse-resize;
+}
+
+.rotate-handle {
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #2f9e44;
+  cursor: grab;
+}
+
+.canvas-mode-toggle {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.canvas-mode-toggle button {
+  padding: 0.3rem 0.7rem;
+  border: 1px solid #24262b;
+  border-radius: 4px;
+  background: #fff;
+  color: #24262b;
+  cursor: pointer;
+}
+
+.canvas-mode-toggle button[aria-pressed="true"] {
+  background: #24262b;
+  color: #fff;
+}
+
+.canvas[data-mode="edit"] .element-see-view {
+  display: none;
+}
+
+.canvas[data-mode="see"] .element-edit-view {
+  display: none;
+}
+
+.canvas[data-mode="see"] .element-delete-button,
+.canvas[data-mode="see"] .resize-handle,
+.canvas[data-mode="see"] .rotate-handle {
+  display: none;
+}
+
+.canvas[data-mode="see"] .layout-element {
+  border-color: transparent;
+  background: transparent;
 }
 
 .dimensions-form {

@@ -38,38 +38,56 @@
       </aside>
 
       <div class="canvas-wrapper">
-        <div class="canvas"></div>
+        <div class="canvas-mode-toggle" role="group" aria-label="Canvas mode">
+          <button type="button" class="mode-edit-button" aria-pressed="true">Edit</button>
+          <button type="button" class="mode-see-button" aria-pressed="false">See</button>
+        </div>
+        <div class="canvas" data-mode="edit"></div>
       </div>
     </div>
 
     <template class="element-template" data-kind="text">
       <div class="layout-element layout-element--text">
-        <input type="text" class="element-template-input" placeholder="{property} template">
+        <div class="element-edit-view">
+          <input type="text" class="element-template-input" placeholder="{property} template">
+        </div>
+        <div class="element-see-view"></div>
         <button type="button" class="element-delete-button" title="Delete">&times;</button>
-        <div class="resize-handle"></div>
+        <div class="resize-handle" title="Drag to resize"></div>
+        <div class="rotate-handle" title="Drag to rotate"></div>
       </div>
     </template>
     <template class="element-template" data-kind="image">
       <div class="layout-element layout-element--image">
-        <input type="text" class="element-template-input" placeholder="{property} image template">
-        <img class="element-image-preview" alt="">
+        <div class="element-edit-view">
+          <input type="text" class="element-template-input" placeholder="{property} image template">
+        </div>
+        <img class="element-see-view" alt="">
         <button type="button" class="element-delete-button" title="Delete">&times;</button>
-        <div class="resize-handle"></div>
+        <div class="resize-handle" title="Drag to resize"></div>
+        <div class="rotate-handle" title="Drag to rotate"></div>
       </div>
     </template>
     <template class="element-template" data-kind="label">
       <div class="layout-element layout-element--label">
-        <input type="text" class="element-text-input" placeholder="Label text">
+        <div class="element-edit-view">
+          <input type="text" class="element-text-input" placeholder="Label text">
+        </div>
+        <div class="element-see-view"></div>
         <button type="button" class="element-delete-button" title="Delete">&times;</button>
-        <div class="resize-handle"></div>
+        <div class="resize-handle" title="Drag to resize"></div>
+        <div class="rotate-handle" title="Drag to rotate"></div>
       </div>
     </template>
     <template class="element-template" data-kind="icon">
       <div class="layout-element layout-element--icon">
-        <input type="text" class="element-src-input" placeholder="Icon image URL">
-        <img class="element-image-preview" alt="">
+        <div class="element-edit-view">
+          <input type="text" class="element-src-input" placeholder="Icon image URL">
+        </div>
+        <img class="element-see-view" alt="">
         <button type="button" class="element-delete-button" title="Delete">&times;</button>
-        <div class="resize-handle"></div>
+        <div class="resize-handle" title="Drag to resize"></div>
+        <div class="rotate-handle" title="Drag to rotate"></div>
       </div>
     </template>
   </section>

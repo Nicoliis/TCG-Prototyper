@@ -13,7 +13,7 @@ export function renderElement(canvas, element, templatesByKind, callbacks) {
   const template = templatesByKind.get(element.kind);
   const node = template.content.firstElementChild.cloneNode(true);
   node.dataset.elementId = element.id;
-  applyBounds(node, element);
+  applyTransform(node, element);
 
   const input = node.querySelector(".element-template-input, .element-text-input, .element-src-input");
   input.value = element.template ?? element.text ?? element.src ?? "";
@@ -32,6 +32,7 @@ export function renderElement(canvas, element, templatesByKind, callbacks) {
 
   makeDraggable(node, element, callbacks.onChange);
   makeResizable(node, element, callbacks.onChange);
+  makeRotatable(node, element, callbacks.onChange);
 
   renderPreview(node, element, callbacks.getSampleValues());
   canvas.appendChild(node);
@@ -39,48 +40,44 @@ export function renderElement(canvas, element, templatesByKind, callbacks) {
 }
 
 export function renderPreview(node, element, sampleValues) {
+  const seeView = node.querySelector(".element-see-view");
   if (element.kind === "text") {
-    const input = node.querySelector(".element-template-input");
-    node.querySelectorAll(".element-preview-text").forEach((n) => n.remove());
-    const text = document.createElement("span");
-    text.className = "element-preview-text";
-    text.textContent = substitute(element.template, sampleValues);
-    input.insertAdjacentElement("afterend", text);
+    seeView.textContent = substitute(element.template, sampleValues);
+  } else if (element.kind === "label") {
+    seeView.textContent = element.text;
   } else if (element.kind === "image") {
-    const img = node.querySelector(".element-image-preview");
-    const url = substitute(element.template, sampleValues);
-    img.onerror = () => {
-      img.onerror = null;
-      img.src = BROKEN_IMAGE_PLACEHOLDER;
-    };
-    img.src = url || BROKEN_IMAGE_PLACEHOLDER;
+    setImageSrc(seeView, substitute(element.template, sampleValues));
   } else if (element.kind === "icon") {
-    const img = node.querySelector(".element-image-preview");
-    img.onerror = () => {
-      img.onerror = null;
-      img.src = BROKEN_IMAGE_PLACEHOLDER;
-    };
-    img.src = element.src || BROKEN_IMAGE_PLACEHOLDER;
+    setImageSrc(seeView, element.src);
   }
 }
 
-function applyBounds(node, element) {
+function setImageSrc(img, url) {
+  img.onerror = () => {
+    img.onerror = null;
+    img.src = BROKEN_IMAGE_PLACEHOLDER;
+  };
+  img.src = url || BROKEN_IMAGE_PLACEHOLDER;
+}
+
+function applyTransform(node, element) {
   node.style.left = `${element.x}px`;
   node.style.top = `${element.y}px`;
   node.style.width = `${element.width}px`;
   node.style.height = `${element.height}px`;
+  node.style.transform = `rotate(${element.rotation ?? 0}deg)`;
 }
 
 function makeDraggable(node, element, onChange) {
   node.addEventListener("pointerdown", (event) => {
-    if (event.target.closest("input, button, .resize-handle")) return;
+    if (event.target.closest("input, button, .resize-handle, .rotate-handle")) return;
     const startX = event.clientX - element.x;
     const startY = event.clientY - element.y;
 
     function onMove(moveEvent) {
       element.x = Math.max(0, moveEvent.clientX - startX);
       element.y = Math.max(0, moveEvent.clientY - startY);
-      applyBounds(node, element);
+      applyTransform(node, element);
     }
     function onUp() {
       document.removeEventListener("pointermove", onMove);
@@ -104,7 +101,37 @@ function makeResizable(node, element, onChange) {
     function onMove(moveEvent) {
       element.width = Math.max(MIN_SIZE, startWidth + (moveEvent.clientX - startX));
       element.height = Math.max(MIN_SIZE, startHeight + (moveEvent.clientY - startY));
-      applyBounds(node, element);
+      applyTransform(node, element);
+    }
+    function onUp() {
+      document.removeEventListener("pointermove", onMove);
+      document.removeEventListener("pointerup", onUp);
+      onChange();
+    }
+    document.addEventListener("pointermove", onMove);
+    document.addEventListener("pointerup", onUp);
+  });
+}
+
+function makeRotatable(node, element, onChange) {
+  const handle = node.querySelector(".rotate-handle");
+  handle.addEventListener("pointerdown", (event) => {
+    event.stopPropagation();
+    const canvas = node.offsetParent;
+
+    function angleFor(pointerEvent) {
+      const canvasRect = canvas.getBoundingClientRect();
+      const centerX = canvasRect.left + element.x + element.width / 2;
+      const centerY = canvasRect.top + element.y + element.height / 2;
+      const dx = pointerEvent.clientX - centerX;
+      const dy = pointerEvent.clientY - centerY;
+      const degrees = Math.round((Math.atan2(dy, dx) * 180) / Math.PI) + 90;
+      return ((degrees % 360) + 360) % 360;
+    }
+
+    function onMove(moveEvent) {
+      element.rotation = angleFor(moveEvent);
+      applyTransform(node, element);
     }
     function onUp() {
       document.removeEventListener("pointermove", onMove);

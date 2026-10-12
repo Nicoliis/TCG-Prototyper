@@ -58,6 +58,7 @@ export async function mountCardTypeEditor(root, storage, projectId, cardTypeId, 
   setUpDimensionsForm(section, cardType, canvas, persist);
   setUpPropertiesPanel(section, cardType, persist, refreshAllPreviews);
   setUpAddElementButtons(section, cardType, persist, placeElement);
+  setUpModeToggle(section, canvas);
 
   for (const element of cardType.elements) placeElement(element);
 
@@ -131,6 +132,20 @@ function setUpPropertiesPanel(section, cardType, persist, refreshAllPreviews) {
   });
 
   renderProperties();
+}
+
+function setUpModeToggle(section, canvas) {
+  const editButton = section.querySelector(".mode-edit-button");
+  const seeButton = section.querySelector(".mode-see-button");
+
+  function setMode(mode) {
+    canvas.dataset.mode = mode;
+    editButton.setAttribute("aria-pressed", String(mode === "edit"));
+    seeButton.setAttribute("aria-pressed", String(mode === "see"));
+  }
+
+  editButton.addEventListener("click", () => setMode("edit"));
+  seeButton.addEventListener("click", () => setMode("see"));
 }
 
 function setUpAddElementButtons(section, cardType, persist, placeElement) {
