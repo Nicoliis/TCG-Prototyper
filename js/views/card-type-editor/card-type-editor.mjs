@@ -1,6 +1,13 @@
 import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=1";
 import { addProperty, removeProperty, addElement, setCardTypeDimensions } from "../../models/card-type.mjs?v=1";
-import { renderElement, renderPreview } from "./layout-element.mjs?v=1";
+import {
+  renderElement,
+  renderPreview,
+  applyTransform,
+  applyElementStyle,
+  setElementSelected,
+} from "./layout-element.mjs?v=1";
+import { mountElementPropertiesPanel } from "./element-properties-panel.mjs?v=1";
 
 let templatePromise;
 
@@ -23,6 +30,9 @@ export async function mountCardTypeEditor(root, storage, projectId, cardTypeId, 
     [...section.querySelectorAll(".element-template")].map((t) => [t.dataset.kind, t]),
   );
 
+  const elementNodes = new Map();
+  let selectedElementId = null;
+
   async function persist() {
     await storage.saveCardType(projectId, cardType);
   }
@@ -33,21 +43,66 @@ export async function mountCardTypeEditor(root, storage, projectId, cardTypeId, 
 
   function refreshAllPreviews() {
     const sampleValues = getSampleValues();
-    for (const node of canvas.querySelectorAll(".layout-element")) {
-      const element = cardType.elements.find((e) => e.id === node.dataset.elementId);
+    for (const [id, node] of elementNodes) {
+      const element = cardType.elements.find((e) => e.id === id);
       if (element) renderPreview(node, element, sampleValues);
     }
   }
 
+  const panel = await mountElementPropertiesPanel(section.querySelector(".element-properties-panel-mount"));
+
+  function panelCallbacksFor(element) {
+    return {
+      onChange: () => {
+        const node = elementNodes.get(element.id);
+        applyTransform(node, element);
+        renderPreview(node, element, getSampleValues());
+        applyElementStyle(node, element);
+        persist();
+      },
+    };
+  }
+
+  function select(elementId) {
+    selectedElementId = elementId;
+    for (const [id, node] of elementNodes) setElementSelected(node, id === elementId);
+    const element = cardType.elements.find((e) => e.id === elementId);
+    panel.setElement(element, panelCallbacksFor(element));
+  }
+
+  function deselect() {
+    selectedElementId = null;
+    for (const node of elementNodes.values()) setElementSelected(node, false);
+    panel.clear();
+  }
+
+  function syncPanelIfSelected(elementId) {
+    if (selectedElementId !== elementId) return;
+    const element = cardType.elements.find((e) => e.id === elementId);
+    panel.setElement(element, panelCallbacksFor(element));
+  }
+
+  canvas.addEventListener("pointerdown", (event) => {
+    if (event.target === canvas) deselect();
+  });
+
   function placeElement(elementData) {
-    return renderElement(canvas, elementData, templatesByKind, {
-      onChange: persist,
+    const node = renderElement(canvas, elementData, templatesByKind, {
+      onChange: async () => {
+        await persist();
+        syncPanelIfSelected(elementData.id);
+      },
       onDelete: async (id) => {
+        elementNodes.delete(id);
         removeElementById(id);
+        if (selectedElementId === id) deselect();
         await persist();
       },
+      onSelect: select,
       getSampleValues,
     });
+    elementNodes.set(elementData.id, node);
+    return node;
   }
 
   function removeElementById(id) {
@@ -58,7 +113,6 @@ export async function mountCardTypeEditor(root, storage, projectId, cardTypeId, 
   setUpDimensionsForm(section, cardType, canvas, persist);
   setUpPropertiesPanel(section, cardType, persist, refreshAllPreviews);
   setUpAddElementButtons(section, cardType, persist, placeElement);
-  setUpModeToggle(section, canvas);
 
   for (const element of cardType.elements) placeElement(element);
 
@@ -132,20 +186,6 @@ function setUpPropertiesPanel(section, cardType, persist, refreshAllPreviews) {
   });
 
   renderProperties();
-}
-
-function setUpModeToggle(section, canvas) {
-  const editButton = section.querySelector(".mode-edit-button");
-  const seeButton = section.querySelector(".mode-see-button");
-
-  function setMode(mode) {
-    canvas.dataset.mode = mode;
-    editButton.setAttribute("aria-pressed", String(mode === "edit"));
-    seeButton.setAttribute("aria-pressed", String(mode === "see"));
-  }
-
-  editButton.addEventListener("click", () => setMode("edit"));
-  seeButton.addEventListener("click", () => setMode("see"));
 }
 
 function setUpAddElementButtons(section, cardType, persist, placeElement) {

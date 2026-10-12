@@ -1,4 +1,5 @@
 import { substitute } from "../../templating/substitute.mjs?v=1";
+import { getElementStyle } from "../../models/card-type.mjs?v=1";
 
 const MIN_SIZE = 10;
 const BROKEN_IMAGE_PLACEHOLDER =
@@ -14,23 +15,14 @@ export function renderElement(canvas, element, templatesByKind, callbacks) {
   const node = template.content.firstElementChild.cloneNode(true);
   node.dataset.elementId = element.id;
   applyTransform(node, element);
-
-  const input = node.querySelector(".element-template-input, .element-text-input, .element-src-input");
-  input.value = element.template ?? element.text ?? element.src ?? "";
-  input.addEventListener("input", () => {
-    if (element.kind === "text" || element.kind === "image") element.template = input.value;
-    else if (element.kind === "label") element.text = input.value;
-    else element.src = input.value;
-    renderPreview(node, element, callbacks.getSampleValues());
-    callbacks.onChange();
-  });
+  applyElementStyle(node, element);
 
   node.querySelector(".element-delete-button").addEventListener("click", () => {
     node.remove();
     callbacks.onDelete(element.id);
   });
 
-  makeDraggable(node, element, callbacks.onChange);
+  makeSelectableAndDraggable(node, element, callbacks);
   makeResizable(node, element, callbacks.onChange);
   makeRotatable(node, element, callbacks.onChange);
 
@@ -40,16 +32,27 @@ export function renderElement(canvas, element, templatesByKind, callbacks) {
 }
 
 export function renderPreview(node, element, sampleValues) {
-  const seeView = node.querySelector(".element-see-view");
+  const content = node.querySelector(".element-content");
   if (element.kind === "text") {
-    seeView.textContent = substitute(element.template, sampleValues);
+    content.textContent = substitute(element.template, sampleValues);
   } else if (element.kind === "label") {
-    seeView.textContent = element.text;
+    content.textContent = element.text;
   } else if (element.kind === "image") {
-    setImageSrc(seeView, substitute(element.template, sampleValues));
+    setImageSrc(content, substitute(element.template, sampleValues));
   } else if (element.kind === "icon") {
-    setImageSrc(seeView, element.src);
+    setImageSrc(content, element.src);
   }
+}
+
+export function applyElementStyle(node, element) {
+  const style = getElementStyle(element);
+  node.style.backgroundColor = style.background.enabled ? style.background.color : "";
+  node.style.border = style.border.enabled ? `${style.border.thickness}px solid ${style.border.color}` : "";
+  node.style.boxShadow = style.shadow.enabled ? `0 0 ${style.shadow.thickness}px ${style.shadow.color}` : "";
+}
+
+export function setElementSelected(node, isSelected) {
+  node.classList.toggle("selected", isSelected);
 }
 
 function setImageSrc(img, url) {
@@ -60,7 +63,7 @@ function setImageSrc(img, url) {
   img.src = url || BROKEN_IMAGE_PLACEHOLDER;
 }
 
-function applyTransform(node, element) {
+export function applyTransform(node, element) {
   node.style.left = `${element.x}px`;
   node.style.top = `${element.y}px`;
   node.style.width = `${element.width}px`;
@@ -68,9 +71,11 @@ function applyTransform(node, element) {
   node.style.transform = `rotate(${element.rotation ?? 0}deg)`;
 }
 
-function makeDraggable(node, element, onChange) {
+function makeSelectableAndDraggable(node, element, callbacks) {
   node.addEventListener("pointerdown", (event) => {
-    if (event.target.closest("input, button, .resize-handle, .rotate-handle")) return;
+    if (event.target.closest("button, .resize-handle, .rotate-handle")) return;
+    callbacks.onSelect(element.id);
+
     const startX = event.clientX - element.x;
     const startY = event.clientY - element.y;
 
@@ -82,7 +87,7 @@ function makeDraggable(node, element, onChange) {
     function onUp() {
       document.removeEventListener("pointermove", onMove);
       document.removeEventListener("pointerup", onUp);
-      onChange();
+      callbacks.onChange();
     }
     document.addEventListener("pointermove", onMove);
     document.addEventListener("pointerup", onUp);

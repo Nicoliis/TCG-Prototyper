@@ -11,8 +11,8 @@
     <p class="dimensions-error field-error" hidden></p>
 
     <div class="editor-layout">
-      <aside class="properties-panel">
-        <h3>Properties</h3>
+      <aside class="data-properties-panel">
+        <h3>Card Properties</h3>
         <form class="add-property-form">
           <input type="text" name="propertyName" placeholder="Property name" required>
           <button type="submit">Add property</button>
@@ -38,20 +38,15 @@
       </aside>
 
       <div class="canvas-wrapper">
-        <div class="canvas-mode-toggle" role="group" aria-label="Canvas mode">
-          <button type="button" class="mode-edit-button" aria-pressed="true">Edit</button>
-          <button type="button" class="mode-see-button" aria-pressed="false">See</button>
-        </div>
-        <div class="canvas" data-mode="edit"></div>
+        <div class="canvas"></div>
       </div>
+
+      <aside class="element-properties-panel-mount"></aside>
     </div>
 
     <template class="element-template" data-kind="text">
       <div class="layout-element layout-element--text">
-        <div class="element-edit-view">
-          <input type="text" class="element-template-input" placeholder="{property} template">
-        </div>
-        <div class="element-see-view"></div>
+        <div class="element-content"></div>
         <button type="button" class="element-delete-button" title="Delete">&times;</button>
         <div class="resize-handle" title="Drag to resize"></div>
         <div class="rotate-handle" title="Drag to rotate"></div>
@@ -59,10 +54,7 @@
     </template>
     <template class="element-template" data-kind="image">
       <div class="layout-element layout-element--image">
-        <div class="element-edit-view">
-          <input type="text" class="element-template-input" placeholder="{property} image template">
-        </div>
-        <img class="element-see-view" alt="">
+        <img class="element-content" alt="">
         <button type="button" class="element-delete-button" title="Delete">&times;</button>
         <div class="resize-handle" title="Drag to resize"></div>
         <div class="rotate-handle" title="Drag to rotate"></div>
@@ -70,10 +62,7 @@
     </template>
     <template class="element-template" data-kind="label">
       <div class="layout-element layout-element--label">
-        <div class="element-edit-view">
-          <input type="text" class="element-text-input" placeholder="Label text">
-        </div>
-        <div class="element-see-view"></div>
+        <div class="element-content"></div>
         <button type="button" class="element-delete-button" title="Delete">&times;</button>
         <div class="resize-handle" title="Drag to resize"></div>
         <div class="rotate-handle" title="Drag to rotate"></div>
@@ -81,10 +70,7 @@
     </template>
     <template class="element-template" data-kind="icon">
       <div class="layout-element layout-element--icon">
-        <div class="element-edit-view">
-          <input type="text" class="element-src-input" placeholder="Icon image URL">
-        </div>
-        <img class="element-see-view" alt="">
+        <img class="element-content" alt="">
         <button type="button" class="element-delete-button" title="Delete">&times;</button>
         <div class="resize-handle" title="Drag to resize"></div>
         <div class="rotate-handle" title="Drag to rotate"></div>
