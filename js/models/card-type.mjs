@@ -84,7 +84,7 @@ export function removeProperty(cardType, propertyId) {
   cardType.properties = cardType.properties.filter((p) => p.id !== propertyId);
 }
 
-export function createElement(kind, { x, y, width, height, template = "", text = "", src = "" }) {
+export function createElement(kind, { x, y, width, height, rotation = 0, template = "", text = "", src = "" }) {
   if (!ELEMENT_KINDS.includes(kind)) throw new Error(`Unknown element kind: ${kind}`);
   const base = {
     id: crypto.randomUUID(),
@@ -93,10 +93,17 @@ export function createElement(kind, { x, y, width, height, template = "", text =
     y: validateNonNegativeNumber(y, "y"),
     width: validatePositiveNumber(width, "width"),
     height: validatePositiveNumber(height, "height"),
+    rotation: validateRotation(rotation),
   };
   if (kind === "text" || kind === "image") return { ...base, template };
   if (kind === "label") return { ...base, text };
   return { ...base, src };
+}
+
+function validateRotation(degrees) {
+  const n = Number(degrees);
+  if (!Number.isFinite(n)) throw new Error("Rotation must be a number.");
+  return ((n % 360) + 360) % 360;
 }
 
 export function addElement(cardType, kind, bounds) {

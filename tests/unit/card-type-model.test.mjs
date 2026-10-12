@@ -31,3 +31,18 @@ test("addElement accepts all four known kinds with valid bounds", () => {
     assert.doesNotThrow(() => addElement(cardType, kind, { x: 0, y: 0, width: 10, height: 10 }));
   }
 });
+
+test("addElement defaults rotation to 0 and rejects a non-finite rotation", () => {
+  const cardType = createCardType("Monster", { width: 100, height: 140 }, []);
+  const element = addElement(cardType, "label", { x: 0, y: 0, width: 10, height: 10 });
+  assert.equal(element.rotation, 0);
+  assert.throws(() =>
+    addElement(cardType, "label", { x: 0, y: 0, width: 10, height: 10, rotation: NaN }),
+  );
+});
+
+test("addElement normalizes rotation into the 0-360 range", () => {
+  const cardType = createCardType("Monster", { width: 100, height: 140 }, []);
+  const element = addElement(cardType, "label", { x: 0, y: 0, width: 10, height: 10, rotation: -90 });
+  assert.equal(element.rotation, 270);
+});
