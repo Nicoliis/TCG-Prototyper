@@ -1,0 +1,22 @@
+<template id="card-type-list-view">
+  <section class="view card-type-list-view">
+    <button type="button" class="back-button">&larr; Projects</button>
+    <h2 class="project-name-heading"></h2>
+
+    <form class="create-card-type-form">
+      <input type="text" name="cardTypeName" placeholder="New card type name" required>
+      <input type="number" name="width" placeholder="Width (px)" min="1" required>
+      <input type="number" name="height" placeholder="Height (px)" min="1" required>
+      <button type="submit">Create card type</button>
+    </form>
+    <p class="field-error" hidden></p>
+
+    <ul class="card-type-list"></ul>
+
+    <template class="card-type-list-item-template">
+      <li class="card-type-list-item">
+        <button type="button" class="card-type-open-button"></button>
+      </li>
+    </template>
+  </section>
+</template>

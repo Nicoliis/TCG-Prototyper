@@ -1,0 +1,76 @@
+<template id="card-type-editor-view">
+  <section class="view card-type-editor-view">
+    <button type="button" class="back-button">&larr; Card types</button>
+    <h2 class="card-type-name-heading"></h2>
+
+    <form class="dimensions-form">
+      <label>Width <input type="number" name="width" min="1" required></label>
+      <label>Height <input type="number" name="height" min="1" required></label>
+      <button type="submit">Save size</button>
+    </form>
+    <p class="dimensions-error field-error" hidden></p>
+
+    <div class="editor-layout">
+      <aside class="properties-panel">
+        <h3>Properties</h3>
+        <form class="add-property-form">
+          <input type="text" name="propertyName" placeholder="Property name" required>
+          <button type="submit">Add property</button>
+        </form>
+        <p class="property-error field-error" hidden></p>
+        <ul class="property-list"></ul>
+
+        <template class="property-list-item-template">
+          <li class="property-list-item">
+            <span class="property-name"></span>
+            <input type="text" class="property-sample-value-input" placeholder="Sample value">
+            <button type="button" class="property-delete-button">Remove</button>
+          </li>
+        </template>
+
+        <h3>Add element</h3>
+        <div class="add-element-buttons">
+          <button type="button" class="add-element-button" data-kind="text">Text display</button>
+          <button type="button" class="add-element-button" data-kind="image">Image display</button>
+          <button type="button" class="add-element-button" data-kind="label">Label</button>
+          <button type="button" class="add-element-button" data-kind="icon">Image/Icon</button>
+        </div>
+      </aside>
+
+      <div class="canvas-wrapper">
+        <div class="canvas"></div>
+      </div>
+    </div>
+
+    <template class="element-template" data-kind="text">
+      <div class="layout-element layout-element--text">
+        <input type="text" class="element-template-input" placeholder="{property} template">
+        <button type="button" class="element-delete-button" title="Delete">&times;</button>
+        <div class="resize-handle"></div>
+      </div>
+    </template>
+    <template class="element-template" data-kind="image">
+      <div class="layout-element layout-element--image">
+        <input type="text" class="element-template-input" placeholder="{property} image template">
+        <img class="element-image-preview" alt="">
+        <button type="button" class="element-delete-button" title="Delete">&times;</button>
+        <div class="resize-handle"></div>
+      </div>
+    </template>
+    <template class="element-template" data-kind="label">
+      <div class="layout-element layout-element--label">
+        <input type="text" class="element-text-input" placeholder="Label text">
+        <button type="button" class="element-delete-button" title="Delete">&times;</button>
+        <div class="resize-handle"></div>
+      </div>
+    </template>
+    <template class="element-template" data-kind="icon">
+      <div class="layout-element layout-element--icon">
+        <input type="text" class="element-src-input" placeholder="Icon image URL">
+        <img class="element-image-preview" alt="">
+        <button type="button" class="element-delete-button" title="Delete">&times;</button>
+        <div class="resize-handle"></div>
+      </div>
+    </template>
+  </section>
+</template>

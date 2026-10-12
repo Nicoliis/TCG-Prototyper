@@ -1,0 +1,22 @@
+<template id="project-list-view">
+  <section class="view project-list-view">
+    <h2>Projects</h2>
+
+    <form class="create-project-form">
+      <input type="text" name="projectName" placeholder="New project name" required>
+      <button type="submit">Create project</button>
+    </form>
+    <p class="field-error" hidden></p>
+
+    <ul class="project-list"></ul>
+
+    <template class="project-list-item-template">
+      <li class="project-list-item">
+        <button type="button" class="project-open-button"></button>
+        <button type="button" class="project-rename-button">Rename</button>
+        <button type="button" class="project-duplicate-button">Duplicate</button>
+        <button type="button" class="project-delete-button">Delete</button>
+      </li>
+    </template>
+  </section>
+</template>
