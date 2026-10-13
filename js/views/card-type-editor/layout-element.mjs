@@ -1,5 +1,6 @@
-import { substitute } from "../../templating/substitute.mjs?v=2";
-import { getElementStyle } from "../../models/card-type.mjs?v=2";
+import { substitute } from "../../templating/substitute.mjs?v=3";
+import { getElementStyle } from "../../models/card-type.mjs?v=3";
+import { applyTextFit } from "./text-fit.mjs?v=3";
 
 const MIN_SIZE = 10;
 const BROKEN_IMAGE_PLACEHOLDER =
@@ -28,6 +29,7 @@ export function renderElement(canvas, element, templatesByKind, callbacks) {
 
   renderPreview(node, element, callbacks.getSampleValues());
   canvas.appendChild(node);
+  applyTextFit(node, element);
   return node;
 }
 
@@ -111,6 +113,7 @@ function makeResizable(node, element, onChange) {
       element.width = Math.max(MIN_SIZE, startWidth + (moveEvent.clientX - startX));
       element.height = Math.max(MIN_SIZE, startHeight + (moveEvent.clientY - startY));
       applyTransform(node, element);
+      applyTextFit(node, element);
     }
     function onUp() {
       document.removeEventListener("pointermove", onMove);

@@ -107,6 +107,7 @@ export function createElement(
     height: validatePositiveNumber(height, "height"),
     rotation: validateRotation(rotation),
     style: defaultElementStyle(),
+    textStyle: defaultTextStyle(),
   };
   if (kind === "text" || kind === "image") return { ...base, template };
   if (kind === "label") return { ...base, text };
@@ -149,6 +150,37 @@ export function setElementStyle(element, styleKey, patch) {
   return next;
 }
 
+const TEXT_ALIGNS = ["left", "center", "right"];
+const TEXT_OVERFLOW_MODES = ["wrap", "shrink", "squash"];
+
+export function defaultTextStyle() {
+  return {
+    fontFamily: "system-ui, sans-serif",
+    fontSize: 14,
+    bold: false,
+    align: "left",
+    overflow: "wrap",
+  };
+}
+
+export function getTextStyle(element) {
+  return element.textStyle ?? defaultTextStyle();
+}
+
+export function setTextStyle(element, patch) {
+  element.textStyle ??= defaultTextStyle();
+  const next = { ...element.textStyle, ...patch };
+  if ("fontSize" in patch) next.fontSize = validatePositiveNumber(patch.fontSize, "Font size");
+  if ("align" in patch && !TEXT_ALIGNS.includes(patch.align)) {
+    throw new Error(`Text align must be one of: ${TEXT_ALIGNS.join(", ")}.`);
+  }
+  if ("overflow" in patch && !TEXT_OVERFLOW_MODES.includes(patch.overflow)) {
+    throw new Error(`Text overflow mode must be one of: ${TEXT_OVERFLOW_MODES.join(", ")}.`);
+  }
+  element.textStyle = next;
+  return next;
+}
+
 export function addElement(cardType, kind, bounds) {
   const name = bounds.name ?? defaultElementName(cardType, kind);
   const element = createElement(kind, { ...bounds, name });
@@ -177,6 +209,7 @@ export function cloneCardType(cardType) {
       ...e,
       id: crypto.randomUUID(),
       style: structuredClone(getElementStyle(e)),
+      textStyle: structuredClone(getTextStyle(e)),
     })),
   };
 }

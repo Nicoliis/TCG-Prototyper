@@ -8,6 +8,8 @@ import {
   getElementStyle,
   setElementStyle,
   getElementName,
+  getTextStyle,
+  setTextStyle,
 } from "../../js/models/card-type.mjs";
 
 test("createCardType rejects an empty name", () => {
@@ -109,4 +111,41 @@ test("cloneCardType deep-copies each element's style so duplicates stay independ
 
   assert.equal(element.style.background.enabled, false);
   assert.equal(duplicate.elements[0].style.background.enabled, true);
+});
+
+test("new elements default to left-aligned, wrapping, non-bold text style", () => {
+  const cardType = createCardType("Monster", { width: 100, height: 140 }, []);
+  const element = addElement(cardType, "text", { x: 0, y: 0, width: 10, height: 10 });
+  const textStyle = getTextStyle(element);
+  assert.equal(textStyle.align, "left");
+  assert.equal(textStyle.overflow, "wrap");
+  assert.equal(textStyle.bold, false);
+});
+
+test("getTextStyle defaults an element saved before this feature (no textStyle field at all)", () => {
+  const legacyElement = { id: "x", kind: "text", x: 0, y: 0, width: 10, height: 10, template: "{atk}" };
+  const textStyle = getTextStyle(legacyElement);
+  assert.equal(textStyle.fontFamily, "system-ui, sans-serif");
+  assert.equal(textStyle.fontSize, 14);
+});
+
+test("setTextStyle heals a legacy element and rejects an invalid align/overflow/fontSize", () => {
+  const legacyElement = { id: "x", kind: "text", x: 0, y: 0, width: 10, height: 10, template: "{atk}" };
+  setTextStyle(legacyElement, { bold: true, fontSize: 20 });
+  assert.equal(legacyElement.textStyle.bold, true);
+  assert.equal(legacyElement.textStyle.fontSize, 20);
+  assert.throws(() => setTextStyle(legacyElement, { align: "diagonal" }));
+  assert.throws(() => setTextStyle(legacyElement, { overflow: "explode" }));
+  assert.throws(() => setTextStyle(legacyElement, { fontSize: 0 }));
+});
+
+test("cloneCardType deep-copies each element's textStyle so duplicates stay independent", () => {
+  const cardType = createCardType("Monster", { width: 100, height: 140 }, []);
+  const element = addElement(cardType, "text", { x: 0, y: 0, width: 10, height: 10 });
+  const duplicate = cloneCardType(cardType);
+
+  setTextStyle(duplicate.elements[0], { bold: true });
+
+  assert.equal(element.textStyle.bold, false);
+  assert.equal(duplicate.elements[0].textStyle.bold, true);
 });
