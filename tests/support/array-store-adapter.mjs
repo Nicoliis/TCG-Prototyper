@@ -1,7 +1,7 @@
 import { StorageAdapter } from "../../js/storage/storage-adapter.mjs";
 import { createProject, validateProjectName, cloneProjectForDuplicate } from "../../js/models/project.mjs";
 import { validateCardTypeName } from "../../js/models/card-type.mjs";
-import { upsertDeck, removeDeck } from "../../js/models/deck.mjs";
+import { upsertDeck, removeDeck, pruneDecks } from "../../js/models/deck.mjs";
 
 /**
  * A second, structurally distinct test adapter (array-backed rather than
@@ -55,6 +55,7 @@ export class ArrayStoreAdapter extends StorageAdapter {
     const index = project.cardTypes.findIndex((ct) => ct.id === saved.id);
     if (index === -1) project.cardTypes.push(saved);
     else project.cardTypes[index] = saved;
+    pruneDecks(project);
     project.updatedAt = Date.now();
     return saved;
   }
@@ -78,6 +79,7 @@ export class ArrayStoreAdapter extends StorageAdapter {
     const project = await this.getProject(projectId);
     if (!project) throw new Error(`Project not found: ${projectId}`);
     project.cardTypes = project.cardTypes.filter((ct) => ct.id !== cardTypeId);
+    pruneDecks(project);
     project.updatedAt = Date.now();
   }
 }

@@ -1,7 +1,7 @@
-import { StorageAdapter } from "./storage-adapter.mjs?v=14";
-import { createProject, validateProjectName, cloneProjectForDuplicate } from "../models/project.mjs?v=14";
-import { validateCardTypeName } from "../models/card-type.mjs?v=14";
-import { upsertDeck, removeDeck } from "../models/deck.mjs?v=14";
+import { StorageAdapter } from "./storage-adapter.mjs?v=15";
+import { createProject, validateProjectName, cloneProjectForDuplicate } from "../models/project.mjs?v=15";
+import { validateCardTypeName } from "../models/card-type.mjs?v=15";
+import { upsertDeck, removeDeck, pruneDecks } from "../models/deck.mjs?v=15";
 
 const DB_VERSION = 1;
 const STORE_NAME = "projects";
@@ -95,6 +95,7 @@ export class IndexedDbAdapter extends StorageAdapter {
     const index = project.cardTypes.findIndex((ct) => ct.id === saved.id);
     if (index === -1) project.cardTypes.push(saved);
     else project.cardTypes[index] = saved;
+    pruneDecks(project);
     project.updatedAt = Date.now();
     await this.#putProject(project);
     return saved;
@@ -121,6 +122,7 @@ export class IndexedDbAdapter extends StorageAdapter {
     const project = await this.getProject(projectId);
     if (!project) throw new Error(`Project not found: ${projectId}`);
     project.cardTypes = project.cardTypes.filter((ct) => ct.id !== cardTypeId);
+    pruneDecks(project);
     project.updatedAt = Date.now();
     await this.#putProject(project);
   }

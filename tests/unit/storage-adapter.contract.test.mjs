@@ -170,3 +170,41 @@ for (const [label, make] of adapters) {
     assert.deepEqual(duplicate.decks[0].entries, [{ cardId: copiedCardId, count: 3 }]);
   });
 }
+
+for (const [label, make] of adapters) {
+  test(`${label}: saving a card type without a card removes it from every deck`, async () => {
+    const adapter = make();
+    const project = await adapter.createProject("Prune");
+    const cardType = await adapter.saveCardType(
+      project.id,
+      sampleCardType({ cards: [{ id: "c1", values: {} }, { id: "c2", values: {} }] }),
+    );
+    await adapter.saveDeck(project.id, { name: "A", entries: [{ cardId: "c1", count: 2 }, { cardId: "c2", count: 1 }] });
+    await adapter.saveDeck(project.id, { name: "B", entries: [{ cardId: "c1", count: 3 }] });
+
+    await adapter.saveCardType(project.id, { ...cardType, cards: [{ id: "c2", values: {} }] });
+
+    const loaded = await adapter.getProject(project.id);
+    assert.deepEqual(loaded.decks.find((d) => d.name === "A").entries, [{ cardId: "c2", count: 1 }]);
+    assert.deepEqual(loaded.decks.find((d) => d.name === "B").entries, []);
+  });
+
+  test(`${label}: deleting a card type removes its cards from decks but keeps other entries`, async () => {
+    const adapter = make();
+    const project = await adapter.createProject("Prune");
+    const monster = await adapter.saveCardType(
+      project.id,
+      sampleCardType({ name: "Monster", cards: [{ id: "m1", values: {} }] }),
+    );
+    await adapter.saveCardType(project.id, sampleCardType({ name: "Spell", cards: [{ id: "s1", values: {} }] }));
+    await adapter.saveDeck(project.id, {
+      name: "Mixed",
+      entries: [{ cardId: "m1", count: 1 }, { cardId: "s1", count: 2 }],
+    });
+
+    await adapter.deleteCardType(project.id, monster.id);
+
+    const loaded = await adapter.getProject(project.id);
+    assert.deepEqual(loaded.decks[0].entries, [{ cardId: "s1", count: 2 }]);
+  });
+}
