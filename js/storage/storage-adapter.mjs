@@ -19,6 +19,10 @@ export class StorageAdapter {
     throw new Error("duplicateProject not implemented");
   }
 
+  async importProject(exportedData) {
+    throw new Error("importProject not implemented");
+  }
+
   async deleteProject(id) {
     throw new Error("deleteProject not implemented");
   }

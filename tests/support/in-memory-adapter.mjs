@@ -2,6 +2,7 @@ import { StorageAdapter } from "../../js/storage/storage-adapter.mjs";
 import { createProject, validateProjectName, cloneProjectForDuplicate } from "../../js/models/project.mjs";
 import { validateCardTypeName } from "../../js/models/card-type.mjs";
 import { upsertDeck, removeDeck, pruneDecks } from "../../js/models/deck.mjs";
+import { validateExportEnvelope, buildProjectFromImport } from "../../js/models/project-export.mjs";
 
 export class InMemoryAdapter extends StorageAdapter {
   #projects = new Map();
@@ -41,6 +42,16 @@ export class InMemoryAdapter extends StorageAdapter {
 
   async deleteProject(id) {
     this.#projects.delete(id);
+  }
+
+  async importProject(exportedData) {
+    validateExportEnvelope(exportedData);
+    const existing = [...this.#projects.values()].map((p) => p.name);
+    const built = buildProjectFromImport(exportedData, existing);
+    const now = Date.now();
+    const project = { id: crypto.randomUUID(), ...built, createdAt: now, updatedAt: now };
+    this.#projects.set(project.id, project);
+    return project;
   }
 
   async saveCardType(projectId, cardType) {

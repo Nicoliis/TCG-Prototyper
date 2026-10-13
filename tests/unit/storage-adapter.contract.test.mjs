@@ -22,6 +22,23 @@ const sampleCardType = (overrides = {}) => ({
   ...overrides,
 });
 
+const sampleEnvelope = (overrides = {}) => ({
+  cardgamePrototyperExport: "project",
+  formatVersion: 1,
+  exportedAt: "2026-01-01T00:00:00.000Z",
+  project: {
+    name: "Imported",
+    cardTypes: [
+      sampleCardType({
+        properties: [{ id: "p1", name: "atk", sampleValue: "" }],
+        cards: [{ id: "c1", values: { p1: "5" } }],
+      }),
+    ],
+    decks: [{ name: "Starter", entries: [{ cardId: "c1", count: 2 }] }],
+    ...overrides,
+  },
+});
+
 for (const [label, make] of adapters) {
   test(`${label}: a created project appears in listProjects`, async () => {
     const adapter = make();
@@ -206,5 +223,59 @@ for (const [label, make] of adapters) {
 
     const loaded = await adapter.getProject(project.id);
     assert.deepEqual(loaded.decks[0].entries, [{ cardId: "s1", count: 2 }]);
+  });
+}
+
+for (const [label, make] of adapters) {
+  test(`${label}: importProject adds a new project with a distinct id`, async () => {
+    const adapter = make();
+    const existing = await adapter.createProject("Existing");
+    const imported = await adapter.importProject(sampleEnvelope());
+    assert.notEqual(imported.id, existing.id);
+    assert.ok((await adapter.listProjects()).some((p) => p.id === imported.id));
+  });
+
+  test(`${label}: importProject gives the new project fresh timestamps`, async () => {
+    const adapter = make();
+    const before = Date.now();
+    const imported = await adapter.importProject(sampleEnvelope());
+    assert.ok(imported.createdAt >= before);
+    assert.ok(Date.now() - imported.createdAt < 1000);
+    assert.equal(imported.createdAt, imported.updatedAt);
+  });
+
+  test(`${label}: importProject resolves a colliding name without touching the existing project`, async () => {
+    const adapter = make();
+    const existing = await adapter.createProject("Imported");
+    const imported = await adapter.importProject(sampleEnvelope());
+    assert.notEqual(imported.name, "Imported");
+    assert.equal((await adapter.getProject(existing.id)).name, "Imported");
+  });
+
+  test(`${label}: importProject regenerates card type, card and deck ids`, async () => {
+    const adapter = make();
+    const envelope = sampleEnvelope();
+    const imported = await adapter.importProject(envelope);
+    const sourceCardType = envelope.project.cardTypes[0];
+    const importedCardType = imported.cardTypes[0];
+    assert.notEqual(importedCardType.id, sourceCardType.id);
+    assert.notEqual(importedCardType.cards[0].id, sourceCardType.cards[0].id);
+    assert.deepEqual(imported.decks[0].entries, [{ cardId: importedCardType.cards[0].id, count: 2 }]);
+  });
+
+  test(`${label}: importProject drops a deck entry referencing a card absent from the envelope`, async () => {
+    const adapter = make();
+    const envelope = sampleEnvelope();
+    envelope.project.decks[0].entries.push({ cardId: "missing", count: 1 });
+    const imported = await adapter.importProject(envelope);
+    assert.equal(imported.decks[0].entries.length, 1);
+    assert.notEqual(imported.decks[0].entries[0].cardId, "missing");
+  });
+
+  test(`${label}: importProject rejects a malformed envelope and creates no project`, async () => {
+    const adapter = make();
+    const before = await adapter.listProjects();
+    await assert.rejects(() => adapter.importProject({ not: "a project export" }));
+    assert.deepEqual(await adapter.listProjects(), before);
   });
 }

@@ -1,7 +1,8 @@
-import { StorageAdapter } from "./storage-adapter.mjs?v=21";
-import { createProject, validateProjectName, cloneProjectForDuplicate } from "../models/project.mjs?v=21";
-import { validateCardTypeName } from "../models/card-type.mjs?v=21";
-import { upsertDeck, removeDeck, pruneDecks } from "../models/deck.mjs?v=21";
+import { StorageAdapter } from "./storage-adapter.mjs?v=22";
+import { createProject, validateProjectName, cloneProjectForDuplicate } from "../models/project.mjs?v=22";
+import { validateCardTypeName } from "../models/card-type.mjs?v=22";
+import { upsertDeck, removeDeck, pruneDecks } from "../models/deck.mjs?v=22";
+import { validateExportEnvelope, buildProjectFromImport } from "../models/project-export.mjs?v=22";
 
 const DB_VERSION = 1;
 const STORE_NAME = "projects";
@@ -82,6 +83,15 @@ export class IndexedDbAdapter extends StorageAdapter {
   async deleteProject(id) {
     const store = await this.#store("readwrite");
     await promisifyRequest(store.delete(id));
+  }
+
+  async importProject(exportedData) {
+    validateExportEnvelope(exportedData);
+    const existing = await this.#getAllProjects();
+    const built = buildProjectFromImport(exportedData, existing.map((p) => p.name));
+    const now = Date.now();
+    const project = { id: crypto.randomUUID(), ...built, createdAt: now, updatedAt: now };
+    return this.#putProject(project);
   }
 
   async saveCardType(projectId, cardType) {
