@@ -1,4 +1,4 @@
-import { getCards, createCard, getCardValue, setCardValue } from "../models/card.mjs?v=8";
+import { getCards, createCard, getCardValue, setCardValue } from "../models/card.mjs?v=9";
 
 function normalize(value) {
   return (value ?? "").trim().toLowerCase();

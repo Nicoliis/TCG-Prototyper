@@ -1,0 +1,36 @@
+<template id="csv-import-view">
+  <section class="view csv-import-view">
+    <button type="button" class="back-button">&larr; Card types</button>
+    <h2 class="csv-import-heading"></h2>
+
+    <form class="csv-import-form">
+      <label class="csv-import-field">
+        CSV file
+        <input type="file" class="csv-file-input" accept=".csv,text/csv">
+      </label>
+      <label class="csv-import-field">
+        Or paste CSV text (used instead of the file when filled in)
+        <textarea class="csv-paste-input" rows="8" placeholder="name,atk&#10;Goblin,3"></textarea>
+      </label>
+      <label class="csv-import-field">
+        Match existing cards by
+        <select class="key-property-select"></select>
+      </label>
+      <button type="submit">Import</button>
+    </form>
+    <p class="field-error" hidden></p>
+
+    <div class="import-report" hidden>
+      <h3>Import result</h3>
+      <p class="import-empty-message" hidden>The CSV had no data rows, so no cards were imported.</p>
+      <p class="import-counts"></p>
+      <p>Ignored CSV columns: <span class="import-ignored-columns"></span></p>
+      <p>Properties left blank on new cards: <span class="import-unfilled-properties"></span></p>
+      <button type="button" class="open-card-table-button">View cards</button>
+    </div>
+
+    <template class="key-option-template">
+      <option></option>
+    </template>
+  </section>
+</template>

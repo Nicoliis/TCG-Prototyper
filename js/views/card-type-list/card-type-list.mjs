@@ -1,12 +1,13 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=8";
-import { mountCardTypeEditor } from "../card-type-editor/card-type-editor.mjs?v=8";
-import { mountCardTable } from "../card-table/card-table.mjs?v=8";
-import { createCardType } from "../../models/card-type.mjs?v=8";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=9";
+import { mountCardTypeEditor } from "../card-type-editor/card-type-editor.mjs?v=9";
+import { mountCardTable } from "../card-table/card-table.mjs?v=9";
+import { mountCsvImport } from "../csv-import/csv-import.mjs?v=9";
+import { createCardType } from "../../models/card-type.mjs?v=9";
 
 let templatePromise;
 
 export async function mountCardTypeList(root, storage, projectId, onBack) {
-  const template = await (templatePromise ??= loadFragment("js/views/card-type-list/card-type-list.html?v=8"));
+  const template = await (templatePromise ??= loadFragment("js/views/card-type-list/card-type-list.html?v=9"));
   const view = cloneTemplate(template);
   const section = view.querySelector(".card-type-list-view");
 
@@ -37,6 +38,10 @@ export async function mountCardTypeList(root, storage, projectId, onBack) {
     mountCardTable(root, storage, projectId, cardTypeId, backToList);
   }
 
+  function openCsvImport(cardTypeId) {
+    mountCsvImport(root, storage, projectId, cardTypeId, backToList, () => openCardTable(cardTypeId));
+  }
+
   async function refresh() {
     const project = await storage.getProject(projectId);
     heading.textContent = project.name;
@@ -47,6 +52,7 @@ export async function mountCardTypeList(root, storage, projectId, onBack) {
       openButton.textContent = `${cardType.name} (${cardType.width}x${cardType.height})`;
       openButton.addEventListener("click", () => openCardType(cardType.id));
       item.querySelector(".card-type-cards-button").addEventListener("click", () => openCardTable(cardType.id));
+      item.querySelector(".card-type-import-button").addEventListener("click", () => openCsvImport(cardType.id));
       list.appendChild(item);
     }
   }
