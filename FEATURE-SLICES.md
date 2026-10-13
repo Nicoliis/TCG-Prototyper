@@ -17,7 +17,7 @@ Status legend: `[ ]` not started, `[~]` in progress, `[x]` done.
   - Images/Icons (static).
   - Demo: create a project, define a card type, see a fully rendered card.
 
-- [ ] **2. Card Types — image-list & spritesheet displays**
+- [x] **2. Card Types — image-list & spritesheet displays**
   - Image list displays: predetermined list, default + input-to-image mapping
     (e.g. attribute icon, background color, card border).
   - Spritesheet slicing: `{imgnumb:templatex}`.
