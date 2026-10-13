@@ -1,4 +1,4 @@
-import { addProperty, removeProperty } from "../../models/card-type.mjs?v=20";
+import { addProperty, removeProperty } from "../../models/card-type.mjs?v=21";
 
 export function setUpCardPropertiesPanel(section, cardType, persist, refreshAllPreviews) {
   const list = section.querySelector(".property-list");

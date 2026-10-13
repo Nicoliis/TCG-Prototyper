@@ -4,8 +4,10 @@
     <button type="button" class="back-button">&larr; Card types</button>
     <h2 class="print-heading"></h2>
 
+    <p class="field-error" hidden></p>
+
     <div class="print-layout">
-      <div class="print-controls">
+      <div class="print-column print-source-column">
         <h3>Load a deck</h3>
         <div class="print-deck-row">
           <select class="print-deck-select" aria-label="Deck">
@@ -17,7 +19,9 @@
         <h3>Available cards</h3>
         <p class="available-cards-empty" hidden></p>
         <ul class="available-card-list"></ul>
+      </div>
 
+      <div class="print-column print-selection-column">
         <h3>Sheet layout</h3>
         <div class="sheet-layout-controls">
           <label class="prop-field"><span class="prop-field-label">Paper</span> <select class="sheet-paper-select"></select></label>
@@ -29,12 +33,14 @@
         <h3>To print</h3>
         <p class="selection-empty" hidden>Pick cards first.</p>
         <ul class="selection-list"></ul>
-        <p class="print-totals"></p>
-        <p class="field-error" hidden></p>
-        <button type="button" class="print-button">Print</button>
+
+        <div class="print-actions">
+          <p class="print-totals"></p>
+          <button type="button" class="print-button">Print</button>
+        </div>
       </div>
 
-      <div class="print-preview">
+      <div class="print-column print-preview">
         <div class="print-pages"></div>
       </div>
     </div>

@@ -781,17 +781,44 @@ img.element-content {
   max-width: none;
 }
 
+main:has(.print-screen-view) {
+  max-width: none;
+  padding-bottom: var(--space-4);
+}
+
 .print-layout {
   display: grid;
-  grid-template-columns: minmax(18rem, 24rem) 1fr;
-  gap: var(--space-5);
-  align-items: start;
+  grid-template-columns: minmax(15rem, 1fr) minmax(15rem, 1fr) minmax(0, 1.6fr);
+  gap: var(--space-4);
+  height: calc(100vh - 13rem);
+  min-height: 24rem;
+}
+
+.print-column {
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: var(--space-2);
+}
+
+.print-column h3:first-child {
+  margin-top: 0;
 }
 
 .print-preview {
   --preview-scale: 0.6;
-  zoom: var(--preview-scale);
   overflow: auto;
+}
+
+.print-pages {
+  zoom: var(--preview-scale);
+}
+
+.print-actions {
+  position: sticky;
+  bottom: 0;
+  padding: var(--space-2) 0;
+  background: var(--color-page-bg);
+  border-top: 1px solid var(--color-border);
 }
 
 .print-page {
@@ -832,7 +859,9 @@ img.element-content {
   .app-header,
   .back-button,
   .print-heading,
-  .print-controls {
+  .print-source-column,
+  .print-selection-column,
+  .print-screen-view .field-error {
     display: none !important;
   }
 
@@ -840,18 +869,25 @@ img.element-content {
     background: #fff;
   }
 
-  main {
+  main,
+  main:has(.print-screen-view) {
     max-width: none;
     margin: 0;
     padding: 0;
   }
 
   .print-layout {
+    height: auto;
+    min-height: 0;
     display: block;
   }
 
-  .print-preview {
+  .print-pages {
     zoom: 1;
+  }
+
+  .print-preview {
+    padding: 0;
     overflow: visible;
   }
 
