@@ -1,5 +1,5 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=1";
-import { setElementStyle, getElementStyle, getElementName } from "../../models/card-type.mjs?v=1";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=2";
+import { setElementStyle, getElementStyle, getElementName } from "../../models/card-type.mjs?v=2";
 
 const CONTENT_FIELD_BY_KIND = {
   text: { label: "Template", placeholder: "{property} template" },
@@ -12,7 +12,7 @@ let templatePromise;
 
 export async function mountElementPropertiesPanel(container) {
   const template = await (templatePromise ??= loadFragment(
-    "js/views/card-type-editor/element-properties-panel.html?v=1",
+    "js/views/card-type-editor/element-properties-panel.html?v=2",
   ));
   const panel = cloneTemplate(template).firstElementChild;
   container.appendChild(panel);

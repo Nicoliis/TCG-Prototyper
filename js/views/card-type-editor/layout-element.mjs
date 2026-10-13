@@ -1,5 +1,5 @@
-import { substitute } from "../../templating/substitute.mjs?v=1";
-import { getElementStyle } from "../../models/card-type.mjs?v=1";
+import { substitute } from "../../templating/substitute.mjs?v=2";
+import { getElementStyle } from "../../models/card-type.mjs?v=2";
 
 const MIN_SIZE = 10;
 const BROKEN_IMAGE_PLACEHOLDER =

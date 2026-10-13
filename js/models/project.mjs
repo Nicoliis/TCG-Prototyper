@@ -1,4 +1,4 @@
-import { cloneCardType } from "./card-type.mjs?v=1";
+import { cloneCardType } from "./card-type.mjs?v=2";
 
 function sameName(a, b) {
   return a.trim().toLowerCase() === b.trim().toLowerCase();
