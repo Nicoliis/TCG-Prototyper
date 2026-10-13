@@ -90,11 +90,17 @@ export function removeProperty(cardType, propertyId) {
   cardType.properties = cardType.properties.filter((p) => p.id !== propertyId);
 }
 
-export function createElement(kind, { x, y, width, height, rotation = 0, template = "", text = "", src = "" }) {
+const ELEMENT_KIND_LABEL = { text: "Text", image: "Image", label: "Label", icon: "Icon" };
+
+export function createElement(
+  kind,
+  { x, y, width, height, rotation = 0, name = "", template = "", text = "", src = "" },
+) {
   if (!ELEMENT_KINDS.includes(kind)) throw new Error(`Unknown element kind: ${kind}`);
   const base = {
     id: crypto.randomUUID(),
     kind,
+    name: validateNonEmpty(name, "Element name"),
     x: validateNonNegativeNumber(x, "x"),
     y: validateNonNegativeNumber(y, "y"),
     width: validatePositiveNumber(width, "width"),
@@ -105,6 +111,15 @@ export function createElement(kind, { x, y, width, height, rotation = 0, templat
   if (kind === "text" || kind === "image") return { ...base, template };
   if (kind === "label") return { ...base, text };
   return { ...base, src };
+}
+
+function defaultElementName(cardType, kind) {
+  const countOfKind = cardType.elements.filter((e) => e.kind === kind).length;
+  return `${ELEMENT_KIND_LABEL[kind] ?? kind} ${countOfKind + 1}`;
+}
+
+export function getElementName(element) {
+  return element.name ?? ELEMENT_KIND_LABEL[element.kind] ?? element.kind;
 }
 
 function validateRotation(degrees) {
@@ -135,7 +150,8 @@ export function setElementStyle(element, styleKey, patch) {
 }
 
 export function addElement(cardType, kind, bounds) {
-  const element = createElement(kind, bounds);
+  const name = bounds.name ?? defaultElementName(cardType, kind);
+  const element = createElement(kind, { ...bounds, name });
   cardType.elements.push(element);
   return element;
 }

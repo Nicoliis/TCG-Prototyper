@@ -76,6 +76,7 @@ export async function mountCardTypeEditor(root, storage, projectId, cardTypeId, 
         applyTransform(node, element);
         renderPreview(node, element, getSampleValues());
         applyElementStyle(node, element);
+        refreshLayerList();
         persist();
       },
     };

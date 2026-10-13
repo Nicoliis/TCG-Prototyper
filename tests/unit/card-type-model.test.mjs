@@ -7,6 +7,7 @@ import {
   cloneCardType,
   getElementStyle,
   setElementStyle,
+  getElementName,
 } from "../../js/models/card-type.mjs";
 
 test("createCardType rejects an empty name", () => {
@@ -76,6 +77,27 @@ test("setElementStyle heals a legacy element with no style field and rejects a n
   setElementStyle(legacyElement, "border", { enabled: true, color: "#ff0000", thickness: 2 });
   assert.equal(legacyElement.style.border.thickness, 2);
   assert.throws(() => setElementStyle(legacyElement, "border", { thickness: 0 }));
+});
+
+test("addElement gives each new element a default name scoped by kind", () => {
+  const cardType = createCardType("Monster", { width: 100, height: 140 }, []);
+  const firstText = addElement(cardType, "text", { x: 0, y: 0, width: 10, height: 10 });
+  const secondText = addElement(cardType, "text", { x: 0, y: 0, width: 10, height: 10 });
+  const firstLabel = addElement(cardType, "label", { x: 0, y: 0, width: 10, height: 10 });
+  assert.equal(firstText.name, "Text 1");
+  assert.equal(secondText.name, "Text 2");
+  assert.equal(firstLabel.name, "Label 1");
+});
+
+test("addElement accepts an explicit name instead of the default", () => {
+  const cardType = createCardType("Monster", { width: 100, height: 140 }, []);
+  const element = addElement(cardType, "label", { x: 0, y: 0, width: 10, height: 10, name: "Title" });
+  assert.equal(element.name, "Title");
+});
+
+test("getElementName falls back to a kind-based label for an element saved before this feature", () => {
+  const legacyElement = { id: "x", kind: "label", x: 0, y: 0, width: 10, height: 10, text: "Hi" };
+  assert.equal(getElementName(legacyElement), "Label");
 });
 
 test("cloneCardType deep-copies each element's style so duplicates stay independent", () => {

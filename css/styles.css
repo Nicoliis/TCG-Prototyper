@@ -432,7 +432,8 @@ img.element-content {
 }
 
 .field-grid label,
-.content-field {
+.content-field,
+.name-field {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
@@ -440,8 +441,14 @@ img.element-content {
   color: var(--color-muted);
 }
 
+.name-field input {
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
 .field-grid input,
-.content-field input {
+.content-field input,
+.name-field input {
   width: 100%;
 }
 

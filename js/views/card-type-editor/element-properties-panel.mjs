@@ -1,5 +1,5 @@
 import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=1";
-import { setElementStyle, getElementStyle } from "../../models/card-type.mjs?v=1";
+import { setElementStyle, getElementStyle, getElementName } from "../../models/card-type.mjs?v=1";
 
 const CONTENT_FIELD_BY_KIND = {
   text: { label: "Template", placeholder: "{property} template" },
@@ -65,6 +65,8 @@ export async function mountElementPropertiesPanel(container) {
     contentLabel.textContent = label;
     fields.content.placeholder = placeholder;
 
+    fields.name.value = getElementName(element);
+
     fields.x.value = element.x;
     fields.y.value = element.y;
     fields.width.value = element.width;
@@ -99,6 +101,12 @@ export async function mountElementPropertiesPanel(container) {
   fields.content.addEventListener("input", () => {
     if (!currentElement) return;
     applyContentValue(fields.content.value);
+    currentCallbacks.onChange();
+  });
+
+  fields.name.addEventListener("input", () => {
+    if (!currentElement) return;
+    currentElement.name = fields.name.value;
     currentCallbacks.onChange();
   });
 

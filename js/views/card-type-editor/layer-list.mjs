@@ -1,4 +1,5 @@
 import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=1";
+import { getElementName } from "../../models/card-type.mjs?v=1";
 
 const KIND_ICON = { text: "T", image: "🖼", label: "🏷", icon: "★" };
 
@@ -15,10 +16,6 @@ export async function mountLayerList(container, callbacks) {
 
   let draggedId = null;
 
-  function labelFor(element) {
-    return element.template || element.text || element.src || "(empty)";
-  }
-
   function render(elements, selectedElementId) {
     emptyState.hidden = elements.length > 0;
     list.replaceChildren();
@@ -32,7 +29,7 @@ export async function mountLayerList(container, callbacks) {
       const row = item.querySelector(".layer-list-item");
       row.classList.toggle("selected", element.id === selectedElementId);
       row.querySelector(".layer-kind-icon").textContent = KIND_ICON[element.kind] ?? "?";
-      row.querySelector(".layer-label").textContent = labelFor(element);
+      row.querySelector(".layer-label").textContent = getElementName(element);
 
       row.addEventListener("click", () => callbacks.onSelect(element.id));
 
