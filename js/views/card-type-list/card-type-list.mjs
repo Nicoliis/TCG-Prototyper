@@ -1,15 +1,15 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=23";
-import { mountCardTypeEditor } from "../card-type-editor/card-type-editor.mjs?v=23";
-import { mountCardTable } from "../card-table/card-table.mjs?v=23";
-import { mountDeckList } from "../deck-list/deck-list.mjs?v=23";
-import { mountPrintScreen } from "../print/print-screen.mjs?v=23";
-import { mountCsvImport } from "../csv-import/csv-import.mjs?v=23";
-import { createCardType } from "../../models/card-type.mjs?v=23";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=25";
+import { mountCardTypeEditor } from "../card-type-editor/card-type-editor.mjs?v=25";
+import { mountCardTable } from "../card-table/card-table.mjs?v=25";
+import { mountDeckList } from "../deck-list/deck-list.mjs?v=25";
+import { mountPrintScreen } from "../print/print-screen.mjs?v=25";
+import { mountCsvImport } from "../csv-import/csv-import.mjs?v=25";
+import { createCardType } from "../../models/card-type.mjs?v=25";
 
 let templatePromise;
 
 export async function mountCardTypeList(root, storage, projectId, onBack) {
-  const template = await (templatePromise ??= loadFragment("js/views/card-type-list/card-type-list.html?v=23"));
+  const template = await (templatePromise ??= loadFragment("js/views/card-type-list/card-type-list.html?v=25"));
   const view = cloneTemplate(template);
   const section = view.querySelector(".card-type-list-view");
 

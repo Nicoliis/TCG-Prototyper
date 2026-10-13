@@ -1,12 +1,12 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=23";
-import { mountCardTypeList } from "../card-type-list/card-type-list.mjs?v=23";
-import { buildExportEnvelope, exportFileName, validateExportEnvelope } from "../../models/project-export.mjs?v=23";
-import { downloadTextFile } from "./download-file.mjs?v=23";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=25";
+import { mountCardTypeList } from "../card-type-list/card-type-list.mjs?v=25";
+import { buildExportEnvelope, exportFileName, validateExportEnvelope } from "../../models/project-export.mjs?v=25";
+import { downloadTextFile } from "./download-file.mjs?v=25";
 
 let templatePromise;
 
 export async function mountProjectList(root, storage) {
-  const template = await (templatePromise ??= loadFragment("js/views/project-list/project-list.html?v=23"));
+  const template = await (templatePromise ??= loadFragment("js/views/project-list/project-list.html?v=25"));
   const view = cloneTemplate(template);
   const section = view.querySelector(".project-list-view");
 
@@ -14,10 +14,18 @@ export async function mountProjectList(root, storage) {
   const errorEl = section.querySelector(".field-error");
   const list = section.querySelector(".project-list");
   const itemTemplate = section.querySelector(".project-list-item-template");
+  const importButton = section.querySelector(".import-project-button");
+  const importInput = section.querySelector(".import-project-input");
+  const importStatus = section.querySelector(".import-status");
 
   function showError(message) {
     errorEl.textContent = message;
     errorEl.hidden = !message;
+  }
+
+  function showImportStatus(message) {
+    importStatus.textContent = message;
+    importStatus.hidden = !message;
   }
 
   function openProject(projectId) {
@@ -76,6 +84,31 @@ export async function mountProjectList(root, storage) {
       openProject(project.id);
     } catch (error) {
       showError(error.message);
+    }
+  });
+
+  importButton.addEventListener("click", () => importInput.click());
+
+  importInput.addEventListener("change", async () => {
+    showImportStatus("");
+    const file = importInput.files[0];
+    if (!file) return;
+    try {
+      const text = await file.text();
+      let parsed;
+      try {
+        parsed = JSON.parse(text);
+      } catch {
+        throw new Error("This file is not valid JSON.");
+      }
+      validateExportEnvelope(parsed);
+      const created = await storage.importProject(parsed);
+      await refresh();
+      showImportStatus(`Imported "${created.name}".`);
+    } catch (error) {
+      showError(error.message);
+    } finally {
+      importInput.value = "";
     }
   });
 

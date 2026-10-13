@@ -81,8 +81,8 @@ description: "Task list for Project Export & Import"
 ### Implementation for User Story 2
 
 - [X] T013 [US2] Add to `js/views/project-list/project-list.html`: an `.import-project-button` ("Import project") and a hidden `<input type="file" class="import-project-input" accept=".json,application/json" hidden>`, both above the `.project-list`
-- [ ] T014 [US2] Wire import in `js/views/project-list/project-list.mjs`: clicking `.import-project-button` triggers a click on the hidden file input; on the input's `change` event, read `input.files[0]` (return early if none — a cancelled picker), `await file.text()`, `JSON.parse` wrapped in try/catch (a `SyntaxError` is surfaced through the same `showError` as a validation failure), `validateExportEnvelope(parsed)`, then `const created = await storage.importProject(parsed)` (capture the return value — Phase 5/T017 reads `created.name`), then `await refresh()`; reset `input.value = ""` afterward so re-selecting the same file re-fires `change`; any thrown error (parse failure, validation failure, or an adapter error) goes through the existing `showError` (import `validateExportEnvelope` from `../../models/project-export.mjs?v=22`) (depends on T002, T004, T013). **Commit with a `?v=` bump.**
-- [ ] T015 [US2] Manual validation: run quickstart.md section 3 and fix issues
+- [X] T014 [US2] Wire import in `js/views/project-list/project-list.mjs`: clicking `.import-project-button` triggers a click on the hidden file input; on the input's `change` event, read `input.files[0]` (return early if none — a cancelled picker), `await file.text()`, `JSON.parse` wrapped in try/catch (a `SyntaxError` is surfaced through the same `showError` as a validation failure), `validateExportEnvelope(parsed)`, then `const created = await storage.importProject(parsed)` (capture the return value — Phase 5/T017 reads `created.name`), then `await refresh()`; reset `input.value = ""` afterward so re-selecting the same file re-fires `change`; any thrown error (parse failure, validation failure, or an adapter error) goes through the existing `showError` (import `validateExportEnvelope` from `../../models/project-export.mjs?v=22`) (depends on T002, T004, T013). **Commit with a `?v=` bump.**
+- [X] T015 [US2] Manual validation: run quickstart.md section 3 and fix issues
 
 **Checkpoint**: Stories 1 and 2 together deliver the full export/import round trip. MVP complete.
 
@@ -97,8 +97,8 @@ description: "Task list for Project Export & Import"
 ### Implementation for User Story 3
 
 - [X] T016 [US3] Add an `.import-status` paragraph (hidden by default, styled like the existing `.field-error` but not an error) to `js/views/project-list/project-list.html`, placed near the import button
-- [ ] T017 [US3] Update `js/views/project-list/project-list.mjs`'s import handler: on a successful `storage.importProject`, set `.import-status` to `` Imported "${created.name}". `` and clear it the next time an import starts or fails (depends on T014). **Commit with a `?v=` bump.**
-- [ ] T018 [US3] Manual validation: run quickstart.md section 4 and fix issues
+- [X] T017 [US3] Update `js/views/project-list/project-list.mjs`'s import handler: on a successful `storage.importProject`, set `.import-status` to `` Imported "${created.name}". `` and clear it the next time an import starts or fails (depends on T014). **Commit with a `?v=` bump.**
+- [X] T018 [US3] Manual validation: run quickstart.md section 4 and fix issues
 
 **Checkpoint**: All three stories work independently; the full spec is satisfied.
 
@@ -106,8 +106,8 @@ description: "Task list for Project Export & Import"
 
 ## Phase 6: Polish & Cross-Cutting Concerns
 
-- [ ] T019 [P] Add minimal styling for `.project-export-button`, `.import-project-button`, and `.import-status` to `css/styles.css`, reusing existing button/field-error classes where they already fit. **Commit with a `?v=` bump (CSS change).**
-- [ ] T020 Confirm every commit that touched served scripts/styles bumped `?v=` consistently (grep `index.html` and `js/` for mixed versions)
+- [X] T019 [P] Add minimal styling for `.project-export-button`, `.import-project-button`, and `.import-status` to `css/styles.css`, reusing existing button/field-error classes where they already fit. **Commit with a `?v=` bump (CSS change).**
+- [X] T020 Confirm every commit that touched served scripts/styles bumped `?v=` consistently (grep `index.html` and `js/` for mixed versions)
 - [ ] T021 Run `node --test tests/unit` and all of quickstart.md (sections 1–6, including the round-trip and edge-case checks); confirm Slices 1–5 did not regress
 - [ ] T022 Update `FEATURE-SLICES.md` / note this feature's completion (it sits outside the original 7-slice list, added by later user request) once validated
 
