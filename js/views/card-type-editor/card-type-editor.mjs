@@ -1,5 +1,5 @@
 import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=1";
-import { addProperty, removeProperty, addElement, setCardTypeDimensions } from "../../models/card-type.mjs?v=1";
+import { addElement, setCardTypeDimensions } from "../../models/card-type.mjs?v=1";
 import {
   renderElement,
   renderPreview,
@@ -9,6 +9,8 @@ import {
   setElementSelected,
 } from "./layout-element.mjs?v=1";
 import { mountElementPropertiesPanel } from "./element-properties-panel.mjs?v=1";
+import { mountLayerList } from "./layer-list.mjs?v=1";
+import { setUpCardPropertiesPanel } from "./card-properties-panel.mjs?v=1";
 
 let templatePromise;
 
@@ -50,7 +52,22 @@ export async function mountCardTypeEditor(root, storage, projectId, cardTypeId, 
     }
   }
 
+  function applyAllDepths() {
+    cardType.elements.forEach((element, index) => {
+      const node = elementNodes.get(element.id);
+      if (node) applyDepth(node, index);
+    });
+  }
+
   const panel = await mountElementPropertiesPanel(section.querySelector(".element-properties-panel-mount"));
+  const layerList = await mountLayerList(section.querySelector(".layer-list-mount"), {
+    onSelect: select,
+    onReorder: reorderElements,
+  });
+
+  function refreshLayerList() {
+    layerList.render(cardType.elements, selectedElementId);
+  }
 
   function panelCallbacksFor(element) {
     return {
@@ -59,7 +76,6 @@ export async function mountCardTypeEditor(root, storage, projectId, cardTypeId, 
         applyTransform(node, element);
         renderPreview(node, element, getSampleValues());
         applyElementStyle(node, element);
-        applyDepth(node, element);
         persist();
       },
     };
@@ -70,18 +86,28 @@ export async function mountCardTypeEditor(root, storage, projectId, cardTypeId, 
     for (const [id, node] of elementNodes) setElementSelected(node, id === elementId);
     const element = cardType.elements.find((e) => e.id === elementId);
     panel.setElement(element, panelCallbacksFor(element));
+    refreshLayerList();
   }
 
   function deselect() {
     selectedElementId = null;
     for (const node of elementNodes.values()) setElementSelected(node, false);
     panel.clear();
+    refreshLayerList();
   }
 
   function syncPanelIfSelected(elementId) {
     if (selectedElementId !== elementId) return;
     const element = cardType.elements.find((e) => e.id === elementId);
     panel.setElement(element, panelCallbacksFor(element));
+  }
+
+  function reorderElements(newOrderedIds) {
+    const byId = new Map(cardType.elements.map((e) => [e.id, e]));
+    cardType.elements = newOrderedIds.map((id) => byId.get(id));
+    applyAllDepths();
+    refreshLayerList();
+    persist();
   }
 
   canvas.addEventListener("pointerdown", (event) => {
@@ -98,6 +124,8 @@ export async function mountCardTypeEditor(root, storage, projectId, cardTypeId, 
         elementNodes.delete(id);
         removeElementById(id);
         if (selectedElementId === id) deselect();
+        applyAllDepths();
+        refreshLayerList();
         await persist();
       },
       onSelect: select,
@@ -113,10 +141,16 @@ export async function mountCardTypeEditor(root, storage, projectId, cardTypeId, 
   }
 
   setUpDimensionsForm(section, cardType, canvas, persist);
-  setUpPropertiesPanel(section, cardType, persist, refreshAllPreviews);
-  setUpAddElementButtons(section, cardType, persist, placeElement);
+  setUpCardPropertiesPanel(section, cardType, persist, refreshAllPreviews);
+  setUpAddElementButtons(section, cardType, persist, (element) => {
+    placeElement(element);
+    applyAllDepths();
+    refreshLayerList();
+  });
 
   for (const element of cardType.elements) placeElement(element);
+  applyAllDepths();
+  refreshLayerList();
 
   root.replaceChildren(view);
 }
@@ -140,54 +174,6 @@ function setUpDimensionsForm(section, cardType, canvas, persist) {
       errorEl.hidden = false;
     }
   });
-}
-
-function setUpPropertiesPanel(section, cardType, persist, refreshAllPreviews) {
-  const list = section.querySelector(".property-list");
-  const itemTemplate = section.querySelector(".property-list-item-template");
-  const form = section.querySelector(".add-property-form");
-  const errorEl = section.querySelector(".property-error");
-
-  function renderProperties() {
-    list.replaceChildren();
-    for (const property of cardType.properties) {
-      const item = itemTemplate.content.cloneNode(true);
-      item.querySelector(".property-name").textContent = property.name;
-
-      const sampleInput = item.querySelector(".property-sample-value-input");
-      sampleInput.value = property.sampleValue;
-      sampleInput.addEventListener("input", async () => {
-        property.sampleValue = sampleInput.value;
-        refreshAllPreviews();
-        await persist();
-      });
-
-      item.querySelector(".property-delete-button").addEventListener("click", async () => {
-        removeProperty(cardType, property.id);
-        renderProperties();
-        refreshAllPreviews();
-        await persist();
-      });
-
-      list.appendChild(item);
-    }
-  }
-
-  form.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    errorEl.hidden = true;
-    try {
-      addProperty(cardType, new FormData(form).get("propertyName"));
-      form.reset();
-      renderProperties();
-      await persist();
-    } catch (error) {
-      errorEl.textContent = error.message;
-      errorEl.hidden = false;
-    }
-  });
-
-  renderProperties();
 }
 
 function setUpAddElementButtons(section, cardType, persist, placeElement) {
