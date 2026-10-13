@@ -170,8 +170,7 @@ dropped by that card's copy count.
 - **FR-009**: System MUST let users narrow the cards available to add by
   card type and by text search over card values.
 - **FR-010**: System MUST remove a card from every deck when that card is
-  deleted (including when its card type or project content is deleted),
-  keeping deck counts consistent.
+  deleted or when its card type is deleted, keeping deck counts consistent.
 - **FR-011**: System MUST persist decks, their names, their cards and copy
   counts, so they are unchanged after closing and reopening the app.
 - **FR-012**: System MUST copy a project's decks, remapped to the copied

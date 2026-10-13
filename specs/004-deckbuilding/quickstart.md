@@ -27,12 +27,15 @@ Expected: all pass, including `deck-model` and the storage contract's deck cases
 3. Set a count to 0; expect the card to leave the deck but remain in the card table.
 4. Add one card to `Tournament` with a different count; expect `Starter` unchanged.
 5. Reload; expect all counts as left.
+6. Edit a card's value in the card table; reopen the deck; expect the new value shown.
+7. Timing check (SC-001): from opening Decks, create a deck and add its first card in under 30 seconds.
 
 ## 4. Manual: filtering and consistency (User Story 3)
 
 1. In a deck, filter available cards by card type; expect only that type. Type part of a card's value into search; expect only matching cards.
 2. Delete a card that sits in two decks (via the card table); open both decks; expect it gone and totals reduced.
 3. Delete a card type whose cards are in a deck; expect those entries gone.
+4. Timing check (SC-005): in a project of 100+ cards, assemble a 40-copy deck using filters in under 3 minutes.
 
 ## 5. Edge cases
 
