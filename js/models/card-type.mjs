@@ -54,6 +54,7 @@ export function createCardType(name, { width, height }, existingNames) {
     height: validatePositiveNumber(height, "Height"),
     properties: [],
     elements: [],
+    cards: [],
   };
 }
 
@@ -88,6 +89,7 @@ export function addProperty(cardType, name, sampleValue = "") {
 
 export function removeProperty(cardType, propertyId) {
   cardType.properties = cardType.properties.filter((p) => p.id !== propertyId);
+  for (const card of cardType.cards ?? []) delete card.values[propertyId];
 }
 
 const ELEMENT_KIND_LABEL = { text: "Text", image: "Image", label: "Label", icon: "Icon" };
@@ -206,15 +208,29 @@ export function updateElementBounds(element, { x, y, width, height }) {
 }
 
 export function cloneCardType(cardType) {
+  const propertyIdMap = new Map();
+  const properties = cardType.properties.map((p) => {
+    const id = crypto.randomUUID();
+    propertyIdMap.set(p.id, id);
+    return { ...p, id };
+  });
   return {
     ...cardType,
     id: crypto.randomUUID(),
-    properties: cardType.properties.map((p) => ({ ...p, id: crypto.randomUUID() })),
+    properties,
     elements: cardType.elements.map((e) => ({
       ...e,
       id: crypto.randomUUID(),
       style: structuredClone(getElementStyle(e)),
       textStyle: structuredClone(getTextStyle(e)),
+    })),
+    cards: (cardType.cards ?? []).map((card) => ({
+      id: crypto.randomUUID(),
+      values: Object.fromEntries(
+        Object.entries(card.values)
+          .filter(([propertyId]) => propertyIdMap.has(propertyId))
+          .map(([propertyId, value]) => [propertyIdMap.get(propertyId), value]),
+      ),
     })),
   };
 }

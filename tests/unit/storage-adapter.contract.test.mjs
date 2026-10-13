@@ -64,3 +64,37 @@ for (const [label, make] of adapters) {
     await assert.doesNotReject(() => adapter.saveCardType(projectB.id, sampleCardType()));
   });
 }
+
+for (const [label, make] of adapters) {
+  test(`${label}: saveCardType round-trips cards`, async () => {
+    const adapter = make();
+    const project = await adapter.createProject("Cards");
+    const cards = [{ id: "c1", values: { p1: "Goblin" } }];
+    const saved = await adapter.saveCardType(project.id, sampleCardType({ cards }));
+    const loaded = await adapter.getProject(project.id);
+    assert.deepEqual(loaded.cardTypes.find((ct) => ct.id === saved.id).cards, cards);
+  });
+
+  test(`${label}: a card type saved without cards reads back without cards`, async () => {
+    const adapter = make();
+    const project = await adapter.createProject("Legacy");
+    const saved = await adapter.saveCardType(project.id, sampleCardType());
+    const loaded = await adapter.getProject(project.id);
+    assert.equal(loaded.cardTypes.find((ct) => ct.id === saved.id).cards, undefined);
+  });
+
+  test(`${label}: duplicateProject remaps card values to the new property ids`, async () => {
+    const adapter = make();
+    const project = await adapter.createProject("Source");
+    await adapter.saveCardType(
+      project.id,
+      sampleCardType({
+        properties: [{ id: "old", name: "atk", sampleValue: "" }],
+        cards: [{ id: "c1", values: { old: "3" } }],
+      }),
+    );
+    const duplicate = await adapter.duplicateProject(project.id);
+    const copied = duplicate.cardTypes[0];
+    assert.deepEqual(copied.cards[0].values, { [copied.properties[0].id]: "3" });
+  });
+}
