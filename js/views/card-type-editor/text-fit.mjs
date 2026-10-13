@@ -1,4 +1,4 @@
-import { getTextStyle } from "../../models/card-type.mjs?v=3";
+import { getTextStyle } from "../../models/card-type.mjs?v=4";
 
 const MIN_FONT_SIZE = 6;
 const MAX_SHRINK_STEPS = 40;

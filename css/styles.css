@@ -227,6 +227,16 @@ ul {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: var(--space-4);
+  flex-shrink: 0;
+  overflow-x: hidden;
+}
+
+.data-properties-panel {
+  width: 15rem;
+}
+
+.element-properties-panel {
+  width: 18rem;
 }
 
 .data-properties-panel > h3:first-child,
@@ -428,6 +438,7 @@ img.element-content {
 
 .tabs {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--space-1);
   border-bottom: 1px solid var(--color-border);
   margin-bottom: var(--space-1);
@@ -439,7 +450,8 @@ img.element-content {
   border-radius: var(--radius-sm) var(--radius-sm) 0 0;
   background: none;
   color: var(--color-muted);
-  padding: var(--space-2) var(--space-3);
+  padding: var(--space-1) var(--space-2);
+  font-size: 0.85rem;
   margin-bottom: -1px;
 }
 
@@ -465,36 +477,80 @@ img.element-content {
   flex-direction: column;
   gap: var(--space-3);
   padding-top: var(--space-2);
+  min-height: 12rem;
 }
 
 .tab-panel[hidden] {
   display: none;
 }
 
-.content-preview {
+/*
+ * One field component used across every tab (Content/Position/Text/Style)
+ * so labels, spacing, and typography stay identical regardless of which
+ * tab is showing — switching tabs changes content, never the field style.
+ */
+.prop-field {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
+}
+
+.prop-field-label {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.prop-field input:not([type="checkbox"]),
+.prop-field select {
+  width: 100%;
+}
+
+.prop-field input[type="number"] {
+  width: 100%;
+  max-width: 6rem;
+}
+
+.prop-checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.prop-checkbox input[type="checkbox"] {
+  width: auto;
+}
+
+.prop-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2) var(--space-3);
+}
+
+.sample-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.sample-value-fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.content-preview {
+  margin: 0;
   padding: var(--space-2) var(--space-3);
   background: var(--color-page-bg);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
-}
-
-.content-preview-label {
-  font-size: 0.8rem;
-  color: var(--color-muted);
+  font-size: 0.85rem;
 }
 
 .content-preview-value {
   font-weight: 600;
+  color: var(--color-ink);
   overflow-wrap: break-word;
-}
-
-.checkbox-field {
-  flex-direction: row !important;
-  align-items: center;
-  gap: var(--space-2) !important;
 }
 
 .segmented-field {
@@ -504,8 +560,6 @@ img.element-content {
 }
 
 .segmented-field legend {
-  font-size: 0.85rem;
-  color: var(--color-muted);
   padding: 0 0 var(--space-1);
 }
 
@@ -531,30 +585,6 @@ img.element-content {
 .segmented button.active {
   background: var(--color-accent);
   color: var(--color-accent-contrast);
-}
-
-.field-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-2) var(--space-3);
-}
-
-.field-grid label,
-.content-field,
-.name-field {
-  font-size: 0.85rem;
-  color: var(--color-muted);
-}
-
-.name-field input {
-  font-weight: 600;
-  color: var(--color-ink);
-}
-
-.field-grid input,
-.content-field input,
-.name-field input {
-  width: 100%;
 }
 
 .style-group {
@@ -597,9 +627,5 @@ img.element-content {
 }
 
 .create-card-type-form input[type="number"] {
-  width: 100px;
-}
-
-.field-grid input {
   width: 100px;
 }

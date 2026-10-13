@@ -12,31 +12,41 @@
 
     <div class="editor-layout">
       <aside class="data-properties-panel">
-        <h3>Card Properties</h3>
-        <form class="add-property-form">
-          <input type="text" name="propertyName" placeholder="Property name" required>
-          <button type="submit">Add property</button>
-        </form>
-        <p class="property-error field-error" hidden></p>
-        <ul class="property-list"></ul>
-
-        <template class="property-list-item-template">
-          <li class="property-list-item">
-            <span class="property-name"></span>
-            <input type="text" class="property-sample-value-input" placeholder="Sample value">
-            <button type="button" class="property-delete-button">Remove</button>
-          </li>
-        </template>
-
-        <h3>Add element</h3>
-        <div class="add-element-buttons">
-          <button type="button" class="add-element-button" data-kind="text">Text display</button>
-          <button type="button" class="add-element-button" data-kind="image">Image display</button>
-          <button type="button" class="add-element-button" data-kind="label">Label</button>
-          <button type="button" class="add-element-button" data-kind="icon">Image/Icon</button>
+        <div class="tabs" role="tablist">
+          <button type="button" class="tab-button" data-tab="properties" aria-selected="true">Properties</button>
+          <button type="button" class="tab-button" data-tab="add-element">Add Element</button>
+          <button type="button" class="tab-button" data-tab="elements">Elements</button>
         </div>
 
-        <div class="layer-list-mount"></div>
+        <div class="tab-panel" data-tab="properties">
+          <form class="add-property-form">
+            <input type="text" name="propertyName" placeholder="Property name" required>
+            <button type="submit">Add property</button>
+          </form>
+          <p class="property-error field-error" hidden></p>
+          <ul class="property-list"></ul>
+
+          <template class="property-list-item-template">
+            <li class="property-list-item">
+              <span class="property-name"></span>
+              <input type="text" class="property-sample-value-input" placeholder="Sample value">
+              <button type="button" class="property-delete-button">Remove</button>
+            </li>
+          </template>
+        </div>
+
+        <div class="tab-panel" data-tab="add-element" hidden>
+          <div class="add-element-buttons">
+            <button type="button" class="add-element-button" data-kind="text">Text display</button>
+            <button type="button" class="add-element-button" data-kind="image">Image display</button>
+            <button type="button" class="add-element-button" data-kind="label">Label</button>
+            <button type="button" class="add-element-button" data-kind="icon">Image/Icon</button>
+          </div>
+        </div>
+
+        <div class="tab-panel" data-tab="elements" hidden>
+          <div class="layer-list-mount"></div>
+        </div>
       </aside>
 
       <div class="canvas-wrapper">
