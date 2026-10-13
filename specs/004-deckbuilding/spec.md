@@ -11,6 +11,18 @@ FEATURE-SLICES.md and TODO-Features.md: a deckbuilding section where cards
 can be sorted into N decks that can be named. Depends on: Slice 1 (cards
 exist via Slice 3's card table)."
 
+## Clarifications
+
+### Session 2026-10-13
+
+- Q: Can the same card be in several decks at once, or at most one? → A:
+  Many decks, each with its own independent copy count (FR-006 confirmed).
+- Q: Can a deck hold cards from any card type, or only one? → A: Any of the
+  project's card types (FR-004 confirmed); no per-deck card type restriction.
+- Q: Should decks cap how many copies of a card they can hold? → A: No
+  limits or rule checks; any whole number of copies is allowed (FR-005
+  confirmed).
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Create, name and manage decks (Priority: P1)
