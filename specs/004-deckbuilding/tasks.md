@@ -107,7 +107,7 @@ description: "Task list for Deckbuilding"
 
 ## Phase 6: Polish & Cross-Cutting Concerns
 
-- [ ] T024 Confirm every commit that touched served scripts bumped `?v=` consistently (grep for mixed versions in `index.html` and `js/`)
+- [X] T024 Confirm every commit that touched served scripts bumped `?v=` consistently (grep for mixed versions in `index.html` and `js/`)
 - [ ] T025 Run `node --test tests/unit` and the whole quickstart.md once Node/browser are available; confirm Slices 1–3 did not regress (project list, card types, editor, card table, CSV import)
 - [ ] T026 Update `FEATURE-SLICES.md`: mark Slice 3 `[x]` and Slice 4 `[x]` once validated, and note Slice 2 was skipped
 
