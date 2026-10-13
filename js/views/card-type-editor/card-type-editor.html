@@ -3,22 +3,25 @@
     <button type="button" class="back-button">&larr; Card types</button>
     <h2 class="card-type-name-heading"></h2>
 
-    <form class="dimensions-form">
-      <label>Width <input type="number" name="width" min="1" required></label>
-      <label>Height <input type="number" name="height" min="1" required></label>
-      <button type="submit">Save size</button>
-    </form>
-    <p class="dimensions-error field-error" hidden></p>
-
     <div class="editor-layout">
       <aside class="data-properties-panel">
         <div class="tabs" role="tablist">
-          <button type="button" class="tab-button" data-tab="properties" aria-selected="true">Properties</button>
+          <button type="button" class="tab-button" data-tab="size" aria-selected="true">Size</button>
+          <button type="button" class="tab-button" data-tab="properties">Properties</button>
           <button type="button" class="tab-button" data-tab="add-element">Add Element</button>
           <button type="button" class="tab-button" data-tab="elements">Elements</button>
         </div>
 
-        <div class="tab-panel" data-tab="properties">
+        <div class="tab-panel" data-tab="size">
+          <form class="dimensions-form">
+            <label class="prop-field"><span class="prop-field-label">Width</span> <input type="number" name="width" min="1" required></label>
+            <label class="prop-field"><span class="prop-field-label">Height</span> <input type="number" name="height" min="1" required></label>
+            <button type="submit">Save size</button>
+          </form>
+          <p class="dimensions-error field-error" hidden></p>
+        </div>
+
+        <div class="tab-panel" data-tab="properties" hidden>
           <form class="add-property-form">
             <input type="text" name="propertyName" placeholder="Property name" required>
             <button type="submit">Add property</button>
