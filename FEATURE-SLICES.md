@@ -32,7 +32,7 @@ Status legend: `[ ]` not started, `[~]` in progress, `[x]` done.
   - Named decks; sort cards into N decks.
   - Depends on: Slice 1.
 
-- [ ] **5. Proxy printing**
+- [X] **5. Proxy printing**
   - Print a single card on demand.
   - Print a full proxy sheet for an entire deck.
   - Depends on: Slice 1, Slice 4 (for deck printing).
