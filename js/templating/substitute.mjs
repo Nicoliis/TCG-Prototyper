@@ -7,10 +7,3 @@ export function substitute(template, values) {
   });
 }
 
-export function extractTokens(template) {
-  const tokens = [];
-  for (const match of (template ?? "").matchAll(TOKEN_PATTERN)) {
-    if (!tokens.includes(match[1])) tokens.push(match[1]);
-  }
-  return tokens;
-}
