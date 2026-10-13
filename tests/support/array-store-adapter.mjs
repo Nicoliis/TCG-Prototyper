@@ -1,6 +1,7 @@
 import { StorageAdapter } from "../../js/storage/storage-adapter.mjs";
 import { createProject, validateProjectName, cloneProjectForDuplicate } from "../../js/models/project.mjs";
 import { validateCardTypeName } from "../../js/models/card-type.mjs";
+import { upsertDeck, removeDeck } from "../../js/models/deck.mjs";
 
 /**
  * A second, structurally distinct test adapter (array-backed rather than
@@ -56,6 +57,21 @@ export class ArrayStoreAdapter extends StorageAdapter {
     else project.cardTypes[index] = saved;
     project.updatedAt = Date.now();
     return saved;
+  }
+
+  async saveDeck(projectId, deck) {
+    const project = await this.getProject(projectId);
+    if (!project) throw new Error(`Project not found: ${projectId}`);
+    const saved = upsertDeck(project, deck);
+    project.updatedAt = Date.now();
+    return saved;
+  }
+
+  async deleteDeck(projectId, deckId) {
+    const project = await this.getProject(projectId);
+    if (!project) throw new Error(`Project not found: ${projectId}`);
+    removeDeck(project, deckId);
+    project.updatedAt = Date.now();
   }
 
   async deleteCardType(projectId, cardTypeId) {

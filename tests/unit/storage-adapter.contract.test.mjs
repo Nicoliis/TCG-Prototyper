@@ -98,3 +98,75 @@ for (const [label, make] of adapters) {
     assert.deepEqual(copied.cards[0].values, { [copied.properties[0].id]: "3" });
   });
 }
+
+for (const [label, make] of adapters) {
+  test(`${label}: saveDeck creates a deck readable through getProject`, async () => {
+    const adapter = make();
+    const project = await adapter.createProject("Decks");
+    const saved = await adapter.saveDeck(project.id, { name: "Starter", entries: [{ cardId: "c1", count: 2 }] });
+    const loaded = await adapter.getProject(project.id);
+    assert.deepEqual(loaded.decks.find((d) => d.id === saved.id).entries, [{ cardId: "c1", count: 2 }]);
+  });
+
+  test(`${label}: saveDeck with an id replaces that deck`, async () => {
+    const adapter = make();
+    const project = await adapter.createProject("Decks");
+    const saved = await adapter.saveDeck(project.id, { name: "Starter", entries: [] });
+    await adapter.saveDeck(project.id, { ...saved, name: "Renamed" });
+    const loaded = await adapter.getProject(project.id);
+    assert.deepEqual(loaded.decks.map((d) => d.name), ["Renamed"]);
+  });
+
+  test(`${label}: saveDeck rejects empty and duplicate names`, async () => {
+    const adapter = make();
+    const project = await adapter.createProject("Decks");
+    await adapter.saveDeck(project.id, { name: "Starter", entries: [] });
+    await assert.rejects(() => adapter.saveDeck(project.id, { name: "  ", entries: [] }));
+    await assert.rejects(() => adapter.saveDeck(project.id, { name: " starter", entries: [] }));
+  });
+
+  test(`${label}: saveDeck rejects invalid copy counts`, async () => {
+    const adapter = make();
+    const project = await adapter.createProject("Decks");
+    await assert.rejects(() =>
+      adapter.saveDeck(project.id, { name: "Bad", entries: [{ cardId: "c1", count: 0 }] }),
+    );
+  });
+
+  test(`${label}: deleteDeck removes only the deck and leaves cards alone`, async () => {
+    const adapter = make();
+    const project = await adapter.createProject("Decks");
+    const cards = [{ id: "c1", values: {} }];
+    await adapter.saveCardType(project.id, sampleCardType({ cards }));
+    const deck = await adapter.saveDeck(project.id, { name: "Starter", entries: [] });
+    await adapter.deleteDeck(project.id, deck.id);
+    const loaded = await adapter.getProject(project.id);
+    assert.deepEqual(loaded.decks, []);
+    assert.equal(loaded.cardTypes[0].cards.length, 1);
+  });
+
+  test(`${label}: decks are isolated per project`, async () => {
+    const adapter = make();
+    const a = await adapter.createProject("A");
+    const b = await adapter.createProject("B");
+    await adapter.saveDeck(a.id, { name: "Starter", entries: [] });
+    await assert.doesNotReject(() => adapter.saveDeck(b.id, { name: "Starter", entries: [] }));
+    assert.equal((await adapter.getProject(b.id)).decks.length, 1);
+  });
+
+  test(`${label}: duplicateProject remaps deck entries to the duplicate's cards`, async () => {
+    const adapter = make();
+    const project = await adapter.createProject("Source");
+    await adapter.saveCardType(
+      project.id,
+      sampleCardType({
+        properties: [{ id: "p1", name: "name", sampleValue: "" }],
+        cards: [{ id: "c1", values: { p1: "Goblin" } }],
+      }),
+    );
+    await adapter.saveDeck(project.id, { name: "Starter", entries: [{ cardId: "c1", count: 3 }] });
+    const duplicate = await adapter.duplicateProject(project.id);
+    const copiedCardId = duplicate.cardTypes[0].cards[0].id;
+    assert.deepEqual(duplicate.decks[0].entries, [{ cardId: copiedCardId, count: 3 }]);
+  });
+}

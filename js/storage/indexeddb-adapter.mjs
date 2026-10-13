@@ -1,6 +1,7 @@
-import { StorageAdapter } from "./storage-adapter.mjs?v=10";
-import { createProject, validateProjectName, cloneProjectForDuplicate } from "../models/project.mjs?v=10";
-import { validateCardTypeName } from "../models/card-type.mjs?v=10";
+import { StorageAdapter } from "./storage-adapter.mjs?v=11";
+import { createProject, validateProjectName, cloneProjectForDuplicate } from "../models/project.mjs?v=11";
+import { validateCardTypeName } from "../models/card-type.mjs?v=11";
+import { upsertDeck, removeDeck } from "../models/deck.mjs?v=11";
 
 const DB_VERSION = 1;
 const STORE_NAME = "projects";
@@ -97,6 +98,23 @@ export class IndexedDbAdapter extends StorageAdapter {
     project.updatedAt = Date.now();
     await this.#putProject(project);
     return saved;
+  }
+
+  async saveDeck(projectId, deck) {
+    const project = await this.getProject(projectId);
+    if (!project) throw new Error(`Project not found: ${projectId}`);
+    const saved = upsertDeck(project, deck);
+    project.updatedAt = Date.now();
+    await this.#putProject(project);
+    return saved;
+  }
+
+  async deleteDeck(projectId, deckId) {
+    const project = await this.getProject(projectId);
+    if (!project) throw new Error(`Project not found: ${projectId}`);
+    removeDeck(project, deckId);
+    project.updatedAt = Date.now();
+    await this.#putProject(project);
   }
 
   async deleteCardType(projectId, cardTypeId) {
