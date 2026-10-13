@@ -79,8 +79,8 @@ description: "Task list for Proxy Printing"
 
 ### Implementation for User Story 2
 
-- [ ] T016 [US2] Add a deck `<select class="print-deck-select">` (with a "Choose a deck" placeholder and a `<template>` option) and a "Load deck" button to `js/views/print/print-screen.html`
-- [ ] T017 [US2] Update `js/views/print/print-screen.mjs`: populate the select from `getDecks(project)`; Load deck replaces the selection with `selectionFromDeck(deck)`; an empty deck shows "This deck has no cards" and leaves the selection empty; selection edits never call `saveDeck` (depends on T016). **Commit with a `?v=` bump.**
+- [X] T016 [US2] Add a deck `<select class="print-deck-select">` (with a "Choose a deck" placeholder and a `<template>` option) and a "Load deck" button to `js/views/print/print-screen.html`
+- [X] T017 [US2] Update `js/views/print/print-screen.mjs`: populate the select from `getDecks(project)`; Load deck replaces the selection with `selectionFromDeck(deck)`; an empty deck shows "This deck has no cards" and leaves the selection empty; selection edits never call `saveDeck` (depends on T016). **Commit with a `?v=` bump.**
 - [ ] T018 [US2] Manual validation: run quickstart.md section 3 and fix issues
 
 **Checkpoint**: Stories 1 and 2 work; a deck prints with one action.

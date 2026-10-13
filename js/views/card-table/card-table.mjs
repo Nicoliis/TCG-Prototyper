@@ -1,10 +1,10 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=17";
-import { getCards, addCard, removeCard, getCardValue, setCardValue } from "../../models/card.mjs?v=17";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=18";
+import { getCards, addCard, removeCard, getCardValue, setCardValue } from "../../models/card.mjs?v=18";
 
 let templatePromise;
 
 export async function mountCardTable(root, storage, projectId, cardTypeId, onBack) {
-  const template = await (templatePromise ??= loadFragment("js/views/card-table/card-table.html?v=17"));
+  const template = await (templatePromise ??= loadFragment("js/views/card-table/card-table.html?v=18"));
   const view = cloneTemplate(template);
   const section = view.querySelector(".card-table-view");
 

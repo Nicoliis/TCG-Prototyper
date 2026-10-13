@@ -6,6 +6,14 @@
 
     <div class="print-layout">
       <div class="print-controls">
+        <h3>Load a deck</h3>
+        <div class="print-deck-row">
+          <select class="print-deck-select" aria-label="Deck">
+            <option value="">Choose a deck</option>
+          </select>
+          <button type="button" class="print-load-deck-button">Load deck</button>
+        </div>
+
         <h3>Available cards</h3>
         <p class="available-cards-empty" hidden></p>
         <ul class="available-card-list"></ul>
@@ -22,6 +30,10 @@
         <div class="print-pages"></div>
       </div>
     </div>
+
+    <template class="deck-option-template">
+      <option></option>
+    </template>
 
     <template class="available-card-template">
       <li class="available-card">

@@ -1,9 +1,17 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=17";
-import { addCardToDeck, setEntryCount, deckTotals, filterCards, findCard, describeCard } from "../../models/deck.mjs?v=17";
-import { resolveSelection } from "../../models/print-selection.mjs?v=17";
-import { PAPER_SIZES } from "../../models/sheet-layout.mjs?v=17";
-import { loadSheetSettings } from "../../storage/sheet-settings-store.mjs?v=17";
-import { renderSheets } from "./render-sheets.mjs?v=17";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=18";
+import {
+  getDecks,
+  addCardToDeck,
+  setEntryCount,
+  deckTotals,
+  filterCards,
+  findCard,
+  describeCard,
+} from "../../models/deck.mjs?v=18";
+import { resolveSelection, selectionFromDeck } from "../../models/print-selection.mjs?v=18";
+import { PAPER_SIZES } from "../../models/sheet-layout.mjs?v=18";
+import { loadSheetSettings } from "../../storage/sheet-settings-store.mjs?v=18";
+import { renderSheets } from "./render-sheets.mjs?v=18";
 
 const IMAGE_WAIT_MS = 5000;
 
@@ -24,7 +32,7 @@ function waitForImages(container) {
 }
 
 export async function mountPrintScreen(root, storage, projectId, onBack) {
-  const template = await (templatePromise ??= loadFragment("js/views/print/print-screen.html?v=17"));
+  const template = await (templatePromise ??= loadFragment("js/views/print/print-screen.html?v=18"));
   const view = cloneTemplate(template);
   const section = view.querySelector(".print-screen-view");
 
@@ -38,6 +46,8 @@ export async function mountPrintScreen(root, storage, projectId, onBack) {
   const errorEl = section.querySelector(".field-error");
   const printButton = section.querySelector(".print-button");
   const pagesEl = section.querySelector(".print-pages");
+  const deckSelect = section.querySelector(".print-deck-select");
+  const deckOptionTemplate = section.querySelector(".deck-option-template");
   const availableTemplate = section.querySelector(".available-card-template");
   const entryTemplate = section.querySelector(".selection-entry-template");
 
@@ -110,6 +120,22 @@ export async function mountPrintScreen(root, storage, projectId, onBack) {
     renderSelection();
     await renderPreview();
   }
+
+  for (const deck of getDecks(project)) {
+    const option = deckOptionTemplate.content.cloneNode(true);
+    const optionEl = option.querySelector("option");
+    optionEl.value = deck.id;
+    optionEl.textContent = deck.name;
+    deckSelect.appendChild(option);
+  }
+
+  section.querySelector(".print-load-deck-button").addEventListener("click", () => {
+    const deck = getDecks(project).find((d) => d.id === deckSelect.value);
+    if (!deck) return;
+    selection.entries = selectionFromDeck(deck).entries;
+    showError(selection.entries.length ? "" : `The deck "${deck.name}" has no cards.`);
+    refresh();
+  });
 
   printButton.addEventListener("click", async () => {
     printButton.disabled = true;

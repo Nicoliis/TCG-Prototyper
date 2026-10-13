@@ -1,5 +1,5 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=17";
-import { addElement, setCardTypeDimensions } from "../../models/card-type.mjs?v=17";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=18";
+import { addElement, setCardTypeDimensions } from "../../models/card-type.mjs?v=18";
 import {
   renderElement,
   renderPreview,
@@ -7,17 +7,17 @@ import {
   applyElementStyle,
   applyDepth,
   setElementSelected,
-} from "./layout-element.mjs?v=17";
-import { applyTextFit } from "./text-fit.mjs?v=17";
-import { mountElementPropertiesPanel } from "./element-properties-panel.mjs?v=17";
-import { mountLayerList } from "./layer-list.mjs?v=17";
-import { setUpCardPropertiesPanel } from "./card-properties-panel.mjs?v=17";
-import { setUpTabs } from "./tabs.mjs?v=17";
+} from "./layout-element.mjs?v=18";
+import { applyTextFit } from "./text-fit.mjs?v=18";
+import { mountElementPropertiesPanel } from "./element-properties-panel.mjs?v=18";
+import { mountLayerList } from "./layer-list.mjs?v=18";
+import { setUpCardPropertiesPanel } from "./card-properties-panel.mjs?v=18";
+import { setUpTabs } from "./tabs.mjs?v=18";
 
 let templatePromise;
 
 export async function mountCardTypeEditor(root, storage, projectId, cardTypeId, onBack) {
-  const template = await (templatePromise ??= loadFragment("js/views/card-type-editor/card-type-editor.html?v=17"));
+  const template = await (templatePromise ??= loadFragment("js/views/card-type-editor/card-type-editor.html?v=18"));
   const view = cloneTemplate(template);
   const section = view.querySelector(".card-type-editor-view");
 

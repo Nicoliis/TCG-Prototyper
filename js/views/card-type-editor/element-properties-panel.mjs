@@ -1,7 +1,7 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=17";
-import { setElementStyle, getElementStyle, setTextStyle, getTextStyle, getElementName } from "../../models/card-type.mjs?v=17";
-import { substitute } from "../../templating/substitute.mjs?v=17";
-import { setUpTabs, activeTab, selectTab, setUpSegmented, setSegmentedValue } from "./tabs.mjs?v=17";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=18";
+import { setElementStyle, getElementStyle, setTextStyle, getTextStyle, getElementName } from "../../models/card-type.mjs?v=18";
+import { substitute } from "../../templating/substitute.mjs?v=18";
+import { setUpTabs, activeTab, selectTab, setUpSegmented, setSegmentedValue } from "./tabs.mjs?v=18";
 
 const CONTENT_FIELD_BY_KIND = {
   text: { label: "Template", placeholder: "{property} template" },
@@ -16,7 +16,7 @@ let templatePromise;
 
 export async function mountElementPropertiesPanel(container) {
   const template = await (templatePromise ??= loadFragment(
-    "js/views/card-type-editor/element-properties-panel.html?v=17",
+    "js/views/card-type-editor/element-properties-panel.html?v=18",
   ));
   const panel = cloneTemplate(template).firstElementChild;
   container.appendChild(panel);
