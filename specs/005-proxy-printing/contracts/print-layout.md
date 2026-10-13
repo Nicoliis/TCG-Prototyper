@@ -13,7 +13,7 @@ No storage-adapter changes in this slice.
 | `layoutSheets(items, settings)` | `items`: `[{ cardType: { id, width, height }, card: { id }, count }]`. Returns `LayoutResult` (see data-model.md) |
 
 **`layoutSheets` rules**
-1. Content area = page size minus `PAGE_MARGIN_PX` on each side. Spacing = `spacingInches * 96` px between cards horizontally and between rows.
+1. Content area = page size minus `PAGE_MARGIN_PX` on each side. Spacing = `max(spacingInches, cutGuides ? 0.1 : 0) * 96` px between cards horizontally and between rows (guides need room, so they are never drawn over a neighbouring card).
 2. Cards are expanded to `count` placements each, in item order (no reordering).
 3. Scale per card = `min(1, contentW / width, contentH / height)`; scaled size is `width*scale` x `height*scale`.
 4. Place left to right; if the next card does not fit in the remaining row width and the row is non-empty, start a new row below the tallest card of the row plus spacing; if the new row does not fit in the content height, start a new page.

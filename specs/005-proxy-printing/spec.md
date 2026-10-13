@@ -121,6 +121,9 @@ placement change accordingly.
 
 - What happens when a card is larger than a page? (It is scaled down to
   fit the page, and the preview tells the user it was scaled.)
+- What happens when spacing is set to 0 while cut guides are on? (Cards
+  are spaced at least 0.1 in apart so the guides fit; the spacing control
+  keeps showing the chosen value.)
 - What happens when a card is deleted while it is in the print selection?
   (It disappears from the selection, like it does from decks.)
 - What happens when the selection is large (e.g. hundreds of cards)? (The
@@ -157,7 +160,9 @@ placement change accordingly.
 - **FR-006**: System MUST arrange cards on pages without overlap, using
   each card's own size, flowing onto additional pages as needed.
 - **FR-007**: System MUST let users choose a paper size, the spacing
-  between cards, and whether cut guides are shown.
+  between cards, and whether cut guides are shown; when cut guides are
+  on, cards MUST be spaced at least 0.1 in apart so guides never cover a
+  neighbouring card.
 - **FR-008**: System MUST produce print output containing only the card
   sheets (no application interface).
 - **FR-009**: System MUST remember the user's last paper size and layout

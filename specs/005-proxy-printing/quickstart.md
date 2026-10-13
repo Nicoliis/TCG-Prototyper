@@ -22,24 +22,27 @@ Expected: all pass, including `sheet-layout` and `print-selection`. See [contrac
 4. Remove a card; expect it to leave the preview. Enter `-1`, `1.5`, blank copies; expect each refused with the old value kept.
 5. Click **Print**. In the print preview of the browser, expect only card pages (no app header, buttons or controls).
 6. Measure a printed (or print-previewed at 100%) 240x336 card: expect 2.5 x 3.5 in.
+7. Timing check (SC-001): from opening Print, get a printable preview of one card in under 30 seconds.
 
 ## 3. Manual: deck printing (User Story 2)
 
 1. Choose the deck (counts 3 and 2) → **Load deck**. Expect 5 cards in the preview.
 2. Raise one count by 1 in the selection; expect 6 in the preview. Open the deck in Decks; expect its counts unchanged.
 3. Load an empty deck; expect a message that it has no cards and Print stays disabled.
+4. Single action check (SC-005): load a 40-card deck and print it with one click of Print, with no per-card steps.
 
 ## 4. Manual: layout (User Story 3)
 
 1. Switch A4 / Letter; expect the preview to re-flow and the browser print page size to follow.
 2. Toggle cut guides; expect marks around each card in the preview and the print.
-3. Change spacing to 0 and 0.5 in; expect card gaps to change; no overlaps and no card past a page edge.
+3. Change spacing to 0 and 0.5 in; expect card gaps to change; no overlaps and no card past a page edge. With cut guides on and spacing 0, expect gaps of at least 0.1 in and guides that do not cover neighbouring cards.
 4. Reload the app and reopen Print; expect your last paper, spacing and guides choice.
 
 ## 5. Edge cases
 
 - A card type larger than the page (e.g. 1200x1600): expect it scaled to fit and a notice in the preview.
 - 200+ copies: expect multiple pages and no lag.
+- Click Print immediately after adding a card with a slow image: expect the print to wait for the image (up to 5 seconds) so it is not blank.
 - Delete a card in the Cards table, then open Print: it is not offered and not in any new selection.
 - A card image with a bad URL shows the broken-image placeholder in the preview.
 - Browser with storage blocked: Print still works with default layout choices.

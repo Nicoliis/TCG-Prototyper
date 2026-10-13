@@ -21,7 +21,7 @@ No `NEEDS CLARIFICATION` items remain. Decisions:
 
 ## 4. Page margins and spacing
 
-- **Decision**: A fixed 0.25 in (24 px) page margin (printer-safe default); user-adjustable card spacing (0–0.5 in, step 0.05, default 0.1 in) and a cut-guides toggle (default off).
+- **Decision**: A fixed 0.25 in (24 px) page margin (printer-safe default); user-adjustable card spacing (0–0.5 in, step 0.05, default 0.1 in) and a cut-guides toggle (default off). When cut guides are on, the effective spacing is at least 0.1 in so guides always fit between cards and never cover a neighbour; the spacing control keeps showing the chosen value.
 - **Rationale**: Spec requires spacing and guides but not margins; fixed margin keeps the control surface small.
 
 ## 5. Layout / packing algorithm
@@ -57,3 +57,8 @@ No `NEEDS CLARIFICATION` items remain. Decisions:
 ## 11. Delivery
 
 - **Decision**: Small commits, `?v=` bump on every commit changing served scripts, pure-model files first (no UI impact), UI last.
+
+## 12. Print timing
+
+- **Decision**: The Print button waits (up to 5 seconds) for every preview image to load or fail over to the broken-image placeholder before calling `window.print()`.
+- **Rationale**: `window.print()` snapshots the page as it is; printing instantly after a selection change could capture images still loading, which would make a printed card differ from its on-screen rendering.

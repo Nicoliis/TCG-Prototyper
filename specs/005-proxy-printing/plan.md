@@ -38,7 +38,7 @@ change.
 
 **Scale/Scope**: Single local user; selections from 1 to a few hundred cards.
 
-**Delivery conventions (from the user)**: small incremental commits that each leave the app loadable for git auto-deploy; bump the `?v=` suffix in every commit that changes served scripts (currently `?v=16`).
+**Delivery conventions (from the user)**: small incremental commits that each leave the app loadable for git auto-deploy; bump the `?v=` suffix in every commit that changes served scripts or stylesheets (currently `?v=16`).
 
 ## Constitution Check
 
