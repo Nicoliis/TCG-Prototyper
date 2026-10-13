@@ -100,3 +100,19 @@ export function describeCard(cardType, card) {
     .filter((value) => value !== "");
   return `${cardType.name}: ${values.length ? values.join(" / ") : "(empty card)"}`;
 }
+
+export function filterCards(cardTypes, { cardTypeId = "", text = "" } = {}) {
+  const needle = text.trim().toLowerCase();
+  return listCards(cardTypes).filter(({ cardType, card }) => {
+    if (cardTypeId && cardType.id !== cardTypeId) return false;
+    if (!needle) return true;
+    return Object.values(card.values).some((value) => value.toLowerCase().includes(needle));
+  });
+}
+
+export function pruneDecks(project) {
+  const existingIds = new Set(listCards(project.cardTypes).map(({ card }) => card.id));
+  for (const deck of getDecks(project)) {
+    deck.entries = deck.entries.filter((entry) => existingIds.has(entry.cardId));
+  }
+}

@@ -1,5 +1,5 @@
-import { cloneCardType } from "./card-type.mjs?v=13";
-import { getDecks, cloneDecksForCards } from "./deck.mjs?v=13";
+import { cloneCardType } from "./card-type.mjs?v=14";
+import { getDecks, cloneDecksForCards } from "./deck.mjs?v=14";
 
 function sameName(a, b) {
   return a.trim().toLowerCase() === b.trim().toLowerCase();

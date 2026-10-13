@@ -94,8 +94,8 @@ description: "Task list for Deckbuilding"
 
 ### Implementation for User Story 3
 
-- [ ] T018 [P] [US3] Add `filterCards(cardTypes, { cardTypeId, text })` and `pruneDecks(project)` to `js/models/deck.mjs` per `contracts/storage-adapter-delta.md` **Commit with a `?v=` bump.**
-- [ ] T019 [P] [US3] Add tests to `tests/unit/deck-model.test.mjs`: `filterCards` by type, by case-insensitive text over any value, both combined, neither; `pruneDecks` removes entries for deleted cards and keeps others, across several decks (depends on T018)
+- [X] T018 [P] [US3] Add `filterCards(cardTypes, { cardTypeId, text })` and `pruneDecks(project)` to `js/models/deck.mjs` per `contracts/storage-adapter-delta.md` **Commit with a `?v=` bump.**
+- [X] T019 [P] [US3] Add tests to `tests/unit/deck-model.test.mjs`: `filterCards` by type, by case-insensitive text over any value, both combined, neither; `pruneDecks` removes entries for deleted cards and keeps others, across several decks (depends on T018)
 - [ ] T020 [US3] Make `saveCardType` and `deleteCardType` call `pruneDecks(project)` before persisting in `js/storage/indexeddb-adapter.mjs`, `tests/support/in-memory-adapter.mjs` and `tests/support/array-store-adapter.mjs` (depends on T006, T018). **Commit with a `?v=` bump.**
 - [ ] T021 [US3] Add contract tests to `tests/unit/storage-adapter.contract.test.mjs`: deleting a card (via `saveCardType` without it) removes it from every deck holding it; `deleteCardType` removes its cards' entries; other entries survive (depends on T020)
 - [ ] T022 [US3] Add the card type `<select class="available-type-filter">` (with an "All card types" option and a `<template>` option) and a `<input type="search" class="available-text-filter">` to `js/views/deck-editor/deck-editor.html`; update `js/views/deck-editor/deck-editor.mjs` to build the available list from `filterCards` and re-render on `change`/`input` (depends on T014, T018). **Commit with a `?v=` bump.**

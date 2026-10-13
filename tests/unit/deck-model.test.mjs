@@ -13,6 +13,8 @@ import {
   listCards,
   findCard,
   describeCard,
+  filterCards,
+  pruneDecks,
 } from "../../js/models/deck.mjs";
 import { cloneProjectForDuplicate } from "../../js/models/project.mjs";
 
@@ -157,4 +159,30 @@ test("describeCard joins non-blank values in property order, or marks an empty c
   const { cardTypes } = projectWithCards();
   assert.equal(describeCard(cardTypes[0], cardTypes[0].cards[0]), "Monster: Goblin / 3");
   assert.equal(describeCard(cardTypes[0], cardTypes[0].cards[1]), "Monster: (empty card)");
+});
+
+test("filterCards filters by card type, by case-insensitive text, and by both", () => {
+  const { cardTypes } = projectWithCards();
+  cardTypes[1].cards = [{ id: "c3", values: { p3: "Goblin Fire" } }];
+  const ids = (filter) => filterCards(cardTypes, filter).map((p) => p.card.id);
+  assert.deepEqual(ids({}), ["c1", "c2", "c3"]);
+  assert.deepEqual(ids({ cardTypeId: "t2" }), ["c3"]);
+  assert.deepEqual(ids({ text: "gOBLIN" }), ["c1", "c3"]);
+  assert.deepEqual(ids({ cardTypeId: "t1", text: "goblin" }), ["c1"]);
+  assert.deepEqual(ids({ text: "nothing" }), []);
+});
+
+test("pruneDecks drops entries for missing cards across every deck and keeps the rest", () => {
+  const project = projectWithCards();
+  project.decks = [
+    { id: "d1", name: "A", entries: [{ cardId: "c1", count: 2 }, { cardId: "gone", count: 1 }] },
+    { id: "d2", name: "B", entries: [{ cardId: "gone", count: 4 }, { cardId: "c2", count: 1 }] },
+  ];
+  pruneDecks(project);
+  assert.deepEqual(project.decks[0].entries, [{ cardId: "c1", count: 2 }]);
+  assert.deepEqual(project.decks[1].entries, [{ cardId: "c2", count: 1 }]);
+});
+
+test("pruneDecks does nothing for a project without decks", () => {
+  assert.doesNotThrow(() => pruneDecks(projectWithCards()));
 });
