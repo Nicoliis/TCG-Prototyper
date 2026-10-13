@@ -75,3 +75,13 @@ export function deckTotals(deck) {
     distinctCards: deck.entries.length,
   };
 }
+
+export function cloneDecksForCards(decks, cardIdMap) {
+  return decks.map((deck) => ({
+    ...deck,
+    id: crypto.randomUUID(),
+    entries: deck.entries
+      .filter((entry) => cardIdMap.has(entry.cardId))
+      .map((entry) => ({ cardId: cardIdMap.get(entry.cardId), count: entry.count })),
+  }));
+}

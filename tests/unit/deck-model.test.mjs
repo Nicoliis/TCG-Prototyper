@@ -9,7 +9,9 @@ import {
   addCardToDeck,
   setEntryCount,
   deckTotals,
+  cloneDecksForCards,
 } from "../../js/models/deck.mjs";
+import { cloneProjectForDuplicate } from "../../js/models/project.mjs";
 
 const emptyProject = () => ({ cardTypes: [] });
 
@@ -91,4 +93,35 @@ test("deckTotals sums copies and counts distinct cards", () => {
   setEntryCount(deck, "c1", 3);
   setEntryCount(deck, "c2", 2);
   assert.deepEqual(deckTotals(deck), { totalCards: 5, distinctCards: 2 });
+});
+
+test("cloneDecksForCards remaps entries, drops unmapped cards and regenerates ids", () => {
+  const decks = [{ id: "d1", name: "A", entries: [{ cardId: "old1", count: 2 }, { cardId: "gone", count: 1 }] }];
+  const [copy] = cloneDecksForCards(decks, new Map([["old1", "new1"]]));
+  assert.notEqual(copy.id, "d1");
+  assert.deepEqual(copy.entries, [{ cardId: "new1", count: 2 }]);
+  assert.equal(decks[0].entries[0].cardId, "old1");
+});
+
+test("cloneProjectForDuplicate copies decks pointing at the duplicate's own cards", () => {
+  const project = {
+    name: "P",
+    cardTypes: [
+      {
+        id: "t1",
+        name: "T",
+        width: 1,
+        height: 1,
+        properties: [{ id: "p1", name: "name", sampleValue: "" }],
+        elements: [],
+        cards: [{ id: "c1", values: { p1: "Goblin" } }],
+      },
+    ],
+    decks: [{ id: "d1", name: "Starter", entries: [{ cardId: "c1", count: 3 }] }],
+  };
+  const copy = cloneProjectForDuplicate(project, ["P"]);
+  const copiedCardId = copy.cardTypes[0].cards[0].id;
+  assert.notEqual(copiedCardId, "c1");
+  assert.deepEqual(copy.decks[0].entries, [{ cardId: copiedCardId, count: 3 }]);
+  assert.equal(project.decks[0].entries[0].cardId, "c1");
 });

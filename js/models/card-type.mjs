@@ -207,7 +207,7 @@ export function updateElementBounds(element, { x, y, width, height }) {
   return element;
 }
 
-export function cloneCardType(cardType) {
+export function cloneCardType(cardType, cardIdMap) {
   const propertyIdMap = new Map();
   const properties = cardType.properties.map((p) => {
     const id = crypto.randomUUID();
@@ -224,13 +224,17 @@ export function cloneCardType(cardType) {
       style: structuredClone(getElementStyle(e)),
       textStyle: structuredClone(getTextStyle(e)),
     })),
-    cards: (cardType.cards ?? []).map((card) => ({
-      id: crypto.randomUUID(),
-      values: Object.fromEntries(
-        Object.entries(card.values)
-          .filter(([propertyId]) => propertyIdMap.has(propertyId))
-          .map(([propertyId, value]) => [propertyIdMap.get(propertyId), value]),
-      ),
-    })),
+    cards: (cardType.cards ?? []).map((card) => {
+      const id = crypto.randomUUID();
+      cardIdMap?.set(card.id, id);
+      return {
+        id,
+        values: Object.fromEntries(
+          Object.entries(card.values)
+            .filter(([propertyId]) => propertyIdMap.has(propertyId))
+            .map(([propertyId, value]) => [propertyIdMap.get(propertyId), value]),
+        ),
+      };
+    }),
   };
 }

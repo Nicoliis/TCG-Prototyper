@@ -1,4 +1,5 @@
-import { cloneCardType } from "./card-type.mjs?v=9";
+import { cloneCardType } from "./card-type.mjs?v=10";
+import { getDecks, cloneDecksForCards } from "./deck.mjs?v=10";
 
 function sameName(a, b) {
   return a.trim().toLowerCase() === b.trim().toLowerCase();
@@ -19,6 +20,7 @@ export function createProject(name, existingNames) {
     id: crypto.randomUUID(),
     name: validateProjectName(name, existingNames),
     cardTypes: [],
+    decks: [],
     createdAt: now,
     updatedAt: now,
   };
@@ -32,10 +34,12 @@ export function cloneProjectForDuplicate(project, existingNames) {
     name = `${baseName} ${suffix++}`;
   }
   const now = Date.now();
+  const cardIdMap = new Map();
   return {
     id: crypto.randomUUID(),
     name,
-    cardTypes: project.cardTypes.map((cardType) => cloneCardType(cardType)),
+    cardTypes: project.cardTypes.map((cardType) => cloneCardType(cardType, cardIdMap)),
+    decks: cloneDecksForCards(getDecks(project), cardIdMap),
     createdAt: now,
     updatedAt: now,
   };

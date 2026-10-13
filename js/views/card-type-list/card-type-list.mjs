@@ -1,13 +1,13 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=9";
-import { mountCardTypeEditor } from "../card-type-editor/card-type-editor.mjs?v=9";
-import { mountCardTable } from "../card-table/card-table.mjs?v=9";
-import { mountCsvImport } from "../csv-import/csv-import.mjs?v=9";
-import { createCardType } from "../../models/card-type.mjs?v=9";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=10";
+import { mountCardTypeEditor } from "../card-type-editor/card-type-editor.mjs?v=10";
+import { mountCardTable } from "../card-table/card-table.mjs?v=10";
+import { mountCsvImport } from "../csv-import/csv-import.mjs?v=10";
+import { createCardType } from "../../models/card-type.mjs?v=10";
 
 let templatePromise;
 
 export async function mountCardTypeList(root, storage, projectId, onBack) {
-  const template = await (templatePromise ??= loadFragment("js/views/card-type-list/card-type-list.html?v=9"));
+  const template = await (templatePromise ??= loadFragment("js/views/card-type-list/card-type-list.html?v=10"));
   const view = cloneTemplate(template);
   const section = view.querySelector(".card-type-list-view");
 
