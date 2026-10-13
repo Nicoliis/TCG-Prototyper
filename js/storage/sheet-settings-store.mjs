@@ -1,4 +1,4 @@
-import { validateSheetSettings } from "../models/sheet-layout.mjs?v=21";
+import { validateSheetSettings } from "../models/sheet-layout.mjs?v=22";
 
 const STORAGE_KEY = "cardgame-prototyper.sheetSettings";
 
