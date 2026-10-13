@@ -12,35 +12,48 @@
       </div>
 
       <div class="tab-panel" data-tab="content">
-        <label class="name-field">
-          Name
+        <label class="prop-field">
+          <span class="prop-field-label">Name</span>
           <input type="text" name="name">
         </label>
 
-        <label class="content-field">
-          <span class="content-field-label">Content</span>
+        <label class="prop-field">
+          <span class="prop-field-label content-field-label">Content</span>
           <input type="text" name="content">
         </label>
 
-        <div class="content-preview">
-          <span class="content-preview-label">Sample text</span>
-          <output class="content-preview-value"></output>
+        <div class="sample-section">
+          <span class="prop-field-label">Sample values</span>
+          <div class="sample-value-fields"></div>
+          <p class="content-preview">
+            <output class="content-preview-value"></output>
+          </p>
         </div>
+
+        <template class="sample-value-field-template">
+          <label class="prop-field sample-value-field">
+            <span class="prop-field-label sample-value-field-name"></span>
+            <input type="text" class="sample-value-field-input">
+          </label>
+        </template>
       </div>
 
       <div class="tab-panel" data-tab="position" hidden>
-        <div class="field-grid">
-          <label>X <input type="number" name="x" step="1"></label>
-          <label>Y <input type="number" name="y" step="1"></label>
-          <label>Width <input type="number" name="width" min="1" step="1"></label>
-          <label>Height <input type="number" name="height" min="1" step="1"></label>
-          <label>Rotation (deg) <input type="number" name="rotation" step="1"></label>
+        <div class="prop-grid">
+          <label class="prop-field"><span class="prop-field-label">X</span> <input type="number" name="x" step="1"></label>
+          <label class="prop-field"><span class="prop-field-label">Y</span> <input type="number" name="y" step="1"></label>
+          <label class="prop-field"><span class="prop-field-label">Width</span> <input type="number" name="width" min="1" step="1"></label>
+          <label class="prop-field"><span class="prop-field-label">Height</span> <input type="number" name="height" min="1" step="1"></label>
         </div>
+        <label class="prop-field">
+          <span class="prop-field-label">Rotation (deg)</span>
+          <input type="number" name="rotation" step="1">
+        </label>
       </div>
 
       <div class="tab-panel" data-tab="text" hidden>
-        <label>
-          Font
+        <label class="prop-field">
+          <span class="prop-field-label">Font</span>
           <select name="fontFamily">
             <option value="system-ui, sans-serif">Sans-serif</option>
             <option value="Georgia, 'Times New Roman', serif">Serif</option>
@@ -49,16 +62,13 @@
           </select>
         </label>
 
-        <div class="field-grid">
-          <label>Size <input type="number" name="fontSize" min="1" step="1"></label>
-          <label class="checkbox-field">
-            <input type="checkbox" name="bold">
-            Bold
-          </label>
+        <div class="prop-grid">
+          <label class="prop-field"><span class="prop-field-label">Size</span> <input type="number" name="fontSize" min="1" step="1"></label>
+          <label class="prop-field prop-checkbox"><input type="checkbox" name="bold"> <span class="prop-field-label">Bold</span></label>
         </div>
 
         <fieldset class="segmented-field">
-          <legend>Align</legend>
+          <legend class="prop-field-label">Align</legend>
           <div class="segmented" data-field="align">
             <button type="button" data-value="left">Left</button>
             <button type="button" data-value="center">Center</button>
@@ -67,7 +77,7 @@
         </fieldset>
 
         <fieldset class="segmented-field">
-          <legend>Fit to box</legend>
+          <legend class="prop-field-label">Fit to box</legend>
           <div class="segmented" data-field="overflow">
             <button type="button" data-value="wrap">Wrap</button>
             <button type="button" data-value="shrink">Shrink</button>
@@ -79,25 +89,25 @@
       <div class="tab-panel" data-tab="style" hidden>
         <fieldset class="style-group" data-style="background">
           <legend>
-            <label><input type="checkbox" name="backgroundEnabled"> Background</label>
+            <label class="prop-checkbox"><input type="checkbox" name="backgroundEnabled"> <span class="prop-field-label">Background</span></label>
           </legend>
-          <label class="style-detail">Color <input type="color" name="backgroundColor"></label>
+          <label class="prop-field style-detail"><span class="prop-field-label">Color</span> <input type="color" name="backgroundColor"></label>
         </fieldset>
 
         <fieldset class="style-group" data-style="border">
           <legend>
-            <label><input type="checkbox" name="borderEnabled"> Border</label>
+            <label class="prop-checkbox"><input type="checkbox" name="borderEnabled"> <span class="prop-field-label">Border</span></label>
           </legend>
-          <label class="style-detail">Color <input type="color" name="borderColor"></label>
-          <label class="style-detail">Thickness <input type="number" name="borderThickness" min="1" step="1"></label>
+          <label class="prop-field style-detail"><span class="prop-field-label">Color</span> <input type="color" name="borderColor"></label>
+          <label class="prop-field style-detail"><span class="prop-field-label">Thickness</span> <input type="number" name="borderThickness" min="1" step="1"></label>
         </fieldset>
 
         <fieldset class="style-group" data-style="shadow">
           <legend>
-            <label><input type="checkbox" name="shadowEnabled"> Shadow</label>
+            <label class="prop-checkbox"><input type="checkbox" name="shadowEnabled"> <span class="prop-field-label">Shadow</span></label>
           </legend>
-          <label class="style-detail">Color <input type="color" name="shadowColor"></label>
-          <label class="style-detail">Thickness <input type="number" name="shadowThickness" min="1" step="1"></label>
+          <label class="prop-field style-detail"><span class="prop-field-label">Color</span> <input type="color" name="shadowColor"></label>
+          <label class="prop-field style-detail"><span class="prop-field-label">Thickness</span> <input type="number" name="shadowThickness" min="1" step="1"></label>
         </fieldset>
       </div>
     </form>

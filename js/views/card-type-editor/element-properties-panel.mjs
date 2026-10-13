@@ -1,7 +1,7 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=3";
-import { setElementStyle, getElementStyle, setTextStyle, getTextStyle, getElementName } from "../../models/card-type.mjs?v=3";
-import { substitute } from "../../templating/substitute.mjs?v=3";
-import { setUpTabs, activeTab, selectTab, setUpSegmented, setSegmentedValue } from "./tabs.mjs?v=3";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=4";
+import { setElementStyle, getElementStyle, setTextStyle, getTextStyle, getElementName } from "../../models/card-type.mjs?v=4";
+import { substitute, extractTokens } from "../../templating/substitute.mjs?v=4";
+import { setUpTabs, activeTab, selectTab, setUpSegmented, setSegmentedValue } from "./tabs.mjs?v=4";
 
 const CONTENT_FIELD_BY_KIND = {
   text: { label: "Template", placeholder: "{property} template" },
@@ -16,7 +16,7 @@ let templatePromise;
 
 export async function mountElementPropertiesPanel(container) {
   const template = await (templatePromise ??= loadFragment(
-    "js/views/card-type-editor/element-properties-panel.html?v=3",
+    "js/views/card-type-editor/element-properties-panel.html?v=4",
   ));
   const panel = cloneTemplate(template).firstElementChild;
   container.appendChild(panel);
@@ -25,6 +25,8 @@ export async function mountElementPropertiesPanel(container) {
   const fields = panel.querySelector(".element-properties-fields");
   const contentLabel = panel.querySelector(".content-field-label");
   const previewValue = panel.querySelector(".content-preview-value");
+  const sampleFieldsContainer = panel.querySelector(".sample-value-fields");
+  const sampleFieldTemplate = panel.querySelector(".sample-value-field-template");
   const textTabButton = panel.querySelector('.tab-button[data-tab="text"]');
 
   let currentElement = null;
@@ -50,6 +52,29 @@ export async function mountElementPropertiesPanel(container) {
     const resolved =
       currentElement.kind === "text" || currentElement.kind === "image" ? substitute(raw, sampleValues) : raw;
     previewValue.textContent = resolved || "(empty)";
+  }
+
+  function updateSampleFields() {
+    sampleFieldsContainer.replaceChildren();
+    const isSubstitutable = currentElement.kind === "text" || currentElement.kind === "image";
+    if (!isSubstitutable) return;
+
+    const properties = currentCallbacks.getProperties();
+    for (const token of extractTokens(contentValue(currentElement))) {
+      const property = properties.find((p) => p.name === token);
+      if (!property) continue;
+
+      const item = sampleFieldTemplate.content.cloneNode(true);
+      item.querySelector(".sample-value-field-name").textContent = property.name;
+      const input = item.querySelector(".sample-value-field-input");
+      input.value = property.sampleValue;
+      input.addEventListener("input", () => {
+        property.sampleValue = input.value;
+        updatePreview();
+        currentCallbacks.onSampleValueChange();
+      });
+      sampleFieldsContainer.appendChild(item);
+    }
   }
 
   function updateStyleGroupVisibility() {
@@ -96,6 +121,7 @@ export async function mountElementPropertiesPanel(container) {
 
     fields.name.value = getElementName(element);
     fields.content.value = contentValue(element);
+    updateSampleFields();
     updatePreview();
 
     fields.x.value = element.x;
@@ -132,6 +158,7 @@ export async function mountElementPropertiesPanel(container) {
   fields.content.addEventListener("input", () => {
     if (!currentElement) return;
     applyContentValue(fields.content.value);
+    updateSampleFields();
     updatePreview();
     currentCallbacks.onChange();
   });

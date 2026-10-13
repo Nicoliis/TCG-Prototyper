@@ -1,5 +1,5 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=3";
-import { addElement, setCardTypeDimensions } from "../../models/card-type.mjs?v=3";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=4";
+import { addElement, setCardTypeDimensions } from "../../models/card-type.mjs?v=4";
 import {
   renderElement,
   renderPreview,
@@ -7,16 +7,17 @@ import {
   applyElementStyle,
   applyDepth,
   setElementSelected,
-} from "./layout-element.mjs?v=3";
-import { applyTextFit } from "./text-fit.mjs?v=3";
-import { mountElementPropertiesPanel } from "./element-properties-panel.mjs?v=3";
-import { mountLayerList } from "./layer-list.mjs?v=3";
-import { setUpCardPropertiesPanel } from "./card-properties-panel.mjs?v=3";
+} from "./layout-element.mjs?v=4";
+import { applyTextFit } from "./text-fit.mjs?v=4";
+import { mountElementPropertiesPanel } from "./element-properties-panel.mjs?v=4";
+import { mountLayerList } from "./layer-list.mjs?v=4";
+import { setUpCardPropertiesPanel } from "./card-properties-panel.mjs?v=4";
+import { setUpTabs } from "./tabs.mjs?v=4";
 
 let templatePromise;
 
 export async function mountCardTypeEditor(root, storage, projectId, cardTypeId, onBack) {
-  const template = await (templatePromise ??= loadFragment("js/views/card-type-editor/card-type-editor.html?v=3"));
+  const template = await (templatePromise ??= loadFragment("js/views/card-type-editor/card-type-editor.html?v=4"));
   const view = cloneTemplate(template);
   const section = view.querySelector(".card-type-editor-view");
 
@@ -45,7 +46,7 @@ export async function mountCardTypeEditor(root, storage, projectId, cardTypeId, 
     return Object.fromEntries(cardType.properties.map((p) => [p.name, p.sampleValue]));
   }
 
-  function refreshAllPreviews() {
+  function refreshCanvasPreviews() {
     const sampleValues = getSampleValues();
     for (const [id, node] of elementNodes) {
       const element = cardType.elements.find((e) => e.id === id);
@@ -54,6 +55,10 @@ export async function mountCardTypeEditor(root, storage, projectId, cardTypeId, 
         applyTextFit(node, element);
       }
     }
+  }
+
+  function refreshAllPreviews() {
+    refreshCanvasPreviews();
     if (selectedElementId) syncPanelIfSelected(selectedElementId);
   }
 
@@ -77,6 +82,11 @@ export async function mountCardTypeEditor(root, storage, projectId, cardTypeId, 
   function panelCallbacksFor(element) {
     return {
       getSampleValues,
+      getProperties: () => cardType.properties,
+      onSampleValueChange: () => {
+        refreshCanvasPreviews();
+        persist();
+      },
       onChange: () => {
         const node = elementNodes.get(element.id);
         applyTransform(node, element);
@@ -148,6 +158,7 @@ export async function mountCardTypeEditor(root, storage, projectId, cardTypeId, 
     if (index !== -1) cardType.elements.splice(index, 1);
   }
 
+  setUpTabs(section.querySelector(".data-properties-panel"));
   setUpDimensionsForm(section, cardType, canvas, persist);
   setUpCardPropertiesPanel(section, cardType, persist, refreshAllPreviews);
   setUpAddElementButtons(section, cardType, persist, (element) => {
