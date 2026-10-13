@@ -16,7 +16,7 @@ No `NEEDS CLARIFICATION` items remain. Decisions:
 
 ## 3. Paper sizes
 
-- **Decision**: A4 (210x297 mm) and US Letter (8.5x11 in) only (clarified), stored as CSS px at 96 dpi (A4 ≈ 793.7x1122.5, Letter 816x1056). Default: Letter when `navigator.language` is `en-US`/`en-CA`/`es-MX`-style North American, else A4; simplified to `en-US`, `en-CA`, `es-MX` → Letter, otherwise A4.
+- **Decision**: A4 (210x297 mm) and US Letter (8.5x11 in) only (clarified), stored as CSS px at 96 dpi (A4 ≈ 793.7x1122.5, Letter 816x1056). Default: Letter when the browser locale is `en-US`, `en-CA` or `es-MX`, otherwise A4.
 - **`@page`**: a `<style class="page-size-style">` in the screen's HTML gets its text set to `@page { size: <w>mm <h>mm; margin: 0 }`. This is the only imperative CSS and exists because `@page` size cannot read CSS variables.
 
 ## 4. Page margins and spacing
