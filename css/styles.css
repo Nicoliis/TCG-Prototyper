@@ -87,6 +87,7 @@ form {
 }
 
 input[type="text"],
+input[type="search"],
 input[type="number"],
 input[type="color"],
 select,
@@ -105,6 +106,7 @@ input[type="color"] {
 }
 
 input[type="text"]:focus,
+input[type="search"]:focus,
 input[type="number"]:focus,
 textarea:focus,
 button:focus-visible {
@@ -762,4 +764,14 @@ img.element-content {
 .deck-entries-empty,
 .available-cards-empty {
   color: var(--color-muted);
+}
+
+.available-filters {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.available-text-filter {
+  flex: 1;
 }

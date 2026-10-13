@@ -17,10 +17,20 @@
 
       <div class="deck-editor-column">
         <h3>Available cards</h3>
+        <div class="available-filters">
+          <select class="available-type-filter" aria-label="Card type">
+            <option value="">All card types</option>
+          </select>
+          <input type="search" class="available-text-filter" placeholder="Search card values" aria-label="Search card values">
+        </div>
         <p class="available-cards-empty" hidden></p>
         <ul class="available-card-list"></ul>
       </div>
     </div>
+
+    <template class="type-filter-option-template">
+      <option></option>
+    </template>
 
     <template class="deck-entry-template">
       <li class="deck-entry">

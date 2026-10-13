@@ -1,18 +1,18 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=15";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=16";
 import {
   getDecks,
   addCardToDeck,
   setEntryCount,
   deckTotals,
-  listCards,
+  filterCards,
   findCard,
   describeCard,
-} from "../../models/deck.mjs?v=15";
+} from "../../models/deck.mjs?v=16";
 
 let templatePromise;
 
 export async function mountDeckEditor(root, storage, projectId, deckId, onBack) {
-  const template = await (templatePromise ??= loadFragment("js/views/deck-editor/deck-editor.html?v=15"));
+  const template = await (templatePromise ??= loadFragment("js/views/deck-editor/deck-editor.html?v=16"));
   const view = cloneTemplate(template);
   const section = view.querySelector(".deck-editor-view");
 
@@ -26,6 +26,9 @@ export async function mountDeckEditor(root, storage, projectId, deckId, onBack) 
   const availableList = section.querySelector(".available-card-list");
   const entryTemplate = section.querySelector(".deck-entry-template");
   const availableTemplate = section.querySelector(".available-card-template");
+  const typeFilter = section.querySelector(".available-type-filter");
+  const textFilter = section.querySelector(".available-text-filter");
+  const optionTemplate = section.querySelector(".type-filter-option-template");
 
   section.querySelector(".back-button").addEventListener("click", onBack);
 
@@ -72,7 +75,20 @@ export async function mountDeckEditor(root, storage, projectId, deckId, onBack) 
     }
     entriesEmpty.hidden = deck.entries.length > 0;
 
-    const available = listCards(project.cardTypes);
+    if (typeFilter.options.length === 1) {
+      for (const cardType of project.cardTypes) {
+        const option = optionTemplate.content.cloneNode(true);
+        const optionEl = option.querySelector("option");
+        optionEl.value = cardType.id;
+        optionEl.textContent = cardType.name;
+        typeFilter.appendChild(option);
+      }
+    }
+
+    const available = filterCards(project.cardTypes, {
+      cardTypeId: typeFilter.value,
+      text: textFilter.value,
+    });
     availableList.replaceChildren();
     for (const { cardType, card } of available) {
       const item = availableTemplate.content.cloneNode(true);
@@ -83,8 +99,13 @@ export async function mountDeckEditor(root, storage, projectId, deckId, onBack) 
       availableList.appendChild(item);
     }
     availableEmpty.hidden = available.length > 0;
-    availableEmpty.textContent = "This project has no cards yet. Fill some in from a card type's Cards table first.";
+    availableEmpty.textContent = filterCards(project.cardTypes).length
+      ? "No cards match the current filters."
+      : "This project has no cards yet. Fill some in from a card type's Cards table first.";
   }
+
+  typeFilter.addEventListener("change", render);
+  textFilter.addEventListener("input", render);
 
   root.replaceChildren(view);
   await render();

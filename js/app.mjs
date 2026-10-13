@@ -1,5 +1,5 @@
-import { IndexedDbAdapter } from "./storage/indexeddb-adapter.mjs?v=15";
-import { mountProjectList } from "./views/project-list/project-list.mjs?v=15";
+import { IndexedDbAdapter } from "./storage/indexeddb-adapter.mjs?v=16";
+import { mountProjectList } from "./views/project-list/project-list.mjs?v=16";
 
 const storage = new IndexedDbAdapter();
 const root = document.getElementById("view-root");
