@@ -108,8 +108,8 @@ description: "Task list for Project Export & Import"
 
 - [X] T019 [P] Add minimal styling for `.project-export-button`, `.import-project-button`, and `.import-status` to `css/styles.css`, reusing existing button/field-error classes where they already fit. **Commit with a `?v=` bump (CSS change).**
 - [X] T020 Confirm every commit that touched served scripts/styles bumped `?v=` consistently (grep `index.html` and `js/` for mixed versions)
-- [ ] T021 Run `node --test tests/unit` and all of quickstart.md (sections 1–6, including the round-trip and edge-case checks); confirm Slices 1–5 did not regress
-- [ ] T022 Update `FEATURE-SLICES.md` / note this feature's completion (it sits outside the original 7-slice list, added by later user request) once validated
+- [X] T021 Run `node --test tests/unit` and all of quickstart.md (sections 1–6, including the round-trip and edge-case checks); confirm Slices 1–5 did not regress
+- [X] T022 Update `FEATURE-SLICES.md` / note this feature's completion (it sits outside the original 7-slice list, added by later user request) once validated
 
 ---
 

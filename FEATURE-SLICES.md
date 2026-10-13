@@ -51,6 +51,14 @@ Status legend: `[ ]` not started, `[~]` in progress, `[x]` done.
     TODO-Features.md.
   - Depends on: Slice 6.
 
+## Additional features (outside the original 7-slice plan)
+
+- [x] **Project export & import** — implemented in `specs/006-project-export-import/`
+  - Export a full project (card types, properties, elements, cards, decks)
+    to a human-readable JSON file; import it back as a new, independent
+    project with regenerated ids and an auto-resolved name collision.
+  - Depends on: Slice 1 (and reuses Slice 4's deck model for export/import).
+
 ## Ordering rationale
 
 1 is foundational storage + the first real content (card types) worth
