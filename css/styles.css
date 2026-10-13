@@ -87,7 +87,8 @@ form {
 input[type="text"],
 input[type="number"],
 input[type="color"],
-select {
+select,
+textarea {
   font: inherit;
   padding: var(--space-2) var(--space-3);
   border: 1px solid var(--color-border);
@@ -103,6 +104,7 @@ input[type="color"] {
 
 input[type="text"]:focus,
 input[type="number"]:focus,
+textarea:focus,
 button:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 1px;
@@ -262,6 +264,7 @@ ul {
 
 .property-sample-value-input {
   width: 100%;
+  resize: vertical;
 }
 
 .add-element-buttons {
