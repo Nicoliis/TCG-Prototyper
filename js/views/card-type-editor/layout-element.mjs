@@ -1,6 +1,6 @@
-import { substitute } from "../../templating/substitute.mjs?v=25";
-import { getElementStyle } from "../../models/card-type.mjs?v=25";
-import { applyTextFit } from "./text-fit.mjs?v=25";
+import { substitute } from "../../templating/substitute.mjs?v=26";
+import { getElementStyle } from "../../models/card-type.mjs?v=26";
+import { applyTextFit } from "./text-fit.mjs?v=26";
 
 const MIN_SIZE = 10;
 const BROKEN_IMAGE_PLACEHOLDER =
@@ -51,6 +51,8 @@ export function applyElementStyle(node, element) {
   node.style.backgroundColor = style.background.enabled ? style.background.color : "";
   node.style.border = style.border.enabled ? `${style.border.thickness}px solid ${style.border.color}` : "";
   node.style.boxShadow = style.shadow.enabled ? `0 0 ${style.shadow.thickness}px ${style.shadow.color}` : "";
+  const content = node.querySelector(".element-content");
+  if (content) content.style.padding = `${style.padding}px`;
 }
 
 export function setElementSelected(node, isSelected) {

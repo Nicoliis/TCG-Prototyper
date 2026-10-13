@@ -1,7 +1,14 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=25";
-import { setElementStyle, getElementStyle, setTextStyle, getTextStyle, getElementName } from "../../models/card-type.mjs?v=25";
-import { substitute } from "../../templating/substitute.mjs?v=25";
-import { setUpTabs, activeTab, selectTab, setUpSegmented, setSegmentedValue } from "./tabs.mjs?v=25";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=26";
+import {
+  setElementStyle,
+  getElementStyle,
+  setElementPadding,
+  setTextStyle,
+  getTextStyle,
+  getElementName,
+} from "../../models/card-type.mjs?v=26";
+import { substitute } from "../../templating/substitute.mjs?v=26";
+import { setUpTabs, activeTab, selectTab, setUpSegmented, setSegmentedValue } from "./tabs.mjs?v=26";
 
 const CONTENT_FIELD_BY_KIND = {
   text: { label: "Template", placeholder: "{property} template" },
@@ -16,7 +23,7 @@ let templatePromise;
 
 export async function mountElementPropertiesPanel(container) {
   const template = await (templatePromise ??= loadFragment(
-    "js/views/card-type-editor/element-properties-panel.html?v=25",
+    "js/views/card-type-editor/element-properties-panel.html?v=26",
   ));
   const panel = cloneTemplate(template).firstElementChild;
   container.appendChild(panel);
@@ -60,6 +67,7 @@ export async function mountElementPropertiesPanel(container) {
 
   function readStyleIntoFields() {
     const style = getElementStyle(currentElement);
+    fields.padding.value = style.padding;
     fields.backgroundEnabled.checked = style.background.enabled;
     fields.backgroundColor.value = style.background.color;
     fields.borderEnabled.checked = style.border.enabled;
@@ -210,6 +218,16 @@ export async function mountElementPropertiesPanel(container) {
       }
     });
   }
+
+  fields.padding.addEventListener("input", () => {
+    if (!currentElement) return;
+    try {
+      setElementPadding(currentElement, fields.padding.value);
+      currentCallbacks.onChange();
+    } catch {
+      // Ignore an invalid interim value (e.g. field cleared mid-edit); last valid padding stays applied.
+    }
+  });
 
   bindStyleGroup("background", { enabled: "backgroundEnabled", color: "backgroundColor" });
   bindStyleGroup("border", { enabled: "borderEnabled", color: "borderColor", thickness: "borderThickness" });

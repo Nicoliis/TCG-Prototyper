@@ -133,6 +133,7 @@ function validateRotation(degrees) {
 
 export function defaultElementStyle() {
   return {
+    padding: 4,
     background: { enabled: false, color: "#ffffff" },
     border: { enabled: false, color: "#000000", thickness: 1 },
     shadow: { enabled: false, color: "#000000", thickness: 4 },
@@ -140,16 +141,22 @@ export function defaultElementStyle() {
 }
 
 export function getElementStyle(element) {
-  return element.style ?? defaultElementStyle();
+  return { ...defaultElementStyle(), ...element.style };
 }
 
 export function setElementStyle(element, styleKey, patch) {
-  element.style ??= defaultElementStyle();
+  element.style = getElementStyle(element);
   const next = { ...element.style[styleKey], ...patch };
   if ("color" in patch) next.color = validateColor(patch.color);
   if ("thickness" in patch) next.thickness = validatePositiveNumber(patch.thickness, "Thickness");
   element.style[styleKey] = next;
   return next;
+}
+
+export function setElementPadding(element, padding) {
+  element.style = getElementStyle(element);
+  element.style.padding = validateNonNegativeNumber(padding, "Padding");
+  return element.style.padding;
 }
 
 const TEXT_ALIGNS = ["left", "center", "right"];

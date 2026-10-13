@@ -1,11 +1,11 @@
-import { cardValuesByName } from "../../models/print-selection.mjs?v=25";
+import { cardValuesByName } from "../../models/print-selection.mjs?v=26";
 import {
   applyTransform,
   applyElementStyle,
   applyDepth,
   renderPreview,
-} from "../card-type-editor/layout-element.mjs?v=25";
-import { applyTextFit } from "../card-type-editor/text-fit.mjs?v=25";
+} from "../card-type-editor/layout-element.mjs?v=26";
+import { applyTextFit } from "../card-type-editor/text-fit.mjs?v=26";
 
 export function renderPrintCard(cardType, card, templates, placement) {
   const frame = templates.card.content.firstElementChild.cloneNode(true);

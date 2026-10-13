@@ -1,12 +1,12 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=25";
-import { getElementName } from "../../models/card-type.mjs?v=25";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=26";
+import { getElementName } from "../../models/card-type.mjs?v=26";
 
 const KIND_ICON = { text: "T", image: "🖼", label: "🏷", icon: "★" };
 
 let templatePromise;
 
 export async function mountLayerList(container, callbacks) {
-  const template = await (templatePromise ??= loadFragment("js/views/card-type-editor/layer-list.html?v=25"));
+  const template = await (templatePromise ??= loadFragment("js/views/card-type-editor/layer-list.html?v=26"));
   const section = cloneTemplate(template).firstElementChild;
   container.appendChild(section);
 

@@ -7,6 +7,7 @@ import {
   cloneCardType,
   getElementStyle,
   setElementStyle,
+  setElementPadding,
   getElementName,
   getTextStyle,
   setTextStyle,
@@ -102,6 +103,46 @@ test("getElementName falls back to a kind-based label for an element saved befor
   assert.equal(getElementName(legacyElement), "Label");
 });
 
+test("new elements default to 4px padding", () => {
+  const cardType = createCardType("Monster", { width: 100, height: 140 }, []);
+  const element = addElement(cardType, "label", { x: 0, y: 0, width: 10, height: 10 });
+  assert.equal(getElementStyle(element).padding, 4);
+});
+
+test("getElementStyle defaults padding for an element saved before this feature", () => {
+  const legacyElement = { id: "x", kind: "label", x: 0, y: 0, width: 10, height: 10, text: "Hi" };
+  assert.equal(getElementStyle(legacyElement).padding, 4);
+});
+
+test("getElementStyle defaults padding even when a style object already exists without it", () => {
+  const legacyStyledElement = {
+    id: "x",
+    kind: "label",
+    x: 0,
+    y: 0,
+    width: 10,
+    height: 10,
+    text: "Hi",
+    style: { background: { enabled: true, color: "#ff0000" }, border: { enabled: false, color: "#000", thickness: 1 }, shadow: { enabled: false, color: "#000", thickness: 4 } },
+  };
+  assert.equal(getElementStyle(legacyStyledElement).padding, 4);
+  assert.equal(getElementStyle(legacyStyledElement).background.enabled, true);
+});
+
+test("setElementPadding updates padding and rejects a negative value", () => {
+  const cardType = createCardType("Monster", { width: 100, height: 140 }, []);
+  const element = addElement(cardType, "label", { x: 0, y: 0, width: 10, height: 10 });
+  setElementPadding(element, 12);
+  assert.equal(getElementStyle(element).padding, 12);
+  assert.throws(() => setElementPadding(element, -1));
+});
+
+test("setElementPadding heals a legacy element with no style field at all", () => {
+  const legacyElement = { id: "x", kind: "label", x: 0, y: 0, width: 10, height: 10, text: "Hi" };
+  setElementPadding(legacyElement, 8);
+  assert.equal(legacyElement.style.padding, 8);
+});
+
 test("cloneCardType deep-copies each element's style so duplicates stay independent", () => {
   const cardType = createCardType("Monster", { width: 100, height: 140 }, []);
   const element = addElement(cardType, "label", { x: 0, y: 0, width: 10, height: 10 });
@@ -111,6 +152,17 @@ test("cloneCardType deep-copies each element's style so duplicates stay independ
 
   assert.equal(element.style.background.enabled, false);
   assert.equal(duplicate.elements[0].style.background.enabled, true);
+});
+
+test("cloneCardType carries padding into the duplicate independently", () => {
+  const cardType = createCardType("Monster", { width: 100, height: 140 }, []);
+  const element = addElement(cardType, "label", { x: 0, y: 0, width: 10, height: 10 });
+  const duplicate = cloneCardType(cardType);
+
+  setElementPadding(duplicate.elements[0], 30);
+
+  assert.equal(getElementStyle(element).padding, 4);
+  assert.equal(getElementStyle(duplicate.elements[0]).padding, 30);
 });
 
 test("new elements default to left-aligned, wrapping, non-bold text style", () => {
