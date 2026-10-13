@@ -23,7 +23,7 @@ Status legend: `[ ]` not started, `[~]` in progress, `[x]` done.
   - Spritesheet slicing: `{imgnumb:templatex}`.
   - Depends on: Slice 1.
 
-- [ ] **3. CSV fill**
+- [X] **3. CSV fill**
   - CSV import + minuscule CSV editor.
   - Column -> property mapping; undefined properties left empty.
   - Depends on: Slice 1 (needs card properties to map to).

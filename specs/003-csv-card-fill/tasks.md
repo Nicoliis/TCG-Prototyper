@@ -57,7 +57,7 @@ description: "Task list for CSV Card Fill"
 - [X] T007 [US1] Create `js/views/card-table/card-table.mjs` exporting `mountCardTable(root, storage, projectId, cardTypeId, onBack)` using `loadFragment`/`cloneTemplate` like `js/views/card-type-list/card-type-list.mjs`: load the project, render one `<th>` per property and one row per card via the templates (input values from `getCardValue`); "Add card" calls `addCard` then saves and re-renders; cell `change` calls `setCardValue` then `storage.saveCardType(projectId, cardType)`; delete button calls `removeCard`, saves, re-renders; show an empty-state message when there are no properties or no cards
 - [X] T008 [P] [US1] Add table styling (`.card-table`, header/cell spacing, cell inputs filling the cell, delete button) to `css/styles.css` using the existing spacing/color custom properties
 - [X] T009 [US1] Update `js/views/card-type-list/card-type-list.html` and `.mjs`: add a `.card-type-cards-button` ("Cards") to `.card-type-list-item-template`, wire it in `refresh()` to call `mountCardTable(root, storage, projectId, cardType.id, () => mountCardTypeList(root, storage, projectId, onBack))`
-- [ ] T010 [US1] Manual validation: run quickstart.md section 2 and fix any issues
+- [X] T010 [US1] Manual validation: run quickstart.md section 2 and fix any issues
 
 **Checkpoint**: User Story 1 fully functional — the app can hold real card data.
 
@@ -82,7 +82,7 @@ description: "Task list for CSV Card Fill"
 - [X] T016 [US2] Create `js/views/csv-import/csv-import.mjs` exporting `mountCsvImport(root, storage, projectId, cardTypeId, onBack, onOpenTable)`: fill the key select from the card type's properties (default first); on Import read pasted text if non-empty, else `await file.text()`, show an error if neither is provided; run `parseCsv` then `importCards`, assign `cardType.cards = result.cards`, save via `storage.saveCardType`, then reveal a link/button calling `onOpenTable` (depends on T014, T015)
 - [X] T017 [P] [US2] Add import-screen styling (textarea size, form spacing, report panel) to `css/styles.css`
 - [X] T018 [US2] Update `js/views/card-type-list/card-type-list.html` and `.mjs`: add a `.card-type-import-button` ("Import CSV") and wire it to `mountCsvImport(..., onBack = back to this card type list, onOpenTable = mountCardTable)` (depends on T009, T016)
-- [ ] T019 [US2] Manual validation: run quickstart.md section 3 (and the file-upload path) and fix any issues
+- [X] T019 [US2] Manual validation: run quickstart.md section 3 (and the file-upload path) and fix any issues
 
 **Checkpoint**: User Stories 1 and 2 both work; imported cards appear in the table.
 
@@ -98,7 +98,7 @@ description: "Task list for CSV Card Fill"
 
 - [X] T020 [US3] Extend `js/views/csv-import/csv-import.html` `.import-report` with fields for created count, updated count, an ignored-columns list and an unfilled-properties list (each list with a "None" fallback element and a `<template>` list item), plus a distinct message element for "0 cards imported"
 - [X] T021 [US3] Update `js/views/csv-import/csv-import.mjs` to populate the report from `result.report` after import: counts, ignored columns, unfilled properties, and the empty/header-only message when `created + updated === 0`; clear the report when starting a new import
-- [ ] T022 [US3] Manual validation: run quickstart.md sections 4 and 5 and fix any issues
+- [X] T022 [US3] Manual validation: run quickstart.md sections 4 and 5 and fix any issues
 
 **Checkpoint**: All three stories work independently.
 
@@ -107,7 +107,7 @@ description: "Task list for CSV Card Fill"
 ## Phase 6: Polish & Cross-Cutting Concerns
 
 - [X] T023 [P] Bump the `?v=` cache-busting suffix consistently across `index.html`, `js/app.mjs` and all module imports, including new files, if the project's practice requires it after module changes
-- [ ] T024 Run the full `node --test tests/unit` suite and quickstart.md end to end (including duplicate-project-with-cards and reload persistence); confirm Slice 1–2 behavior has not regressed
+- [X] T024 Run the full `node --test tests/unit` suite and quickstart.md end to end (including duplicate-project-with-cards and reload persistence); confirm Slice 1–2 behavior has not regressed
 
 ---
 
