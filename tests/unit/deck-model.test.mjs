@@ -10,6 +10,9 @@ import {
   setEntryCount,
   deckTotals,
   cloneDecksForCards,
+  listCards,
+  findCard,
+  describeCard,
 } from "../../js/models/deck.mjs";
 import { cloneProjectForDuplicate } from "../../js/models/project.mjs";
 
@@ -124,4 +127,34 @@ test("cloneProjectForDuplicate copies decks pointing at the duplicate's own card
   assert.notEqual(copiedCardId, "c1");
   assert.deepEqual(copy.decks[0].entries, [{ cardId: copiedCardId, count: 3 }]);
   assert.equal(project.decks[0].entries[0].cardId, "c1");
+});
+
+const projectWithCards = () => ({
+  cardTypes: [
+    {
+      id: "t1",
+      name: "Monster",
+      properties: [{ id: "p1", name: "name" }, { id: "p2", name: "atk" }],
+      cards: [{ id: "c1", values: { p1: "Goblin", p2: "3" } }, { id: "c2", values: {} }],
+    },
+    { id: "t2", name: "Spell", properties: [{ id: "p3", name: "name" }] },
+  ],
+});
+
+test("listCards pairs every card with its card type, tolerating types without cards", () => {
+  const pairs = listCards(projectWithCards().cardTypes);
+  assert.deepEqual(pairs.map((p) => p.card.id), ["c1", "c2"]);
+  assert.equal(pairs[0].cardType.name, "Monster");
+});
+
+test("findCard locates a card by id or returns null", () => {
+  const project = projectWithCards();
+  assert.equal(findCard(project, "c1").cardType.id, "t1");
+  assert.equal(findCard(project, "missing"), null);
+});
+
+test("describeCard joins non-blank values in property order, or marks an empty card", () => {
+  const { cardTypes } = projectWithCards();
+  assert.equal(describeCard(cardTypes[0], cardTypes[0].cards[0]), "Monster: Goblin / 3");
+  assert.equal(describeCard(cardTypes[0], cardTypes[0].cards[1]), "Monster: (empty card)");
 });

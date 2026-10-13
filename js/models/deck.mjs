@@ -85,3 +85,18 @@ export function cloneDecksForCards(decks, cardIdMap) {
       .map((entry) => ({ cardId: cardIdMap.get(entry.cardId), count: entry.count })),
   }));
 }
+
+export function listCards(cardTypes) {
+  return cardTypes.flatMap((cardType) => (cardType.cards ?? []).map((card) => ({ cardType, card })));
+}
+
+export function findCard(project, cardId) {
+  return listCards(project.cardTypes).find(({ card }) => card.id === cardId) ?? null;
+}
+
+export function describeCard(cardType, card) {
+  const values = cardType.properties
+    .map((property) => card.values[property.id] ?? "")
+    .filter((value) => value !== "");
+  return `${cardType.name}: ${values.length ? values.join(" / ") : "(empty card)"}`;
+}

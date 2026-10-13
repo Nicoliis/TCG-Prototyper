@@ -1,0 +1,40 @@
+<template id="deck-editor-view">
+  <section class="view deck-editor-view">
+    <button type="button" class="back-button">&larr; Decks</button>
+    <h2 class="deck-name-heading"></h2>
+    <p class="deck-totals">
+      <span class="deck-total-cards"></span> cards,
+      <span class="deck-distinct-cards"></span> distinct
+    </p>
+    <p class="field-error" hidden></p>
+
+    <div class="deck-editor-columns">
+      <div class="deck-editor-column">
+        <h3>In this deck</h3>
+        <p class="deck-entries-empty" hidden>No cards in this deck yet.</p>
+        <ul class="deck-entry-list"></ul>
+      </div>
+
+      <div class="deck-editor-column">
+        <h3>Available cards</h3>
+        <p class="available-cards-empty" hidden></p>
+        <ul class="available-card-list"></ul>
+      </div>
+    </div>
+
+    <template class="deck-entry-template">
+      <li class="deck-entry">
+        <span class="deck-entry-summary"></span>
+        <input type="number" class="deck-entry-count" min="0" step="1" aria-label="Copies">
+        <button type="button" class="deck-entry-remove-button">Remove</button>
+      </li>
+    </template>
+
+    <template class="available-card-template">
+      <li class="available-card">
+        <span class="available-card-summary"></span>
+        <button type="button" class="available-card-add-button">Add</button>
+      </li>
+    </template>
+  </section>
+</template>

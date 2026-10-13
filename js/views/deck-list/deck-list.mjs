@@ -1,10 +1,11 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=12";
-import { getDecks, createDeck } from "../../models/deck.mjs?v=12";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=13";
+import { mountDeckEditor } from "../deck-editor/deck-editor.mjs?v=13";
+import { getDecks, createDeck } from "../../models/deck.mjs?v=13";
 
 let templatePromise;
 
 export async function mountDeckList(root, storage, projectId, onBack) {
-  const template = await (templatePromise ??= loadFragment("js/views/deck-list/deck-list.html?v=12"));
+  const template = await (templatePromise ??= loadFragment("js/views/deck-list/deck-list.html?v=13"));
   const view = cloneTemplate(template);
   const section = view.querySelector(".deck-list-view");
 
@@ -28,7 +29,11 @@ export async function mountDeckList(root, storage, projectId, onBack) {
     list.replaceChildren();
     for (const deck of getDecks(project)) {
       const item = itemTemplate.content.cloneNode(true);
-      item.querySelector(".deck-name").textContent = deck.name;
+      const openButton = item.querySelector(".deck-open-button");
+      openButton.textContent = deck.name;
+      openButton.addEventListener("click", () =>
+        mountDeckEditor(root, storage, projectId, deck.id, () => mountDeckList(root, storage, projectId, onBack)),
+      );
 
       item.querySelector(".deck-rename-button").addEventListener("click", async () => {
         const name = prompt("Rename deck", deck.name);
