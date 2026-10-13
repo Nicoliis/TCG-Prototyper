@@ -1,4 +1,4 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=18";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=19";
 import {
   getDecks,
   addCardToDeck,
@@ -7,11 +7,11 @@ import {
   filterCards,
   findCard,
   describeCard,
-} from "../../models/deck.mjs?v=18";
-import { resolveSelection, selectionFromDeck } from "../../models/print-selection.mjs?v=18";
-import { PAPER_SIZES } from "../../models/sheet-layout.mjs?v=18";
-import { loadSheetSettings } from "../../storage/sheet-settings-store.mjs?v=18";
-import { renderSheets } from "./render-sheets.mjs?v=18";
+} from "../../models/deck.mjs?v=19";
+import { resolveSelection, selectionFromDeck } from "../../models/print-selection.mjs?v=19";
+import { PAPER_SIZES } from "../../models/sheet-layout.mjs?v=19";
+import { loadSheetSettings, saveSheetSettings } from "../../storage/sheet-settings-store.mjs?v=19";
+import { renderSheets } from "./render-sheets.mjs?v=19";
 
 const IMAGE_WAIT_MS = 5000;
 
@@ -32,7 +32,7 @@ function waitForImages(container) {
 }
 
 export async function mountPrintScreen(root, storage, projectId, onBack) {
-  const template = await (templatePromise ??= loadFragment("js/views/print/print-screen.html?v=18"));
+  const template = await (templatePromise ??= loadFragment("js/views/print/print-screen.html?v=19"));
   const view = cloneTemplate(template);
   const section = view.querySelector(".print-screen-view");
 
@@ -50,6 +50,11 @@ export async function mountPrintScreen(root, storage, projectId, onBack) {
   const deckOptionTemplate = section.querySelector(".deck-option-template");
   const availableTemplate = section.querySelector(".available-card-template");
   const entryTemplate = section.querySelector(".selection-entry-template");
+  const paperSelect = section.querySelector(".sheet-paper-select");
+  const paperOptionTemplate = section.querySelector(".paper-option-template");
+  const spacingInput = section.querySelector(".sheet-spacing-input");
+  const cutGuidesInput = section.querySelector(".sheet-cut-guides");
+  const scaledNotice = section.querySelector(".scaled-notice");
 
   section.querySelector(".back-button").addEventListener("click", onBack);
 
@@ -110,6 +115,7 @@ export async function mountPrintScreen(root, storage, projectId, onBack) {
     const items = resolveSelection(project, selection);
     pageSizeStyle.textContent = `@page { size: ${PAPER_SIZES[settings.paper].pageSize}; margin: 0; }`;
     const layout = await renderSheets(pagesEl, items, settings);
+    scaledNotice.hidden = layout.scaledCount === 0;
     const { totalCards } = deckTotals(selection);
     totalsEl.textContent = `${totalCards} cards on ${layout.pages.length} page${layout.pages.length === 1 ? "" : "s"}`;
     selectionEmpty.hidden = items.length > 0;
@@ -120,6 +126,39 @@ export async function mountPrintScreen(root, storage, projectId, onBack) {
     renderSelection();
     await renderPreview();
   }
+
+  for (const [key, paper] of Object.entries(PAPER_SIZES)) {
+    const option = paperOptionTemplate.content.cloneNode(true);
+    const optionEl = option.querySelector("option");
+    optionEl.value = key;
+    optionEl.textContent = paper.label;
+    paperSelect.appendChild(option);
+  }
+
+  function showSettings() {
+    paperSelect.value = settings.paper;
+    spacingInput.value = settings.spacingInches;
+    cutGuidesInput.checked = settings.cutGuides;
+  }
+
+  function onSettingsChange() {
+    const spacing = spacingInput.value.trim() === "" ? NaN : Number(spacingInput.value);
+    Object.assign(
+      settings,
+      validateSheetSettings(
+        { paper: paperSelect.value, spacingInches: spacing, cutGuides: cutGuidesInput.checked },
+        navigator.language,
+      ),
+    );
+    saveSheetSettings(settings);
+    showSettings();
+    refresh();
+  }
+
+  for (const control of [paperSelect, spacingInput, cutGuidesInput]) {
+    control.addEventListener("change", onSettingsChange);
+  }
+  showSettings();
 
   for (const deck of getDecks(project)) {
     const option = deckOptionTemplate.content.cloneNode(true);

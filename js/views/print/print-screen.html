@@ -18,6 +18,14 @@
         <p class="available-cards-empty" hidden></p>
         <ul class="available-card-list"></ul>
 
+        <h3>Sheet layout</h3>
+        <div class="sheet-layout-controls">
+          <label class="prop-field"><span class="prop-field-label">Paper</span> <select class="sheet-paper-select"></select></label>
+          <label class="prop-field"><span class="prop-field-label">Spacing (in)</span> <input type="number" class="sheet-spacing-input" min="0" max="0.5" step="0.05"></label>
+          <label class="prop-field"><input type="checkbox" class="sheet-cut-guides"> Cut guides</label>
+        </div>
+        <p class="scaled-notice" hidden>Some cards are larger than the page and were scaled down to fit.</p>
+
         <h3>To print</h3>
         <p class="selection-empty" hidden>Pick cards first.</p>
         <ul class="selection-list"></ul>
@@ -30,6 +38,10 @@
         <div class="print-pages"></div>
       </div>
     </div>
+
+    <template class="paper-option-template">
+      <option></option>
+    </template>
 
     <template class="deck-option-template">
       <option></option>

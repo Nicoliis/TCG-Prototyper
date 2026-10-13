@@ -95,10 +95,10 @@ description: "Task list for Proxy Printing"
 
 ### Implementation for User Story 3
 
-- [ ] T019 [US3] Add to `js/views/print/print-screen.html`: a paper `<select class="sheet-paper-select">` (options A4, US Letter from `PAPER_SIZES` via a `<template>` option), a spacing `<input type="number" min="0" max="0.5" step="0.05">`, a cut-guides checkbox, a `.scaled-notice` paragraph (hidden by default), and a cut-guide template in `print-sheet.html` (`.print-cut-guide`, thin corner marks outside the card frame)
-- [ ] T020 [US3] Update `js/views/print/print-screen.mjs`: initial settings from `loadSheetSettings()`; on any control change run `validateSheetSettings`, `saveSheetSettings`, update `@page`, and refresh the preview; show the `.scaled-notice` when `LayoutResult.scaledCount > 0` (depends on T004, T019)
-- [ ] T021 [US3] Update `js/views/print/render-card.mjs` / `render-sheets.mjs` to draw cut guides around each placement (from the cut-guide template) when `settings.cutGuides` is true, drawn in the spacing gap so they never overlap neighbouring cards (depends on T019). **Commit T019–T021 with a `?v=` bump.**
-- [ ] T022 [P] [US3] Add cut-guide and controls styling to `css/styles.css`, including that guides print (they are part of `.print-pages`) **Commit with a `?v=` bump (CSS change).**
+- [X] T019 [US3] Add to `js/views/print/print-screen.html`: a paper `<select class="sheet-paper-select">` (options A4, US Letter from `PAPER_SIZES` via a `<template>` option), a spacing `<input type="number" min="0" max="0.5" step="0.05">`, a cut-guides checkbox, a `.scaled-notice` paragraph (hidden by default), and a cut-guide template in `print-sheet.html` (`.print-cut-guide`, thin corner marks outside the card frame)
+- [X] T020 [US3] Update `js/views/print/print-screen.mjs`: initial settings from `loadSheetSettings()`; on any control change run `validateSheetSettings`, `saveSheetSettings`, update `@page`, and refresh the preview; show the `.scaled-notice` when `LayoutResult.scaledCount > 0` (depends on T004, T019)
+- [X] T021 [US3] Update `js/views/print/render-card.mjs` / `render-sheets.mjs` to draw cut guides around each placement (from the cut-guide template) when `settings.cutGuides` is true, drawn in the spacing gap so they never overlap neighbouring cards (depends on T019). **Commit T019–T021 with a `?v=` bump.**
+- [X] T022 [P] [US3] Add cut-guide and controls styling to `css/styles.css`, including that guides print (they are part of `.print-pages`) **Commit with a `?v=` bump (CSS change).**
 - [ ] T023 [US3] Manual validation: run quickstart.md sections 4 and 5 and fix issues
 
 **Checkpoint**: All three stories work independently.

@@ -1,19 +1,31 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=18";
-import { PAPER_SIZES, layoutSheets } from "../../models/sheet-layout.mjs?v=18";
-import { renderPrintCard } from "./render-card.mjs?v=18";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=19";
+import { PAPER_SIZES, layoutSheets } from "../../models/sheet-layout.mjs?v=19";
+import { renderPrintCard } from "./render-card.mjs?v=19";
+
+const GUIDE_OUTSET_PX = 3;
 
 let templatesPromise;
 
 async function loadPrintTemplates() {
-  const fragmentTemplate = await (templatesPromise ??= loadFragment("js/views/print/print-sheet.html?v=18"));
+  const fragmentTemplate = await (templatesPromise ??= loadFragment("js/views/print/print-sheet.html?v=19"));
   const fragment = cloneTemplate(fragmentTemplate);
   return {
     page: fragment.querySelector(".print-page-template"),
     card: fragment.querySelector(".print-card-template"),
+    guide: fragment.querySelector(".print-cut-guide-template"),
     elements: new Map(
       [...fragment.querySelectorAll(".print-element-template")].map((t) => [t.dataset.kind, t]),
     ),
   };
+}
+
+function createCutGuide(templates, placement) {
+  const guide = templates.guide.content.firstElementChild.cloneNode(true);
+  guide.style.left = `${placement.x - GUIDE_OUTSET_PX}px`;
+  guide.style.top = `${placement.y - GUIDE_OUTSET_PX}px`;
+  guide.style.width = `${placement.width + 2 * GUIDE_OUTSET_PX}px`;
+  guide.style.height = `${placement.height + 2 * GUIDE_OUTSET_PX}px`;
+  return guide;
 }
 
 export async function renderSheets(container, items, settings) {
@@ -30,6 +42,7 @@ export async function renderSheets(container, items, settings) {
     page.style.height = `${paper.heightPx}px`;
     for (const placement of placements) {
       const { cardType, card } = cardsById.get(placement.cardId);
+      if (settings.cutGuides) page.appendChild(createCutGuide(templates, placement));
       const { frame, fitText } = renderPrintCard(cardType, card, templates, placement);
       frame.style.left = `${placement.x}px`;
       frame.style.top = `${placement.y}px`;

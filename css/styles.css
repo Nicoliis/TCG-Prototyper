@@ -886,3 +886,25 @@ img.element-content {
 .print-deck-select {
   flex: 1;
 }
+
+.sheet-layout-controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.sheet-spacing-input {
+  width: 5rem;
+}
+
+.scaled-notice {
+  color: var(--color-danger);
+  font-size: 0.9rem;
+}
+
+.print-cut-guide {
+  position: absolute;
+  border: 1px dashed #777;
+  pointer-events: none;
+}

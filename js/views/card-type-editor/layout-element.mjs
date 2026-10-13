@@ -1,6 +1,6 @@
-import { substitute } from "../../templating/substitute.mjs?v=18";
-import { getElementStyle } from "../../models/card-type.mjs?v=18";
-import { applyTextFit } from "./text-fit.mjs?v=18";
+import { substitute } from "../../templating/substitute.mjs?v=19";
+import { getElementStyle } from "../../models/card-type.mjs?v=19";
+import { applyTextFit } from "./text-fit.mjs?v=19";
 
 const MIN_SIZE = 10;
 const BROKEN_IMAGE_PLACEHOLDER =
