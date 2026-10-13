@@ -1,5 +1,5 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=2";
-import { addElement, setCardTypeDimensions } from "../../models/card-type.mjs?v=2";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=3";
+import { addElement, setCardTypeDimensions } from "../../models/card-type.mjs?v=3";
 import {
   renderElement,
   renderPreview,
@@ -7,15 +7,16 @@ import {
   applyElementStyle,
   applyDepth,
   setElementSelected,
-} from "./layout-element.mjs?v=2";
-import { mountElementPropertiesPanel } from "./element-properties-panel.mjs?v=2";
-import { mountLayerList } from "./layer-list.mjs?v=2";
-import { setUpCardPropertiesPanel } from "./card-properties-panel.mjs?v=2";
+} from "./layout-element.mjs?v=3";
+import { applyTextFit } from "./text-fit.mjs?v=3";
+import { mountElementPropertiesPanel } from "./element-properties-panel.mjs?v=3";
+import { mountLayerList } from "./layer-list.mjs?v=3";
+import { setUpCardPropertiesPanel } from "./card-properties-panel.mjs?v=3";
 
 let templatePromise;
 
 export async function mountCardTypeEditor(root, storage, projectId, cardTypeId, onBack) {
-  const template = await (templatePromise ??= loadFragment("js/views/card-type-editor/card-type-editor.html?v=2"));
+  const template = await (templatePromise ??= loadFragment("js/views/card-type-editor/card-type-editor.html?v=3"));
   const view = cloneTemplate(template);
   const section = view.querySelector(".card-type-editor-view");
 
@@ -48,8 +49,12 @@ export async function mountCardTypeEditor(root, storage, projectId, cardTypeId, 
     const sampleValues = getSampleValues();
     for (const [id, node] of elementNodes) {
       const element = cardType.elements.find((e) => e.id === id);
-      if (element) renderPreview(node, element, sampleValues);
+      if (element) {
+        renderPreview(node, element, sampleValues);
+        applyTextFit(node, element);
+      }
     }
+    if (selectedElementId) syncPanelIfSelected(selectedElementId);
   }
 
   function applyAllDepths() {
@@ -71,11 +76,13 @@ export async function mountCardTypeEditor(root, storage, projectId, cardTypeId, 
 
   function panelCallbacksFor(element) {
     return {
+      getSampleValues,
       onChange: () => {
         const node = elementNodes.get(element.id);
         applyTransform(node, element);
         renderPreview(node, element, getSampleValues());
         applyElementStyle(node, element);
+        applyTextFit(node, element);
         refreshLayerList();
         persist();
       },
@@ -154,6 +161,13 @@ export async function mountCardTypeEditor(root, storage, projectId, cardTypeId, 
   refreshLayerList();
 
   root.replaceChildren(view);
+
+  // Re-run text fitting now that the view is attached to the live document:
+  // shrink/squash measure scrollWidth/clientWidth, which are 0 on detached nodes.
+  for (const element of cardType.elements) {
+    const node = elementNodes.get(element.id);
+    if (node) applyTextFit(node, element);
+  }
 }
 
 function setUpDimensionsForm(section, cardType, canvas, persist) {

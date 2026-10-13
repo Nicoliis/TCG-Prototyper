@@ -4,46 +4,102 @@
     <p class="element-properties-empty">Select an element on the canvas to edit it precisely.</p>
 
     <form class="element-properties-fields" hidden>
-      <label class="name-field">
-        Name
-        <input type="text" name="name">
-      </label>
-
-      <div class="field-grid">
-        <label>X <input type="number" name="x" step="1"></label>
-        <label>Y <input type="number" name="y" step="1"></label>
-        <label>Width <input type="number" name="width" min="1" step="1"></label>
-        <label>Height <input type="number" name="height" min="1" step="1"></label>
-        <label>Rotation (deg) <input type="number" name="rotation" step="1"></label>
+      <div class="tabs" role="tablist">
+        <button type="button" class="tab-button" data-tab="content" aria-selected="true">Content</button>
+        <button type="button" class="tab-button" data-tab="position">Position</button>
+        <button type="button" class="tab-button" data-tab="text">Text</button>
+        <button type="button" class="tab-button" data-tab="style">Style</button>
       </div>
 
-      <label class="content-field">
-        <span class="content-field-label">Content</span>
-        <input type="text" name="content">
-      </label>
+      <div class="tab-panel" data-tab="content">
+        <label class="name-field">
+          Name
+          <input type="text" name="name">
+        </label>
 
-      <fieldset class="style-group" data-style="background">
-        <legend>
-          <label><input type="checkbox" name="backgroundEnabled"> Background</label>
-        </legend>
-        <label class="style-detail">Color <input type="color" name="backgroundColor"></label>
-      </fieldset>
+        <label class="content-field">
+          <span class="content-field-label">Content</span>
+          <input type="text" name="content">
+        </label>
 
-      <fieldset class="style-group" data-style="border">
-        <legend>
-          <label><input type="checkbox" name="borderEnabled"> Border</label>
-        </legend>
-        <label class="style-detail">Color <input type="color" name="borderColor"></label>
-        <label class="style-detail">Thickness <input type="number" name="borderThickness" min="1" step="1"></label>
-      </fieldset>
+        <div class="content-preview">
+          <span class="content-preview-label">Sample text</span>
+          <output class="content-preview-value"></output>
+        </div>
+      </div>
 
-      <fieldset class="style-group" data-style="shadow">
-        <legend>
-          <label><input type="checkbox" name="shadowEnabled"> Shadow</label>
-        </legend>
-        <label class="style-detail">Color <input type="color" name="shadowColor"></label>
-        <label class="style-detail">Thickness <input type="number" name="shadowThickness" min="1" step="1"></label>
-      </fieldset>
+      <div class="tab-panel" data-tab="position" hidden>
+        <div class="field-grid">
+          <label>X <input type="number" name="x" step="1"></label>
+          <label>Y <input type="number" name="y" step="1"></label>
+          <label>Width <input type="number" name="width" min="1" step="1"></label>
+          <label>Height <input type="number" name="height" min="1" step="1"></label>
+          <label>Rotation (deg) <input type="number" name="rotation" step="1"></label>
+        </div>
+      </div>
+
+      <div class="tab-panel" data-tab="text" hidden>
+        <label>
+          Font
+          <select name="fontFamily">
+            <option value="system-ui, sans-serif">Sans-serif</option>
+            <option value="Georgia, 'Times New Roman', serif">Serif</option>
+            <option value="'Courier New', monospace">Monospace</option>
+            <option value="'Brush Script MT', cursive">Cursive</option>
+          </select>
+        </label>
+
+        <div class="field-grid">
+          <label>Size <input type="number" name="fontSize" min="1" step="1"></label>
+          <label class="checkbox-field">
+            <input type="checkbox" name="bold">
+            Bold
+          </label>
+        </div>
+
+        <fieldset class="segmented-field">
+          <legend>Align</legend>
+          <div class="segmented" data-field="align">
+            <button type="button" data-value="left">Left</button>
+            <button type="button" data-value="center">Center</button>
+            <button type="button" data-value="right">Right</button>
+          </div>
+        </fieldset>
+
+        <fieldset class="segmented-field">
+          <legend>Fit to box</legend>
+          <div class="segmented" data-field="overflow">
+            <button type="button" data-value="wrap">Wrap</button>
+            <button type="button" data-value="shrink">Shrink</button>
+            <button type="button" data-value="squash">Squash</button>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="tab-panel" data-tab="style" hidden>
+        <fieldset class="style-group" data-style="background">
+          <legend>
+            <label><input type="checkbox" name="backgroundEnabled"> Background</label>
+          </legend>
+          <label class="style-detail">Color <input type="color" name="backgroundColor"></label>
+        </fieldset>
+
+        <fieldset class="style-group" data-style="border">
+          <legend>
+            <label><input type="checkbox" name="borderEnabled"> Border</label>
+          </legend>
+          <label class="style-detail">Color <input type="color" name="borderColor"></label>
+          <label class="style-detail">Thickness <input type="number" name="borderThickness" min="1" step="1"></label>
+        </fieldset>
+
+        <fieldset class="style-group" data-style="shadow">
+          <legend>
+            <label><input type="checkbox" name="shadowEnabled"> Shadow</label>
+          </legend>
+          <label class="style-detail">Color <input type="color" name="shadowColor"></label>
+          <label class="style-detail">Thickness <input type="number" name="shadowThickness" min="1" step="1"></label>
+        </fieldset>
+      </div>
     </form>
   </div>
 </template>
