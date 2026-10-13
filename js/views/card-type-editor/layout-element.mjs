@@ -1,5 +1,5 @@
 import { substitute } from "../../templating/substitute.mjs?v=1";
-import { getElementStyle } from "../../models/card-type.mjs?v=1";
+import { getElementStyle, getElementDepth } from "../../models/card-type.mjs?v=1";
 
 const MIN_SIZE = 10;
 const BROKEN_IMAGE_PLACEHOLDER =
@@ -16,6 +16,7 @@ export function renderElement(canvas, element, templatesByKind, callbacks) {
   node.dataset.elementId = element.id;
   applyTransform(node, element);
   applyElementStyle(node, element);
+  applyDepth(node, element);
 
   node.querySelector(".element-delete-button").addEventListener("click", () => {
     node.remove();
@@ -53,6 +54,10 @@ export function applyElementStyle(node, element) {
 
 export function setElementSelected(node, isSelected) {
   node.classList.toggle("selected", isSelected);
+}
+
+export function applyDepth(node, element) {
+  node.style.setProperty("--depth", getElementDepth(element));
 }
 
 function setImageSrc(img, url) {

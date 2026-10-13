@@ -90,7 +90,10 @@ export function removeProperty(cardType, propertyId) {
   cardType.properties = cardType.properties.filter((p) => p.id !== propertyId);
 }
 
-export function createElement(kind, { x, y, width, height, rotation = 0, template = "", text = "", src = "" }) {
+export function createElement(
+  kind,
+  { x, y, width, height, rotation = 0, depth = 0, template = "", text = "", src = "" },
+) {
   if (!ELEMENT_KINDS.includes(kind)) throw new Error(`Unknown element kind: ${kind}`);
   const base = {
     id: crypto.randomUUID(),
@@ -100,6 +103,7 @@ export function createElement(kind, { x, y, width, height, rotation = 0, templat
     width: validatePositiveNumber(width, "width"),
     height: validatePositiveNumber(height, "height"),
     rotation: validateRotation(rotation),
+    depth: validateDepth(depth),
     style: defaultElementStyle(),
   };
   if (kind === "text" || kind === "image") return { ...base, template };
@@ -111,6 +115,21 @@ function validateRotation(degrees) {
   const n = Number(degrees);
   if (!Number.isFinite(n)) throw new Error("Rotation must be a number.");
   return ((n % 360) + 360) % 360;
+}
+
+function validateDepth(depth) {
+  const n = Number(depth);
+  if (!Number.isFinite(n)) throw new Error("Depth must be a number.");
+  return Math.round(n);
+}
+
+export function getElementDepth(element) {
+  return element.depth ?? 0;
+}
+
+export function setElementDepth(element, depth) {
+  element.depth = validateDepth(depth);
+  return element.depth;
 }
 
 export function defaultElementStyle() {
@@ -135,7 +154,8 @@ export function setElementStyle(element, styleKey, patch) {
 }
 
 export function addElement(cardType, kind, bounds) {
-  const element = createElement(kind, bounds);
+  const depth = bounds.depth ?? cardType.elements.length;
+  const element = createElement(kind, { ...bounds, depth });
   cardType.elements.push(element);
   return element;
 }

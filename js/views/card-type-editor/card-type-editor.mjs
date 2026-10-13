@@ -5,6 +5,7 @@ import {
   renderPreview,
   applyTransform,
   applyElementStyle,
+  applyDepth,
   setElementSelected,
 } from "./layout-element.mjs?v=1";
 import { mountElementPropertiesPanel } from "./element-properties-panel.mjs?v=1";
@@ -58,6 +59,7 @@ export async function mountCardTypeEditor(root, storage, projectId, cardTypeId, 
         applyTransform(node, element);
         renderPreview(node, element, getSampleValues());
         applyElementStyle(node, element);
+        applyDepth(node, element);
         persist();
       },
     };

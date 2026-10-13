@@ -1,5 +1,5 @@
 import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=1";
-import { setElementStyle, getElementStyle } from "../../models/card-type.mjs?v=1";
+import { setElementStyle, getElementStyle, getElementDepth } from "../../models/card-type.mjs?v=1";
 
 const CONTENT_FIELD_BY_KIND = {
   text: { label: "Template", placeholder: "{property} template" },
@@ -70,6 +70,7 @@ export async function mountElementPropertiesPanel(container) {
     fields.width.value = element.width;
     fields.height.value = element.height;
     fields.rotation.value = element.rotation;
+    fields.depth.value = getElementDepth(element);
     fields.content.value = contentValue(element);
 
     readStyleIntoFields();
@@ -89,10 +90,11 @@ export async function mountElementPropertiesPanel(container) {
     currentElement.width = Math.max(1, Number(fields.width.value) || 1);
     currentElement.height = Math.max(1, Number(fields.height.value) || 1);
     currentElement.rotation = Number(fields.rotation.value) || 0;
+    currentElement.depth = Math.round(Number(fields.depth.value) || 0);
     currentCallbacks.onChange();
   }
 
-  for (const name of ["x", "y", "width", "height", "rotation"]) {
+  for (const name of ["x", "y", "width", "height", "rotation", "depth"]) {
     fields[name].addEventListener("input", onGeometryInput);
   }
 

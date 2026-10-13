@@ -7,6 +7,8 @@ import {
   cloneCardType,
   getElementStyle,
   setElementStyle,
+  getElementDepth,
+  setElementDepth,
 } from "../../js/models/card-type.mjs";
 
 test("createCardType rejects an empty name", () => {
@@ -76,6 +78,33 @@ test("setElementStyle heals a legacy element with no style field and rejects a n
   setElementStyle(legacyElement, "border", { enabled: true, color: "#ff0000", thickness: 2 });
   assert.equal(legacyElement.style.border.thickness, 2);
   assert.throws(() => setElementStyle(legacyElement, "border", { thickness: 0 }));
+});
+
+test("addElement defaults each new element's depth to stack on top of existing ones", () => {
+  const cardType = createCardType("Monster", { width: 100, height: 140 }, []);
+  const first = addElement(cardType, "label", { x: 0, y: 0, width: 10, height: 10 });
+  const second = addElement(cardType, "label", { x: 0, y: 0, width: 10, height: 10 });
+  assert.equal(first.depth, 0);
+  assert.equal(second.depth, 1);
+});
+
+test("addElement accepts an explicit depth instead of the default", () => {
+  const cardType = createCardType("Monster", { width: 100, height: 140 }, []);
+  const element = addElement(cardType, "label", { x: 0, y: 0, width: 10, height: 10, depth: 5 });
+  assert.equal(element.depth, 5);
+});
+
+test("getElementDepth defaults an element saved before this feature to 0", () => {
+  const legacyElement = { id: "x", kind: "label", x: 0, y: 0, width: 10, height: 10, text: "Hi" };
+  assert.equal(getElementDepth(legacyElement), 0);
+});
+
+test("setElementDepth rounds to the nearest integer and rejects a non-finite value", () => {
+  const cardType = createCardType("Monster", { width: 100, height: 140 }, []);
+  const element = addElement(cardType, "label", { x: 0, y: 0, width: 10, height: 10 });
+  setElementDepth(element, 3.7);
+  assert.equal(element.depth, 4);
+  assert.throws(() => setElementDepth(element, NaN));
 });
 
 test("cloneCardType deep-copies each element's style so duplicates stay independent", () => {

@@ -214,8 +214,7 @@ ul {
 }
 
 .editor-layout {
-  display: grid;
-  grid-template-columns: 14rem max-content 16rem;
+  display: flex;
   justify-content: center;
   gap: var(--space-5);
   align-items: start;
@@ -261,7 +260,6 @@ ul {
 }
 
 .canvas-wrapper {
-  overflow: auto;
   border: 1px dashed var(--color-border);
   border-radius: var(--radius-md);
   background: var(--color-surface);
@@ -279,6 +277,7 @@ ul {
 
 .layout-element {
   position: absolute;
+  z-index: var(--depth, 0);
   border: 1px solid #5b7fd1;
   border-radius: var(--radius-sm);
   background: rgba(91, 127, 209, 0.08);
@@ -287,6 +286,7 @@ ul {
 }
 
 .layout-element.selected {
+  z-index: 9999;
   outline: 2px solid var(--color-selection);
   outline-offset: 2px;
 }
