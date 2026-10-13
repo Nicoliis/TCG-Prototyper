@@ -1,8 +1,9 @@
-import { getTextStyle } from "../../models/card-type.mjs?v=4";
+import { getTextStyle } from "../../models/card-type.mjs?v=5";
 
 const MIN_FONT_SIZE = 6;
 const MAX_SHRINK_STEPS = 40;
 const JUSTIFY_BY_ALIGN = { left: "flex-start", center: "center", right: "flex-end" };
+const ALIGN_ITEMS_BY_VERTICAL_ALIGN = { top: "flex-start", middle: "center", bottom: "flex-end" };
 const ORIGIN_BY_ALIGN = { left: "left center", center: "center center", right: "right center" };
 
 export function applyTextFit(node, element) {
@@ -14,6 +15,7 @@ export function applyTextFit(node, element) {
   content.style.fontWeight = textStyle.bold ? "bold" : "normal";
   content.style.textAlign = textStyle.align;
   content.style.justifyContent = JUSTIFY_BY_ALIGN[textStyle.align] ?? "flex-start";
+  content.style.alignItems = ALIGN_ITEMS_BY_VERTICAL_ALIGN[textStyle.verticalAlign] ?? "center";
   content.style.fontSize = `${textStyle.fontSize}px`;
   content.style.transform = "";
 

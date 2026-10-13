@@ -118,6 +118,7 @@ test("new elements default to left-aligned, wrapping, non-bold text style", () =
   const element = addElement(cardType, "text", { x: 0, y: 0, width: 10, height: 10 });
   const textStyle = getTextStyle(element);
   assert.equal(textStyle.align, "left");
+  assert.equal(textStyle.verticalAlign, "middle");
   assert.equal(textStyle.overflow, "wrap");
   assert.equal(textStyle.bold, false);
 });
@@ -135,6 +136,7 @@ test("setTextStyle heals a legacy element and rejects an invalid align/overflow/
   assert.equal(legacyElement.textStyle.bold, true);
   assert.equal(legacyElement.textStyle.fontSize, 20);
   assert.throws(() => setTextStyle(legacyElement, { align: "diagonal" }));
+  assert.throws(() => setTextStyle(legacyElement, { verticalAlign: "diagonal" }));
   assert.throws(() => setTextStyle(legacyElement, { overflow: "explode" }));
   assert.throws(() => setTextStyle(legacyElement, { fontSize: 0 }));
 });

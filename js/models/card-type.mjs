@@ -151,6 +151,7 @@ export function setElementStyle(element, styleKey, patch) {
 }
 
 const TEXT_ALIGNS = ["left", "center", "right"];
+const TEXT_VERTICAL_ALIGNS = ["top", "middle", "bottom"];
 const TEXT_OVERFLOW_MODES = ["wrap", "shrink", "squash"];
 
 export function defaultTextStyle() {
@@ -159,6 +160,7 @@ export function defaultTextStyle() {
     fontSize: 14,
     bold: false,
     align: "left",
+    verticalAlign: "middle",
     overflow: "wrap",
   };
 }
@@ -173,6 +175,9 @@ export function setTextStyle(element, patch) {
   if ("fontSize" in patch) next.fontSize = validatePositiveNumber(patch.fontSize, "Font size");
   if ("align" in patch && !TEXT_ALIGNS.includes(patch.align)) {
     throw new Error(`Text align must be one of: ${TEXT_ALIGNS.join(", ")}.`);
+  }
+  if ("verticalAlign" in patch && !TEXT_VERTICAL_ALIGNS.includes(patch.verticalAlign)) {
+    throw new Error(`Text vertical align must be one of: ${TEXT_VERTICAL_ALIGNS.join(", ")}.`);
   }
   if ("overflow" in patch && !TEXT_OVERFLOW_MODES.includes(patch.overflow)) {
     throw new Error(`Text overflow mode must be one of: ${TEXT_OVERFLOW_MODES.join(", ")}.`);

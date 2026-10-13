@@ -1,7 +1,7 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=4";
-import { setElementStyle, getElementStyle, setTextStyle, getTextStyle, getElementName } from "../../models/card-type.mjs?v=4";
-import { substitute, extractTokens } from "../../templating/substitute.mjs?v=4";
-import { setUpTabs, activeTab, selectTab, setUpSegmented, setSegmentedValue } from "./tabs.mjs?v=4";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=5";
+import { setElementStyle, getElementStyle, setTextStyle, getTextStyle, getElementName } from "../../models/card-type.mjs?v=5";
+import { substitute, extractTokens } from "../../templating/substitute.mjs?v=5";
+import { setUpTabs, activeTab, selectTab, setUpSegmented, setSegmentedValue } from "./tabs.mjs?v=5";
 
 const CONTENT_FIELD_BY_KIND = {
   text: { label: "Template", placeholder: "{property} template" },
@@ -16,7 +16,7 @@ let templatePromise;
 
 export async function mountElementPropertiesPanel(container) {
   const template = await (templatePromise ??= loadFragment(
-    "js/views/card-type-editor/element-properties-panel.html?v=4",
+    "js/views/card-type-editor/element-properties-panel.html?v=5",
   ));
   const panel = cloneTemplate(template).firstElementChild;
   container.appendChild(panel);
@@ -102,6 +102,7 @@ export async function mountElementPropertiesPanel(container) {
     fields.fontSize.value = textStyle.fontSize;
     fields.bold.checked = textStyle.bold;
     setSegmentedValue(panel, "align", textStyle.align);
+    setSegmentedValue(panel, "verticalAlign", textStyle.verticalAlign);
     setSegmentedValue(panel, "overflow", textStyle.overflow);
   }
 
@@ -194,6 +195,12 @@ export async function mountElementPropertiesPanel(container) {
   setUpSegmented(panel, "align", (value) => {
     if (!currentElement) return;
     setTextStyle(currentElement, { align: value });
+    currentCallbacks.onChange();
+  });
+
+  setUpSegmented(panel, "verticalAlign", (value) => {
+    if (!currentElement) return;
+    setTextStyle(currentElement, { verticalAlign: value });
     currentCallbacks.onChange();
   });
 
