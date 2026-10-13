@@ -57,12 +57,14 @@ main {
 }
 
 .project-list-view,
+.deck-list-view,
 .card-type-list-view {
   max-width: 36rem;
   margin: 0 auto;
 }
 
 .create-project-form input[name="projectName"],
+.create-deck-form input[name="deckName"],
 .create-card-type-form input[name="cardTypeName"] {
   flex: 1;
   min-width: 10rem;
@@ -141,12 +143,14 @@ form button[type="submit"]:hover {
 }
 
 .project-delete-button,
+.deck-delete-button,
 .property-delete-button {
   border-color: var(--color-danger);
   color: var(--color-danger);
 }
 
 .project-delete-button:hover,
+.deck-delete-button:hover,
 .property-delete-button:hover {
   background: var(--color-danger);
   color: #fff;
@@ -168,6 +172,7 @@ ul {
 }
 
 .project-list-item,
+.deck-list-item,
 .card-type-list-item {
   display: flex;
   align-items: center;
@@ -180,6 +185,7 @@ ul {
 }
 
 .project-open-button,
+.deck-open-button,
 .card-type-open-button {
   flex: 1;
   text-align: left;
@@ -193,6 +199,7 @@ ul {
 }
 
 .project-open-button:hover,
+.deck-open-button:hover,
 .card-type-open-button:hover {
   background: none;
   color: var(--color-accent);
@@ -711,4 +718,14 @@ img.element-content {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
+}
+
+.deck-name {
+  flex: 1;
+  font-weight: 600;
+  font-size: 1.02rem;
+}
+
+.decks-button {
+  margin-bottom: var(--space-4);
 }

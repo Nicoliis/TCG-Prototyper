@@ -1,0 +1,24 @@
+<template id="deck-list-view">
+  <section class="view deck-list-view">
+    <button type="button" class="back-button">&larr; Card types</button>
+    <h2 class="project-name-heading"></h2>
+    <h3>Decks</h3>
+
+    <form class="create-deck-form">
+      <input type="text" name="deckName" placeholder="New deck name" required>
+      <button type="submit">Create deck</button>
+    </form>
+    <p class="field-error" hidden></p>
+
+    <ul class="deck-list"></ul>
+
+    <template class="deck-list-item-template">
+      <li class="deck-list-item">
+        <button type="button" class="deck-open-button" hidden></button>
+        <span class="deck-name"></span>
+        <button type="button" class="deck-rename-button">Rename</button>
+        <button type="button" class="deck-delete-button">Delete</button>
+      </li>
+    </template>
+  </section>
+</template>

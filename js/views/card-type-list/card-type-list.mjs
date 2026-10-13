@@ -1,13 +1,14 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=11";
-import { mountCardTypeEditor } from "../card-type-editor/card-type-editor.mjs?v=11";
-import { mountCardTable } from "../card-table/card-table.mjs?v=11";
-import { mountCsvImport } from "../csv-import/csv-import.mjs?v=11";
-import { createCardType } from "../../models/card-type.mjs?v=11";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=12";
+import { mountCardTypeEditor } from "../card-type-editor/card-type-editor.mjs?v=12";
+import { mountCardTable } from "../card-table/card-table.mjs?v=12";
+import { mountDeckList } from "../deck-list/deck-list.mjs?v=12";
+import { mountCsvImport } from "../csv-import/csv-import.mjs?v=12";
+import { createCardType } from "../../models/card-type.mjs?v=12";
 
 let templatePromise;
 
 export async function mountCardTypeList(root, storage, projectId, onBack) {
-  const template = await (templatePromise ??= loadFragment("js/views/card-type-list/card-type-list.html?v=11"));
+  const template = await (templatePromise ??= loadFragment("js/views/card-type-list/card-type-list.html?v=12"));
   const view = cloneTemplate(template);
   const section = view.querySelector(".card-type-list-view");
 
@@ -18,6 +19,9 @@ export async function mountCardTypeList(root, storage, projectId, onBack) {
   const itemTemplate = section.querySelector(".card-type-list-item-template");
 
   section.querySelector(".back-button").addEventListener("click", onBack);
+  section.querySelector(".decks-button").addEventListener("click", () => {
+    mountDeckList(root, storage, projectId, backToList);
+  });
 
   function showError(message) {
     errorEl.textContent = message;
