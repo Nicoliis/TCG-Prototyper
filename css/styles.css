@@ -107,14 +107,6 @@ button:focus-visible {
   outline-offset: 1px;
 }
 
-.create-card-type-form input[type="number"] {
-  width: 100px;
-}
-
-.field-grid input {
-  width: 100px;
-}
-
 button {
   font: inherit;
   cursor: pointer;
@@ -494,4 +486,12 @@ img.element-content {
 
 .dimensions-form input {
   width: 5rem;
+}
+
+.create-card-type-form input[type="number"] {
+  width: 100px;
+}
+
+.field-grid input {
+  width: 100px;
 }
