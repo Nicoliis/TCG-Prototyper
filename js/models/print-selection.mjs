@@ -1,4 +1,4 @@
-import { findCard } from "./deck.mjs?v=16";
+import { findCard } from "./deck.mjs?v=17";
 
 export function selectionFromDeck(deck) {
   return { entries: deck.entries.map((entry) => ({ cardId: entry.cardId, count: entry.count })) };

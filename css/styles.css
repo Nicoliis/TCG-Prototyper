@@ -722,7 +722,8 @@ img.element-content {
   border-radius: var(--radius-md);
 }
 
-.decks-button {
+.decks-button,
+.print-button-open {
   margin-bottom: var(--space-4);
 }
 
@@ -774,4 +775,105 @@ img.element-content {
 
 .available-text-filter {
   flex: 1;
+}
+
+.print-screen-view {
+  max-width: none;
+}
+
+.print-layout {
+  display: grid;
+  grid-template-columns: minmax(18rem, 24rem) 1fr;
+  gap: var(--space-5);
+  align-items: start;
+}
+
+.print-preview {
+  --preview-scale: 0.6;
+  zoom: var(--preview-scale);
+  overflow: auto;
+}
+
+.print-page {
+  position: relative;
+  margin: 0 0 var(--space-5);
+  background: #fff;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.print-card {
+  position: absolute;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 0 0 1px var(--color-border);
+}
+
+.print-card-content {
+  position: relative;
+  transform-origin: top left;
+}
+
+.print-card .layout-element {
+  border: none;
+  border-radius: 0;
+  background: none;
+}
+
+.print-totals {
+  color: var(--color-muted);
+}
+
+.selection-empty {
+  color: var(--color-muted);
+}
+
+@media print {
+  .app-header,
+  .back-button,
+  .print-heading,
+  .print-controls {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  main {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .print-layout {
+    display: block;
+  }
+
+  .print-preview {
+    zoom: 1;
+    overflow: visible;
+  }
+
+  .print-page {
+    margin: 0;
+    box-shadow: none;
+    break-after: page;
+    page-break-after: always;
+  }
+
+  .print-page:last-child {
+    break-after: auto;
+    page-break-after: auto;
+  }
+
+  .print-card {
+    box-shadow: none;
+  }
+
+  .print-page,
+  .print-card {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
 }

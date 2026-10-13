@@ -1,0 +1,41 @@
+<template id="print-screen-view">
+  <section class="view print-screen-view">
+    <style class="page-size-style"></style>
+    <button type="button" class="back-button">&larr; Card types</button>
+    <h2 class="print-heading"></h2>
+
+    <div class="print-layout">
+      <div class="print-controls">
+        <h3>Available cards</h3>
+        <p class="available-cards-empty" hidden></p>
+        <ul class="available-card-list"></ul>
+
+        <h3>To print</h3>
+        <p class="selection-empty" hidden>Pick cards first.</p>
+        <ul class="selection-list"></ul>
+        <p class="print-totals"></p>
+        <p class="field-error" hidden></p>
+        <button type="button" class="print-button">Print</button>
+      </div>
+
+      <div class="print-preview">
+        <div class="print-pages"></div>
+      </div>
+    </div>
+
+    <template class="available-card-template">
+      <li class="available-card">
+        <span class="available-card-summary"></span>
+        <button type="button" class="available-card-add-button">Add</button>
+      </li>
+    </template>
+
+    <template class="selection-entry-template">
+      <li class="deck-entry">
+        <span class="deck-entry-summary"></span>
+        <input type="number" class="deck-entry-count" min="0" step="1" aria-label="Copies">
+        <button type="button" class="deck-entry-remove-button">Remove</button>
+      </li>
+    </template>
+  </section>
+</template>

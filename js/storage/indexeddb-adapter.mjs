@@ -1,7 +1,7 @@
-import { StorageAdapter } from "./storage-adapter.mjs?v=16";
-import { createProject, validateProjectName, cloneProjectForDuplicate } from "../models/project.mjs?v=16";
-import { validateCardTypeName } from "../models/card-type.mjs?v=16";
-import { upsertDeck, removeDeck, pruneDecks } from "../models/deck.mjs?v=16";
+import { StorageAdapter } from "./storage-adapter.mjs?v=17";
+import { createProject, validateProjectName, cloneProjectForDuplicate } from "../models/project.mjs?v=17";
+import { validateCardTypeName } from "../models/card-type.mjs?v=17";
+import { upsertDeck, removeDeck, pruneDecks } from "../models/deck.mjs?v=17";
 
 const DB_VERSION = 1;
 const STORE_NAME = "projects";

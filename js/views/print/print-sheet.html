@@ -1,0 +1,34 @@
+<template id="print-sheet-view">
+  <div class="print-sheet-templates">
+    <template class="print-page-template">
+      <section class="print-page"></section>
+    </template>
+
+    <template class="print-card-template">
+      <div class="print-card">
+        <div class="print-card-content"></div>
+      </div>
+    </template>
+
+    <template class="print-element-template" data-kind="text">
+      <div class="layout-element layout-element--text">
+        <div class="element-content"></div>
+      </div>
+    </template>
+    <template class="print-element-template" data-kind="image">
+      <div class="layout-element layout-element--image">
+        <img class="element-content" alt="">
+      </div>
+    </template>
+    <template class="print-element-template" data-kind="label">
+      <div class="layout-element layout-element--label">
+        <div class="element-content"></div>
+      </div>
+    </template>
+    <template class="print-element-template" data-kind="icon">
+      <div class="layout-element layout-element--icon">
+        <img class="element-content" alt="">
+      </div>
+    </template>
+  </div>
+</template>
