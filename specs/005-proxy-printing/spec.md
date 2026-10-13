@@ -11,6 +11,17 @@ TODO-Features.md: card proxy printing — print cards on demand (choosing
 manually one by one), or create a big proxy print for an entire deck.
 Depends on: Slice 1 (card rendering), Slice 3 (cards), Slice 4 (decks)."
 
+## Clarifications
+
+### Session 2026-10-13
+
+- Q: At what physical size should a card print? → A: True size, 96 px = 1
+  inch, so a card type's size in the editor is its printed size (240x336
+  px prints as 2.5x3.5 in); no separate printed-size setting.
+- Q: Which paper sizes are offered? → A: A4 and US Letter only (default
+  follows the browser locale, otherwise A4); other sizes are reached via the
+  browser's own print dialog (FR-007).
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Print cards I pick one by one (Priority: P1)
@@ -190,11 +201,11 @@ placement change accordingly.
   (including saving as a document file, if they prefer).
 - The print screen is reached from a project's screens, alongside card
   types and decks.
-- Cards are printed at a physical size derived from their card type's
-  dimensions; how those on-screen dimensions map to real paper size is a
-  decision for clarification.
-- Paper size choices are limited to a short list of common sizes; a
-  sensible default is preselected.
+- Cards print at true size derived from their card type's dimensions at
+  96 pixels per inch (see Clarifications), so card types sized in the
+  editor print at that exact physical size.
+- Paper size choices are A4 and US Letter (see Clarifications), with a
+  default preselected.
 - Cut guides are simple marks around each card, off by default.
 - Only the front of each card is printed; card backs are out of scope.
 - The print selection is temporary: it is not saved between visits, only
