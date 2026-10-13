@@ -635,3 +635,56 @@ img.element-content {
 .create-card-type-form input[type="number"] {
   width: 100px;
 }
+
+.card-table-view,
+.csv-import-view {
+  max-width: 100%;
+}
+
+.csv-import-view {
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.card-table-scroll {
+  overflow-x: auto;
+  margin-top: var(--space-4);
+}
+
+.card-table {
+  border-collapse: collapse;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.card-table th,
+.card-table td {
+  padding: var(--space-1) var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+}
+
+.card-table-header {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.card-cell-input {
+  width: 100%;
+  min-width: 8rem;
+}
+
+.delete-card-button {
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+}
+
+.delete-card-button:hover {
+  background: var(--color-danger);
+  color: #fff;
+}
+
+.card-table-empty {
+  color: var(--color-muted);
+}

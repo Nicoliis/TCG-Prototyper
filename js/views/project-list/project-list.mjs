@@ -1,10 +1,10 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=7";
-import { mountCardTypeList } from "../card-type-list/card-type-list.mjs?v=7";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=8";
+import { mountCardTypeList } from "../card-type-list/card-type-list.mjs?v=8";
 
 let templatePromise;
 
 export async function mountProjectList(root, storage) {
-  const template = await (templatePromise ??= loadFragment("js/views/project-list/project-list.html?v=7"));
+  const template = await (templatePromise ??= loadFragment("js/views/project-list/project-list.html?v=8"));
   const view = cloneTemplate(template);
   const section = view.querySelector(".project-list-view");
 

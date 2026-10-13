@@ -1,0 +1,36 @@
+<template id="card-table-view">
+  <section class="view card-table-view">
+    <button type="button" class="back-button">&larr; Card types</button>
+    <h2 class="card-type-name-heading"></h2>
+
+    <button type="button" class="add-card-button">Add card</button>
+    <p class="card-table-empty" hidden></p>
+
+    <div class="card-table-scroll">
+      <table class="card-table">
+        <thead>
+          <tr class="card-table-header-row">
+            <th class="card-table-actions-header"></th>
+          </tr>
+        </thead>
+        <tbody class="card-table-body"></tbody>
+      </table>
+    </div>
+
+    <template class="card-table-header-template">
+      <th class="card-table-header"></th>
+    </template>
+
+    <template class="card-table-row-template">
+      <tr class="card-table-row">
+        <td class="card-table-actions">
+          <button type="button" class="delete-card-button">Delete</button>
+        </td>
+      </tr>
+    </template>
+
+    <template class="card-table-cell-template">
+      <td class="card-table-cell"><input type="text" class="card-cell-input"></td>
+    </template>
+  </section>
+</template>
