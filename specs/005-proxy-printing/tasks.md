@@ -107,7 +107,7 @@ description: "Task list for Proxy Printing"
 
 ## Phase 6: Polish & Cross-Cutting Concerns
 
-- [ ] T024 Confirm every commit that touched served scripts bumped `?v=` consistently (grep `index.html` and `js/` for mixed versions)
+- [X] T024 Confirm every commit that touched served scripts bumped `?v=` consistently (grep `index.html` and `js/` for mixed versions)
 - [ ] T025 Run `node --test tests/unit` and the whole quickstart.md (including a real print or save-as-PDF at 100% scale and a ruler check of a 240x336 card) once Node/browser are available; confirm Slices 1–4 did not regress
 - [ ] T026 Update `FEATURE-SLICES.md`: mark Slice 5 `[x]` after validation
 
