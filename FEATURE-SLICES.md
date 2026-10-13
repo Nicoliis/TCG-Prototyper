@@ -28,7 +28,7 @@ Status legend: `[ ]` not started, `[~]` in progress, `[x]` done.
   - Column -> property mapping; undefined properties left empty.
   - Depends on: Slice 1 (needs card properties to map to).
 
-- [ ] **4. Deckbuilding**
+- [X] **4. Deckbuilding**
   - Named decks; sort cards into N decks.
   - Depends on: Slice 1.
 
