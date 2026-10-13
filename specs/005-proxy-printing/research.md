@@ -27,7 +27,7 @@ No `NEEDS CLARIFICATION` items remain. Decisions:
 ## 5. Layout / packing algorithm
 
 - **Decision**: Row ("shelf") packing in reading order, one pure function `layoutSheets(items, settings)`: place left to right; wrap when the next card doesn't fit in the row width; start a new page when the next row doesn't fit in the page height. Each card is scaled down (never up) by `min(1, contentW/w, contentH/h)` when larger than the content area; the result reports how many were scaled.
-- **Rationale**: Mixed card sizes are supported without overlap; for same-size cards it degenerates to a simple grid (9 per page for 2.5x3.5 in on Letter/A4 with 0.1 in spacing). Optimal bin packing is unnecessary.
+- **Rationale**: Mixed card sizes are supported without overlap; for same-size cards it degenerates to a simple grid (2.5x3.5 in cards with 0.1 in spacing: 9 per page on A4, 6 on Letter, because Letter is 11 in tall and three 3.5 in rows plus margins and gaps need more; 9 per page on Letter at spacing 0). Optimal bin packing is unnecessary.
 - **Alternatives**: Fixed grid by largest card (wastes paper with mixed sizes); first-fit-decreasing (reorders cards, confusing for the user).
 
 ## 6. Rendering a card read-only
