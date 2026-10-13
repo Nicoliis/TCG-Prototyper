@@ -8,6 +8,10 @@
     </form>
     <p class="field-error" hidden></p>
 
+    <button type="button" class="import-project-button">Import project</button>
+    <input type="file" class="import-project-input" accept=".json,application/json" hidden>
+    <p class="import-status" hidden></p>
+
     <ul class="project-list"></ul>
 
     <template class="project-list-item-template">
@@ -15,6 +19,7 @@
         <button type="button" class="project-open-button"></button>
         <button type="button" class="project-rename-button">Rename</button>
         <button type="button" class="project-duplicate-button">Duplicate</button>
+        <button type="button" class="project-export-button">Export</button>
         <button type="button" class="project-delete-button">Delete</button>
       </li>
     </template>

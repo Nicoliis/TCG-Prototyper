@@ -1,10 +1,12 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=22";
-import { mountCardTypeList } from "../card-type-list/card-type-list.mjs?v=22";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=23";
+import { mountCardTypeList } from "../card-type-list/card-type-list.mjs?v=23";
+import { buildExportEnvelope, exportFileName, validateExportEnvelope } from "../../models/project-export.mjs?v=23";
+import { downloadTextFile } from "./download-file.mjs?v=23";
 
 let templatePromise;
 
 export async function mountProjectList(root, storage) {
-  const template = await (templatePromise ??= loadFragment("js/views/project-list/project-list.html?v=22"));
+  const template = await (templatePromise ??= loadFragment("js/views/project-list/project-list.html?v=23"));
   const view = cloneTemplate(template);
   const section = view.querySelector(".project-list-view");
 
@@ -47,6 +49,12 @@ export async function mountProjectList(root, storage) {
       item.querySelector(".project-duplicate-button").addEventListener("click", async () => {
         await storage.duplicateProject(project.id);
         await refresh();
+      });
+
+      item.querySelector(".project-export-button").addEventListener("click", async () => {
+        const fullProject = await storage.getProject(project.id);
+        const envelope = buildExportEnvelope(fullProject);
+        downloadTextFile(exportFileName(fullProject.name), JSON.stringify(envelope, null, 2));
       });
 
       item.querySelector(".project-delete-button").addEventListener("click", async () => {

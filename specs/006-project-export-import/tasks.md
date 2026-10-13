@@ -63,10 +63,10 @@ description: "Task list for Project Export & Import"
 
 ### Implementation for User Story 1
 
-- [ ] T009 [US1] Add a `.project-export-button` (labelled "Export") to the `.project-list-item-template` in `js/views/project-list/project-list.html`, next to the existing Rename/Duplicate/Delete buttons
-- [ ] T010 [US1] Create `js/views/project-list/download-file.mjs` exporting `downloadTextFile(fileName, text)`: build a `Blob([text], { type: "application/json" })`, object URL via `URL.createObjectURL`, assign to a detached `<a>`'s `href`/`download`, call `.click()`, then `URL.revokeObjectURL` on the next tick. **New file only: no `?v=` bump.**
-- [ ] T011 [US1] Wire the export button in `js/views/project-list/project-list.mjs`: inside the per-item click handler (nested in `for (const project of projects)`), do **not** redeclare `project` — a `const project = ...` there would shadow the loop's `project` for the whole function body and throw a TDZ `ReferenceError` on `project.id`. Instead: `const fullProject = await storage.getProject(project.id)`, `const envelope = buildExportEnvelope(fullProject)`, `downloadTextFile(exportFileName(fullProject.name), JSON.stringify(envelope, null, 2))` (import `buildExportEnvelope`/`exportFileName` from `../../models/project-export.mjs?v=22` and `downloadTextFile` from `./download-file.mjs?v=22`) (depends on T002, T009, T010). **Commit with a `?v=` bump.**
-- [ ] T012 [US1] Manual validation: run quickstart.md section 2 and fix issues
+- [X] T009 [US1] Add a `.project-export-button` (labelled "Export") to the `.project-list-item-template` in `js/views/project-list/project-list.html`, next to the existing Rename/Duplicate/Delete buttons
+- [X] T010 [US1] Create `js/views/project-list/download-file.mjs` exporting `downloadTextFile(fileName, text)`: build a `Blob([text], { type: "application/json" })`, object URL via `URL.createObjectURL`, assign to a detached `<a>`'s `href`/`download`, call `.click()`, then `URL.revokeObjectURL` on the next tick. **New file only: no `?v=` bump.**
+- [X] T011 [US1] Wire the export button in `js/views/project-list/project-list.mjs`: inside the per-item click handler (nested in `for (const project of projects)`), do **not** redeclare `project` — a `const project = ...` there would shadow the loop's `project` for the whole function body and throw a TDZ `ReferenceError` on `project.id`. Instead: `const fullProject = await storage.getProject(project.id)`, `const envelope = buildExportEnvelope(fullProject)`, `downloadTextFile(exportFileName(fullProject.name), JSON.stringify(envelope, null, 2))` (import `buildExportEnvelope`/`exportFileName` from `../../models/project-export.mjs?v=22` and `downloadTextFile` from `./download-file.mjs?v=22`) (depends on T002, T009, T010). **Commit with a `?v=` bump.**
+- [X] T012 [US1] Manual validation: run quickstart.md section 2 and fix issues
 
 **Checkpoint**: Any project can be exported to a readable JSON file. MVP (export half).
 
@@ -80,7 +80,7 @@ description: "Task list for Project Export & Import"
 
 ### Implementation for User Story 2
 
-- [ ] T013 [US2] Add to `js/views/project-list/project-list.html`: an `.import-project-button` ("Import project") and a hidden `<input type="file" class="import-project-input" accept=".json,application/json" hidden>`, both above the `.project-list`
+- [X] T013 [US2] Add to `js/views/project-list/project-list.html`: an `.import-project-button` ("Import project") and a hidden `<input type="file" class="import-project-input" accept=".json,application/json" hidden>`, both above the `.project-list`
 - [ ] T014 [US2] Wire import in `js/views/project-list/project-list.mjs`: clicking `.import-project-button` triggers a click on the hidden file input; on the input's `change` event, read `input.files[0]` (return early if none — a cancelled picker), `await file.text()`, `JSON.parse` wrapped in try/catch (a `SyntaxError` is surfaced through the same `showError` as a validation failure), `validateExportEnvelope(parsed)`, then `const created = await storage.importProject(parsed)` (capture the return value — Phase 5/T017 reads `created.name`), then `await refresh()`; reset `input.value = ""` afterward so re-selecting the same file re-fires `change`; any thrown error (parse failure, validation failure, or an adapter error) goes through the existing `showError` (import `validateExportEnvelope` from `../../models/project-export.mjs?v=22`) (depends on T002, T004, T013). **Commit with a `?v=` bump.**
 - [ ] T015 [US2] Manual validation: run quickstart.md section 3 and fix issues
 
@@ -96,7 +96,7 @@ description: "Task list for Project Export & Import"
 
 ### Implementation for User Story 3
 
-- [ ] T016 [US3] Add an `.import-status` paragraph (hidden by default, styled like the existing `.field-error` but not an error) to `js/views/project-list/project-list.html`, placed near the import button
+- [X] T016 [US3] Add an `.import-status` paragraph (hidden by default, styled like the existing `.field-error` but not an error) to `js/views/project-list/project-list.html`, placed near the import button
 - [ ] T017 [US3] Update `js/views/project-list/project-list.mjs`'s import handler: on a successful `storage.importProject`, set `.import-status` to `` Imported "${created.name}". `` and clear it the next time an import starts or fails (depends on T014). **Commit with a `?v=` bump.**
 - [ ] T018 [US3] Manual validation: run quickstart.md section 4 and fix issues
 
