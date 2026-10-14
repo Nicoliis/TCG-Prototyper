@@ -1084,3 +1084,15 @@ main:has(.print-screen-view) {
 .card-editor-field .typed-input {
   width: 100%;
 }
+
+.fmt-bold {
+  font-weight: bold;
+}
+
+.fmt-italic {
+  font-style: italic;
+}
+
+.fmt-underline {
+  text-decoration: underline;
+}
