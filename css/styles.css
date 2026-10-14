@@ -1105,3 +1105,7 @@ main:has(.print-screen-view) {
 .prop-hint[hidden] {
   display: none;
 }
+
+.formatted-flow {
+  min-width: 0;
+}
