@@ -1096,3 +1096,12 @@ main:has(.print-screen-view) {
 .fmt-underline {
   text-decoration: underline;
 }
+
+.prop-hint {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+.prop-hint[hidden] {
+  display: none;
+}

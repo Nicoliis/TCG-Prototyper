@@ -8,6 +8,7 @@ import {
   getElementName,
 } from "../../models/card-type.mjs?v=27";
 import { substitute } from "../../templating/substitute.mjs?v=27";
+import { renderFormatted } from "./formatted-text.mjs?v=27";
 import { setUpTabs, activeTab, selectTab, setUpSegmented, setSegmentedValue } from "./tabs.mjs?v=27";
 
 const CONTENT_FIELD_BY_KIND = {
@@ -32,6 +33,7 @@ export async function mountElementPropertiesPanel(container) {
   const fields = panel.querySelector(".element-properties-fields");
   const contentLabel = panel.querySelector(".content-field-label");
   const previewValue = panel.querySelector(".content-preview-value");
+  const formatHint = panel.querySelector(".content-format-hint");
   const textTabButton = panel.querySelector('.tab-button[data-tab="text"]');
 
   let currentElement = null;
@@ -56,7 +58,8 @@ export async function mountElementPropertiesPanel(container) {
     const sampleValues = currentCallbacks.getSampleValues();
     const resolved =
       currentElement.kind === "text" || currentElement.kind === "image" ? substitute(raw, sampleValues) : raw;
-    previewValue.textContent = resolved || "(empty)";
+    if (TEXT_KINDS.includes(currentElement.kind) && resolved) renderFormatted(previewValue, resolved);
+    else previewValue.textContent = resolved || "(empty)";
   }
 
   function updateStyleGroupVisibility() {
@@ -101,6 +104,7 @@ export async function mountElementPropertiesPanel(container) {
 
     const { label, placeholder } = CONTENT_FIELD_BY_KIND[element.kind];
     contentLabel.textContent = label;
+    formatHint.hidden = !isTextKind;
     fields.content.placeholder = placeholder;
 
     fields.name.value = getElementName(element);
