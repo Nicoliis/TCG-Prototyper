@@ -1,6 +1,7 @@
 import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=26";
 import { parseCsv } from "../../csv/parse-csv.mjs?v=26";
 import { importCards } from "../../csv/import-cards.mjs?v=26";
+import { getSchema } from "../../models/card-numbering.mjs?v=26";
 
 let templatePromise;
 
@@ -25,6 +26,7 @@ export async function mountCsvImport(root, storage, projectId, cardTypeId, onBac
   const counts = section.querySelector(".import-counts");
   const ignoredColumns = section.querySelector(".import-ignored-columns");
   const unfilledProperties = section.querySelector(".import-unfilled-properties");
+  const invalidValuesEl = section.querySelector(".import-invalid-values");
 
   section.querySelector(".back-button").addEventListener("click", onBack);
   section.querySelector(".open-card-table-button").addEventListener("click", onOpenTable);
@@ -34,11 +36,14 @@ export async function mountCsvImport(root, storage, projectId, cardTypeId, onBac
     errorEl.hidden = !message;
   }
 
-  function showReport({ created, updated, ignoredColumns: ignored, unfilledProperties: unfilled }) {
+  function showReport({ created, updated, ignoredColumns: ignored, unfilledProperties: unfilled, invalidValues }) {
     emptyMessage.hidden = created + updated > 0;
     counts.textContent = `${created} created, ${updated} updated.`;
     ignoredColumns.textContent = listOrNone(ignored);
     unfilledProperties.textContent = listOrNone(unfilled);
+    invalidValuesEl.textContent = listOrNone(
+      invalidValues.map((v) => `row ${v.row} ${v.property} "${v.value}"`),
+    );
     reportEl.hidden = false;
   }
 
@@ -52,7 +57,7 @@ export async function mountCsvImport(root, storage, projectId, cardTypeId, onBac
   const project = await storage.getProject(projectId);
   const cardType = project.cardTypes.find((ct) => ct.id === cardTypeId);
   heading.textContent = `Import CSV into ${cardType.name}`;
-  for (const property of cardType.properties) {
+  for (const property of getSchema(cardType)) {
     const option = optionTemplate.content.cloneNode(true);
     const optionEl = option.querySelector("option");
     optionEl.value = property.id;

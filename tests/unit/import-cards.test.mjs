@@ -110,3 +110,29 @@ test("no matching columns still creates blank cards and ignores every column", (
   assert.deepEqual(cards[0].values, {});
   assert.deepEqual(report.ignoredColumns, ["x", "y"]);
 });
+
+import { ID_PROPERTY } from "../../js/models/card-numbering.mjs";
+
+test("ID as key updates the card with that number and numbers new cards automatically", () => {
+  const { type, name } = setup();
+  const first = addCard(type, { [name.id]: "Goblin" });
+  const { cards, report } = importCards(
+    type,
+    [["ID", "name"], ["1", "Goblin King"], ["99", "Orc"]],
+    ID_PROPERTY.id,
+  );
+  assert.equal(cards.length, 2);
+  assert.equal(getCardValue(cards[0], name.id), "Goblin King");
+  assert.equal(cards[0].id, first.id);
+  assert.equal(cards[1].number, 2);
+  assert.deepEqual([report.created, report.updated], [1, 1]);
+  assert.deepEqual(report.ignoredColumns, []);
+});
+
+test("invalid values for numeric properties are reported but still imported", () => {
+  const { type, name, atk } = setup();
+  atk.type = "integer";
+  const { cards, report } = importCards(type, [["name", "atk"], ["Goblin", "x"]], name.id);
+  assert.equal(getCardValue(cards[0], atk.id), "x");
+  assert.deepEqual(report.invalidValues, [{ row: 1, property: "atk", value: "x" }]);
+});
