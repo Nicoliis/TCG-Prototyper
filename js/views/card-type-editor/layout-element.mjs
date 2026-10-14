@@ -1,6 +1,7 @@
 import { substitute } from "../../templating/substitute.mjs?v=27";
 import { getElementStyle } from "../../models/card-type.mjs?v=27";
 import { applyTextFit } from "./text-fit.mjs?v=27";
+import { renderFormatted } from "./formatted-text.mjs?v=27";
 
 const MIN_SIZE = 10;
 const BROKEN_IMAGE_PLACEHOLDER =
@@ -36,9 +37,9 @@ export function renderElement(canvas, element, templatesByKind, callbacks) {
 export function renderPreview(node, element, sampleValues) {
   const content = node.querySelector(".element-content");
   if (element.kind === "text") {
-    content.textContent = substitute(element.template, sampleValues);
+    renderFormatted(content, substitute(element.template, sampleValues));
   } else if (element.kind === "label") {
-    content.textContent = element.text;
+    renderFormatted(content, element.text);
   } else if (element.kind === "image") {
     setImageSrc(content, substitute(element.template, sampleValues));
   } else if (element.kind === "icon") {
