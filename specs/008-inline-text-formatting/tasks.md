@@ -35,9 +35,9 @@
 
 **Independent Test**: Quickstart steps 1 and 3.
 
-- [ ] T004 [US1] Create `js/views/card-type-editor/formatted-text.mjs` exporting `renderFormatted(container, text)`: replace the container's children with text nodes and `span.fmt-bold` / `span.fmt-italic` / `span.fmt-underline` runs built from `parseFormatted` (text nodes only, never `innerHTML`)
-- [ ] T005 [P] [US1] Add `.fmt-bold`, `.fmt-italic`, `.fmt-underline` rules to `css/styles.css`
-- [ ] T006 [US1] In `js/views/card-type-editor/layout-element.mjs` make `renderPreview` call `renderFormatted` for label elements (`element.text`) and text elements (`substitute(element.template, values)`); leave image and icon branches untouched
+- [x] T004 [US1] Create `js/views/card-type-editor/formatted-text.mjs` exporting `renderFormatted(container, text)`: replace the container's children with text nodes and `span.fmt-bold` / `span.fmt-italic` / `span.fmt-underline` runs built from `parseFormatted` (text nodes only, never `innerHTML`)
+- [x] T005 [P] [US1] Add `.fmt-bold`, `.fmt-italic`, `.fmt-underline` rules to `css/styles.css`
+- [x] T006 [US1] In `js/views/card-type-editor/layout-element.mjs` make `renderPreview` call `renderFormatted` for label elements (`element.text`) and text elements (`substitute(element.template, values)`); leave image and icon branches untouched
 
 **Checkpoint**: Labels and text elements show formatting in the editor, Edit card and print (single shared render path).
 
@@ -49,9 +49,9 @@
 
 **Independent Test**: Quickstart steps 2, 6, 7 and 10.
 
-- [ ] T007 [US2] Verify end to end (headless browser smoke test, as for feature 007) that a template `**ATK** {atk}` and a card value `**Flying** creatures gain *+1*` render formatted live in the card type editor preview, Edit card and print output, while the Edit card input, card table cell and stored value keep the raw markers, and that image and icon elements (including a template like `https://x/**a**.png`) are not formatted; fix any path that bypasses `renderPreview`
-- [ ] T008 [P] [US2] Add unit tests proving CSV import and project export/import keep marker text unchanged by extending `tests/unit/import-cards.test.mjs` and `tests/unit/project-export.test.mjs`
-- [ ] T009 [US2] Add a one-line hint (`**bold**  *italic*  __underline__`) beside the template and label text fields in `js/views/card-type-editor/element-properties-panel.html`
+- [x] T007 [US2] Verify end to end (headless browser smoke test, as for feature 007) that a template `**ATK** {atk}` and a card value `**Flying** creatures gain *+1*` render formatted live in the card type editor preview, Edit card and print output, while the Edit card input, card table cell and stored value keep the raw markers, and that image and icon elements (including a template like `https://x/**a**.png`) are not formatted; fix any path that bypasses `renderPreview`
+- [x] T008 [P] [US2] Add unit tests proving CSV import and project export/import keep marker text unchanged by extending `tests/unit/import-cards.test.mjs` and `tests/unit/project-export.test.mjs`
+- [x] T009 [US2] Add a one-line hint (`**bold**  *italic*  __underline__`) beside the template and label text fields in `js/views/card-type-editor/element-properties-panel.html`
 
 **Checkpoint**: Both static and per-card formatting work and no stored data changes.
 
@@ -63,8 +63,8 @@
 
 **Independent Test**: Quickstart steps 5 and 9.
 
-- [ ] T010 [US3] Verify in the browser that `2 * 3 * 4`, `**unfinished`, `\*literal\*`, `_x_`, `****`, `__ __` and `<b>x</b>` display as the contract specifies in the preview and Edit card; fix parser or renderer if any case differs
-- [ ] T011 [US3] Verify text-fit (shrink, squash, wrap) still fits formatted text and that texts without markers look identical to before (quickstart steps 8 and 9); fix `js/views/card-type-editor/text-fit.mjs` interaction only if it regressed
+- [x] T010 [US3] Verify in the browser that `2 * 3 * 4`, `**unfinished`, `\*literal\*`, `_x_`, `****`, `__ __` and `<b>x</b>` display as the contract specifies in the preview and Edit card; fix parser or renderer if any case differs
+- [x] T011 [US3] Verify text-fit (shrink, squash, wrap) still fits formatted text and that texts without markers look identical to before (quickstart steps 8 and 9); fix `js/views/card-type-editor/text-fit.mjs` interaction only if it regressed
 
 ---
 
