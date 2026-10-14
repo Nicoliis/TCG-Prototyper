@@ -1,6 +1,7 @@
 import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=26";
 import { mountCardTypeEditor } from "../card-type-editor/card-type-editor.mjs?v=26";
 import { mountCardTable } from "../card-table/card-table.mjs?v=26";
+import { mountCardEditor } from "../card-editor/card-editor.mjs?v=26";
 import { mountDeckList } from "../deck-list/deck-list.mjs?v=26";
 import { mountPrintScreen } from "../print/print-screen.mjs?v=26";
 import { mountCsvImport } from "../csv-import/csv-import.mjs?v=26";
@@ -43,7 +44,13 @@ export async function mountCardTypeList(root, storage, projectId, onBack) {
   }
 
   function openCardTable(cardTypeId) {
-    mountCardTable(root, storage, projectId, cardTypeId, backToList);
+    mountCardTable(root, storage, projectId, cardTypeId, backToList, (cardNumber) =>
+      openCardEditor(cardTypeId, cardNumber, () => openCardTable(cardTypeId)),
+    );
+  }
+
+  function openCardEditor(cardTypeId, cardNumber, onBackFromEditor = backToList) {
+    mountCardEditor(root, storage, projectId, cardTypeId, cardNumber, onBackFromEditor);
   }
 
   function openCsvImport(cardTypeId) {
@@ -60,6 +67,7 @@ export async function mountCardTypeList(root, storage, projectId, onBack) {
       openButton.textContent = `${cardType.name} (${cardType.width}x${cardType.height})`;
       openButton.addEventListener("click", () => openCardType(cardType.id));
       item.querySelector(".card-type-cards-button").addEventListener("click", () => openCardTable(cardType.id));
+      item.querySelector(".card-type-edit-cards-button").addEventListener("click", () => openCardEditor(cardType.id));
       item.querySelector(".card-type-import-button").addEventListener("click", () => openCsvImport(cardType.id));
       list.appendChild(item);
     }

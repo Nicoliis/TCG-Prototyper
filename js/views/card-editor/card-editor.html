@@ -1,0 +1,58 @@
+<template id="card-editor-view">
+  <section class="view card-editor-view">
+    <button type="button" class="back-button">&larr; Card types</button>
+    <h2 class="card-type-name-heading"></h2>
+
+    <div class="card-editor-nav">
+      <button type="button" class="prev-card-button">Previous</button>
+      <button type="button" class="next-card-button">Next</button>
+      <span class="card-position"></span>
+      <form class="go-to-form">
+        <label>Go to ID <input type="text" inputmode="numeric" name="cardId" class="go-to-id-input" size="5"></label>
+        <button type="submit">Go</button>
+      </form>
+      <button type="button" class="add-card-button">Add card</button>
+      <button type="button" class="delete-card-button">Delete card</button>
+    </div>
+    <p class="go-to-error field-error" hidden></p>
+
+    <div class="card-editor-empty" hidden>
+      <p>No cards yet.</p>
+      <button type="button" class="add-first-card-button">Add first card</button>
+    </div>
+
+    <div class="card-editor-body">
+      <div class="card-editor-card-wrapper">
+        <div class="card-editor-card"></div>
+      </div>
+      <div class="card-editor-fields">
+        <div class="card-editor-field">
+          <span class="card-editor-field-name">ID</span>
+          <output class="card-id-output"></output>
+        </div>
+        <div class="card-editor-field-list"></div>
+        <p class="value-error field-error" hidden></p>
+      </div>
+    </div>
+
+    <template class="card-editor-field-template">
+      <label class="card-editor-field">
+        <span class="card-editor-field-name"></span>
+        <span class="card-editor-field-input"></span>
+      </label>
+    </template>
+
+    <template class="card-editor-element-template" data-kind="text">
+      <div class="layout-element layout-element--text"><div class="element-content"></div></div>
+    </template>
+    <template class="card-editor-element-template" data-kind="image">
+      <div class="layout-element layout-element--image"><img class="element-content" alt=""></div>
+    </template>
+    <template class="card-editor-element-template" data-kind="label">
+      <div class="layout-element layout-element--label"><div class="element-content"></div></div>
+    </template>
+    <template class="card-editor-element-template" data-kind="icon">
+      <div class="layout-element layout-element--icon"><img class="element-content" alt=""></div>
+    </template>
+  </section>
+</template>
