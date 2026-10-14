@@ -14,7 +14,7 @@
 
 ## Phase 1: Setup
 
-- [ ] T001 Confirm baseline: run the unit tests (headless Edge shim runner) and note all pass before changes
+- [x] T001 Confirm baseline: run the unit tests (headless Edge shim runner) and note all pass before changes
 
 ---
 
@@ -22,8 +22,8 @@
 
 **Purpose**: The pure parser that every story depends on.
 
-- [ ] T002 Create `js/templating/format-text.mjs` exporting `parseFormatted(text)` per `contracts/format-contract.md`: markers `**`, `*`, `__`; opener needs a following non-space, closer a preceding non-space; works mid-word and across line breaks; asterisk runs of 1/2/3 map to italic/bold/bold+italic; backslash before `*` or `_` yields the literal character; unmatched, empty, space-adjacent and longer runs stay literal; adjacent same-style segments are coalesced; never throws
-- [ ] T003 Create `tests/unit/format-text.test.mjs` covering every row of the contract table plus: empty string returns `[]`, unformatted text returns one plain segment, HTML-like input such as `<b>x</b>` and `&amp;` stays literal text, concatenated segment text equals input minus consumed markers and escape backslashes, `_x_` stays literal, mismatched nesting leaves the inner opener literal
+- [x] T002 Create `js/templating/format-text.mjs` exporting `parseFormatted(text)` per `contracts/format-contract.md`: markers `**`, `*`, `__`; opener needs a following non-space, closer a preceding non-space; works mid-word and across line breaks; asterisk runs of 1/2/3 map to italic/bold/bold+italic; backslash before `*` or `_` yields the literal character; unmatched, empty, space-adjacent and longer runs stay literal; adjacent same-style segments are coalesced; never throws
+- [x] T003 Create `tests/unit/format-text.test.mjs` covering every row of the contract table plus: empty string returns `[]`, unformatted text returns one plain segment, HTML-like input such as `<b>x</b>` and `&amp;` stays literal text, concatenated segment text equals input minus consumed markers and escape backslashes, `_x_` stays literal, mismatched nesting leaves the inner opener literal
 
 **Checkpoint**: Parser complete and tested.
 
