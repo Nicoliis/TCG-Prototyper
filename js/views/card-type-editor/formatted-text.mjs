@@ -1,4 +1,4 @@
-import { parseFormatted } from "../../templating/format-text.mjs?v=27";
+import { parseFormatted } from "../../templating/format-text.mjs?v=28";
 
 const STYLE_CLASSES = [
   ["bold", "fmt-bold"],

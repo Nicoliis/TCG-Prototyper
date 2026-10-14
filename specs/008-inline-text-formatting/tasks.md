@@ -70,8 +70,8 @@
 
 ## Phase 6: Polish
 
-- [ ] T012 Run the full unit-test suite and walk through every step of `quickstart.md`; fix regressions in earlier features (decks, print, export/import, Edit card)
-- [ ] T013 Bump `?v=` suffix app-wide (27 → 28) and record feature 008 as complete in `FEATURE-SLICES.md` in the final commit
+- [x] T012 Run the full unit-test suite and walk through every step of `quickstart.md`; fix regressions in earlier features (decks, print, export/import, Edit card)
+- [x] T013 Bump `?v=` suffix app-wide (27 → 28) and record feature 008 as complete in `FEATURE-SLICES.md` in the final commit
 
 ---
 

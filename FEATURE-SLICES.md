@@ -65,6 +65,12 @@ Status legend: `[ ]` not started, `[~]` in progress, `[x]` done.
     new Edit card screen with Prev/Next/go-to-ID.
   - Depends on: Slice 1 and Slice 3 (CSV import, card table).
 
+- [x] **Inline text formatting** — implemented in `specs/008-inline-text-formatting/`
+  - Bold (`**x**`), italic (`*x*`) and underline (`__x__`) markers work
+    mid-text in text templates, labels and card values; stored text keeps
+    the raw markers.
+  - Depends on: Slice 1 (elements) and feature 007 (Edit card).
+
 ## Ordering rationale
 
 1 is foundational storage + the first real content (card types) worth

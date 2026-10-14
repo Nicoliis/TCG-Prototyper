@@ -1,4 +1,4 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=27";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=28";
 import {
   getDecks,
   addCardToDeck,
@@ -7,12 +7,12 @@ import {
   filterCards,
   findCard,
   describeCard,
-} from "../../models/deck.mjs?v=27";
+} from "../../models/deck.mjs?v=28";
 
 let templatePromise;
 
 export async function mountDeckEditor(root, storage, projectId, deckId, onBack) {
-  const template = await (templatePromise ??= loadFragment("js/views/deck-editor/deck-editor.html?v=27"));
+  const template = await (templatePromise ??= loadFragment("js/views/deck-editor/deck-editor.html?v=28"));
   const view = cloneTemplate(template);
   const section = view.querySelector(".deck-editor-view");
 

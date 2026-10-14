@@ -1,7 +1,7 @@
-import { substitute } from "../../templating/substitute.mjs?v=27";
-import { getElementStyle } from "../../models/card-type.mjs?v=27";
-import { applyTextFit } from "./text-fit.mjs?v=27";
-import { renderFormatted } from "./formatted-text.mjs?v=27";
+import { substitute } from "../../templating/substitute.mjs?v=28";
+import { getElementStyle } from "../../models/card-type.mjs?v=28";
+import { applyTextFit } from "./text-fit.mjs?v=28";
+import { renderFormatted } from "./formatted-text.mjs?v=28";
 
 const MIN_SIZE = 10;
 const BROKEN_IMAGE_PLACEHOLDER =
