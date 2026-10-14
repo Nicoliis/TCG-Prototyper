@@ -1,4 +1,4 @@
-import { nextNumber } from "./card-numbering.mjs?v=26";
+import { nextNumber } from "./card-numbering.mjs?v=27";
 
 export function getCards(cardType) {
   return cardType.cards ?? [];

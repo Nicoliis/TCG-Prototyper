@@ -1,4 +1,4 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=26";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=27";
 import {
   getDecks,
   addCardToDeck,
@@ -7,11 +7,11 @@ import {
   filterCards,
   findCard,
   describeCard,
-} from "../../models/deck.mjs?v=26";
-import { resolveSelection, selectionFromDeck } from "../../models/print-selection.mjs?v=26";
-import { PAPER_SIZES, validateSheetSettings } from "../../models/sheet-layout.mjs?v=26";
-import { loadSheetSettings, saveSheetSettings } from "../../storage/sheet-settings-store.mjs?v=26";
-import { renderSheets } from "./render-sheets.mjs?v=26";
+} from "../../models/deck.mjs?v=27";
+import { resolveSelection, selectionFromDeck } from "../../models/print-selection.mjs?v=27";
+import { PAPER_SIZES, validateSheetSettings } from "../../models/sheet-layout.mjs?v=27";
+import { loadSheetSettings, saveSheetSettings } from "../../storage/sheet-settings-store.mjs?v=27";
+import { renderSheets } from "./render-sheets.mjs?v=27";
 
 const IMAGE_WAIT_MS = 5000;
 
@@ -32,7 +32,7 @@ function waitForImages(container) {
 }
 
 export async function mountPrintScreen(root, storage, projectId, onBack) {
-  const template = await (templatePromise ??= loadFragment("js/views/print/print-screen.html?v=26"));
+  const template = await (templatePromise ??= loadFragment("js/views/print/print-screen.html?v=27"));
   const view = cloneTemplate(template);
   const section = view.querySelector(".print-screen-view");
 

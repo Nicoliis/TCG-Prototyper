@@ -59,6 +59,12 @@ Status legend: `[ ]` not started, `[~]` in progress, `[x]` done.
     project with regenerated ids and an auto-resolved name collision.
   - Depends on: Slice 1 (and reuses Slice 4's deck model for export/import).
 
+- [x] **Card schema, typed properties & card editor** — implemented in `specs/007-card-schema-and-editing/`
+  - Properties and design are separate editor areas; properties are typed
+    (one line, textarea, integer, decimal); every card has an automatic ID;
+    new Edit card screen with Prev/Next/go-to-ID.
+  - Depends on: Slice 1 and Slice 3 (CSV import, card table).
+
 ## Ordering rationale
 
 1 is foundational storage + the first real content (card types) worth
