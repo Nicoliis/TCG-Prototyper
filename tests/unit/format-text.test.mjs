@@ -94,3 +94,7 @@ test("parsing never throws on odd input", () => {
     assert.doesNotThrow(() => parseFormatted(input));
   }
 });
+
+test("an escaped marker inside an unclosed bold stays literal", () => {
+  assert.deepEqual(parseFormatted("**unfinished \\*lit\\* end"), [plain("**unfinished *lit* end")]);
+});

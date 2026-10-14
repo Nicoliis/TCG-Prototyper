@@ -140,3 +140,15 @@ test("importing a legacy export without types or numbers fills them in", () => {
   assert.equal(built.cardTypes[0].properties[0].type, "line");
   assert.equal(built.cardTypes[0].cards[0].number, 1);
 });
+
+test("export then import keeps formatting markers in values and templates", () => {
+  const project = sampleProject();
+  const cardType = project.cardTypes[0];
+  const atk = cardType.properties[0];
+  cardType.cards[0].values[atk.id] = "**5** and *six*";
+  cardType.elements[0].template = "__ATK__ {atk}";
+  const built = buildProjectFromImport(buildExportEnvelope(project), []);
+  const imported = built.cardTypes[0];
+  assert.equal(imported.cards[0].values[imported.properties[0].id], "**5** and *six*");
+  assert.equal(imported.elements[0].template, "__ATK__ {atk}");
+});

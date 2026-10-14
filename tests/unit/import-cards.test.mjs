@@ -136,3 +136,9 @@ test("invalid values for numeric properties are reported but still imported", ()
   assert.equal(getCardValue(cards[0], atk.id), "x");
   assert.deepEqual(report.invalidValues, [{ row: 1, property: "atk", value: "x" }]);
 });
+
+test("CSV cells keep their formatting markers unchanged", () => {
+  const { type, name } = setup();
+  const { cards } = importCards(type, [["name"], ["**Flying** and *fast* __always__"]], name.id);
+  assert.equal(getCardValue(cards[0], name.id), "**Flying** and *fast* __always__");
+});
