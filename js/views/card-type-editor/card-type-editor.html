@@ -5,9 +5,42 @@
 
     <div class="editor-layout">
       <aside class="data-properties-panel">
+        <div class="mode-switch" role="tablist">
+          <button type="button" class="mode-button" data-mode="properties" aria-selected="true">Properties</button>
+          <button type="button" class="mode-button" data-mode="design" aria-selected="false">Design</button>
+        </div>
+
+        <div class="mode-panel properties-area" data-mode="properties">
+          <ul class="property-list property-list--builtin">
+            <li class="property-list-item property-list-item--locked">
+              <span class="property-name">ID</span>
+              <span class="property-locked-note">Integer, assigned automatically</span>
+            </li>
+          </ul>
+          <form class="add-property-form">
+            <input type="text" name="propertyName" placeholder="Property name" required>
+            <select name="propertyType" class="property-type-select" aria-label="Property type"></select>
+            <button type="submit">Add property</button>
+          </form>
+          <p class="property-error field-error" hidden></p>
+          <ul class="property-list"></ul>
+
+          <template class="property-list-item-template">
+            <li class="property-list-item">
+              <span class="property-name"></span>
+              <select class="property-type-select" aria-label="Property type"></select>
+              <textarea class="property-sample-value-input" placeholder="Sample value" rows="2"></textarea>
+              <button type="button" class="property-delete-button">Remove</button>
+            </li>
+          </template>
+          <template class="property-type-option-template">
+            <option></option>
+          </template>
+        </div>
+
+        <div class="mode-panel design-area" data-mode="design" hidden>
         <div class="tabs" role="tablist">
           <button type="button" class="tab-button" data-tab="size" aria-selected="true">Size</button>
-          <button type="button" class="tab-button" data-tab="properties">Properties</button>
           <button type="button" class="tab-button" data-tab="add-element">Add Element</button>
           <button type="button" class="tab-button" data-tab="elements">Elements</button>
         </div>
@@ -21,23 +54,6 @@
           <p class="dimensions-error field-error" hidden></p>
         </div>
 
-        <div class="tab-panel" data-tab="properties" hidden>
-          <form class="add-property-form">
-            <input type="text" name="propertyName" placeholder="Property name" required>
-            <button type="submit">Add property</button>
-          </form>
-          <p class="property-error field-error" hidden></p>
-          <ul class="property-list"></ul>
-
-          <template class="property-list-item-template">
-            <li class="property-list-item">
-              <span class="property-name"></span>
-              <textarea class="property-sample-value-input" placeholder="Sample value" rows="2"></textarea>
-              <button type="button" class="property-delete-button">Remove</button>
-            </li>
-          </template>
-        </div>
-
         <div class="tab-panel" data-tab="add-element" hidden>
           <div class="add-element-buttons">
             <button type="button" class="add-element-button" data-kind="text">Text display</button>
@@ -49,6 +65,7 @@
 
         <div class="tab-panel" data-tab="elements" hidden>
           <div class="layer-list-mount"></div>
+        </div>
         </div>
       </aside>
 

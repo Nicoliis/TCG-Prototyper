@@ -952,3 +952,135 @@ main:has(.print-screen-view) {
   border: 1px dashed #777;
   pointer-events: none;
 }
+
+.mode-switch {
+  display: flex;
+  gap: var(--space-1);
+  margin-bottom: var(--space-2);
+}
+
+.mode-button {
+  flex: 1;
+  background: var(--color-page-bg);
+  color: var(--color-muted);
+  border: 1px solid var(--color-border);
+}
+
+.mode-button[aria-selected="true"] {
+  background: var(--color-surface);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.mode-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.mode-panel[hidden] {
+  display: none;
+}
+
+.property-list-item--locked {
+  opacity: 0.85;
+}
+
+.property-locked-note {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+}
+
+.typed-input.invalid {
+  border-color: var(--color-danger, #b3261e);
+  background: #fdecea;
+}
+
+.card-table-id {
+  font-weight: 600;
+  text-align: right;
+  color: var(--color-muted);
+}
+
+.layout-element--text .element-content {
+  white-space: pre-wrap;
+}
+
+.card-table-cell .typed-input {
+  width: 100%;
+  min-width: 8rem;
+}
+
+.card-editor-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.go-to-form {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.card-editor-body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.card-editor-body[hidden],
+.card-editor-empty[hidden] {
+  display: none;
+}
+
+.card-editor-card-wrapper {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  flex-shrink: 0;
+}
+
+.card-editor-card {
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+}
+
+.card-editor-card .layout-element {
+  border: none;
+  border-radius: 0;
+  background: none;
+}
+
+.card-editor-fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 16rem;
+  flex: 1;
+  max-width: 32rem;
+}
+
+.card-editor-field-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.card-editor-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.card-editor-field-name {
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.card-editor-field .typed-input {
+  width: 100%;
+}

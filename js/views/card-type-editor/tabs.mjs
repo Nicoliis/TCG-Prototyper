@@ -33,3 +33,15 @@ export function setSegmentedValue(panel, fieldName, value) {
     button.classList.toggle("active", button.dataset.value === value);
   }
 }
+
+export function setUpModeSwitch(root) {
+  const buttons = root.querySelectorAll(".mode-button");
+  for (const button of buttons) {
+    button.addEventListener("click", () => {
+      for (const other of buttons) other.setAttribute("aria-selected", String(other === button));
+      for (const panel of root.querySelectorAll(".mode-panel")) {
+        panel.hidden = panel.dataset.mode !== button.dataset.mode;
+      }
+    });
+  }
+}

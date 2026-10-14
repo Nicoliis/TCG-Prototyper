@@ -1,12 +1,15 @@
 import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=26";
 import { getCards, addCard, removeCard, getCardValue, setCardValue } from "../../models/card.mjs?v=26";
+import { ID_PROPERTY } from "../../models/card-numbering.mjs?v=26";
+import { loadTypedInputTemplates, createTypedInput } from "../card-editor/typed-input.mjs?v=26";
 
 let templatePromise;
 
-export async function mountCardTable(root, storage, projectId, cardTypeId, onBack) {
+export async function mountCardTable(root, storage, projectId, cardTypeId, onBack, onEditCard) {
   const template = await (templatePromise ??= loadFragment("js/views/card-table/card-table.html?v=26"));
   const view = cloneTemplate(template);
   const section = view.querySelector(".card-table-view");
+  const inputTemplates = await loadTypedInputTemplates();
 
   const heading = section.querySelector(".card-type-name-heading");
   const emptyMessage = section.querySelector(".card-table-empty");
@@ -16,6 +19,7 @@ export async function mountCardTable(root, storage, projectId, cardTypeId, onBac
   const addButton = section.querySelector(".add-card-button");
   const headerTemplate = section.querySelector(".card-table-header-template");
   const rowTemplate = section.querySelector(".card-table-row-template");
+  const idCellTemplate = section.querySelector(".card-table-id-cell-template");
   const cellTemplate = section.querySelector(".card-table-cell-template");
 
   section.querySelector(".back-button").addEventListener("click", onBack);
@@ -34,17 +38,22 @@ export async function mountCardTable(root, storage, projectId, cardTypeId, onBac
   function renderRow(card) {
     const row = rowTemplate.content.cloneNode(true);
     const actionsCell = row.querySelector(".card-table-actions");
+    const idCell = idCellTemplate.content.cloneNode(true);
+    idCell.querySelector(".card-table-id").textContent = card.number;
+    actionsCell.before(idCell);
     for (const property of cardType.properties) {
       const cell = cellTemplate.content.cloneNode(true);
-      const input = cell.querySelector(".card-cell-input");
-      input.value = getCardValue(card, property.id);
-      input.setAttribute("aria-label", property.name);
-      input.addEventListener("change", async () => {
-        setCardValue(card, property.id, input.value);
-        await save();
+      const input = createTypedInput(inputTemplates, property, getCardValue(card, property.id), {
+        eventName: "change",
+        onValid: async (value) => {
+          setCardValue(card, property.id, value);
+          await save();
+        },
       });
+      cell.querySelector(".card-table-cell").appendChild(input);
       actionsCell.before(cell);
     }
+    row.querySelector(".edit-card-button").addEventListener("click", () => onEditCard(card.number));
     row.querySelector(".delete-card-button").addEventListener("click", async () => {
       removeCard(cardType, card.id);
       await save();
@@ -56,9 +65,9 @@ export async function mountCardTable(root, storage, projectId, cardTypeId, onBac
   function render() {
     heading.textContent = `${cardType.name} cards`;
     headerRow.querySelectorAll(".card-table-header").forEach((header) => header.remove());
-    for (const property of cardType.properties) {
+    for (const name of [ID_PROPERTY.name, ...cardType.properties.map((p) => p.name)]) {
       const header = headerTemplate.content.cloneNode(true);
-      header.querySelector(".card-table-header").textContent = property.name;
+      header.querySelector(".card-table-header").textContent = name;
       actionsHeader.before(header);
     }
 

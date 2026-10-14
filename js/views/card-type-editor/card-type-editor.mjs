@@ -12,7 +12,8 @@ import { applyTextFit } from "./text-fit.mjs?v=26";
 import { mountElementPropertiesPanel } from "./element-properties-panel.mjs?v=26";
 import { mountLayerList } from "./layer-list.mjs?v=26";
 import { setUpCardPropertiesPanel } from "./card-properties-panel.mjs?v=26";
-import { setUpTabs } from "./tabs.mjs?v=26";
+import { setUpTabs, setUpModeSwitch } from "./tabs.mjs?v=26";
+import { ID_PROPERTY } from "../../models/card-numbering.mjs?v=26";
 
 let templatePromise;
 
@@ -43,7 +44,8 @@ export async function mountCardTypeEditor(root, storage, projectId, cardTypeId, 
   }
 
   function getSampleValues() {
-    return Object.fromEntries(cardType.properties.map((p) => [p.name, p.sampleValue]));
+    const samples = cardType.properties.map((p) => [p.name, p.sampleValue]);
+    return Object.fromEntries([[ID_PROPERTY.name, "1"], ...samples]);
   }
 
   function refreshCanvasPreviews() {
@@ -153,7 +155,8 @@ export async function mountCardTypeEditor(root, storage, projectId, cardTypeId, 
     if (index !== -1) cardType.elements.splice(index, 1);
   }
 
-  setUpTabs(section.querySelector(".data-properties-panel"));
+  setUpModeSwitch(section.querySelector(".data-properties-panel"));
+  setUpTabs(section.querySelector(".design-area"));
   setUpDimensionsForm(section, cardType, canvas, persist);
   setUpCardPropertiesPanel(section, cardType, persist, refreshAllPreviews);
   setUpAddElementButtons(section, cardType, persist, (element) => {
