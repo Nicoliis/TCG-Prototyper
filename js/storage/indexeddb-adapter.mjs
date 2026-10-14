@@ -2,6 +2,7 @@ import { StorageAdapter } from "./storage-adapter.mjs?v=26";
 import { createProject, validateProjectName, cloneProjectForDuplicate } from "../models/project.mjs?v=26";
 import { validateCardTypeName } from "../models/card-type.mjs?v=26";
 import { upsertDeck, removeDeck, pruneDecks } from "../models/deck.mjs?v=26";
+import { normalizeProject } from "../models/card-numbering.mjs?v=26";
 import { validateExportEnvelope, buildProjectFromImport } from "../models/project-export.mjs?v=26";
 
 const DB_VERSION = 1;
@@ -53,7 +54,7 @@ export class IndexedDbAdapter extends StorageAdapter {
   async getProject(id) {
     const store = await this.#store("readonly");
     const result = await promisifyRequest(store.get(id));
-    return result ?? null;
+    return result ? normalizeProject(result) : null;
   }
 
   async createProject(name) {

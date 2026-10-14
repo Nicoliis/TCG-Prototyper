@@ -1,4 +1,7 @@
-const ELEMENT_KINDS = ["text", "image", "label", "icon"];
+import { DEFAULT_PROPERTY_TYPE, validatePropertyType, validateValue } from "./property-types.mjs?v=26";
+import { ID_PROPERTY } from "./card-numbering.mjs?v=26";
+
+const ELEMENT_KINDS =["text", "image", "label", "icon"];
 
 function sameName(a, b) {
   return a.trim().toLowerCase() === b.trim().toLowerCase();
@@ -42,7 +45,7 @@ export function validateCardTypeName(name, existingNames) {
 
 export function validatePropertyName(name, existingNames) {
   const trimmed = validateNonEmpty(name, "Property name");
-  validateUnique(trimmed, existingNames, "A property named");
+  validateUnique(trimmed, [ID_PROPERTY.name, ...existingNames], "A property named");
   return trimmed;
 }
 
@@ -55,6 +58,7 @@ export function createCardType(name, { width, height }, existingNames) {
     properties: [],
     elements: [],
     cards: [],
+    nextCardNumber: 1,
   };
 }
 
@@ -69,19 +73,21 @@ export function setCardTypeDimensions(cardType, { width, height }) {
   return cardType;
 }
 
-export function createProperty(name, existingNames, sampleValue = "") {
+export function createProperty(name, existingNames, sampleValue = "", type = DEFAULT_PROPERTY_TYPE) {
   return {
     id: crypto.randomUUID(),
     name: validatePropertyName(name, existingNames),
     sampleValue,
+    type: validatePropertyType(type),
   };
 }
 
-export function addProperty(cardType, name, sampleValue = "") {
+export function addProperty(cardType, name, sampleValue = "", type = DEFAULT_PROPERTY_TYPE) {
   const property = createProperty(
     name,
     cardType.properties.map((p) => p.name),
     sampleValue,
+    type,
   );
   cardType.properties.push(property);
   return property;
@@ -92,7 +98,22 @@ export function removeProperty(cardType, propertyId) {
   for (const card of cardType.cards ?? []) delete card.values[propertyId];
 }
 
-const ELEMENT_KIND_LABEL = { text: "Text", image: "Image", label: "Label", icon: "Icon" };
+export function countInvalidValues(cardType, property, type = property.type) {
+  return (cardType.cards ?? []).filter((card) => !validateValue(type, card.values[property.id]).ok).length;
+}
+
+export function setPropertyType(cardType, propertyId, type) {
+  const property = cardType.properties.find((p) => p.id === propertyId);
+  property.type = validatePropertyType(type);
+  return countInvalidValues(cardType, property);
+}
+
+export function elementsUsingProperty(cardType, propertyName) {
+  const token = `{${propertyName}}`;
+  return cardType.elements.filter((e) => (e.template ?? "").includes(token));
+}
+
+const ELEMENT_KIND_LABEL ={ text: "Text", image: "Image", label: "Label", icon: "Icon" };
 
 export function createElement(
   kind,
@@ -236,6 +257,7 @@ export function cloneCardType(cardType, cardIdMap) {
       cardIdMap?.set(card.id, id);
       return {
         id,
+        number: card.number,
         values: Object.fromEntries(
           Object.entries(card.values)
             .filter(([propertyId]) => propertyIdMap.has(propertyId))

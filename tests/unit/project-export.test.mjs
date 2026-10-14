@@ -120,3 +120,23 @@ test("buildProjectFromImport resolves a colliding name", () => {
   const built = buildProjectFromImport(envelope, ["Source"]);
   assert.equal(built.name, "Source copy");
 });
+
+test("export then import preserves property types and card numbers", () => {
+  const project = sampleProject();
+  project.cardTypes[0].properties[0].type = "integer";
+  const built = buildProjectFromImport(buildExportEnvelope(project), []);
+  assert.equal(built.cardTypes[0].properties[0].type, "integer");
+  assert.equal(built.cardTypes[0].cards[0].number, 1);
+  assert.equal(built.cardTypes[0].nextCardNumber, 2);
+});
+
+test("importing a legacy export without types or numbers fills them in", () => {
+  const envelope = buildExportEnvelope(sampleProject());
+  const legacyType = envelope.project.cardTypes[0];
+  delete legacyType.nextCardNumber;
+  delete legacyType.properties[0].type;
+  delete legacyType.cards[0].number;
+  const built = buildProjectFromImport(envelope, []);
+  assert.equal(built.cardTypes[0].properties[0].type, "line");
+  assert.equal(built.cardTypes[0].cards[0].number, 1);
+});

@@ -203,3 +203,48 @@ test("cloneCardType deep-copies each element's textStyle so duplicates stay inde
   assert.equal(element.textStyle.bold, false);
   assert.equal(duplicate.elements[0].textStyle.bold, true);
 });
+
+import { setPropertyType, countInvalidValues, elementsUsingProperty, validatePropertyName } from "../../js/models/card-type.mjs";
+import { addCard as addTestCard, setCardValue as setTestCardValue, removeCard } from "../../js/models/card.mjs";
+
+test("properties default to the one line type and accept a type", () => {
+  const type = createCardType("T", { width: 10, height: 10 }, []);
+  assert.equal(addProperty(type, "name").type, "line");
+  assert.equal(addProperty(type, "atk", "", "integer").type, "integer");
+  assert.throws(() => addProperty(type, "bad", "", "boolean"), /Property type/);
+});
+
+test("the name ID is reserved for the built-in property", () => {
+  assert.throws(() => validatePropertyName("id", []), /already exists/);
+});
+
+test("setPropertyType keeps values and reports how many no longer fit", () => {
+  const type = createCardType("T", { width: 10, height: 10 }, []);
+  const atk = addProperty(type, "atk");
+  setTestCardValue(addTestCard(type), atk.id, "abc");
+  setTestCardValue(addTestCard(type), atk.id, "5");
+  assert.equal(countInvalidValues(type, atk, "integer"), 1);
+  assert.equal(setPropertyType(type, atk.id, "integer"), 1);
+  assert.equal(atk.type, "integer");
+  assert.equal(type.cards[0].values[atk.id], "abc");
+});
+
+test("elementsUsingProperty finds elements whose template mentions the property", () => {
+  const type = createCardType("T", { width: 100, height: 100 }, []);
+  addProperty(type, "name");
+  const used = addElement(type, "text", { x: 0, y: 0, width: 10, height: 10, template: "Hi {name}" });
+  addElement(type, "text", { x: 0, y: 0, width: 10, height: 10, template: "static" });
+  assert.deepEqual(elementsUsingProperty(type, "name").map((e) => e.id), [used.id]);
+});
+
+test("cloneCardType preserves card numbers, property types and the counter", () => {
+  const type = createCardType("T", { width: 10, height: 10 }, []);
+  addProperty(type, "atk", "", "integer");
+  addTestCard(type);
+  const second = addTestCard(type);
+  removeCard(type, type.cards[0].id);
+  const copy = cloneCardType(type);
+  assert.equal(copy.properties[0].type, "integer");
+  assert.equal(copy.cards[0].number, second.number);
+  assert.equal(copy.nextCardNumber, 3);
+});

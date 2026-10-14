@@ -1,9 +1,11 @@
+import { nextNumber } from "./card-numbering.mjs?v=26";
+
 export function getCards(cardType) {
   return cardType.cards ?? [];
 }
 
-export function createCard(values = {}) {
-  return { id: crypto.randomUUID(), values };
+export function createCard(values = {}, number) {
+  return { id: crypto.randomUUID(), number, values };
 }
 
 export function getCardValue(card, propertyId) {
@@ -17,7 +19,7 @@ export function setCardValue(card, propertyId, value) {
 
 export function addCard(cardType, values = {}) {
   cardType.cards ??= [];
-  const card = createCard(values);
+  const card = createCard(values, nextNumber(cardType));
   cardType.cards.push(card);
   return card;
 }

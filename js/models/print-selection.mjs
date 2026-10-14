@@ -1,4 +1,5 @@
 import { findCard } from "./deck.mjs?v=26";
+import { ID_PROPERTY } from "./card-numbering.mjs?v=26";
 
 export function selectionFromDeck(deck) {
   return { entries: deck.entries.map((entry) => ({ cardId: entry.cardId, count: entry.count })) };
@@ -14,5 +15,6 @@ export function resolveSelection(project, selection) {
 }
 
 export function cardValuesByName(cardType, card) {
-  return Object.fromEntries(cardType.properties.map((p) => [p.name, card.values[p.id] ?? ""]));
+  const values = cardType.properties.map((p) => [p.name, card.values[p.id] ?? ""]);
+  return Object.fromEntries([[ID_PROPERTY.name, card.number ?? ""], ...values]);
 }
