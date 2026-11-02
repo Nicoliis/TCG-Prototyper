@@ -22,27 +22,25 @@ Principios que salen de ahí:
 |---|---|
 | Nombre | Corto, sin artículos largos. |
 | Dimensión | Fantaspet, Ugabuga, Ragnatica, Neutral… |
-| ATK / DEF | Múltiplos de 50, de 0 a 400. |
+| ATK / DEF | Múltiplos de 50, de 0 a 400. Mas carta normalita 150. |
 | Efecto | Hasta dos líneas: `**Normal:** …` y `**Trigger:** …` |
 | Restricción | Opcional. Una de las tres estándar, o una permanente. |
 | ID | Se calcula solo en la app (`EXP-n`). |
 
 ### Evento
 
-Igual que un explorador, sin ATK/DEF y con una **velocidad** (Instantáneo o Lento). Un evento tiene dos modos: su efecto **Normal** (lo activas cuando quieras, según la velocidad) o su efecto **Trigger** (lo activas desde la mano cuando se cumple su condición). Como el evento va al cementerio al resolverse, **eliges un modo por carta**.
+Igual que un explorador, sin PODER y con una **velocidad** (Rapido o Lento). Un evento tiene dos modos: su efecto **Normal** (lo activas cuando quieras, según la velocidad) o su efecto **Trigger** (lo activas desde la mano cuando se cumple su condición). Como el evento va al cementerio al resolverse, **eliges un modo por carta**.
 
 ### Escala de estadísticas
 
 Con 800 de vida:
 
-| ATK | Qué es |
+| PODER | Qué es |
 |---|---|
 | 0-100 | Soporte o ficha. |
-| 150-250 | Cuerpo normal. |
+| 150-200 | Cuerpo normal. |
 | 300 | Pieza. Tres golpes y casi terminas. |
 | 350-400 | Pieza con restricción grave (R2/R3) o con un costo de entrada alto. |
-
-La DEF suele ir en sentido contrario al ATK: las cartas con 300+ de DEF casi no atacan.
 
 ## 3. Roles de las cartas
 
@@ -52,7 +50,7 @@ Cada carta debería poder responder "¿para qué la juego?". Las cuatro respuest
 |---|---|---|
 | **Starter** | Abre el combo. La mejor opción para empezar. | Busca, roba o agrega recursos desde casi nada. |
 | **Extender** | Completa el combo si fue interrumpido. | Recupera, reemplaza o baja desde la mano en respuesta a una destrucción. |
-| **Pieza** (*en-board*) | El objetivo a alcanzar. Lo que queda en el tablero. | Estadísticas altas o triggers fuertes. Casi siempre con restricción. |
+| **Pieza** (*end-board*) | El objetivo a alcanzar. Lo que queda en el tablero. | Estadísticas altas o triggers fuertes. Casi siempre con restricción. |
 | **Interrupción** | Frena al oponente sin decir "no". | Devuelve a la mano, quita un objetivo, cambia posiciones, descarta. |
 
 Referencia para un mazo de 40 cartas: **25-35% starters, 20-40% extenders, 5-15% piezas, 15-30% interrupciones**. Las piezas son pocas porque son caras de bajar. Ugabuga se sale a propósito (32% de piezas, pocas interrupciones) porque es el mazo agresivo.
@@ -65,20 +63,20 @@ Referencia para un mazo de 40 cartas: **25-35% starters, 20-40% extenders, 5-15%
 
 ## 4. Restricciones
 
-Tres niveles estándar. Cuanto más grave, más puede dar la carta.
+Cuanto más grave, más puede dar la carta.
 
-| Nivel | Texto exacto | Cuándo usarlo |
-|---|---|---|
-| **R1** | "No puedes bajar más exploradores este turno." | Starters que buscan o roban. Frena a los extenders que bajan. |
-| **R2** | "No puedes activar más efectos este turno." | Piezas e interrupciones fuertes. Te quedas sin juego después de que entra. |
-| **R3** | "Se termina tu turno." | Las piezas más fuertes. Entran al final de tu jugada y quitan tu Fase de Batalla. |
+| Texto exacto | Cuándo usarlo |
+|---|---|
+| "No puedes jugar más exploradores este turno." | Starters que buscan o roban. Frena a los extenders que bajan. |
+| "No puedes activar más efectos este turno." | Piezas e interrupciones fuertes. Te quedas sin juego después de que entra. |
+| "Se termina tu turno." | Las piezas más fuertes. Entran al final de tu jugada y quitan tu Fase de Batalla. |
 
 Reglas de uso:
 
-- Explorador: "**Después de entrar al campo, si es tu turno:** …". Evento: "**Después de activar:** …".
-- **Una restricción no debe bloquear a su propia carta.** Un explorador con R1 no puede tener un Normal que baje otro explorador, y uno con R2 no puede tener un trigger que deba activarse el mismo turno en que entra (por ejemplo después de un combate). Si el efecto es útil recién al turno siguiente, está bien. Los efectos que se activan **desde la mano** ocurren antes de entrar, así que no se ven afectados.
-- Las fichas no son "bajadas", así que R1 no las toca. Esa excepción es la ventaja de Ragnatica; no la rompas con restricciones que digan "agregar".
-- Las **restricciones permanentes** ("Esta carta no puede declarar ataques") valen aproximadamente una restricción R1. Usa máximo una por carta.
+- Explorador: "**Después de entrar al campo:** …". Evento: "**Después de activar:** …".
+- **Una restricción no debe bloquear a su propia carta.** Un explorador con restriccion no puede tener un efecto al entrar que la viole. Si el efecto es útil recién al turno siguiente, está bien. Los efectos que se activan **desde la mano** ocurren antes de entrar, así que no se ven afectados.
+- Las fichas no son "jugadas", así que "no jugar mas exploradores" no las toca. Esa excepción es la ventaja de Ragnatica; no la rompas con restricciones que digan "agregar".
+- Las **restricciones permanentes** ("Esta carta no puede declarar ataques") Pesan mas que las del turno, por lo que si son severas, la carta deberia ganar sola. Usa máximo una por carta.
 
 ## 5. Negaciones y búsqueda
 
@@ -90,12 +88,6 @@ Mantenerlas al mínimo. Hoy hay **dos** en todo el juego:
 - **Reina de Ragnatica**: niega solo efectos de explorador que **eligen a una carta tuya**. Cuesta una carta de tu mano y una ficha cada vez, y la carta viene con R3.
 
 Si diseñas una tercera, debería ser **muy específica** (un tipo de efecto concreto) o **muy cara** (dos recursos distintos y una restricción).
-
-### Búsquedas
-
-- **Pública** (revelas la carta) es más barata. Útil en starters con restricción.
-- **Secreta** (muestras varios candidatos y tomas uno) cuesta algo: un descarte, una destrucción o un criterio más estrecho.
-- Un criterio de búsqueda debe poder **fallar**. Un "busca cualquier carta" nunca falla y no tiene riesgo.
 
 ## 6. Escribir el texto de una carta
 
@@ -160,7 +152,7 @@ Los eventos cuentan historias, pero **como referencias a las dimensiones origina
 |---|---|
 | Guerra por sucesión de Ragnatica | **Conflicto en emergente reino de Ragnatica** |
 | La caída de Eterneblina | **Susurros en Eterneblina** |
-| Banquete de la aldea Ugabuga | **Banquete en emergente aldea Ugabuga** |
+| Banquete de la aldea Ugabuga | **Banquete inaugural de aldea Ugabuga** |
 
 Truco: si el nombre dice "en emergente [lugar]", "en [lugar]" o describe algo que **está pasando**, sirve. Si dice algo que **ya terminó**, cámbialo.
 
@@ -182,9 +174,9 @@ Las cartas de la app (proyecto `colapso.json`) siguen este esquema, tamaño 240 
 | Franja superior | Nombre (negrita, se comprime) | Nombre (negrita, se comprime) |
 | Subtítulo | Dimensión · `EXPLORADOR` | Dimensión · `EVENTO · velocidad` |
 | Arte | Recuadro gris de 230 × 118 (hasta tener ilustraciones) | Igual |
-| Estadísticas | `ATK` (rojo claro) y `DEF` (azul claro) | No tiene |
+| Estadísticas | `PODER` (rojo claro) | No tiene |
 | Efectos | Caja blanca, el texto se achica para entrar | Caja blanca más alta |
 | Restricción | Banda rosada abajo (vacía si no hay restricción) | Igual |
 | ID | `EXP-n` en la esquina inferior derecha | `EVT-n` |
 
-El rojo del ATK y el azul de la DEF van en todos los exploradores para leerlos de un vistazo. La **restricción** va en su propia banda separada del texto, siempre en el mismo lugar, para que se vea a primera vista el costo de cada carta. Cuando haya arte, conviene que el color del marco indique la dimensión y no el tipo.
+El rojo del PODER van en todos los exploradores para leerlos de un vistazo. La **restricción** va en su propia banda separada del texto, siempre en el mismo lugar, para que se vea a primera vista el costo de cada carta. Cuando haya arte, conviene que el color del marco indique la dimensión y no el tipo.
