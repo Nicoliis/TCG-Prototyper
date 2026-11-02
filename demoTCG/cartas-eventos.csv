@@ -1,0 +1,28 @@
+nombre,dimension,velocidad,efecto,restriccion
+Susurros en Eterneblina,Fantaspet,Instantáneo,"**Normal:** Devuelve 1 Fantaspet de tu cementerio a tu mano.
+**Trigger:** Si un Fantaspet que controlas fuera a ser destruido: devuélvelo a tu mano en su lugar.",
+Refugio en emergente Eterneblina,Fantaspet,Lento,"**Normal:** Revela 1 Fantaspet de tu mano: busca 1 Fantaspet con distinto nombre (búsqueda pública).
+**Trigger:** Si un Fantaspet que controlas es destruido: busca 1 Fantaspet con ATK 100 o menos (búsqueda secreta).",Después de activar su efecto Normal: no puedes bajar más exploradores este turno.
+Presencia en Eterneblina,Fantaspet,Instantáneo,"**Normal:** Elige 1 Fantaspet que controlas: gana 100 ATK y 100 DEF hasta el final del turno.
+**Trigger:** Si un Fantaspet que controlas es atacado: ese Fantaspet no puede ser destruido en este combate.",
+Procesión en emergente Eterneblina,Fantaspet,Lento,**Normal:** Baja hasta 2 Fantaspet con distinto nombre de tu cementerio en Defensa. Sus efectos se niegan hasta el final del turno.,Después de activar: se termina tu turno.
+Estampida en emergente Ugabuga,Ugabuga,Lento,**Normal:** Elige 1 Ugabuga que controlas: puede declarar un segundo ataque este turno.,Después de activar: no puedes activar más efectos este turno.
+Grito de guerra Ugabuga,Ugabuga,Instantáneo,"**Normal:** Elige 1 Ugabuga que controlas: gana 200 ATK hasta el final del turno.
+**Trigger:** Si un Ugabuga que controlas es atacado: ese Ugabuga gana 200 ATK y 200 DEF hasta el final del turno.",
+Derrumbe en emergente cueva Ugabuga,Ugabuga,Instantáneo,"**Normal:** Descarta 1 carta: destruye 1 explorador con ATK 200 o menos.
+**Trigger:** Si el oponente baja un explorador: descarta 1 Ugabuga: destruye ese explorador si su DEF es 100 o menos.",
+Banquete en emergente aldea Ugabuga,Ugabuga,Lento,"**Normal:** Destruye 1 explorador que controlas: roba 2 cartas.
+**Trigger:** Si un Ugabuga que controlas es destruido: baja 1 Ugabuga con ATK 150 o menos de tu mano.",Después de activar su efecto Normal: no puedes bajar más exploradores este turno.
+Conflicto en emergente reino de Ragnatica,Ragnatica,Lento,"**Normal:** Agrega 2 fichas Cría en Defensa.
+**Trigger:** Si el oponente declara un ataque: agrega 1 ficha Cría en Defensa.",Después de activar su efecto Normal: no puedes bajar más exploradores este turno.
+Hilos cortados en Ragnatica,Ragnatica,Instantáneo,"**Normal:** Descarta 1 carta: devuelve a la mano 1 explorador con ATK 150 o menos.
+**Trigger:** Si el oponente baja un explorador: descarta 1 carta: devuelve ese explorador a su mano.",
+Cosecha en Ragnatica,Ragnatica,Lento,"**Normal:** Destruye 1 ficha Cría que controlas: roba 2 cartas.
+**Trigger:** Si una ficha Cría que controlas es destruida: roba 1 carta.",
+Plaga en emergente Ragnatica,Ragnatica,Instantáneo,**Normal:** Destruye todas las fichas Cría que controlas (mínimo 1): el oponente descarta 1 carta por cada ficha destruida (máximo 3).,Después de activar: no puedes activar más efectos este turno.
+Grieta en emergente Valle Mudo,Neutral,Instantáneo,**Trigger:** Si el oponente activa un efecto que busca en el mazo: descarta 1 carta y destruye 1 explorador que controlas: niega esa activación.,
+Brújula Rota,Neutral,Lento,"**Normal:** Roba 2 cartas, luego descarta 2 cartas.
+**Trigger:** Si una carta falla en la búsqueda: roba 1 carta.",
+Campamento en emergente Tierra de Nadie,Neutral,Lento,**Normal:** Devuelve 1 explorador de tu cementerio a tu mano.,Después de activar su efecto Normal: no puedes bajar más exploradores este turno.
+Retirada Táctica,Neutral,Instantáneo,"**Normal:** Devuelve 1 explorador que controlas a tu mano.
+**Trigger:** Si un explorador que controlas es atacado: devuelve ese explorador a tu mano. El ataque termina.",

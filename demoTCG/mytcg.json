@@ -1,0 +1,384 @@
+{
+  "cardgamePrototyperExport": "project",
+  "formatVersion": 1,
+  "exportedAt": "2026-11-02T02:59:00.246Z",
+  "project": {
+    "name": "Mytcg",
+    "cardTypes": [
+      {
+        "id": "50955282-b4fc-4455-ab32-40bc7132899b",
+        "name": "Monster",
+        "width": 240,
+        "height": 336,
+        "properties": [
+          {
+            "id": "c2fcfa80-a723-4a6a-a4d8-c53984a65744",
+            "name": "name",
+            "sampleValue": "Sample",
+            "type": "line"
+          },
+          {
+            "id": "34e03a07-6638-4f62-8efc-5755b3eeee47",
+            "name": "effect",
+            "sampleValue": "This is a **very long effect with multiple lines** that should be a *relatively accurate* representations of an __effect on__ a real card.",
+            "type": "text"
+          },
+          {
+            "id": "1981fcde-30bf-48ab-bcb5-832e654877ca",
+            "name": "arquetype",
+            "sampleValue": "Fantaspet",
+            "type": "line"
+          },
+          {
+            "id": "2264defc-4062-4e58-a04a-7982656c9899",
+            "name": "power",
+            "sampleValue": "22",
+            "type": "line"
+          }
+        ],
+        "elements": [
+          {
+            "id": "95569d18-d5b8-4797-a3dd-bce8f944cd76",
+            "kind": "label",
+            "name": "Border",
+            "x": 0,
+            "y": 1,
+            "width": 240,
+            "height": 336,
+            "rotation": 0,
+            "style": {
+              "padding": 4,
+              "background": {
+                "enabled": false,
+                "color": "#ffffff"
+              },
+              "border": {
+                "enabled": true,
+                "color": "#5d52ff",
+                "thickness": 2
+              },
+              "shadow": {
+                "enabled": false,
+                "color": "#000000",
+                "thickness": 4
+              }
+            },
+            "textStyle": {
+              "fontFamily": "system-ui, sans-serif",
+              "fontSize": 14,
+              "bold": false,
+              "align": "left",
+              "verticalAlign": "middle",
+              "overflow": "wrap"
+            },
+            "text": ""
+          },
+          {
+            "id": "d1fce455-9f2e-4868-a8a8-aa30affcffe7",
+            "kind": "text",
+            "name": "Effect",
+            "x": 6,
+            "y": 183,
+            "width": 230,
+            "height": 136,
+            "rotation": 0,
+            "style": {
+              "padding": 4,
+              "background": {
+                "enabled": true,
+                "color": "#e8e8e8"
+              },
+              "border": {
+                "enabled": false,
+                "color": "#000000",
+                "thickness": 1
+              },
+              "shadow": {
+                "enabled": true,
+                "color": "#000000",
+                "thickness": 4
+              }
+            },
+            "textStyle": {
+              "fontFamily": "system-ui, sans-serif",
+              "fontSize": 12,
+              "bold": false,
+              "align": "left",
+              "verticalAlign": "top",
+              "overflow": "wrap"
+            },
+            "template": "{effect}"
+          },
+          {
+            "id": "244d441b-8092-43ff-a1e0-803489592807",
+            "kind": "text",
+            "name": "Name",
+            "x": 5,
+            "y": 5,
+            "width": 230,
+            "height": 21,
+            "rotation": 0,
+            "style": {
+              "padding": 2,
+              "background": {
+                "enabled": true,
+                "color": "#dedede"
+              },
+              "border": {
+                "enabled": false,
+                "color": "#000000",
+                "thickness": 1
+              },
+              "shadow": {
+                "enabled": true,
+                "color": "#000000",
+                "thickness": 4
+              }
+            },
+            "textStyle": {
+              "fontFamily": "system-ui, sans-serif",
+              "fontSize": 14,
+              "bold": true,
+              "align": "left",
+              "verticalAlign": "middle",
+              "overflow": "squash"
+            },
+            "template": "{name}"
+          },
+          {
+            "id": "573df1b4-5a8a-4a0f-869c-59b0ab26f222",
+            "kind": "text",
+            "name": "Arquetype",
+            "x": 0,
+            "y": 27,
+            "width": 240,
+            "height": 15,
+            "rotation": 0,
+            "style": {
+              "padding": 4,
+              "background": {
+                "enabled": false,
+                "color": "#ffffff"
+              },
+              "border": {
+                "enabled": false,
+                "color": "#000000",
+                "thickness": 1
+              },
+              "shadow": {
+                "enabled": false,
+                "color": "#000000",
+                "thickness": 4
+              }
+            },
+            "textStyle": {
+              "fontFamily": "system-ui, sans-serif",
+              "fontSize": 11,
+              "bold": false,
+              "align": "left",
+              "verticalAlign": "middle",
+              "overflow": "wrap"
+            },
+            "template": "{arquetype}"
+          },
+          {
+            "id": "411f173e-2fdb-417f-b63d-7222e623e717",
+            "kind": "text",
+            "name": "ID",
+            "x": 156,
+            "y": 316,
+            "width": 80,
+            "height": 18,
+            "rotation": 0,
+            "style": {
+              "padding": 0,
+              "background": {
+                "enabled": false,
+                "color": "#ffffff"
+              },
+              "border": {
+                "enabled": false,
+                "color": "#000000",
+                "thickness": 1
+              },
+              "shadow": {
+                "enabled": false,
+                "color": "#000000",
+                "thickness": 4
+              }
+            },
+            "textStyle": {
+              "fontFamily": "system-ui, sans-serif",
+              "fontSize": 10,
+              "bold": false,
+              "align": "right",
+              "verticalAlign": "bottom",
+              "overflow": "wrap"
+            },
+            "template": "CID-{ID}"
+          },
+          {
+            "id": "aca866fd-da8b-4595-9349-36c5b0c3d837",
+            "kind": "text",
+            "name": "ATK",
+            "x": 5,
+            "y": 151,
+            "width": 30,
+            "height": 30,
+            "rotation": 0,
+            "style": {
+              "padding": 4,
+              "background": {
+                "enabled": true,
+                "color": "#fde7e7"
+              },
+              "border": {
+                "enabled": true,
+                "color": "#8a0000",
+                "thickness": 1
+              },
+              "shadow": {
+                "enabled": false,
+                "color": "#000000",
+                "thickness": 4
+              }
+            },
+            "textStyle": {
+              "fontFamily": "system-ui, sans-serif",
+              "fontSize": 16,
+              "bold": true,
+              "align": "center",
+              "verticalAlign": "middle",
+              "overflow": "squash"
+            },
+            "template": "{power}"
+          }
+        ],
+        "cards": [
+          {
+            "id": "f6c5375b-576b-4730-952e-eede142ff7bc",
+            "values": {
+              "c2fcfa80-a723-4a6a-a4d8-c53984a65744": "Gooboy",
+              "34e03a07-6638-4f62-8efc-5755b3eeee47": "**Reveal:** Destroy this instead of holder.",
+              "1981fcde-30bf-48ab-bcb5-832e654877ca": "Fantaspet",
+              "2264defc-4062-4e58-a04a-7982656c9899": "15"
+            },
+            "number": 1
+          },
+          {
+            "id": "a35ec61c-bbe4-4034-ac2d-cb5106d49e84",
+            "values": {
+              "c2fcfa80-a723-4a6a-a4d8-c53984a65744": "Cattrix",
+              "34e03a07-6638-4f62-8efc-5755b3eeee47": "**Reveal:** Increase power of holder +5 this combat.",
+              "1981fcde-30bf-48ab-bcb5-832e654877ca": "Fantaspet",
+              "2264defc-4062-4e58-a04a-7982656c9899": "10"
+            },
+            "number": 2
+          },
+          {
+            "id": "2884c7f0-6212-4038-a5a6-76c301a0fed5",
+            "values": {
+              "c2fcfa80-a723-4a6a-a4d8-c53984a65744": "Cesarmill",
+              "34e03a07-6638-4f62-8efc-5755b3eeee47": "**Once Per Turn:** Choose one hidden Fantaspet from deck and hold it0.",
+              "1981fcde-30bf-48ab-bcb5-832e654877ca": "Fantaspet",
+              "2264defc-4062-4e58-a04a-7982656c9899": "12"
+            },
+            "number": 3
+          },
+          {
+            "id": "cdb27e98-bfa6-4ec3-9bde-8ef758440629",
+            "values": {
+              "c2fcfa80-a723-4a6a-a4d8-c53984a65744": "Talkatak",
+              "34e03a07-6638-4f62-8efc-5755b3eeee47": "**Reveal:** Replace another holded card on field without revealing it.",
+              "1981fcde-30bf-48ab-bcb5-832e654877ca": "Fantaspet",
+              "2264defc-4062-4e58-a04a-7982656c9899": "15"
+            },
+            "number": 4
+          },
+          {
+            "id": "76a59d1f-e458-45d1-a5dd-47186f0b8997",
+            "number": 5,
+            "values": {
+              "c2fcfa80-a723-4a6a-a4d8-c53984a65744": "Dragging",
+              "34e03a07-6638-4f62-8efc-5755b3eeee47": "**Reveal:** Destoy all non Fantaspet in the combat.",
+              "1981fcde-30bf-48ab-bcb5-832e654877ca": "Fantaspet",
+              "2264defc-4062-4e58-a04a-7982656c9899": "2"
+            }
+          },
+          {
+            "id": "615836b8-235f-4396-b8ad-e7aa98df7374",
+            "number": 6,
+            "values": {
+              "c2fcfa80-a723-4a6a-a4d8-c53984a65744": "Monstaa",
+              "34e03a07-6638-4f62-8efc-5755b3eeee47": "**After fight:** Must destroy holded card, If it can't destroy Monstaa instead.",
+              "1981fcde-30bf-48ab-bcb5-832e654877ca": "Ugabuga",
+              "2264defc-4062-4e58-a04a-7982656c9899": "18"
+            }
+          },
+          {
+            "id": "c548e750-f5de-46c6-a557-41d891a57dea",
+            "number": 7,
+            "values": {
+              "c2fcfa80-a723-4a6a-a4d8-c53984a65744": "Balanced",
+              "1981fcde-30bf-48ab-bcb5-832e654877ca": "Ugabuga",
+              "2264defc-4062-4e58-a04a-7982656c9899": "16"
+            }
+          },
+          {
+            "id": "c17a143c-a68b-43e5-8853-9a8dfd3a60eb",
+            "number": 8,
+            "values": {
+              "c2fcfa80-a723-4a6a-a4d8-c53984a65744": "Lance-elot",
+              "34e03a07-6638-4f62-8efc-5755b3eeee47": "Can't declare fight.\nHolder gains +3 power.",
+              "1981fcde-30bf-48ab-bcb5-832e654877ca": "Ugabuga",
+              "2264defc-4062-4e58-a04a-7982656c9899": "3"
+            }
+          },
+          {
+            "id": "440d631b-7960-4b61-9a01-665cb101de07",
+            "number": 9,
+            "values": {
+              "c2fcfa80-a723-4a6a-a4d8-c53984a65744": "Van-guard",
+              "34e03a07-6638-4f62-8efc-5755b3eeee47": "Can't declre fight.\nCan't hold cards.\n**While fighting:** Power becomes 0.",
+              "1981fcde-30bf-48ab-bcb5-832e654877ca": "Ugabuga",
+              "2264defc-4062-4e58-a04a-7982656c9899": "18"
+            }
+          }
+        ],
+        "nextCardNumber": 10
+      }
+    ],
+    "decks": [
+      {
+        "id": "e46db58d-f457-45f6-bcff-45df2dbec2df",
+        "name": "Fantaspet",
+        "entries": [
+          {
+            "cardId": "f6c5375b-576b-4730-952e-eede142ff7bc",
+            "count": 1
+          },
+          {
+            "cardId": "a35ec61c-bbe4-4034-ac2d-cb5106d49e84",
+            "count": 1
+          },
+          {
+            "cardId": "2884c7f0-6212-4038-a5a6-76c301a0fed5",
+            "count": 3
+          },
+          {
+            "cardId": "cdb27e98-bfa6-4ec3-9bde-8ef758440629",
+            "count": 2
+          },
+          {
+            "cardId": "76a59d1f-e458-45d1-a5dd-47186f0b8997",
+            "count": 1
+          },
+          {
+            "cardId": "c17a143c-a68b-43e5-8853-9a8dfd3a60eb",
+            "count": 1
+          }
+        ]
+      }
+    ]
+  }
+}
