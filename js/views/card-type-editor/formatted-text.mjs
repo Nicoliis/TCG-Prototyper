@@ -23,8 +23,7 @@ export function renderFormatted(container, text) {
   flow.className = "formatted-flow";
   let line = newLine(flow);
   for (const segment of parseFormatted(text)) {
-    const parts = segment.text.split("
-");
+    const parts = segment.text.split("\n");
     parts.forEach((part, index) => {
       if (index > 0) line = newLine(flow);
       if (part) line.append(renderRun({ ...segment, text: part }));
