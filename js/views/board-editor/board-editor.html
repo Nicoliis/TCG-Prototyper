@@ -1,0 +1,73 @@
+<template id="board-editor-view">
+  <section class="view board-editor-view">
+    <button type="button" class="back-button">&larr; Boards</button>
+    <h2 class="board-heading"></h2>
+    <p class="hint">You design <strong>one player's half</strong>: the opponent gets the same half mirrored on the other side of the table. Zones in the <em>shared</em> band belong to nobody. Drag a zone to move it, drag its corner to resize it. The deck, hand and discard are required.</p>
+
+    <div class="board-editor-actions">
+      <button type="button" class="board-save-button">Save board</button>
+      <button type="button" class="board-add-zone-button">+ Zone</button>
+      <button type="button" class="board-add-shared-button">+ Shared zone</button>
+      <span class="board-dirty" hidden>Unsaved changes</span>
+    </div>
+    <p class="field-error" hidden></p>
+
+    <div class="board-editor-body">
+      <div class="board-editor-canvas-wrap">
+        <div class="board-editor-canvas"></div>
+      </div>
+      <aside class="board-editor-panel">
+        <section class="zone-panel">
+          <h3>Zone</h3>
+          <p class="zone-panel-empty">Click a zone to edit it.</p>
+          <form class="zone-form" hidden>
+            <label>Name <input type="text" name="name"></label>
+            <label>Area
+              <select name="area"></select>
+            </label>
+            <div class="zone-geometry">
+              <label>Column <input type="number" name="col" min="0"></label>
+              <label>Row <input type="number" name="row" min="0"></label>
+              <label>Width <input type="number" name="w" min="1"></label>
+              <label>Height <input type="number" name="h" min="1"></label>
+            </div>
+            <label>Cards are shown as
+              <select name="layout"></select>
+            </label>
+            <label>Cards enter
+              <select name="face"></select>
+            </label>
+            <label>Who can see the cards
+              <select name="visibility"></select>
+            </label>
+            <p class="hint zone-role-note" hidden></p>
+            <button type="button" class="zone-delete-button">Remove zone</button>
+          </form>
+        </section>
+
+        <section class="board-settings-panel">
+          <h3>Board</h3>
+          <form class="board-settings-form">
+            <div class="zone-geometry">
+              <label>Columns <input type="number" name="cols" min="1"></label>
+              <label>Rows <input type="number" name="rows" min="1"></label>
+              <label>Shared rows <input type="number" name="sharedRows" min="0"></label>
+            </div>
+            <div class="zone-geometry">
+              <label>Card cell width <input type="number" name="cellWidth" min="40"></label>
+              <label>Card cell height <input type="number" name="cellHeight" min="40"></label>
+            </div>
+            <div class="zone-geometry">
+              <label>Starting hand <input type="number" name="startingHand" min="0"></label>
+              <label>Draw each turn <input type="number" name="drawPerTurn" min="0"></label>
+            </div>
+          </form>
+          <h3>Counters</h3>
+          <p class="hint">Numbers each player tracks, such as life or mana.</p>
+          <ul class="counter-list"></ul>
+          <button type="button" class="counter-add-button">+ Counter</button>
+        </section>
+      </aside>
+    </div>
+  </section>
+</template>

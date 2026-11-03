@@ -1,12 +1,13 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=30";
-import { mountCardTypeList } from "../card-type-list/card-type-list.mjs?v=30";
-import { buildExportEnvelope, exportFileName, validateExportEnvelope } from "../../models/project-export.mjs?v=30";
-import { downloadTextFile } from "./download-file.mjs?v=30";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=31";
+import { mountCardTypeList } from "../card-type-list/card-type-list.mjs?v=31";
+import { buildExportEnvelope, exportFileName, validateExportEnvelope } from "../../models/project-export.mjs?v=31";
+import { mountPlay } from "../play/play-screen.mjs?v=31";
+import { downloadTextFile } from "./download-file.mjs?v=31";
 
 let templatePromise;
 
 export async function mountProjectList(root, storage) {
-  const template = await (templatePromise ??= loadFragment("js/views/project-list/project-list.html?v=30"));
+  const template = await (templatePromise ??= loadFragment("js/views/project-list/project-list.html?v=31"));
   const view = cloneTemplate(template);
   const section = view.querySelector(".project-list-view");
 
@@ -85,6 +86,10 @@ export async function mountProjectList(root, storage) {
     } catch (error) {
       showError(error.message);
     }
+  });
+
+  section.querySelector(".join-game-button").addEventListener("click", () => {
+    mountPlay(root, storage, { mode: "join" }, () => mountProjectList(root, storage));
   });
 
   importButton.addEventListener("click", () => importInput.click());

@@ -1,0 +1,28 @@
+<template id="board-list-view">
+  <section class="view board-list-view">
+    <button type="button" class="back-button">&larr; Card types</button>
+    <h2 class="project-name-heading"></h2>
+    <h3>Boards</h3>
+    <p class="hint">A board is the table your game is played on: where the deck, hand and discard pile sit, plus any zones you need. Design one, then practice on it alone or host a game for a friend.</p>
+
+    <form class="create-board-form">
+      <input type="text" name="boardName" placeholder="New board name" required>
+      <button type="submit">Create board</button>
+    </form>
+    <p class="field-error" hidden></p>
+
+    <ul class="board-list"></ul>
+    <p class="board-list-empty" hidden>No boards yet. Create one above.</p>
+
+    <template class="board-list-item-template">
+      <li class="board-list-item">
+        <button type="button" class="board-open-button"></button>
+        <button type="button" class="board-practice-button">Practice</button>
+        <button type="button" class="board-host-button">Host game</button>
+        <button type="button" class="board-rename-button">Rename</button>
+        <button type="button" class="board-duplicate-button">Duplicate</button>
+        <button type="button" class="board-delete-button">Delete</button>
+      </li>
+    </template>
+  </section>
+</template>
