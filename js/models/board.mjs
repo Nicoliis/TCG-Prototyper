@@ -6,7 +6,7 @@
 // never removed: the deck, the hand and the discard pile.
 
 export const ZONE_ROLES = ["deck", "hand", "discard"];
-export const ZONE_LAYOUTS = ["pile", "stack", "spread", "grid"];
+export const ZONE_LAYOUTS = ["pile", "stack", "spread", "grid", "free"];
 export const ZONE_FACES = ["up", "down", "keep"];
 export const ZONE_VISIBILITIES = ["public", "private", "hidden"];
 export const ZONE_AREAS = ["player", "shared"];
@@ -15,11 +15,12 @@ export const LAYOUT_LABELS = {
   pile: "Pile (only the top card, with a count)",
   stack: "Stack (cards offset so each stays visible)",
   spread: "Spread (a row of overlapping cards)",
-  grid: "Grid (one card per cell)",
+  grid: "Grid (square cells; cards can lie straight or sideways)",
+  free: "Chaotic (cards stay wherever you drop them)",
 };
 export const FACE_LABELS = {
-  up: "Face up",
-  down: "Face down",
+  up: "Face up (Shift-drop plays it face down)",
+  down: "Face down (Shift-drop plays it face up)",
   keep: "Keep the card's current side",
 };
 export const VISIBILITY_LABELS = {
@@ -81,7 +82,7 @@ export function createBoard(name, existingNames) {
     cols: 6,
     rows: 3,
     sharedRows: 0,
-    cellWidth: 100,
+    cellWidth: 140,
     cellHeight: 140,
     startingHand: 5,
     drawPerTurn: 1,
