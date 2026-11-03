@@ -39,6 +39,14 @@ export class StorageAdapter {
     throw new Error("deleteDeck not implemented");
   }
 
+  async saveBoard(projectId, board) {
+    throw new Error("saveBoard not implemented");
+  }
+
+  async deleteBoard(projectId, boardId) {
+    throw new Error("deleteBoard not implemented");
+  }
+
   async deleteCardType(projectId, cardTypeId) {
     throw new Error("deleteCardType not implemented");
   }

@@ -1,9 +1,10 @@
-import { StorageAdapter } from "./storage-adapter.mjs?v=30";
-import { createProject, validateProjectName, cloneProjectForDuplicate } from "../models/project.mjs?v=30";
-import { validateCardTypeName } from "../models/card-type.mjs?v=30";
-import { upsertDeck, removeDeck, pruneDecks } from "../models/deck.mjs?v=30";
-import { normalizeProject } from "../models/card-numbering.mjs?v=30";
-import { validateExportEnvelope, buildProjectFromImport } from "../models/project-export.mjs?v=30";
+import { StorageAdapter } from "./storage-adapter.mjs?v=31";
+import { createProject, validateProjectName, cloneProjectForDuplicate } from "../models/project.mjs?v=31";
+import { validateCardTypeName } from "../models/card-type.mjs?v=31";
+import { upsertDeck, removeDeck, pruneDecks } from "../models/deck.mjs?v=31";
+import { upsertBoard, removeBoard } from "../models/board.mjs?v=31";
+import { normalizeProject } from "../models/card-numbering.mjs?v=31";
+import { validateExportEnvelope, buildProjectFromImport } from "../models/project-export.mjs?v=31";
 
 const DB_VERSION = 1;
 const STORE_NAME = "projects";
@@ -125,6 +126,23 @@ export class IndexedDbAdapter extends StorageAdapter {
     const project = await this.getProject(projectId);
     if (!project) throw new Error(`Project not found: ${projectId}`);
     removeDeck(project, deckId);
+    project.updatedAt = Date.now();
+    await this.#putProject(project);
+  }
+
+  async saveBoard(projectId, board) {
+    const project = await this.getProject(projectId);
+    if (!project) throw new Error(`Project not found: ${projectId}`);
+    const saved = upsertBoard(project, board);
+    project.updatedAt = Date.now();
+    await this.#putProject(project);
+    return saved;
+  }
+
+  async deleteBoard(projectId, boardId) {
+    const project = await this.getProject(projectId);
+    if (!project) throw new Error(`Project not found: ${projectId}`);
+    removeBoard(project, boardId);
     project.updatedAt = Date.now();
     await this.#putProject(project);
   }

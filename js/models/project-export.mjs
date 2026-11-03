@@ -1,6 +1,7 @@
 import { cloneCardType } from "./card-type.mjs";
 import { getDecks, cloneDecksForCards } from "./deck.mjs";
 import { normalizeCardType } from "./card-numbering.mjs";
+import { getBoards, cloneBoards, normalizeBoard } from "./board.mjs";
 
 function sameName(a, b) {
   return a.trim().toLowerCase() === b.trim().toLowerCase();
@@ -27,6 +28,7 @@ export function buildExportEnvelope(project) {
       name: project.name,
       cardTypes: project.cardTypes,
       decks: getDecks(project),
+      boards: getBoards(project),
     },
   };
 }
@@ -60,5 +62,6 @@ export function buildProjectFromImport(envelope, existingNames) {
   );
   const decks = cloneDecksForCards(envelope.project.decks ?? [], cardIdMap);
   const name = resolveImportName(envelope.project.name, existingNames);
-  return { name, cardTypes, decks };
+  const boards = cloneBoards(envelope.project.boards ?? []).map(normalizeBoard);
+  return { name, cardTypes, decks, boards };
 }

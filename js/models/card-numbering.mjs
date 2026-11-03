@@ -1,4 +1,5 @@
-import { DEFAULT_PROPERTY_TYPE } from "./property-types.mjs?v=30";
+import { DEFAULT_PROPERTY_TYPE } from "./property-types.mjs?v=31";
+import { normalizeBoard } from "./board.mjs?v=31";
 
 export const ID_PROPERTY = Object.freeze({ id: "__id__", name: "ID", type: "integer", builtin: true });
 
@@ -34,5 +35,7 @@ export function normalizeCardType(cardType) {
 
 export function normalizeProject(project) {
   project.cardTypes.forEach(normalizeCardType);
+  project.boards ??= [];
+  for (const board of project.boards) normalizeBoard(board);
   return project;
 }
