@@ -37,7 +37,7 @@ Status legend: `[ ]` not started, `[~]` in progress, `[x]` done.
   - Print a full proxy sheet for an entire deck.
   - Depends on: Slice 1, Slice 4 (for deck printing).
 
-- [ ] **6. Playing field designer**
+- [x] **6. Playing field designer** — boards with required deck/hand/discard, stackable zones, shared band, counters
   - Stacks (1x1, face down/face up) and areas (CW x CH sizing).
   - Player areas (mirrored 180 for opponent) vs shared areas.
   - Cell-defined vs free-space areas; public vs private visibility.
@@ -45,7 +45,7 @@ Status legend: `[ ]` not started, `[~]` in progress, `[x]` done.
     "free-space areas + visibility rules" if it proves too large for one pass.
   - Depends on: Slice 1 (cards exist to place in the field).
 
-- [ ] **7. Online, testing**
+- [x] **7. Online, testing** — practice alone, host/join over WebRTC (manual code exchange)
   - Share-link P2P playtesting, local state per client.
   - Side selection on join; actions over stacks/areas/hand as listed in
     TODO-Features.md.
