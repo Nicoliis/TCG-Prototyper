@@ -41,6 +41,13 @@ export function cardFaceElement(templates, found, width, height) {
   return faceCache.get(key).cloneNode(true);
 }
 
+// The size a card has when it must fit inside a box, keeping its own shape.
+export function fitSize(found, boxWidth, boxHeight) {
+  if (!found) return { width: boxWidth, height: boxHeight };
+  const scale = Math.min(boxWidth / found.cardType.width, boxHeight / found.cardType.height);
+  return { width: Math.round(found.cardType.width * scale), height: Math.round(found.cardType.height * scale) };
+}
+
 export function cardBackElement(width, height) {
   return h("div", { class: "card-back-art", style: { width: `${width}px`, height: `${height}px` } });
 }

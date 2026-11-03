@@ -9,7 +9,7 @@ import { buildPack } from "../../game/game-pack.mjs?v=31";
 import { newGame, zoneKey, parseKey, roleZone, cardView } from "../../game/game-state.mjs?v=31";
 import { createGameSession, ROLE_CREATOR, ROLE_JOINER } from "../../game/game-session.mjs?v=31";
 import { createLink } from "../../net/link.mjs?v=31";
-import { loadCardTemplates, cardFaceElement } from "../board/card-view.mjs?v=31";
+import { loadCardTemplates, cardFaceElement, fitSize } from "../board/card-view.mjs?v=31";
 import { createGameView, buildCardNode } from "./game-view.mjs?v=31";
 import { showMenu, closeMenu } from "./menu.mjs?v=31";
 
@@ -58,6 +58,7 @@ export async function mountPlay(root, storage, options, onBack) {
     gameView: null,
     deckChoice: { 0: null, 1: "" },
     browseKey: null,
+    browseLimit: null,
     closed: false,
     ui: {},
   };
@@ -373,10 +374,28 @@ export async function mountPlay(root, storage, options, onBack) {
       handlers: {
         onCardMenu: openCardMenu,
         onZoneMenu: openZoneMenu,
-        onMove: (uid, toKey) => act({ kind: "move", uid, to: toKey }),
+        onMove: playCard,
         onHover: showPreview,
       },
     });
+  }
+
+  // A card dropped on a zone (or on another card). Zones only set a default side; Shift plays the opposite.
+  function playCard(uid, toKey, { shift = false, x, y, onto } = {}) {
+    const state = stateOf();
+    const ctx = ctxOf();
+    let entry = null;
+    for (const cards of Object.values(state.zones)) entry ??= cards.find((c) => c.uid === uid) ?? null;
+    if (!entry) return;
+    const event = { kind: "move", uid, to: toKey };
+    if (onto) event.onto = onto;
+    if (x !== undefined) Object.assign(event, { x, y });
+    if (shift) {
+      const zone = ctx.board.zones.find((z) => z.id === parseKey(toKey).zoneId);
+      const defaultUp = zone.face === "keep" ? entry.faceUp : zone.face === "up";
+      event.faceUp = !defaultUp;
+    }
+    act(event);
   }
 
   function showPreview(cardId) {
@@ -386,9 +405,8 @@ export async function mountPlay(root, storage, options, onBack) {
     if (!cardId) return;
     const found = ctx.index.get(cardId);
     if (!found) return;
-    const b = ctx.board;
-    const height = Math.round((PREVIEW_WIDTH * b.cellHeight) / b.cellWidth);
-    preview.replaceChildren(cardFaceElement(templates, found, PREVIEW_WIDTH, height), h("p", { class: "preview-name" }, ctx.cardName(cardId)));
+    const size = fitSize(found, PREVIEW_WIDTH, Math.round(PREVIEW_WIDTH * 1.5));
+    preview.replaceChildren(cardFaceElement(templates, found, size.width, size.height), h("p", { class: "preview-name" }, ctx.cardName(cardId)));
   }
 
   function counterChip(state, ctx, index) {
@@ -511,7 +529,7 @@ export async function mountPlay(root, storage, options, onBack) {
     const state = stateOf();
     const entry = state?.zones[key]?.find((c) => c.uid === uid);
     if (!entry) return;
-    const { ctx, side, zone } = describe(key);
+    const { ctx, side, zone, cards } = describe(key);
     const vis = cardView(ctx.board, room.viewer, key, entry);
     const name = vis === "down" ? "Face-down card" : ctx.cardName(entry.cardId) ?? "Card";
     const mine = side === room.viewer || side === "shared";
@@ -526,17 +544,24 @@ export async function mountPlay(root, storage, options, onBack) {
       onClick: () => act({ kind: "flip", uid }),
     });
     items.push({ label: entry.rot ? "Straighten" : "Turn sideways", onClick: () => act({ kind: "rotate", uid }) });
+    const stacked = entry.under || cards.some((c) => c.under === uid);
+    if (stacked) items.push({ label: entry.under ? "Take out of the stack" : "Unstack all", onClick: () => act({ kind: "unstack", uid }) });
     items.push(...moveItems(key, uid));
+    // a pile shows only its top card, so its zone actions (search, shuffle, draw...) are offered from the card too
+    if (zone.layout === "pile") {
+      const more = zoneItems(key);
+      if (more.length) items.push({ separator: true }, { heading: zone.name }, ...more);
+    }
     showMenu(rect, items);
   }
 
-  function openZoneMenu(key, rect) {
-    const { ctx, state, side, zone, cards } = describe(key);
-    if (!state || state.phase !== "playing") return;
+  // What can be done to a whole zone: draw, search, look at the top, shuffle, move everything.
+  function zoneItems(key) {
+    const { ctx, side, zone, cards } = describe(key);
     const mine = side === room.viewer || side === "shared";
     const canSee = mine || zone.visibility === "public";
     const b = ctx.board;
-    const items = [{ heading: `${zone.name} (${cards.length})` }];
+    const items = [];
     if (zone.role === "deck" && side === room.viewer) {
       items.push({ label: "Draw 1", onClick: () => act({ kind: "draw", n: 1 }) });
       items.push({
@@ -547,7 +572,18 @@ export async function mountPlay(root, storage, options, onBack) {
         },
       });
     }
-    if (canSee && cards.length) items.push({ label: "Browse cards", onClick: () => openBrowse(key) });
+    if (canSee && cards.length) {
+      items.push({ label: "Search / browse all cards", onClick: () => openBrowse(key) });
+      if (cards.length > 1) {
+        items.push({
+          label: "Look at the top…",
+          onClick: () => {
+            const n = Number(prompt("How many cards from the top?", "3"));
+            if (Number.isInteger(n) && n > 0) openBrowse(key, n);
+          },
+        });
+      }
+    }
     if (mine && cards.length > 1) items.push({ label: "Shuffle", onClick: () => act({ kind: "shuffle", key }) });
     if (mine && cards.length) {
       const dest = (label, toKey, shuffle) => toKey !== key && items.push({ label, onClick: () => act({ kind: "moveAll", from: key, to: toKey, shuffle }) });
@@ -556,14 +592,22 @@ export async function mountPlay(root, storage, options, onBack) {
       dest("Hand", zoneKey(room.viewer, roleZone(b, "hand").id), false);
       dest("Discard", zoneKey(room.viewer, roleZone(b, "discard").id), false);
     }
+    return items;
+  }
+
+  function openZoneMenu(key, rect) {
+    const { state, zone, cards } = describe(key);
+    if (!state || state.phase !== "playing") return;
+    const items = [{ heading: `${zone.name} (${cards.length})` }, ...zoneItems(key)];
     if (items.length === 1) items.push({ heading: zone.visibility === "public" ? "Empty" : "Hidden from you" });
     showMenu(rect, items);
   }
 
   /* ---- browsing a zone ---- */
 
-  function openBrowse(key) {
+  function openBrowse(key, limit = null) {
     room.browseKey = key;
+    room.browseLimit = limit;
     renderBrowse();
   }
 
@@ -579,11 +623,11 @@ export async function mountPlay(root, storage, options, onBack) {
     }
     const key = room.browseKey;
     const { side, zone, cards } = describe(key);
-    const height = Math.round((BROWSE_WIDTH * ctx.board.cellHeight) / ctx.board.cellWidth);
+    const shown = room.browseLimit ? cards.slice(-room.browseLimit) : cards;
     const grid = h("div", { class: "browse-grid" });
-    [...cards].reverse().forEach((entry) => {
+    [...shown].reverse().forEach((entry) => {
       const vis = side === room.viewer ? "up" : cardView(ctx.board, room.viewer, key, entry);
-      const node = buildCardNode({ ctx, templates }, entry, vis, BROWSE_WIDTH, height);
+      const node = buildCardNode({ ctx, templates }, entry, vis, BROWSE_WIDTH, Math.round(BROWSE_WIDTH * 1.4));
       node.dataset.key = key;
       node.addEventListener("click", () => openCardMenu(entry.uid, key, node.getBoundingClientRect()));
       node.addEventListener("pointerover", () => vis !== "down" && showPreview(entry.cardId));
@@ -593,7 +637,7 @@ export async function mountPlay(root, storage, options, onBack) {
       h(
         "div",
         { class: "browse-panel" },
-        h("div", { class: "browse-head" }, h("strong", {}, `${zone.name} (${cards.length}) - top first`), h("button", { type: "button", onclick: () => ((room.browseKey = null), renderBrowse()) }, "Close")),
+        h("div", { class: "browse-head" }, h("strong", {}, room.browseLimit ? `${zone.name}: top ${shown.length} of ${cards.length}` : `${zone.name} (${cards.length}) - top first`), h("button", { type: "button", onclick: () => ((room.browseKey = null), (room.browseLimit = null), renderBrowse()) }, "Close")),
         cards.length ? grid : h("p", { class: "hint" }, "No cards here."),
       ),
     );
