@@ -1,12 +1,12 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=29";
-import { mountCardTypeList } from "../card-type-list/card-type-list.mjs?v=29";
-import { buildExportEnvelope, exportFileName, validateExportEnvelope } from "../../models/project-export.mjs?v=29";
-import { downloadTextFile } from "./download-file.mjs?v=29";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=30";
+import { mountCardTypeList } from "../card-type-list/card-type-list.mjs?v=30";
+import { buildExportEnvelope, exportFileName, validateExportEnvelope } from "../../models/project-export.mjs?v=30";
+import { downloadTextFile } from "./download-file.mjs?v=30";
 
 let templatePromise;
 
 export async function mountProjectList(root, storage) {
-  const template = await (templatePromise ??= loadFragment("js/views/project-list/project-list.html?v=29"));
+  const template = await (templatePromise ??= loadFragment("js/views/project-list/project-list.html?v=30"));
   const view = cloneTemplate(template);
   const section = view.querySelector(".project-list-view");
 

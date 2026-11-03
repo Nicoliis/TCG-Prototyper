@@ -1,4 +1,4 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=29";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=30";
 import {
   setElementStyle,
   getElementStyle,
@@ -6,10 +6,10 @@ import {
   setTextStyle,
   getTextStyle,
   getElementName,
-} from "../../models/card-type.mjs?v=29";
-import { substitute } from "../../templating/substitute.mjs?v=29";
-import { renderFormatted } from "./formatted-text.mjs?v=29";
-import { setUpTabs, activeTab, selectTab, setUpSegmented, setSegmentedValue } from "./tabs.mjs?v=29";
+} from "../../models/card-type.mjs?v=30";
+import { substitute } from "../../templating/substitute.mjs?v=30";
+import { renderFormatted } from "./formatted-text.mjs?v=30";
+import { setUpTabs, activeTab, selectTab, setUpSegmented, setSegmentedValue } from "./tabs.mjs?v=30";
 
 const CONTENT_FIELD_BY_KIND = {
   text: { label: "Template", placeholder: "{property} template" },
@@ -24,7 +24,7 @@ let templatePromise;
 
 export async function mountElementPropertiesPanel(container) {
   const template = await (templatePromise ??= loadFragment(
-    "js/views/card-type-editor/element-properties-panel.html?v=29",
+    "js/views/card-type-editor/element-properties-panel.html?v=30",
   ));
   const panel = cloneTemplate(template).firstElementChild;
   container.appendChild(panel);
@@ -87,6 +87,8 @@ export async function mountElementPropertiesPanel(container) {
     fields.fontFamily.value = textStyle.fontFamily;
     fields.fontSize.value = textStyle.fontSize;
     fields.bold.checked = textStyle.bold;
+    fields.lineHeight.value = textStyle.lineHeight;
+    fields.paragraphSpacing.value = textStyle.paragraphSpacing;
     setSegmentedValue(panel, "align", textStyle.align);
     setSegmentedValue(panel, "verticalAlign", textStyle.verticalAlign);
     setSegmentedValue(panel, "overflow", textStyle.overflow);
@@ -168,6 +170,26 @@ export async function mountElementPropertiesPanel(container) {
       currentCallbacks.onChange();
     } catch {
       // Ignore an invalid interim value (e.g. field cleared mid-edit); last valid size stays applied.
+    }
+  });
+
+  fields.lineHeight.addEventListener("input", () => {
+    if (!currentElement) return;
+    try {
+      setTextStyle(currentElement, { lineHeight: Number(fields.lineHeight.value) });
+      currentCallbacks.onChange();
+    } catch {
+      // Ignore an invalid interim value; last valid line height stays applied.
+    }
+  });
+
+  fields.paragraphSpacing.addEventListener("input", () => {
+    if (!currentElement) return;
+    try {
+      setTextStyle(currentElement, { paragraphSpacing: Number(fields.paragraphSpacing.value) });
+      currentCallbacks.onChange();
+    } catch {
+      // Ignore an invalid interim value; last valid spacing stays applied.
     }
   });
 

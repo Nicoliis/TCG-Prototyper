@@ -1,4 +1,4 @@
-import { parseFormatted } from "../../templating/format-text.mjs?v=29";
+import { parseFormatted } from "../../templating/format-text.mjs?v=30";
 
 const STYLE_CLASSES = [
   ["bold", "fmt-bold"],
@@ -17,9 +17,25 @@ function renderRun(segment) {
 
 // The container is a flex box (for alignment), so runs must live inside one
 // wrapper or each would become a separate flex item and wrap on its own.
+// Each line break starts a new block so the "line gap" setting can space them.
 export function renderFormatted(container, text) {
   const flow = document.createElement("span");
   flow.className = "formatted-flow";
-  flow.append(...parseFormatted(text).map(renderRun));
+  let line = newLine(flow);
+  for (const segment of parseFormatted(text)) {
+    const parts = segment.text.split("
+");
+    parts.forEach((part, index) => {
+      if (index > 0) line = newLine(flow);
+      if (part) line.append(renderRun({ ...segment, text: part }));
+    });
+  }
   container.replaceChildren(flow);
+}
+
+function newLine(flow) {
+  const line = document.createElement("span");
+  line.className = "formatted-line";
+  flow.append(line);
+  return line;
 }

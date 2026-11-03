@@ -9,18 +9,18 @@ Juego de cartas de demostración para Cardgame Prototyper: 1 contra 1, de cadena
 | [ruleguides.md](ruleguides.md) | **Cómo se juega.** Turnos, combate, cadenas, triggers, restricciones, búsquedas. |
 | [designguide.md](designguide.md) | **Cómo se diseña.** Filosofía, roles, restricciones, vocabulario, lore, diseño visual. |
 | [glosario.md](glosario.md) | **Qué significa cada palabra** de las cartas (buscar, asistir, atracción…) y sus casos borde. |
-| [cards.md](cards.md) | Catálogo completo: 35 exploradores (1 ficha) y 20 eventos, con su rol. |
-| [decks.md](decks.md) | Tres mazos iniciales de 40 cartas más un starter extra (Baluarte), con estrategia y líneas de juego de ejemplo. |
-| `colapso.json` | Proyecto completo para **importar en la app**: 2 tipos de carta con su diseño, todas las cartas y los 3 mazos iniciales más Baluarte (starter extra). |
-| `cartas-exploradores.csv` | Exploradores, listos para el importador de CSV. |
-| `cartas-eventos.csv` | Eventos, listos para el importador de CSV. |
+| [cards.md](cards.md) | Catálogo completo: 35 exploradores (1 ficha) y 20 eventos, con su rol y su código por tipo de carta. |
+| [decks.md](decks.md) | Tres mazos iniciales de 30 cartas más un starter extra (Baluarte), con estrategia y líneas de juego de ejemplo. |
+| `colapso.json` | Proyecto completo para **importar en la app**: 4 tipos de carta (Explorador y Evento, con y sin restricción) con su diseño, todas las cartas y los 3 mazos iniciales más Baluarte (starter extra). |
+| `cartas-exploradores.csv`, `cartas-exploradores-con-restriccion.csv` | Exploradores sin y con restricción, listos para el importador de CSV (uno por tipo de carta). |
+| `cartas-eventos.csv`, `cartas-eventos-con-restriccion.csv` | Eventos sin y con restricción, igual. |
 | `mytcg.json` | Primer borrador (proyecto "Mytcg", otra mecánica de combate). Se conserva como referencia. |
 
 ## Cómo usarlo en la app
 
 **Opción rápida:** importa `colapso.json` desde la lista de proyectos. Obtienes el proyecto **Colapso** con todo cargado, y desde Deckbuilding ves los mazos. En la sección de impresión puedes imprimir un mazo entero como proxy.
 
-**Opción manual:** crea un proyecto, un tipo de carta "Explorador" y otro "Evento" con las propiedades de las cabeceras de cada CSV, y usa el importador de CSV en cada uno. Las columnas se mapean por nombre, así que puedes editar los CSV y volver a importarlos (con `ID` como clave se actualizan en lugar de duplicar).
+**Opción manual:** crea un proyecto y un tipo de carta por cada CSV ("Explorador", "Explorador (con restricción)", "Evento" y "Evento (con restricción)") con las propiedades de sus cabeceras, y usa el importador de CSV en cada uno. Las columnas se mapean por nombre, así que puedes editar los CSV y volver a importarlos (con `ID` como clave se actualizan en lugar de duplicar).
 
 ## Los mazos
 

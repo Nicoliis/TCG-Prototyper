@@ -1,36 +1,24 @@
-nombre,dimension,velocidad,efecto,restriccion
+nombre,dimension,velocidad,efecto
 Susurros en Eterneblina,Fantaspet,Rápido,"**Normal:** Devuelve 1 Fantaspet de tu cementerio a tu mano.
-**Trigger:** Si un Fantaspet que controlas fuera a ser destruido: devuélvelo a tu mano en su lugar.",
-Refugio en emergente Eterneblina,Fantaspet,Lento,"**Normal:** Revela 1 Fantaspet de tu mano: busca 1 Fantaspet con distinto nombre.
-**Trigger:** Si un Fantaspet que controlas es destruido: busca 1 Fantaspet con PODER 100 o menos.",Después de activar> Si es tu turno: no puedes jugar más exploradores este turno.
-Presencia en Eterneblina,Fantaspet,Rápido,"**Normal:** Elige 1 Fantaspet que controlas: gana 50 PODER hasta el final del turno.
-**Trigger:** Si un Fantaspet que controlas es atacado: ese Fantaspet no puede ser destruido en este combate.",
-Procesión en emergente Eterneblina,Fantaspet,Lento,**Normal:** Juega hasta 2 Fantaspet con distinto nombre de tu cementerio. Sus efectos se niegan hasta el final del turno.,Después de activar> se termina tu turno.
-Estampida en emergente Ugabuga,Ugabuga,Lento,**Normal:** Elige 1 Ugabuga que controlas: puede declarar un segundo ataque este turno.,Después de activar> no puedes activar más efectos este turno.
-Grito de guerra Ugabuga,Ugabuga,Rápido,"**Normal:** Elige 1 Ugabuga que controlas: gana 50 PODER hasta el final del turno.
-**Trigger:** Si un Ugabuga que controlas es atacado: ese Ugabuga gana 80 PODER hasta el final del turno.",
+**Trigger:** Si un Fantaspet fuera a ser destruido: devuélvelo a tu mano en su lugar."
+Presencia en Eterneblina,Fantaspet,Rápido,"**Normal:** Elige 1 Fantaspet: gana 50 PODER.
+**Trigger:** Si un Fantaspet es atacado: no puede ser destruido en este combate."
+Grito de guerra Ugabuga,Ugabuga,Rápido,"**Normal:** Elige 1 Ugabuga: gana 50 PODER.
+**Trigger:** Si un Ugabuga es atacado: gana 80 PODER."
 Derrumbe en emergente cueva Ugabuga,Ugabuga,Rápido,"**Normal:** Descarta 1 carta: destruye 1 explorador con PODER 100 o menos.
-**Trigger:** Si el oponente juega un explorador, descarta 1 Ugabuga: destruye ese explorador si su PODER es 100 o menos.",
-Banquete inaugural de aldea Ugabuga,Ugabuga,Lento,"**Normal:** Destruye 1 explorador que controlas: roba 2 cartas.
-**Trigger:** Si un Ugabuga que controlas es destruido: juega 1 Ugabuga con PODER 120 o menos de tu mano.",Después de activar> Si es tu turno: no puedes jugar más exploradores este turno.
-Conflicto en emergente reino de Ragnatica,Ragnatica,Lento,"**Normal:** Agrega 2 fichas Cría.
-**Trigger:** Si el oponente declara un ataque: agrega 1 ficha Cría.",Después de activar> Si es tu turno: no puedes jugar más exploradores este turno.
-Hilos cortados en Ragnatica,Ragnatica,Rápido,"**Normal:** Descarta 1 carta: devuelve a la mano 1 explorador con PODER 120 o menos.
-**Trigger:** Si el oponente juega un explorador, descarta 1 carta: devuelve ese explorador a su mano.",
-Cosecha en Ragnatica,Ragnatica,Lento,"**Normal:** Destruye 1 ficha Cría que controlas: roba 2 cartas.
-**Trigger:** Si una ficha Cría que controlas es destruida: roba 1 carta.",
-Plaga en emergente Ragnatica,Ragnatica,Rápido,**Normal:** Destruye todas las fichas Cría que controlas (mínimo 1): el oponente descarta 1 carta por cada ficha destruida (máximo 3).,Después de activar> no puedes activar más efectos este turno.
-Cerrad filas en emergente Baluarte,Baluarte,Rápido,"**Normal:** Elige 1 explorador que controlas con asistente: gana 50 PODER hasta el final del turno.
-**Trigger:** Si un explorador que controlas con asistente es atacado: el atacante pierde 50 PODER hasta el final del turno.",
-Relevo de guardia en Baluarte,Baluarte,Rápido,"**Normal:** Reemplaza 1 asistente que controlas por 1 Baluarte de tu mano, boca abajo. El asistente reemplazado vuelve a tu mano.
-**Trigger:** Si un asistente que controlas fuera a ser destruido: devuélvelo a tu mano en su lugar.",
-Reconstrucción en emergente Baluarte,Baluarte,Lento,"**Normal:** Juega 1 Baluarte de tu cementerio asistiendo, boca abajo, a un explorador sin asistente que controlas.
-**Trigger:** Si un Baluarte que controlas es destruido: busca 1 Baluarte con PODER 120 o menos.",Después de activar> no puedes declarar ataques este turno.
-Represalia en Baluarte,Baluarte,Rápido,"**Normal:** Elige 1 explorador del oponente: pierde 50 PODER hasta el final del turno.
-**Trigger:** Si un explorador del oponente es destruido en combate: el oponente recibe 50 puntos de daño.",
-Grieta en emergente Valle Mudo,Neutral,Rápido,"**Trigger:** Si el oponente activa un efecto que busca, descarta 1 carta y destruye 1 explorador que controlas: niega esa activación.",
+**Trigger:** Si el oponente juega un explorador con PODER 100 o menos, descarta 1 Ugabuga: destrúyelo."
+Hilos cortados en Ragnatica,Ragnatica,Rápido,"**Normal:** Descarta 1 carta: devuelve a su mano 1 explorador del oponente con PODER 120 o menos.
+**Trigger:** Si el oponente juega un explorador, descarta 1 carta: devuelve ese explorador a su mano."
+Cosecha en Ragnatica,Ragnatica,Lento,"**Normal:** Destruye 1 ficha Cría: roba 2 cartas.
+**Trigger:** Si una ficha Cría es destruida: roba 1 carta."
+Cerrad filas en emergente Baluarte,Baluarte,Rápido,"**Normal:** Elige 1 explorador con asistente: gana 50 PODER.
+**Trigger:** Si un explorador con asistente es atacado: el atacante pierde 50 PODER."
+Relevo de guardia en Baluarte,Baluarte,Rápido,"**Normal:** Reemplaza 1 asistente por 1 Baluarte de tu mano. El asistente reemplazado vuelve a tu mano.
+**Trigger:** Si un asistente fuera a ser destruido: devuélvelo a tu mano en su lugar."
+Represalia en Baluarte,Baluarte,Rápido,"**Normal:** Elige 1 explorador del oponente: pierde 50 PODER.
+**Trigger:** Si un explorador del oponente es destruido en combate: el oponente recibe 50 de daño."
+Grieta en emergente Valle Mudo,Neutral,Rápido,"**Trigger:** Si el oponente activa un efecto que busca, descarta 1 carta y destruye 1 explorador: niega esa activación."
 Brújula Rota,Neutral,Lento,"**Normal:** Roba 2 cartas, luego descarta 2 cartas.
-**Trigger:** Si una carta falla en la búsqueda: roba 1 carta.",
-Campamento en emergente Tierra de Nadie,Neutral,Lento,**Normal:** Devuelve 1 explorador de tu cementerio a tu mano.,Después de activar> Si es tu turno: no puedes jugar más exploradores este turno.
-Retirada Táctica,Neutral,Rápido,"**Normal:** Devuelve 1 explorador que controlas a tu mano.
-**Trigger:** Si un explorador que controlas es atacado: devuelve ese explorador a tu mano. El ataque termina.",
+**Trigger:** Si una carta falla en la búsqueda: roba 1 carta."
+Retirada Táctica,Neutral,Rápido,"**Normal:** Devuelve 1 explorador a tu mano.
+**Trigger:** Si un explorador es atacado: devuélvelo a tu mano. El ataque termina."

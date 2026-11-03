@@ -1,4 +1,4 @@
-import { getTextStyle } from "../../models/card-type.mjs?v=29";
+import { getTextStyle } from "../../models/card-type.mjs?v=30";
 
 const MIN_FONT_SIZE = 6;
 const MAX_SHRINK_STEPS = 40;
@@ -17,6 +17,8 @@ export function applyTextFit(node, element) {
   content.style.justifyContent = JUSTIFY_BY_ALIGN[textStyle.align] ?? "flex-start";
   content.style.alignItems = ALIGN_ITEMS_BY_VERTICAL_ALIGN[textStyle.verticalAlign] ?? "center";
   content.style.fontSize = `${textStyle.fontSize}px`;
+  content.style.lineHeight = String(textStyle.lineHeight);
+  content.style.setProperty("--line-gap", `${textStyle.paragraphSpacing}px`);
   content.style.transform = "";
 
   if (textStyle.overflow === "wrap") {

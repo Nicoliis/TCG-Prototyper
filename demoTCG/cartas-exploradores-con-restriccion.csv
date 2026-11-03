@@ -1,0 +1,18 @@
+nombre,dimension,poder,efecto,restriccion
+Cesarmill,Fantaspet,120,"**Normal:** Busca 1 Fantaspet y juégalo asistiendo a esta carta (solo sin asistente).
+**Trigger:** Si un Fantaspet es revelado: el oponente recibe 50 de daño por cada Fantaspet en tu cementerio (máx. 4).",Después de entrar al campo> Si es tu turno: no puedes declarar ataques este turno.
+Talkatak,Fantaspet,150,**Normal:** Reemplaza 1 asistente por 1 Fantaspet de tu mano. El asistente reemplazado vuelve a tu mano.,Después de entrar al campo> descarta 1 carta.
+Ugalito,Ugabuga,100,**Normal:** Descarta 1 carta: busca 1 Ugabuga.,Después de entrar al campo> Si es tu turno: no puedes jugar más exploradores este turno.
+Lance-elot,Ugabuga,30,**Asistiendo:** El explorador gana 30 PODER.,Esta carta no puede declarar ataques.
+Van-guard,Ugabuga,180,**Atracción** de ataques.,"No puede declarar ataques ni tener asistentes. Al combatir, su PODER pasa a ser 0."
+Monstaa,Ugabuga,180,,"Después de combatir> Destruye su asistente. Si no puedes, destruye esta carta."
+Señuelo,Ragnatica,100,**Atracción** de ataques.,Esta carta no puede declarar ataques.
+Madre Telar,Ragnatica,200,**Normal:** Destruye 2 fichas Cría: devuelve 1 explorador del oponente a su mano.,Después de entrar al campo> Si es tu turno: no puedes activar más efectos este turno.
+Reina de Ragnatica,Ragnatica,250,"**Normal:** (Desde tu mano) Destruye 2 fichas Cría: juega esta carta.
+**Trigger:** Si el oponente activa un efecto de explorador que elige a una carta tuya, descarta 1 carta y destruye 1 ficha Cría: niega esa activación.",Después de entrar al campo> Si es tu turno: se termina tu turno.
+"Aegis, Custodio del Baluarte",Baluarte,200,"**Atracción** de ataques y efectos.
+Mientras tenga asistente, no puede ser destruida por efectos.
+**Trigger:** Si esta carta fuera a ser destruida en batalla: puedes destruir a su asistente en su lugar.",Después de entrar al campo> Si es tu turno: se termina tu turno. Solo 1 copia.
+Archivista del Baluarte,Baluarte,90,**Normal:** Busca 1 Baluarte.,Después de entrar al campo> pierdes 50 puntos de vida.
+Cartógrafo Errante,Neutral,100,"**Normal:** Roba 1 carta, luego descarta 1 carta.",Después de entrar al campo> Si es tu turno: no puedes jugar más exploradores este turno.
+Mercenario del Colapso,Neutral,200,**Normal:** (Desde tu mano) Descarta 1 carta: juega esta carta.,Después de entrar al campo> Si es tu turno: no puedes activar más efectos este turno.

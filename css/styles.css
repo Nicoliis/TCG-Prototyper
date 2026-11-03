@@ -1109,3 +1109,12 @@ main:has(.print-screen-view) {
 .formatted-flow {
   min-width: 0;
 }
+
+.formatted-line {
+  display: block;
+  min-height: 1lh;
+}
+
+.formatted-line + .formatted-line {
+  margin-top: var(--line-gap, 0);
+}

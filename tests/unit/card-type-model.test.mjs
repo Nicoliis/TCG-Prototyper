@@ -248,3 +248,14 @@ test("cloneCardType preserves card numbers, property types and the counter", () 
   assert.equal(copy.cards[0].number, second.number);
   assert.equal(copy.nextCardNumber, 3);
 });
+
+test("text style has line height and paragraph spacing, healed on legacy elements and validated", () => {
+  const legacyElement = { id: "x", kind: "text", x: 0, y: 0, width: 10, height: 10, template: "{atk}", textStyle: { fontSize: 12 } };
+  assert.equal(getTextStyle(legacyElement).lineHeight, 1.2);
+  assert.equal(getTextStyle(legacyElement).paragraphSpacing, 0);
+  setTextStyle(legacyElement, { lineHeight: 1.5, paragraphSpacing: 4 });
+  assert.equal(legacyElement.textStyle.lineHeight, 1.5);
+  assert.equal(legacyElement.textStyle.paragraphSpacing, 4);
+  assert.throws(() => setTextStyle(legacyElement, { lineHeight: 0 }));
+  assert.throws(() => setTextStyle(legacyElement, { paragraphSpacing: -1 }));
+});

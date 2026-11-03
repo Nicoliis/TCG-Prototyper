@@ -69,10 +69,24 @@ Mostrar una carta al oponente. Si estaba boca abajo, se da vuelta y **queda boca
 
 ---
 
+## Cómo se leen las cartas
+
+Convenciones que las cartas no repiten, para que los textos sean cortos:
+
+- **Un efecto por línea.** Las etiquetas son **Normal**, **Trigger** y **Asistiendo**; el texto sin etiqueta es un efecto continuo.
+- **"Explorador" es explorador activo.** Un asistente se nombra "asistente".
+- **Todo es tuyo por defecto.** "Un Fantaspet", "1 explorador" o "1 ficha" son tuyos; lo del otro jugador dice "del oponente".
+- **Asistiendo:** en un efecto Asistiendo, "el explorador" es **aquel al que la carta asiste**. "Esta carta" es el asistente.
+- **Duración:** ganar o perder PODER dura hasta el final del turno.
+- **Asistir:** boca abajo, salvo que el texto diga "boca arriba".
+- **Daño:** "el oponente recibe 50 de daño" es daño de efecto, no de combate.
+
+---
+
 ## Efectos de valores
 
 ### Ganar / perder PODER
-Cambia el PODER de un explorador. Salvo que se diga otra cosa, dura **hasta el final del turno**. El PODER nunca baja de 0.
+Cambia el PODER de un explorador. Dura **hasta el final del turno**, así que las cartas no lo repiten, salvo que digan otra cosa. El PODER nunca baja de 0.
 - Los cambios se suman. Un efecto que **fija** el PODER (por ejemplo "su PODER pasa a ser 0") se aplica después de los que suman o restan.
 
 ### Daño
@@ -121,19 +135,19 @@ Casos borde:
 
 ### Asistente
 Explorador que está debajo de un explorador activo (ver [ruleguides.md](ruleguides.md#asistentes)).
-- Solo funciona su efecto de **Asistencia**.
+- Solo funciona su efecto **Asistiendo**.
 - Si está boca abajo no hace nada hasta ser revelado.
 - Cuando el activo es atacado, el asistente se revela y el defensor elige defender **CON** o **SIN** asistencia.
 
-### Un solo escudero
-Palabra clave de los **escuderos** del Baluarte (Rodelero, Alabardero, Armero, Ballestero y Heraldo). Aparece al comienzo de su efecto extra.
+### Activa como (nombre)
+Indicación al comienzo de un efecto, entre paréntesis: **(Activa como Escudero)**. Para la regla de **una vez por turno por nombre**, la carta cuenta como si se llamara así, sin importar su nombre real.
 
-- Solo se puede activar **un efecto con "Un solo escudero" por turno**, **sin importar qué escudero sea**. Con dos copias iguales o con escuderos distintos, cuenta igual.
-- Cada jugador tiene su propio contador: que tú uses uno no impide al oponente usar el suyo (por ejemplo en su turno, con un efecto rápido). 🧪
+Ejemplo, los **Escuderos** del Baluarte (Rodelero, Alabardero, Armero, Ballestero y Heraldo): todos activan sus efectos extra "como Escudero", de modo que entre todos solo se puede activar **un** efecto extra por turno, sean copias iguales o Escuderos distintos.
+- Cuenta cada jugador por separado: que uses uno no impide al oponente usar el suyo (por ejemplo en su turno, con un efecto rápido). 🧪
 - Se gasta al **activar**, aunque el efecto después no se resuelva o sea negado.
-- Se aplica **además** de la regla de una vez por turno por nombre.
-- **No** cuenta para el límite los dos triggers base de los escuderos (el que juega a Aegis desde el mazo y el que repone su asistente): solo los efectos que dicen "Un solo escudero".
-- Un **escudero** es cualquiera de esas cinco cartas. Los efectos que dicen "1 escudero" buscan o devuelven solo entre ellas.
+- Solo afecta al efecto que lleva la indicación. Los dos triggers base de los Escuderos (el que juega a Aegis desde el mazo y el que repone su asistente) **no** la llevan y no cuentan para ese límite.
+- "Escudero" es además el nombre del grupo: los efectos que dicen "1 Escudero" buscan o devuelven solo entre esas cinco cartas.
+- Si una dimensión nueva necesita un límite compartido entre varias cartas, se hace con esta misma indicación y su propio nombre.
 
 ### Efecto continuo
 Texto sin etiqueta que describe algo que se cumple mientras la condición sea verdad ("Mientras esta carta tenga un asistente, no puede ser destruida por efectos"). No se activa, no abre cadena y no se puede negar.

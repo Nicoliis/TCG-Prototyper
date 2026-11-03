@@ -1,5 +1,5 @@
-import { DEFAULT_PROPERTY_TYPE, validatePropertyType, validateValue } from "./property-types.mjs?v=29";
-import { ID_PROPERTY } from "./card-numbering.mjs?v=29";
+import { DEFAULT_PROPERTY_TYPE, validatePropertyType, validateValue } from "./property-types.mjs?v=30";
+import { ID_PROPERTY } from "./card-numbering.mjs?v=30";
 
 const ELEMENT_KINDS =["text", "image", "label", "icon"];
 
@@ -192,17 +192,21 @@ export function defaultTextStyle() {
     align: "left",
     verticalAlign: "middle",
     overflow: "wrap",
+    lineHeight: 1.2,
+    paragraphSpacing: 0,
   };
 }
 
 export function getTextStyle(element) {
-  return element.textStyle ?? defaultTextStyle();
+  return { ...defaultTextStyle(), ...element.textStyle };
 }
 
 export function setTextStyle(element, patch) {
   element.textStyle ??= defaultTextStyle();
   const next = { ...element.textStyle, ...patch };
   if ("fontSize" in patch) next.fontSize = validatePositiveNumber(patch.fontSize, "Font size");
+  if ("lineHeight" in patch) next.lineHeight = validatePositiveNumber(patch.lineHeight, "Line height");
+  if ("paragraphSpacing" in patch) next.paragraphSpacing = validateNonNegativeNumber(patch.paragraphSpacing, "Paragraph spacing");
   if ("align" in patch && !TEXT_ALIGNS.includes(patch.align)) {
     throw new Error(`Text align must be one of: ${TEXT_ALIGNS.join(", ")}.`);
   }

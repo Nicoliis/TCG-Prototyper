@@ -9,7 +9,7 @@ Para quien diseñe cartas nuevas (o quiera entender por qué las actuales son as
 Principios que salen de ahí:
 
 1. **Más barrera de entrada, más diversión.** El juego va a ser complejo en interacciones y cartas. Es mejor tener un juego profundo que alguien quiera aprender que uno simple que nadie quiera jugar.
-2. **Pocos efectos por carta.** Un efecto **Normal** (lo activas tú) y/o un efecto **Trigger** (reacciona). Una carta puede tener uno solo; las más sencillas suelen tener uno. Los exploradores que sirven de asistente pueden sumar un efecto de **Asistencia**.
+2. **Pocos efectos por carta.** Un efecto **Normal** (lo activas tú) y/o un efecto **Trigger** (reacciona). Una carta puede tener uno solo; las más sencillas suelen tener uno. Los exploradores que sirven de asistente pueden sumar un efecto **Asistiendo**.
 3. **El poder se paga con restricciones.** Las cartas más fuertes cargan con una restricción (sección 4). Cuanto más grave, más fuerte puede ser la carta.
 4. **Los asistentes son la mecánica distintiva.** Un explorador activo puede sostener a otro debajo, oculto, y al ser atacado el defensor elige si pelea CON o SIN esa ayuda. Casi todas las dimensiones deberían tener algo que juegue con esto (sección 5).
 5. **Casi no hay "NO".** Las negaciones son mínimas y carísimas. Se interrumpe quitando recursos u objetivos, no frenando todo (sección 6).
@@ -24,8 +24,8 @@ Principios que salen de ahí:
 | Nombre | Corto, sin artículos largos. |
 | Dimensión | Fantaspet, Ugabuga, Ragnatica, Baluarte, Neutral… |
 | PODER | Un único valor, múltiplo de 10. Carta normalita: **150**. |
-| Efecto | Etiquetas `**Normal:**`, `**Trigger:**`, `**Asistencia:**`, en líneas separadas. Los efectos continuos van sin etiqueta. |
-| Restricción | Opcional. Libre (sección 4). |
+| Efecto | Etiquetas `**Normal:**`, `**Trigger:**`, `**Asistiendo:**`, **un efecto por línea**. Los efectos continuos van sin etiqueta. Máximo 3 efectos y el texto debe caber en la caja (ver *Presupuesto de texto*, sección 7). |
+| Restricción | Opcional. Libre (sección 4). Una carta con restricción usa el tipo *Explorador (con restricción)*; una sin ella, el tipo *Explorador*. |
 | ID | Se calcula solo en la app (`EXP-n`). |
 
 ### Evento
@@ -56,14 +56,14 @@ Cada carta debería poder responder "¿para qué la juego?". Las cuatro respuest
 | **Pieza** (*end-board*) | El objetivo a alcanzar. Lo que queda en el tablero. | PODER alto o triggers fuertes. Casi siempre con restricción. |
 | **Interrupción** | Frena al oponente sin decir "no". | Devuelve a la mano, quita un objetivo, resta PODER, descarta. |
 
-Referencia para un mazo de 40 cartas: **25-35% starters, 20-40% extenders, 5-15% piezas, 15-30% interrupciones**. Las piezas son pocas porque son caras de jugar. Las desviaciones de los mazos iniciales son a propósito.
+Referencia para un mazo de 30 cartas: **25-35% starters, 20-40% extenders, 5-15% piezas, 15-30% interrupciones**. Las piezas son pocas porque son caras de jugar. Las desviaciones de los mazos iniciales son a propósito.
 
 | Mazo | Starters | Extenders | Piezas | Interrupciones |
 |---|---|---|---|---|
-| Fantaspet | 14 | 16 | 2 | 8 |
-| Ugabuga | 10 | 10 | 11 | 9 |
-| Ragnatica | 15 | 7 | 3 | 15 |
-| Baluarte | 21 | 8 | 2 | 9 |
+| Fantaspet | 7 | 12 | 5 | 6 |
+| Ugabuga | 7 | 7 | 9 | 7 |
+| Ragnatica | 11 | 5 | 3 | 11 |
+| Baluarte | 16 | 5 | 2 | 7 |
 
 Ugabuga es agresivo (muchas piezas). Baluarte cuenta a los escuderos como starters porque cada uno juega a Aegis: es la fuerza y la debilidad del mazo.
 
@@ -116,14 +116,14 @@ Pautas:
 
 - Un asistente **boca abajo** debe ser una amenaza creíble: si el defensor siempre sabe qué hay, no hay decisión.
 - El **PODER de un asistente** importa porque se compara contra el atacante cuando se defiende CON asistencia. Un asistente de PODER alto es un buen escudo; uno de PODER bajo debería tener un buen efecto.
-- Las cartas con efecto de **Asistencia** solo funcionan mientras asisten. Si quieres que además funcionen fuera, dales un efecto Normal o Trigger aparte (y recuerda que no funcionan mientras asisten).
+- Las cartas con efecto **Asistiendo** solo funcionan mientras asisten. Si quieres que además funcionen fuera, dales un efecto Normal o Trigger aparte (y recuerda que no funcionan mientras asisten).
 - Cada dimensión nueva debería tener al menos una carta de cada una de dos o tres familias.
 
-### Palabras clave de tres palabras
+### Límites compartidos: "Activa como…"
 
-Cuando un límite o una regla se repite en varias cartas, **se resume en una frase corta (idealmente tres palabras) en el texto de la carta y el detalle va al glosario**. Así la carta queda legible y el caso borde se escribe una sola vez. Ejemplos: **Atracción** de ataques, **Un solo escudero**.
+Cuando varias cartas distintas comparten un límite, **no se escribe el límite en cada carta**: se usa la indicación **(Activa como `<nombre>`)** y el detalle va al glosario. Para la regla de una vez por turno por nombre, todas esas cartas cuentan como una sola. Es una indicación corta (tres palabras) que no inventa una regla nueva: reutiliza la que ya existe.
 
-**Un solo escudero** es el modelo: los cinco escuderos de Baluarte tienen un efecto extra, deliberadamente flojo, y como la mitad del valor está en poder repetirlo, el límite "uno por turno, sea cual sea el escudero" lo mantiene a raya. Si un efecto es barato porque se puede repetir con muchas copias distintas, lo mejor es un límite compartido y no subir el costo.
+Los cinco Escuderos de Baluarte son el modelo: cada uno tiene un efecto extra, deliberadamente flojo, que se activa **como Escudero**. Como la mitad del valor está en poder repetirlo con muchas cartas distintas, el límite compartido ("uno por turno, sea cual sea el Escudero") lo mantiene a raya, y no hace falta subir su costo. La **Atracción** funciona igual: una frase corta en la carta y el detalle en el glosario.
 
 ### Diseñar con Atracción
 
@@ -160,17 +160,36 @@ La búsqueda es una **mecánica** (ver [glosario.md](glosario.md#buscar)), no un
 ```
 Normal:       **Normal:** [Costo:] Efecto.
 Trigger:      **Trigger:** Si [condición][, costo]: Efecto.
-Asistencia:   **Asistencia:** Si [condición]: Efecto.    (o un efecto continuo)
+Asistiendo:   **Asistiendo:** Si [condición]: Efecto.    (o un efecto continuo)
 Desde la mano:  **Normal:** (Desde tu mano) [Costo:] Efecto.
 Continuo:     Texto sin etiqueta: Mientras [condición], [efecto].
 Restricción:  Después de entrar al campo> [Si es tu turno:] consecuencia.
 ```
 
-El texto de la carta usa **negrita** con `**…**` (la app la interpreta en la carta). Los efectos van en líneas separadas dentro de la misma celda.
+El texto de la carta usa **negrita** con `**…**` (la app la interpreta en la carta). **Cada efecto va en su propia línea** dentro de la misma celda (en la app, el campo de texto separa las líneas con el ajuste *Line gap*).
+
+### Presupuesto de texto
+
+Las cartas son pequeñas y el texto tiene que **caber en la caja sin achicarse**. Es una regla de diseño, no un parche visual: si una carta no entra, se recorta el texto, no la letra.
+
+| Tipo de carta | Caja de efecto | Líneas aprox. | Máximo |
+|---|---|---|---|
+| Con restricción | 230 × 116 | 8 | 3 efectos, ~45 palabras |
+| Sin restricción | 230 × 146 | 10 | 3 efectos, ~55 palabras |
+
+Reglas para recortar, en este orden:
+
+1. **Usa las convenciones de lectura** (glosario): "explorador" es activo, las cartas son tuyas por defecto, PODER dura hasta el final del turno, asistir es boca abajo, en Asistiendo "el explorador" es el asistido. No las repitas.
+2. **Un efecto, una condición, una acción.** Si necesitas "y luego" dos veces, son dos cartas.
+3. **Un límite compartido** se escribe con **(Activa como …)** y no con una frase larga.
+4. **Una restricción, dos líneas** como máximo.
+5. Si aun así no entra, el efecto es demasiado complicado: pásalo a otra carta.
+
+El script que genera las cartas comprueba este presupuesto y falla si una carta no entra.
 
 ### Vocabulario cerrado
 
-Usa siempre las mismas palabras (definidas en [glosario.md](glosario.md)): **destruir**, **descartar**, **exiliar**, **jugar** (explorador), **asistir**, **revelar**, **agregar** (ficha), **elegir**, **buscar**, **devolver a la mano**, **anular** (ataque), **negar** (efecto), **Atracción**, **Un solo escudero**, **ganar / perder PODER**. No uses sinónimos, y no repitas en la carta los casos borde que ya explica el glosario.
+Usa siempre las mismas palabras (definidas en [glosario.md](glosario.md)): **destruir**, **descartar**, **exiliar**, **jugar** (explorador), **asistir**, **revelar**, **agregar** (ficha), **elegir**, **buscar**, **devolver a la mano**, **anular** (ataque), **negar** (efecto), **Atracción**, **Activa como**, **ganar / perder PODER**. No uses sinónimos, y no repitas en la carta los casos borde que ya explica el glosario.
 
 ### Condiciones de trigger
 
@@ -187,7 +206,7 @@ Cada condición tiene tres partes: alcance (global / propio / dirigido), tempo (
 ### Lista de revisión para una carta nueva
 
 1. ¿Tiene un rol claro (starter, extender, pieza, interrupción)?
-2. ¿Sus efectos son pocos y entran en la carta?
+2. ¿Sus efectos son pocos, cada uno en su línea, y **entran en la caja** (presupuesto de texto)?
 3. ¿Su restricción es proporcional a lo que da y **no bloquea su propio efecto**? ¿Es distinta de las demás o repite una por pereza?
 4. ¿Qué la **frena**? Toda carta debería poder ser interrumpida: quitándole el objetivo, matándola o quedándose sin recurso.
 5. Si es una búsqueda: ¿puede **fallar**?
@@ -229,23 +248,23 @@ Los exploradores llevan nombres propios cortos o apodos (Gooboy, Cesarmill, Viud
 
 ## 9. Pool neutral y estructura de un mazo
 
-- Un mazo de 40 = **~28 cartas de dimensión** (12 nombres distintos) + **~12 neutrales** (5-6 nombres).
+- Un mazo de 30 = **22 cartas de dimensión** (12 nombres distintos) + **8 neutrales** (5 nombres).
 - El pool neutral ofrece: robo y filtro (**Cartógrafo Errante**, **Brújula Rota**), recuperación (**Campamento…**), escape (**Retirada Táctica**), un cuerpo sin dimensión (**Mercenario del Colapso**) y la **Grieta** como interrupción anti-búsqueda.
 - Una dimensión nueva necesita: 8 exploradores, 4 eventos, un tipo de recurso propio (fichas, recursión, sacrificios, escuderos…) y una debilidad concreta que pueda explotar otro mazo.
 
 ## 10. Diseño visual
 
-Las cartas de la app (proyecto `colapso.json`) siguen este esquema, tamaño 240 × 336:
+Las cartas de la app (proyecto `colapso.json`) siguen este esquema, tamaño 240 × 336. Hay **cuatro tipos de carta**: *Explorador*, *Explorador (con restricción)*, *Evento* y *Evento (con restricción)*. Los de "con restricción" llevan la banda de restricción; los otros no la tienen y dan más altura a la caja de efecto (146 en lugar de 116).
 
 | Zona | Explorador | Evento |
 |---|---|---|
 | Color del marco | Marrón cobre `#a8641c`, nombre sobre `#f3d9b1` | Verde azulado `#1c7f86`, nombre sobre `#bfe6e8` |
 | Franja superior | Nombre (negrita, se comprime) | Nombre (negrita, se comprime) |
 | Subtítulo | Dimensión · `EXPLORADOR` | Dimensión · `EVENTO · velocidad` |
-| Arte | Recuadro gris de 230 × 118 (hasta tener ilustraciones) | Igual |
-| Estadísticas | `PODER` (rojo claro) | No tiene |
-| Efectos | Caja blanca, el texto se achica para entrar | Caja blanca más alta |
-| Restricción | Banda rosada abajo (vacía si no hay restricción) | Igual |
-| ID | `EXP-n` en la esquina inferior derecha | `EVT-n` |
+| Arte | Recuadro de 230 × 118 (hasta tener ilustraciones) | Igual |
+| Estadísticas | `PODER` (rojo claro) sobre el arte | No tiene |
+| Efectos | Caja blanca, cada efecto en su línea (interlineado 1,2 y 3 px entre efectos) | Igual |
+| Restricción | Banda rosada abajo, solo en los tipos "con restricción" | Igual |
+| ID | `EXP-n` / `EXR-n` | `EVT-n` / `EVR-n` |
 
-El rojo del PODER va en todos los exploradores para leerlos de un vistazo. La **restricción** va en su propia banda separada del texto, siempre en el mismo lugar, para que se vea a primera vista el costo de cada carta. Cuando haya arte, conviene que el color del marco indique la dimensión y no el tipo.
+Los campos de texto de la app tienen dos ajustes de separación: **Line height** (interlineado dentro de un párrafo) y **Line gap** (espacio extra entre efectos separados por salto de línea). El rojo del PODER va en todos los exploradores para leerlos de un vistazo. La **restricción** va en su propia banda, siempre en el mismo lugar, para que se vea a primera vista el costo de cada carta. Cuando haya arte, conviene que el color del marco indique la dimensión y no el tipo.

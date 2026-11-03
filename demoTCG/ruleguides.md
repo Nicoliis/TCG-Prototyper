@@ -16,7 +16,7 @@ Cada jugador empieza con 800 puntos de vida.
 
 ## 2. Qué necesitas
 
-- 1 mazo de **40 cartas** por jugador, con **máximo 3 copias del mismo nombre**.
+- 1 mazo de **30 cartas** por jugador, con **máximo 3 copias del mismo nombre**.
 - Algo para anotar la vida, y marcadores para las fichas (monedas o cubos).
 
 ## 3. Tipos de carta
@@ -62,10 +62,10 @@ El asistente es la mecánica distintiva de este juego: un explorador "sostiene" 
 
 - Cada explorador activo puede tener **un asistente**. Los asistentes **no ocupan zona** de explorador.
 - Cuando juegas un explorador de tu mano (la jugada espontánea del turno), lo juegas **activo** en una zona libre, o **asistiendo**: debajo de un explorador activo tuyo que no tenga asistente, boca arriba o boca abajo, a tu elección. 🧪
-- Un asistente **solo aplica su efecto de Asistencia** (y las partes continuas de ese efecto). Sus efectos Normal y Trigger no funcionan mientras asiste, salvo los que digan **(Desde tu mano)**, que funcionan desde la mano.
+- Un asistente **solo aplica su efecto Asistiendo** (y las partes continuas de ese efecto). Sus efectos Normal y Trigger no funcionan mientras asiste, salvo los que digan **(Desde tu mano)**, que funcionan desde la mano.
 - Un asistente **boca abajo** no tiene efecto hasta que se **revela** (se da vuelta boca arriba; después se queda boca arriba). Se revela cuando:
   - el explorador activo al que asiste es **atacado** (automático),
-  - **activa** su efecto de Asistencia,
+  - **activa** su efecto Asistiendo,
   - un efecto lo revela.
 - Si un explorador activo **deja el campo** (destruido, devuelto a la mano, exiliado), su asistente **va al cementerio** con él. Se considera destruido solo si el activo fue destruido. 🧪
 - Un asistente puede ser destruido, devuelto o reemplazado por efectos, sin afectar al activo. Si un explorador activo **se queda sin asistente**, es una condición que otros efectos pueden esperar ("Si [carta] se queda sin asistente…").
@@ -126,7 +126,7 @@ Las cartas pueden tener más de un efecto y restricciones:
 
 - **Efecto Normal**: lo activas tú, cuando puedes. Es el efecto "activo" de la carta.
 - **Efecto Trigger**: reacciona a algo que pasó o va a pasar (se explica en la sección 9).
-- **Efecto de Asistencia**: funciona solo mientras la carta es un asistente (sección 4). Puede ser un trigger ("Si el explorador activo es atacado: …") o un efecto continuo ("El explorador activo gana 30 PODER").
+- **Efecto Asistiendo**: funciona solo mientras la carta es un asistente (sección 4). Puede ser un trigger ("Si el explorador es atacado: …") o un efecto continuo ("El explorador gana 30 PODER"). En él, **"el explorador" es aquel al que la carta asiste**.
 - **Efecto continuo**: texto sin etiqueta, como "Mientras esta carta tenga un asistente, no puede ser destruida por efectos". No se activa, no abre cadena, no se puede negar, y se aplica mientras se cumpla la condición.
 - **Restricción**: una desventaja que se paga por entrar al campo, por activar la carta o por lo que hace (sección 10).
 
@@ -134,9 +134,20 @@ Las cartas pueden tener más de un efecto y restricciones:
 
 **Cada efecto se puede activar una vez por turno por nombre de carta.** Es decir, todas las copias de "Cesarmill" comparten el mismo uso de su efecto Normal, y todas las copias de "Boolly" el de su efecto Trigger. Los efectos de una misma carta cuentan por separado.
 
+Si un efecto empieza con **(Activa como `<nombre>`)**, para esta regla la carta cuenta como si se llamara `<nombre>`. Todas las cartas con la misma indicación comparten un solo uso por turno, sean copias o cartas distintas (ver [glosario.md](glosario.md#activa-como-nombre)).
+
+### Cómo se leen las cartas
+
+Para que los textos sean cortos, las cartas se escriben con estas convenciones (el glosario las detalla):
+
+- Cada **efecto va en su propia línea**.
+- "Explorador" quiere decir **explorador activo**, y las cartas que menciona son **tuyas** salvo que el texto diga "del oponente".
+- Ganar o perder PODER dura **hasta el final del turno**, y asistir es **boca abajo**, salvo que el texto diga otra cosa.
+- En un efecto **Asistiendo**, "el explorador" es aquel al que la carta asiste.
+
 ### Dónde funciona un efecto
 
-- **Explorador:** funciona **en el campo**, activo. (Si asiste, solo funciona su Asistencia.)
+- **Explorador:** funciona **en el campo**, activo. (Si asiste, solo funciona su efecto Asistiendo.)
 - **Evento:** funciona **desde la mano**.
 - Si el texto dice **(Desde tu mano)**, el efecto se activa o funciona desde la mano.
 
@@ -170,7 +181,7 @@ Resumen. Los casos borde de cada una están en [glosario.md](glosario.md).
 | **Elegir** | Elegir un objetivo al **activar**. El efecto "elige". |
 | **Buscar** | Mecánica de búsqueda en el mazo (sección 11). |
 | **Atracción** | Obliga a elegir como objetivo a ciertas cartas. |
-| **Un solo escudero** | Palabra clave de los escuderos: un solo efecto así por turno, sea cual sea el escudero. |
+| **Activa como `<nombre>`** | Para la regla de una vez por turno por nombre, esta carta cuenta como si se llamara `<nombre>` (ejemplo: **Activa como Escudero**). |
 | **Devolver a la mano** | La carta vuelve a la mano de su dueño. Las fichas no se pueden devolver. |
 | **Anular** | Un ataque anulado termina sin daño. |
 | **Negar** | La activación de un efecto no se resuelve, pero **sí** cuenta como activada. |
@@ -275,7 +286,7 @@ Si la carta **no tiene ningún objetivo válido** en el mazo, "**falla en la bú
 
 ## 12. Resumen rápido
 
-- **800** de vida. Mazo de **40**, máximo **3** copias por nombre. Mano máxima **7**.
+- **800** de vida. Mazo de **30**, máximo **3** copias por nombre. Mano máxima **7**.
 - Un explorador tiene un único valor, el **PODER** (normal ≈ 150). El daño es la diferencia, 1 a 1.
 - Robas 1 por turno, también el primero. El que empieza no tiene Fase de Batalla en su primer turno.
 - Solo **1 explorador de la mano por turno** (activo o asistiendo), lo demás son efectos.
@@ -296,6 +307,9 @@ Cosas que estaban abiertas y ya se definieron:
 - **Búsqueda secreta** es parte de toda búsqueda ("muestro varios candidatos y tomo uno sin decir cuál"), no una palabra clave.
 - **El fallo de búsqueda consume el uso del turno** y trae la penalidad del bloqueo (no se puede reintentar sin algo habilitante).
 - **Las restricciones son abiertas.** No existen niveles R1/R2/R3: cualquier carta puede llevar cualquier restricción.
+- **Mazos de 30 cartas.** Máximo 3 copias por nombre y vida 800 sin cambios.
+- **"Asistiendo"** es la etiqueta del efecto de los asistentes (antes "Asistencia"). "CON o SIN asistencia" sigue siendo la elección del defensor.
+- **Escuderos:** el límite de un efecto extra por turno se escribe **(Activa como Escudero)** y reutiliza la regla de una vez por turno por nombre.
 
 ## Decisiones por probar 🧪
 
@@ -308,6 +322,6 @@ Cosas que cerré para tener un demo jugable y que conviene revisar jugando:
 5. **Las fichas no son "jugadas".** Ragnatica depende de esto.
 6. **Jugar asistiendo es la jugada espontánea del turno** y se puede hacer boca arriba o boca abajo. Sin esto, los asistentes solo entrarían por efectos.
 7. **Si el explorador activo deja el campo, su asistente va al cementerio.** Alternativa: que el asistente pase a activo si hay zona libre.
-8. **Los asistentes solo aplican su Asistencia.** Alternativa: que conserven también su efecto Trigger.
+8. **Los asistentes solo aplican su efecto Asistiendo.** Alternativa: que conserven también su efecto Trigger.
 9. **Un explorador, un asistente.** Se podría probar con dos en las piezas grandes.
 10. **Atracción solo restringe al oponente**, y solo cuando elige objetivos; no frena efectos que no eligen (como destruir todos) ni los propios.
