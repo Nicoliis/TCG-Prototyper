@@ -1,37 +1,53 @@
-nombre,dimension,ataque,defensa,efecto,restriccion
-Gooboy,Fantaspet,100,250,**Trigger:** Si otro Fantaspet que controlas fuera a ser destruido: destruye a esta carta en su lugar.,
-Boolly,Fantaspet,50,100,**Trigger:** Si un Fantaspet que controlas es destruido: baja a esta carta de tu mano en Defensa.,
-Cesarmill,Fantaspet,150,150,**Normal:** Busca 1 Fantaspet de tu mazo (búsqueda pública).,"Después de entrar al campo, si es tu turno: no puedes bajar más exploradores este turno."
-Plumifer,Fantaspet,100,100,"**Normal:** Destruye esta carta.
-**Trigger:** Si esta carta es destruida: busca 1 Fantaspet con ATK 150 o menos (búsqueda secreta).",
-Cattrix,Fantaspet,200,100,"**Normal:** Baja 1 Fantaspet con ATK 100 o menos de tu mano.
-**Trigger:** Si un Fantaspet que controlas declara un ataque: ese Fantaspet gana 100 ATK hasta el final del turno.",
-Koalma,Fantaspet,100,300,"**Normal:** Exilia 1 carta de tu cementerio: devuelve 1 Fantaspet de tu cementerio a tu mano.
-**Trigger:** Si esta carta es atacada: el atacante pierde 100 ATK hasta el final del turno.",
-Talkatak,Fantaspet,200,200,**Trigger:** Si el oponente activa un efecto que elige como objetivo a un explorador que controlas: devuelve ese explorador a tu mano. El efecto no se resuelve.,"Después de entrar al campo, si es tu turno: no puedes activar más efectos este turno."
-Dragging,Fantaspet,350,250,"**Normal:** (Desde tu mano) Descarta 1 Fantaspet: baja a esta carta.
-**Trigger:** Si un Fantaspet que controlas declara un ataque o es atacado: destruye todos los exploradores que no sean Fantaspet involucrados en ese combate.","Después de entrar al campo, si es tu turno: se termina tu turno."
-Ugalito,Ugabuga,100,100,**Normal:** Descarta 1 carta: busca 1 Ugabuga (búsqueda secreta).,"Después de entrar al campo, si es tu turno: no puedes bajar más exploradores este turno."
-Lance-elot,Ugabuga,200,100,**Trigger:** Si otro Ugabuga que controlas declara un ataque: ese Ugabuga gana 150 ATK hasta el final del turno.,Esta carta no puede declarar ataques.
-Van-guard,Ugabuga,300,100,**Trigger:** Si esta carta es atacada: destruye al atacante y a esta carta antes del cálculo de daño.,Esta carta no puede declarar ataques.
-Monstaa,Ugabuga,400,200,"**Normal:** (Desde tu mano) Destruye 1 explorador que controlas: baja a esta carta.
-**Trigger:** Si esta carta destruye un explorador en combate: destruye 1 otro explorador que controlas. Si no puedes, destruye esta carta.","Después de entrar al campo, si es tu turno: se termina tu turno."
-Balanced,Ugabuga,200,200,"**Normal:** Cambia de posición hasta 2 exploradores que controlas.
-**Trigger:** Si un Ugabuga que controlas es atacado: cambia ese Ugabuga a Defensa.",
-Pedrusco,Ugabuga,50,350,**Trigger:** Si esta carta es destruida en combate: destruye al explorador que participó en ese combate.,
-Chamán Ugabu,Ugabuga,150,150,"**Normal:** Descarta 1 carta: devuelve 1 Ugabuga de tu cementerio a tu mano.
+nombre,dimension,poder,efecto,restriccion
+Gooboy,Fantaspet,150,**Asistencia:** Si el explorador activo fuera a ser destruido: destruye a esta carta en su lugar.,
+Boolly,Fantaspet,50,"**Trigger:** (Desde tu mano) Si un Fantaspet que controlas es destruido: juega a esta carta boca arriba, asistiendo a un explorador sin asistente que controlas.",
+Cesarmill,Fantaspet,120,"**Normal:** Busca 1 Fantaspet y juégalo asistiendo a esta carta, boca abajo (solo si no tiene asistente).",Después de entrar al campo> Si es tu turno: no puedes declarar ataques este turno.
+Plumifer,Fantaspet,100,"**Normal:** Destruye esta carta.
+**Trigger:** Si esta carta es destruida: busca 1 Fantaspet con PODER 120 o menos.",
+Cattrix,Fantaspet,100,"**Normal:** Juega 1 Fantaspet con PODER 100 o menos de tu mano.
+**Asistencia:** Si el explorador activo declara un ataque o es atacado: ese explorador gana 50 PODER hasta el final del turno.",
+Koalma,Fantaspet,100,"**Normal:** Exilia 1 carta de tu cementerio: devuelve 1 Fantaspet de tu cementerio a tu mano.
+**Asistencia:** Si el explorador activo es atacado: el atacante pierde 30 PODER hasta el final del turno.",
+Talkatak,Fantaspet,150,"**Normal:** Reemplaza 1 asistente que controlas por 1 Fantaspet de tu mano, boca abajo. El asistente reemplazado vuelve a tu mano.",Después de entrar al campo> descarta 1 carta.
+Dragging,Fantaspet,20,**Asistencia:** Si esta carta es revelada en un combate: destruye todos los exploradores que no sean Fantaspet involucrados en ese combate.,
+Ugalito,Ugabuga,100,**Normal:** Descarta 1 carta: busca 1 Ugabuga.,Después de entrar al campo> Si es tu turno: no puedes jugar más exploradores este turno.
+Lance-elot,Ugabuga,30,**Asistencia:** El explorador activo gana 30 PODER.,Esta carta no puede declarar ataques.
+Van-guard,Ugabuga,180,**Atracción** de ataques.,"Esta carta no puede declarar ataques ni tener asistentes. Mientras combate, su PODER pasa a ser 0."
+Monstaa,Ugabuga,180,,"Después de combatir> Destruye el asistente de esta carta. Si no puedes, destruye esta carta."
+Balanced,Ugabuga,160,,
+Pedrusco,Ugabuga,100,**Trigger:** Si esta carta es destruida en combate: destruye al explorador que participó en ese combate.,
+Chamán Ugabu,Ugabuga,120,"**Normal:** Descarta 1 carta: devuelve 1 Ugabuga de tu cementerio a tu mano.
 **Trigger:** Si un Ugabuga que controlas es destruido en combate: roba 1 carta.",
-Cazador Ugabu,Ugabuga,250,100,**Trigger:** Si esta carta destruye un explorador en combate: el oponente descarta 1 carta al azar.,
-Telarín,Ragnatica,100,100,**Normal:** Si no controlas fichas Cría: agrega 1 ficha Cría en Defensa.,
-Hilandera,Ragnatica,150,200,**Normal:** Destruye 1 ficha Cría que controlas: busca 1 Ragnatica con ATK 300 o menos (búsqueda pública).,
-Viuda Gris,Ragnatica,250,150,**Trigger:** Si un explorador del oponente declara un ataque: destruye 1 ficha Cría que controlas: anula ese ataque.,
-Capullo Silente,Ragnatica,0,300,"**Normal:** Cambia 1 explorador del oponente a Defensa.
-**Trigger:** Si esta carta es atacada: devuelve al atacante a la mano de su controlador. El ataque termina.",
-Emboscadora,Ragnatica,250,100,"**Trigger:** (Desde tu mano) Si el oponente baja un explorador: baja a esta carta en Ataque. Luego, cambia a ese explorador a Defensa.",
-Señuelo,Ragnatica,100,200,**Trigger:** Si un Ragnatica que controlas fuera a ser destruido: destruye 1 ficha Cría que controlas en su lugar.,
-Madre Telar,Ragnatica,300,300,**Normal:** Destruye 2 fichas Cría que controlas: devuelve 1 explorador del oponente a su mano.,"Después de entrar al campo, si es tu turno: no puedes activar más efectos este turno."
-Reina de Ragnatica,Ragnatica,350,250,"**Normal:** (Desde tu mano) Destruye 2 fichas Cría que controlas: baja a esta carta.
-**Trigger:** Si el oponente activa un efecto de explorador que elige como objetivo a una carta que controlas: descarta 1 carta y destruye 1 ficha Cría que controlas: niega esa activación.","Después de entrar al campo, si es tu turno: se termina tu turno."
-Cría de Ragnatica,Ragnatica,100,100,Ficha. No puede volver a la mano: desaparece si deja el campo.,
-Cartógrafo Errante,Neutral,100,200,"**Normal:** Roba 1 carta, luego descarta 1 carta.","Después de entrar al campo, si es tu turno: no puedes bajar más exploradores este turno."
-Mercenario del Colapso,Neutral,250,150,**Normal:** (Desde tu mano) Descarta 1 carta: baja a esta carta.,"Después de entrar al campo, si es tu turno: no puedes activar más efectos este turno."
+Cazador Ugabu,Ugabuga,150,**Trigger:** Si esta carta destruye un explorador en combate: el oponente descarta 1 carta al azar.,
+Telarín,Ragnatica,100,**Normal:** Agrega 1 ficha Cría (solo si no controlas fichas Cría).,
+Hilandera,Ragnatica,120,**Normal:** Destruye 1 ficha Cría que controlas: busca 1 Ragnatica con PODER 200 o menos.,
+Viuda Gris,Ragnatica,150,"**Trigger:** Si un explorador del oponente declara un ataque, destruye 1 ficha Cría que controlas: anula ese ataque.",
+Capullo Silente,Ragnatica,0,**Asistencia:** Si el explorador activo es atacado: devuelve al atacante a la mano de su controlador. El ataque termina.,
+Emboscadora,Ragnatica,150,**Trigger:** (Desde tu mano) Si el oponente juega un explorador: juega a esta carta. Ese explorador no puede declarar ataques este turno.,
+Señuelo,Ragnatica,100,**Atracción** de ataques.,Esta carta no puede declarar ataques.
+Madre Telar,Ragnatica,200,**Normal:** Destruye 2 fichas Cría que controlas: devuelve 1 explorador del oponente a su mano.,Después de entrar al campo> Si es tu turno: no puedes activar más efectos este turno.
+Reina de Ragnatica,Ragnatica,250,"**Normal:** (Desde tu mano) Destruye 2 fichas Cría que controlas: juega esta carta.
+**Trigger:** Si el oponente activa un efecto de explorador que elige a una carta que controlas, descarta 1 carta y destruye 1 ficha Cría que controlas: niega esa activación.",Después de entrar al campo> Si es tu turno: se termina tu turno.
+Cría de Ragnatica,Ragnatica,100,Ficha. Desaparece si deja el campo.,
+"Aegis, Custodio del Baluarte",Baluarte,200,"**Atracción** de ataques y efectos.
+Mientras esta carta tenga un asistente, no puede ser destruida por efectos.
+**Trigger:** Si esta carta fuera a ser destruida en batalla: puedes destruir a su asistente en lugar de esta carta.",Después de entrar al campo> Si es tu turno: se termina tu turno. Solo puedes controlar 1 copia de esta carta.
+Rodelero,Baluarte,160,"**Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo y asiste esta carta a Aegis, boca abajo.
+**Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asiste esta carta a Aegis, boca abajo.
+**Asistencia:** Un solo escudero. Si el explorador activo es atacado: ese explorador gana 20 PODER hasta el final del turno.",
+Alabardero,Baluarte,140,"**Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo y asiste esta carta a Aegis, boca abajo.
+**Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asiste esta carta a Aegis, boca abajo.
+**Asistencia:** Un solo escudero. Si el explorador activo es atacado: el atacante pierde 20 PODER hasta el final del turno.",
+Armero,Baluarte,120,"**Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo y asiste esta carta a Aegis, boca abajo.
+**Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asiste esta carta a Aegis, boca abajo.
+**Asistencia:** Un solo escudero. Si esta carta es destruida: el explorador activo gana 30 PODER hasta el final del turno.",
+Ballestero,Baluarte,100,"**Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo y asiste esta carta a Aegis, boca abajo.
+**Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asiste esta carta a Aegis, boca abajo.
+**Trigger:** Un solo escudero. Si un explorador del oponente declara un ataque: ese explorador pierde 20 PODER hasta el final del turno.",
+Heraldo,Baluarte,80,"**Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo y asiste esta carta a Aegis, boca abajo.
+**Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asiste esta carta a Aegis, boca abajo.
+**Asistencia:** Un solo escudero. Si esta carta es destruida: devuelve 1 escudero de tu cementerio a tu mano.",
+Archivista del Baluarte,Baluarte,90,**Normal:** Busca 1 Baluarte.,Después de entrar al campo> pierdes 50 puntos de vida.
+Centinela del Baluarte,Baluarte,140,"**Normal:** Descarta 1 carta: asiste 1 Baluarte de tu cementerio a un explorador sin asistente que controlas, boca abajo.",
+Cartógrafo Errante,Neutral,100,"**Normal:** Roba 1 carta, luego descarta 1 carta.",Después de entrar al campo> Si es tu turno: no puedes jugar más exploradores este turno.
+Mercenario del Colapso,Neutral,200,**Normal:** (Desde tu mano) Descarta 1 carta: juega esta carta.,Después de entrar al campo> Si es tu turno: no puedes activar más efectos este turno.

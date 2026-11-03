@@ -1,6 +1,6 @@
 # Colapso: guía de diseño
 
-Para quien diseñe cartas nuevas (o quiera entender por qué las actuales son así). Las reglas de juego están en [ruleguides.md](ruleguides.md).
+Para quien diseñe cartas nuevas (o quiera entender por qué las actuales son así). Las reglas de juego están en [ruleguides.md](ruleguides.md) y el significado de cada palabra de las cartas en [glosario.md](glosario.md).
 
 ## 1. Filosofía
 
@@ -9,10 +9,11 @@ Para quien diseñe cartas nuevas (o quiera entender por qué las actuales son as
 Principios que salen de ahí:
 
 1. **Más barrera de entrada, más diversión.** El juego va a ser complejo en interacciones y cartas. Es mejor tener un juego profundo que alguien quiera aprender que uno simple que nadie quiera jugar.
-2. **Dos efectos por carta, a lo sumo.** Un efecto **Normal** (lo activas tú) y un efecto **Trigger** (reacciona). Una carta puede tener uno solo; las más sencillas suelen tener uno.
+2. **Pocos efectos por carta.** Un efecto **Normal** (lo activas tú) y/o un efecto **Trigger** (reacciona). Una carta puede tener uno solo; las más sencillas suelen tener uno. Los exploradores que sirven de asistente pueden sumar un efecto de **Asistencia**.
 3. **El poder se paga con restricciones.** Las cartas más fuertes cargan con una restricción (sección 4). Cuanto más grave, más fuerte puede ser la carta.
-4. **Casi no hay "NO".** Las negaciones son mínimas y carísimas. Se interrumpe quitando recursos u objetivos, no frenando todo (sección 5).
-5. **Una vez por turno, por nombre.** Cada efecto se activa una vez por turno por nombre de carta, así que sumar copias no multiplica el efecto.
+4. **Los asistentes son la mecánica distintiva.** Un explorador activo puede sostener a otro debajo, oculto, y al ser atacado el defensor elige si pelea CON o SIN esa ayuda. Casi todas las dimensiones deberían tener algo que juegue con esto (sección 5).
+5. **Casi no hay "NO".** Las negaciones son mínimas y carísimas. Se interrumpe quitando recursos u objetivos, no frenando todo (sección 6).
+6. **Una vez por turno, por nombre.** Cada efecto se activa una vez por turno por nombre de carta, así que sumar copias no multiplica el efecto.
 
 ## 2. Anatomía de una carta
 
@@ -21,26 +22,28 @@ Principios que salen de ahí:
 | Campo | Contenido |
 |---|---|
 | Nombre | Corto, sin artículos largos. |
-| Dimensión | Fantaspet, Ugabuga, Ragnatica, Neutral… |
-| ATK / DEF | Múltiplos de 50, de 0 a 400. Mas carta normalita 150. |
-| Efecto | Hasta dos líneas: `**Normal:** …` y `**Trigger:** …` |
-| Restricción | Opcional. Una de las tres estándar, o una permanente. |
+| Dimensión | Fantaspet, Ugabuga, Ragnatica, Baluarte, Neutral… |
+| PODER | Un único valor, múltiplo de 10. Carta normalita: **150**. |
+| Efecto | Etiquetas `**Normal:**`, `**Trigger:**`, `**Asistencia:**`, en líneas separadas. Los efectos continuos van sin etiqueta. |
+| Restricción | Opcional. Libre (sección 4). |
 | ID | Se calcula solo en la app (`EXP-n`). |
 
 ### Evento
 
-Igual que un explorador, sin PODER y con una **velocidad** (Rapido o Lento). Un evento tiene dos modos: su efecto **Normal** (lo activas cuando quieras, según la velocidad) o su efecto **Trigger** (lo activas desde la mano cuando se cumple su condición). Como el evento va al cementerio al resolverse, **eliges un modo por carta**.
+Igual que un explorador, sin PODER y con una **velocidad** (Rápido o Lento). Un evento tiene dos modos: su efecto **Normal** (lo activas cuando quieras, según la velocidad) o su efecto **Trigger** (lo activas desde la mano cuando se cumple su condición). Como el evento va al cementerio al resolverse, **eliges un modo por carta**.
 
-### Escala de estadísticas
+### Escala de PODER
 
-Con 800 de vida:
+Con 800 de vida y daño 1 a 1:
 
 | PODER | Qué es |
 |---|---|
-| 0-100 | Soporte o ficha. |
-| 150-200 | Cuerpo normal. |
-| 300 | Pieza. Tres golpes y casi terminas. |
-| 350-400 | Pieza con restricción grave (R2/R3) o con un costo de entrada alto. |
+| 0-100 | Soporte, ficha o asistente-trampa. |
+| 120-160 | Cuerpo normal. 150 es la carta de referencia sin restricción y con efectos flojos. |
+| 180-200 | Buen cuerpo; casi siempre con un costo (restricción o efecto que lo castiga). |
+| 250 | Pieza. Tres o cuatro golpes y casi terminas, pero entra con una restricción grave. |
+
+Un PODER **muy bajo** no es una carta mala: es una carta pensada para ser **asistente** (Dragging 20, Capullo Silente 0, Lance-elot 30) o para usar su efecto, no para pelear.
 
 ## 3. Roles de las cartas
 
@@ -49,62 +52,125 @@ Cada carta debería poder responder "¿para qué la juego?". Las cuatro respuest
 | Rol | Qué hace | Cómo se reconoce |
 |---|---|---|
 | **Starter** | Abre el combo. La mejor opción para empezar. | Busca, roba o agrega recursos desde casi nada. |
-| **Extender** | Completa el combo si fue interrumpido. | Recupera, reemplaza o baja desde la mano en respuesta a una destrucción. |
-| **Pieza** (*end-board*) | El objetivo a alcanzar. Lo que queda en el tablero. | Estadísticas altas o triggers fuertes. Casi siempre con restricción. |
-| **Interrupción** | Frena al oponente sin decir "no". | Devuelve a la mano, quita un objetivo, cambia posiciones, descarta. |
+| **Extender** | Completa el combo si fue interrumpido. | Recupera, reemplaza o juega desde la mano en respuesta a una destrucción. |
+| **Pieza** (*end-board*) | El objetivo a alcanzar. Lo que queda en el tablero. | PODER alto o triggers fuertes. Casi siempre con restricción. |
+| **Interrupción** | Frena al oponente sin decir "no". | Devuelve a la mano, quita un objetivo, resta PODER, descarta. |
 
-Referencia para un mazo de 40 cartas: **25-35% starters, 20-40% extenders, 5-15% piezas, 15-30% interrupciones**. Las piezas son pocas porque son caras de bajar. Ugabuga se sale a propósito (32% de piezas, pocas interrupciones) porque es el mazo agresivo.
+Referencia para un mazo de 40 cartas: **25-35% starters, 20-40% extenders, 5-15% piezas, 15-30% interrupciones**. Las piezas son pocas porque son caras de jugar. Las desviaciones de los mazos iniciales son a propósito.
 
 | Mazo | Starters | Extenders | Piezas | Interrupciones |
 |---|---|---|---|---|
 | Fantaspet | 14 | 16 | 2 | 8 |
-| Ugabuga | 10 | 10 | 13 | 7 |
-| Ragnatica | 15 | 9 | 3 | 13 |
+| Ugabuga | 10 | 10 | 11 | 9 |
+| Ragnatica | 15 | 7 | 3 | 15 |
+| Baluarte | 21 | 8 | 2 | 9 |
+
+Ugabuga es agresivo (muchas piezas). Baluarte cuenta a los escuderos como starters porque cada uno juega a Aegis: es la fuerza y la debilidad del mazo.
 
 ## 4. Restricciones
 
-Cuanto más grave, más puede dar la carta.
+Una restricción es una **desventaja obligatoria** que se aplica en simultáneo con la acción que la reveló. **No hay restricciones estándar ni niveles**: las restricciones son más interesantes si son variadas. Cuanto más grave, más puede dar la carta.
 
-| Texto exacto | Cuándo usarlo |
+### Formato
+
+- Explorador: "**Después de entrar al campo>** [condición:] consecuencia".
+- Explorador, en otro momento: "**Después de combatir>** …".
+- Evento: "**Después de activar>** …" (vale para el efecto Normal y para el Trigger).
+- Permanente: una frase sin momento ("Esta carta no puede declarar ataques").
+
+### Catálogo de ideas (no es una lista cerrada)
+
+| Familia | Ejemplos |
 |---|---|
-| "No puedes jugar más exploradores este turno." | Starters que buscan o roban. Frena a los extenders que bajan. |
-| "No puedes activar más efectos este turno." | Piezas e interrupciones fuertes. Te quedas sin juego después de que entra. |
-| "Se termina tu turno." | Las piezas más fuertes. Entran al final de tu jugada y quitan tu Fase de Batalla. |
+| Cierra tu turno | "Se termina tu turno." "No puedes declarar ataques este turno." |
+| Cierra tus jugadas | "No puedes jugar más exploradores este turno." "No puedes activar más efectos este turno." |
+| Cuesta recursos | "Descarta 1 carta." "Pierdes 50 puntos de vida." |
+| Cuesta tablero | "Destruye el asistente de esta carta. Si no puedes, destruye esta carta." |
+| Limita a la carta | "No puede declarar ataques." "No puede tener asistentes." "Mientras combate, su PODER pasa a ser 0." |
+| Limita al mazo | "Solo puedes controlar 1 copia de esta carta." |
 
-Reglas de uso:
+### Reglas de uso
 
-- Explorador: "**Después de entrar al campo:** …". Evento: "**Después de activar:** …".
-- **Una restricción no debe bloquear a su propia carta.** Un explorador con restriccion no puede tener un efecto al entrar que la viole. Si el efecto es útil recién al turno siguiente, está bien. Los efectos que se activan **desde la mano** ocurren antes de entrar, así que no se ven afectados.
-- Las fichas no son "jugadas", así que "no jugar mas exploradores" no las toca. Esa excepción es la ventaja de Ragnatica; no la rompas con restricciones que digan "agregar".
-- Las **restricciones permanentes** ("Esta carta no puede declarar ataques") Pesan mas que las del turno, por lo que si son severas, la carta deberia ganar sola. Usa máximo una por carta.
+- **Una restricción no debe bloquear a su propia carta.** Un explorador con restricción no puede tener un efecto al entrar que la viole. Si el efecto es útil recién al turno siguiente, está bien. Los efectos que se activan **desde la mano** ocurren antes de entrar, así que no se ven afectados.
+- Las fichas no son "jugadas", así que "no jugar más exploradores" no las toca. Esa excepción es la ventaja de Ragnatica; no la rompas con restricciones que digan "agregar".
+- Las **restricciones permanentes** ("Esta carta no puede declarar ataques") pesan más que las del turno, por lo que si son severas, la carta debería ganar sola. Usa máximo una por carta.
+- Una restricción distinta le da **personalidad** a una carta. Antes de repetir "no puedes jugar más exploradores", pregúntate si hay otra que cuente mejor qué cuesta esa carta.
 
-## 5. Negaciones y búsqueda
+## 5. Asistentes y Atracción
+
+### Diseñar con asistentes
+
+El asistente es un explorador debajo de otro. Al ser atacado el activo, el asistente se **revela** y el defensor elige defender **CON** o **SIN** asistencia. Eso crea decisiones que ninguna otra mecánica da.
+
+Familias de cartas con asistencia:
+
+| Familia | Qué hace | Ejemplos |
+|---|---|---|
+| **Escudo** | Se sacrifica o recibe el golpe en lugar del activo. | Gooboy (se destruye en su lugar), Aegis (destruye al asistente en vez de a sí mismo). |
+| **Trampa** | Se revela al ser atacado y castiga al atacante. | Dragging (destruye a los no Fantaspet del combate), Capullo Silente (devuelve al atacante a la mano), Koalma (resta PODER). |
+| **Refuerzo** | Suma PODER al activo. | Lance-elot, Cattrix. |
+| **Combustible** | Un recurso que otra carta quiere gastar. | Monstaa (debe destruir a su asistente después de combatir). |
+| **Generador** | Pone asistentes (de la mano, del mazo o del cementerio). | Cesarmill, Boolly, Talkatak, Centinela, Reconstrucción. |
+
+Pautas:
+
+- Un asistente **boca abajo** debe ser una amenaza creíble: si el defensor siempre sabe qué hay, no hay decisión.
+- El **PODER de un asistente** importa porque se compara contra el atacante cuando se defiende CON asistencia. Un asistente de PODER alto es un buen escudo; uno de PODER bajo debería tener un buen efecto.
+- Las cartas con efecto de **Asistencia** solo funcionan mientras asisten. Si quieres que además funcionen fuera, dales un efecto Normal o Trigger aparte (y recuerda que no funcionan mientras asisten).
+- Cada dimensión nueva debería tener al menos una carta de cada una de dos o tres familias.
+
+### Palabras clave de tres palabras
+
+Cuando un límite o una regla se repite en varias cartas, **se resume en una frase corta (idealmente tres palabras) en el texto de la carta y el detalle va al glosario**. Así la carta queda legible y el caso borde se escribe una sola vez. Ejemplos: **Atracción** de ataques, **Un solo escudero**.
+
+**Un solo escudero** es el modelo: los cinco escuderos de Baluarte tienen un efecto extra, deliberadamente flojo, y como la mitad del valor está en poder repetirlo, el límite "uno por turno, sea cual sea el escudero" lo mantiene a raya. Si un efecto es barato porque se puede repetir con muchas copias distintas, lo mejor es un límite compartido y no subir el costo.
+
+### Diseñar con Atracción
+
+Atracción obliga al oponente a elegir como objetivo (de ataques, de efectos, o ambos) a las cartas que la tienen. Es un efecto continuo muy fuerte, y casi siempre va acompañado de:
+
+- una **desventaja** (Van-guard y Señuelo no pueden atacar; Van-guard además tiene 0 PODER al combatir; Aegis termina el turno al entrar y es única), o
+- una **debilidad evidente**: ignora los efectos que no eligen objetivo.
+
+Úsala para dar al jugador un **punto focal**: "todo el mundo ataca a esa carta". Después, rodéala de cosas que castiguen a quien lo haga (un asistente-trampa debajo, un trigger que reacciona al ataque).
+
+## 6. Negaciones y búsqueda
 
 ### Negaciones
 
 Mantenerlas al mínimo. Hoy hay **dos** en todo el juego:
 
 - **Grieta en emergente Valle Mudo** (neutral): niega solo efectos que **buscan en el mazo**. Cuesta descartar una carta y destruir uno de tus exploradores.
-- **Reina de Ragnatica**: niega solo efectos de explorador que **eligen a una carta tuya**. Cuesta una carta de tu mano y una ficha cada vez, y la carta viene con R3.
+- **Reina de Ragnatica**: niega solo efectos de explorador que **eligen a una carta tuya**. Cuesta una carta de tu mano y una ficha cada vez, y viene con una restricción grave (termina tu turno).
 
 Si diseñas una tercera, debería ser **muy específica** (un tipo de efecto concreto) o **muy cara** (dos recursos distintos y una restricción).
 
-## 6. Escribir el texto de una carta
+### Búsquedas
+
+La búsqueda es una **mecánica** (ver [glosario.md](glosario.md#buscar)), no una palabra clave de unas cartas: las cartas solo dicen "Busca 1 [criterio]".
+
+- Revelar **una sola** carta es una búsqueda pública (barata en información); revelar **varias** es secreta.
+- Un criterio de búsqueda debe poder **fallar**. Un "busca cualquier carta" nunca falla y no tiene riesgo; un criterio estrecho (por ejemplo "Fantaspet con PODER 120 o menos") es más fácil de ver y de fallar.
+- Un fallo de búsqueda consume el uso del turno: diseña búsquedas pensando en que a veces fallan.
+
+## 7. Escribir el texto de una carta
 
 ### Plantillas
 
 ```
-Normal:   **Normal:** [Costo:] Efecto.
-Trigger:  **Trigger:** Si [condición]: [Costo:] Efecto.
+Normal:       **Normal:** [Costo:] Efecto.
+Trigger:      **Trigger:** Si [condición][, costo]: Efecto.
+Asistencia:   **Asistencia:** Si [condición]: Efecto.    (o un efecto continuo)
 Desde la mano:  **Normal:** (Desde tu mano) [Costo:] Efecto.
-Restricción:    Después de entrar al campo, si es tu turno: [R1 | R2 | R3].
+Continuo:     Texto sin etiqueta: Mientras [condición], [efecto].
+Restricción:  Después de entrar al campo> [Si es tu turno:] consecuencia.
 ```
 
-El texto de la carta usa **negrita** con `**…**` (la app la interpreta en la carta). Los efectos Normal y Trigger van en líneas separadas dentro de la misma celda.
+El texto de la carta usa **negrita** con `**…**` (la app la interpreta en la carta). Los efectos van en líneas separadas dentro de la misma celda.
 
 ### Vocabulario cerrado
 
-Usa siempre las mismas palabras (definidas en [ruleguides.md](ruleguides.md#palabras-de-las-cartas)): **destruir**, **descartar**, **exiliar**, **bajar** (explorador), **agregar** (ficha), **elegir**, **devolver a la mano**, **anular** (ataque), **negar** (efecto), **ganar / perder ATK**. No uses sinónimos.
+Usa siempre las mismas palabras (definidas en [glosario.md](glosario.md)): **destruir**, **descartar**, **exiliar**, **jugar** (explorador), **asistir**, **revelar**, **agregar** (ficha), **elegir**, **buscar**, **devolver a la mano**, **anular** (ataque), **negar** (efecto), **Atracción**, **Un solo escudero**, **ganar / perder PODER**. No uses sinónimos, y no repitas en la carta los casos borde que ya explica el glosario.
 
 ### Condiciones de trigger
 
@@ -113,21 +179,23 @@ Cada condición tiene tres partes: alcance (global / propio / dirigido), tempo (
 | Condición | Alcance | Tempo |
 |---|---|---|
 | "Si esta carta es destruida" | Propio | Reactivo |
-| "Si otro Fantaspet que controlas fuera a ser destruido" | Global (tuyo) | Preventivo |
-| "Si el oponente baja un explorador" | Global | Reactivo |
+| "Si el explorador activo fuera a ser destruido" | Dirigido (a quien asiste) | Preventivo |
+| "Si el oponente juega un explorador" | Global | Reactivo |
 | "Si un explorador del oponente declara un ataque" | Global | Reactivo |
+| "Si Aegis se queda sin asistente" | Dirigido | Reactivo |
 
 ### Lista de revisión para una carta nueva
 
 1. ¿Tiene un rol claro (starter, extender, pieza, interrupción)?
-2. ¿Tiene un efecto Normal y/o un Trigger, nada más?
-3. ¿Su restricción es proporcional a lo que da? ¿No bloquea su propio efecto?
+2. ¿Sus efectos son pocos y entran en la carta?
+3. ¿Su restricción es proporcional a lo que da y **no bloquea su propio efecto**? ¿Es distinta de las demás o repite una por pereza?
 4. ¿Qué la **frena**? Toda carta debería poder ser interrumpida: quitándole el objetivo, matándola o quedándose sin recurso.
-5. ¿Puede **fallar** si es una búsqueda?
-6. ¿Usa el vocabulario cerrado?
-7. ¿El nombre sigue la convención de la sección 7?
+5. Si es una búsqueda: ¿puede **fallar**?
+6. Si usa asistentes: ¿hay una decisión real (CON o SIN, revelar o no)?
+7. ¿Usa el vocabulario cerrado?
+8. ¿El nombre sigue la convención de la sección 8?
 
-## 7. Lore y nombres
+## 8. Lore y nombres
 
 ### Mundo
 
@@ -139,9 +207,10 @@ Que el mismo explorador aparezca varias veces y que haya alianzas raras se expli
 
 | Dimensión | Origen | Identidad |
 |---|---|---|
-| **Fantaspet** | Eterneblina | Mascotas espectrales. Búsqueda, recursión, protección mutua. |
+| **Fantaspet** | Eterneblina | Mascotas espectrales. Búsqueda, recursión y asistentes ocultos. |
 | **Ugabuga** | Meseta y cuevas de Ugabuga | Tribus de piedra. Fuerza bruta, sacrificios, presión. |
-| **Ragnatica** | Reino de Ragnatica | Arácnidos tejedores. Fichas, interrupciones por costo. |
+| **Ragnatica** | Reino de Ragnatica | Arácnidos tejedores. Fichas, señuelos y trampas. |
+| **Baluarte** | Fortaleza emergente | Un personaje principal resistente sostenido por escuderos. |
 | **Neutral** | El propio Colapso | Viajeros y recursos que sirven a cualquiera. |
 
 ### Nombres de eventos
@@ -156,15 +225,15 @@ Los eventos cuentan historias, pero **como referencias a las dimensiones origina
 
 Truco: si el nombre dice "en emergente [lugar]", "en [lugar]" o describe algo que **está pasando**, sirve. Si dice algo que **ya terminó**, cámbialo.
 
-Los exploradores llevan nombres propios cortos o apodos (Gooboy, Cesarmill, Viuda Gris). Los de una misma dimensión comparten una sensación sonora: los Fantaspet son juguetones (-y, -ill, -ak), los Ugabuga son toscos (-ito, -aa, "Ugabu"), los Ragnatica son tejedores (-ín, -era, "Telar").
+Los exploradores llevan nombres propios cortos o apodos (Gooboy, Cesarmill, Viuda Gris). Los de una misma dimensión comparten una sensación sonora: los Fantaspet son juguetones (-y, -ill, -ak), los Ugabuga son toscos (-ito, -aa, "Ugabu"), los Ragnatica son tejedores (-ín, -era, "Telar"), los Baluarte llevan oficios de guarnición (Rodelero, Armero, Heraldo).
 
-## 8. Dimensiones neutrales y estructura del pool
+## 9. Pool neutral y estructura de un mazo
 
 - Un mazo de 40 = **~28 cartas de dimensión** (12 nombres distintos) + **~12 neutrales** (5-6 nombres).
 - El pool neutral ofrece: robo y filtro (**Cartógrafo Errante**, **Brújula Rota**), recuperación (**Campamento…**), escape (**Retirada Táctica**), un cuerpo sin dimensión (**Mercenario del Colapso**) y la **Grieta** como interrupción anti-búsqueda.
-- Una dimensión nueva necesita: 8 exploradores, 4 eventos, un tipo de recurso propio (fichas, recursión, sacrificios…) y una debilidad concreta que pueda explotar otro mazo.
+- Una dimensión nueva necesita: 8 exploradores, 4 eventos, un tipo de recurso propio (fichas, recursión, sacrificios, escuderos…) y una debilidad concreta que pueda explotar otro mazo.
 
-## 9. Diseño visual
+## 10. Diseño visual
 
 Las cartas de la app (proyecto `colapso.json`) siguen este esquema, tamaño 240 × 336:
 
@@ -179,4 +248,4 @@ Las cartas de la app (proyecto `colapso.json`) siguen este esquema, tamaño 240 
 | Restricción | Banda rosada abajo (vacía si no hay restricción) | Igual |
 | ID | `EXP-n` en la esquina inferior derecha | `EVT-n` |
 
-El rojo del PODER van en todos los exploradores para leerlos de un vistazo. La **restricción** va en su propia banda separada del texto, siempre en el mismo lugar, para que se vea a primera vista el costo de cada carta. Cuando haya arte, conviene que el color del marco indique la dimensión y no el tipo.
+El rojo del PODER va en todos los exploradores para leerlos de un vistazo. La **restricción** va en su propia banda separada del texto, siempre en el mismo lugar, para que se vea a primera vista el costo de cada carta. Cuando haya arte, conviene que el color del marco indique la dimensión y no el tipo.
