@@ -15,7 +15,7 @@ import { showMenu, closeMenu } from "./menu.mjs?v=31";
 
 const NAME_KEY = "tcg-prototyper-player-name";
 const LOG_SHOWN = 80;
-const PREVIEW_WIDTH = 230;
+const PREVIEW_WIDTH = 360; // the whole card is shown large: we cannot know which text matters
 const BROWSE_WIDTH = 92;
 
 function storedName() {
@@ -405,7 +405,7 @@ export async function mountPlay(root, storage, options, onBack) {
     if (!cardId) return;
     const found = ctx.index.get(cardId);
     if (!found) return;
-    const size = fitSize(found, PREVIEW_WIDTH, Math.round(PREVIEW_WIDTH * 1.5));
+    const size = fitSize(found, PREVIEW_WIDTH, Math.min(540, Math.round(window.innerHeight * 0.6)));
     preview.replaceChildren(cardFaceElement(templates, found, size.width, size.height), h("p", { class: "preview-name" }, ctx.cardName(cardId)));
   }
 

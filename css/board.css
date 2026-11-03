@@ -588,7 +588,7 @@ button:disabled {
 }
 
 .game-side {
-  width: 15rem;
+  width: 24rem;
   flex: none;
   display: flex;
   flex-direction: column;
@@ -604,6 +604,7 @@ button:disabled {
   flex-direction: column;
   align-items: center;
   gap: var(--space-1);
+  flex: none;
 }
 
 .game-preview .card-face-art {
@@ -623,7 +624,7 @@ button:disabled {
   min-height: 6rem;
   overflow-y: auto;
   margin: 0;
-  padding: var(--space-2);
+  padding: 0.3125rem 1.25rem;
   gap: 2px;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
