@@ -35,6 +35,11 @@ export function roleZone(board, role) {
   return board.zones.find((zone) => zone.role === role);
 }
 
+// The zone that starts with the deck's extra cards, if the board has one.
+function extraZone(board) {
+  return board.zones.find((zone) => zone.extra && !zone.role && zone.area === "player") ?? null;
+}
+
 function zoneDef(board, zoneId) {
   return board.zones.find((zone) => zone.id === zoneId) ?? null;
 }
@@ -96,10 +101,10 @@ export function prepareEvent(state, event, { board, pack, random = Math.random }
       const deck = (pack.decks ?? []).find((d) => d.id === event.deckId);
       if (!deck) return { error: "That deck does not exist." };
       const cards = [];
-      for (const entry of deck.entries) for (let i = 0; i < entry.count; i++) cards.push(entry.cardId);
+      for (const entry of deck.entries) for (let i = 0; i < entry.count; i++) cards.push({ cardId: entry.cardId, extra: Boolean(entry.extra) });
       if (!cards.length) return { error: "That deck has no cards." };
       const order = shuffled(
-        cards.map((cardId, n) => ({ uid: `${event.by}-${n}`, cardId })),
+        cards.map(({ cardId, extra }, n) => ({ uid: `${event.by}-${n}`, cardId, ...(extra ? { extra: true } : {}) })),
         random,
       );
       return { event: { ...event, cards: order } };
@@ -203,11 +208,18 @@ function dealStartingHands(next, board, ctx) {
   for (const by of [0, 1]) drawCards(next, board, by, board.startingHand, ctx);
 }
 
+// Puts a player's cards in their starting zones: the main deck, and the cards marked "extra" in the extra zone
+// (or in the main deck when the board has no extra zone).
 function fillDeck(next, board, by, cards) {
   const deckZone = roleZone(board, "deck");
-  next.zones[zoneKey(by, deckZone.id)] = cards.map(({ uid, cardId }) =>
-    entryFor(deckZone, { uid, cardId, owner: by, faceUp: false, rot: 0 }),
-  );
+  const extra = extraZone(board);
+  const place = (zone, list) => {
+    next.zones[zoneKey(by, zone.id)] = list.map(({ uid, cardId, extra: isExtra }) =>
+      entryFor(zone, { uid, cardId, owner: by, faceUp: false, rot: 0, ...(isExtra ? { extra: true } : {}) }),
+    );
+  };
+  place(deckZone, extra ? cards.filter((c) => !c.extra) : cards);
+  if (extra) place(extra, cards.filter((c) => c.extra));
 }
 
 export function applyEvent(state, event, ctx) {
@@ -254,7 +266,7 @@ export function applyEvent(state, event, ctx) {
         return refuse(state, "That redeal does not match your cards.");
       }
       for (const [key, cards] of Object.entries(next.zones)) next.zones[key] = cards.filter((c) => c.owner !== by);
-      fillDeck(next, board, by, event.order.map((uid) => ({ uid, cardId: mine.get(uid).cardId })));
+      fillDeck(next, board, by, event.order.map((uid) => ({ uid, cardId: mine.get(uid).cardId, extra: mine.get(uid).extra })));
       const drawn = drawCards(next, board, by, board.startingHand, ctx);
       withLog(next, by, `${who} shuffled everything back and drew a new hand of ${drawn}`);
       return { ok: true, state: next };
@@ -386,8 +398,7 @@ export function applyEvent(state, event, ctx) {
       if (next.phase !== "playing") return refuse(state, "The game has not started yet.");
       next.active = 1 - next.active;
       next.turn += 1;
-      const drawn = drawCards(next, board, next.active, board.drawPerTurn, ctx);
-      withLog(next, by, `Turn ${next.turn}: ${next.players[next.active].name}${drawn ? ` draws ${drawn}` : ""}`);
+      withLog(next, by, `Turn ${next.turn}: ${next.players[next.active].name}`);
       return { ok: true, state: next };
     }
     case "coin":

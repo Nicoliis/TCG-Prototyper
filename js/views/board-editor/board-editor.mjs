@@ -203,6 +203,8 @@ export async function mountBoardEditor(root, storage, projectId, boardId, onBack
     zoneEmpty.hidden = Boolean(zone);
     if (!zone) return;
     for (const key of ["name", "area", "col", "row", "w", "h", "layout", "face", "visibility"]) zoneForm[key].value = zone[key];
+    zoneForm.extra.checked = Boolean(zone.extra);
+    zoneForm.extra.disabled = Boolean(zone.role) || zone.area !== "player";
     zoneForm.area.disabled = Boolean(zone.role);
     deleteButton.disabled = Boolean(zone.role);
     roleNote.hidden = !zone.role;
@@ -225,6 +227,7 @@ export async function mountBoardEditor(root, storage, projectId, boardId, onBack
       layout: zoneForm.layout.value,
       face: zoneForm.face.value,
       visibility: zoneForm.visibility.value,
+      extra: zoneForm.extra.checked,
     };
     try {
       if (!candidate.name.trim()) throw new Error("A zone needs a name.");
@@ -234,6 +237,7 @@ export async function mountBoardEditor(root, storage, projectId, boardId, onBack
       if (candidate.area === "shared" && board.sharedRows === 0) throw new Error("Add shared rows to the board first.");
       if (!zoneFits(board, candidate)) throw new Error("That does not fit inside the area.");
       if (zoneCollides(board, candidate)) throw new Error("That overlaps another zone.");
+      if (candidate.extra) for (const other of board.zones) if (other.id !== zone.id) other.extra = false; // only one zone starts with the extra cards
       Object.assign(zone, candidate, { name: candidate.name.trim() });
       markDirty();
     } catch (error) {
@@ -259,7 +263,7 @@ export async function mountBoardEditor(root, storage, projectId, boardId, onBack
   /* ---- board settings and counters ---- */
 
   function fillSettings() {
-    for (const key of ["cols", "rows", "sharedRows", "cellWidth", "cellHeight", "startingHand", "drawPerTurn"]) {
+    for (const key of ["cols", "rows", "sharedRows", "cellWidth", "cellHeight", "startingHand"]) {
       settingsForm[key].value = board[key];
     }
   }
@@ -273,7 +277,6 @@ export async function mountBoardEditor(root, storage, projectId, boardId, onBack
         cellWidth: settingsForm.cellWidth.value,
         cellHeight: settingsForm.cellHeight.value,
         startingHand: settingsForm.startingHand.value,
-        drawPerTurn: settingsForm.drawPerTurn.value,
       });
       markDirty();
     } catch (error) {

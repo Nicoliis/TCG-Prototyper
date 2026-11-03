@@ -71,6 +71,7 @@ export function createZone(fields = {}) {
     layout: "stack",
     face: "up",
     visibility: "public",
+    extra: false,
     ...fields,
   };
 }
@@ -85,7 +86,6 @@ export function createBoard(name, existingNames) {
     cellWidth: 140,
     cellHeight: 140,
     startingHand: 5,
-    drawPerTurn: 1,
     counters: [{ name: "Life", start: 20 }],
     zones: [],
   };
@@ -96,6 +96,11 @@ export function createBoard(name, existingNames) {
     createZone({ name: "Hand", role: "hand", col: 2, row: 2, w: 4, layout: "spread", face: "down", visibility: "private" }),
   ];
   return board;
+}
+
+// The zone that starts with the deck's "extra" cards (null when the board has none).
+export function extraZone(board) {
+  return board.zones.find((z) => z.extra && !z.role && z.area === "player") ?? null;
 }
 
 export function areaSize(board, area) {
@@ -156,6 +161,7 @@ export function validateBoard(board) {
     const key = zone.name.trim().toLowerCase();
     if (names.has(key)) throw new Error(`Two zones are called "${zone.name}". Zone names must be different.`);
     names.add(key);
+    if (zone.extra && (zone.role || zone.area !== "player")) throw new Error(`"${zone.name}" cannot hold the extra deck: it must be a normal zone in the player area.`);
     if (zone.role && zone.area !== "player") throw new Error(`The ${zone.role} must be in the player area.`);
     if (!zoneFits(board, zone)) throw new Error(`"${zone.name}" does not fit inside the ${zone.area} area.`);
     if (zoneCollides(board, zone)) throw new Error(`"${zone.name}" overlaps another zone.`);
@@ -180,7 +186,6 @@ export function setBoardSettings(board, fields) {
   board.cellWidth = wholeNumber(fields.cellWidth, "Cell width", { min: 40, max: 400 });
   board.cellHeight = wholeNumber(fields.cellHeight, "Cell height", { min: 40, max: 560 });
   board.startingHand = wholeNumber(fields.startingHand, "Starting hand", { min: 0, max: 60 });
-  board.drawPerTurn = wholeNumber(fields.drawPerTurn, "Cards drawn per turn", { min: 0, max: 20 });
 }
 
 export function validateCounters(counters) {
@@ -204,7 +209,7 @@ export function normalizeBoard(board) {
   board.cellWidth ||= 100;
   board.cellHeight ||= 140;
   board.startingHand ??= 5;
-  board.drawPerTurn ??= 1;
+  delete board.drawPerTurn;
   board.counters ??= [{ name: "Life", start: 20 }];
   board.zones ??= [];
   for (const zone of board.zones) {
@@ -214,6 +219,7 @@ export function normalizeBoard(board) {
     zone.face = ZONE_FACES.includes(zone.face) ? zone.face : "up";
     zone.visibility = ZONE_VISIBILITIES.includes(zone.visibility) ? zone.visibility : "public";
     zone.role = ZONE_ROLES.includes(zone.role) ? zone.role : null;
+    zone.extra = Boolean(zone.extra) && !zone.role && zone.area === "player";
     zone.w = Math.max(1, zone.w | 0);
     zone.h = Math.max(1, zone.h | 0);
   }

@@ -52,26 +52,30 @@ export function removeDeck(project, deckId) {
   project.decks = getDecks(project).filter((d) => d.id !== deckId);
 }
 
-export function addCardToDeck(deck, cardId) {
-  const entry = deck.entries.find((e) => e.cardId === cardId);
+// An entry is either in the main deck or, with extra: true, in the extra deck (a card can be in both).
+const sameSection = (entry, extra) => Boolean(entry.extra) === Boolean(extra);
+
+export function addCardToDeck(deck, cardId, extra = false) {
+  const entry = deck.entries.find((e) => e.cardId === cardId && sameSection(e, extra));
   if (entry) entry.count += 1;
-  else deck.entries.push({ cardId, count: 1 });
+  else deck.entries.push({ cardId, count: 1, ...(extra ? { extra: true } : {}) });
 }
 
-export function setEntryCount(deck, cardId, value) {
+export function setEntryCount(deck, cardId, value, extra = false) {
   const count = validateCount(value);
   if (count === 0) {
-    deck.entries = deck.entries.filter((e) => e.cardId !== cardId);
+    deck.entries = deck.entries.filter((e) => !(e.cardId === cardId && sameSection(e, extra)));
     return;
   }
-  const entry = deck.entries.find((e) => e.cardId === cardId);
+  const entry = deck.entries.find((e) => e.cardId === cardId && sameSection(e, extra));
   if (entry) entry.count = count;
-  else deck.entries.push({ cardId, count });
+  else deck.entries.push({ cardId, count, ...(extra ? { extra: true } : {}) });
 }
 
 export function deckTotals(deck) {
   return {
-    totalCards: deck.entries.reduce((sum, e) => sum + e.count, 0),
+    totalCards: deck.entries.filter((e) => !e.extra).reduce((sum, e) => sum + e.count, 0),
+    extraCards: deck.entries.filter((e) => e.extra).reduce((sum, e) => sum + e.count, 0),
     distinctCards: deck.entries.length,
   };
 }
@@ -82,7 +86,7 @@ export function cloneDecksForCards(decks, cardIdMap) {
     id: crypto.randomUUID(),
     entries: deck.entries
       .filter((entry) => cardIdMap.has(entry.cardId))
-      .map((entry) => ({ cardId: cardIdMap.get(entry.cardId), count: entry.count })),
+      .map((entry) => ({ cardId: cardIdMap.get(entry.cardId), count: entry.count, ...(entry.extra ? { extra: true } : {}) })),
   }));
 }
 

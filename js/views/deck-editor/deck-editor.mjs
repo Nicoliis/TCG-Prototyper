@@ -22,6 +22,9 @@ export async function mountDeckEditor(root, storage, projectId, deckId, onBack) 
   const errorEl = section.querySelector(".field-error");
   const entriesEmpty = section.querySelector(".deck-entries-empty");
   const entryList = section.querySelector(".deck-entry-list");
+  const extraList = section.querySelector(".deck-extra-list");
+  const extraEmpty = section.querySelector(".deck-extra-empty");
+  const extraCards = section.querySelector(".deck-extra-cards");
   const availableEmpty = section.querySelector(".available-cards-empty");
   const availableList = section.querySelector(".available-card-list");
   const entryTemplate = section.querySelector(".deck-entry-template");
@@ -57,23 +60,27 @@ export async function mountDeckEditor(root, storage, projectId, deckId, onBack) 
     totalCards.textContent = totals.totalCards;
     distinctCards.textContent = totals.distinctCards;
 
+    extraCards.textContent = totals.extraCards;
     entryList.replaceChildren();
+    extraList.replaceChildren();
     for (const entry of deck.entries) {
       const found = findCard(project, entry.cardId);
       if (!found) continue;
+      const extra = Boolean(entry.extra);
       const item = entryTemplate.content.cloneNode(true);
       item.querySelector(".deck-entry-summary").textContent = describeCard(found.cardType, found.card);
       const countInput = item.querySelector(".deck-entry-count");
       countInput.value = entry.count;
       countInput.addEventListener("change", () =>
-        change(deck, (d) => setEntryCount(d, entry.cardId, countInput.value)),
+        change(deck, (d) => setEntryCount(d, entry.cardId, countInput.value, extra)),
       );
       item.querySelector(".deck-entry-remove-button").addEventListener("click", () =>
-        change(deck, (d) => setEntryCount(d, entry.cardId, 0)),
+        change(deck, (d) => setEntryCount(d, entry.cardId, 0, extra)),
       );
-      entryList.appendChild(item);
+      (extra ? extraList : entryList).appendChild(item);
     }
-    entriesEmpty.hidden = deck.entries.length > 0;
+    entriesEmpty.hidden = deck.entries.some((e) => !e.extra);
+    extraEmpty.hidden = deck.entries.some((e) => e.extra);
 
     if (typeFilter.options.length === 1) {
       for (const cardType of project.cardTypes) {
@@ -95,6 +102,9 @@ export async function mountDeckEditor(root, storage, projectId, deckId, onBack) 
       item.querySelector(".available-card-summary").textContent = describeCard(cardType, card);
       item.querySelector(".available-card-add-button").addEventListener("click", () =>
         change(deck, (d) => addCardToDeck(d, card.id)),
+      );
+      item.querySelector(".available-card-extra-button").addEventListener("click", () =>
+        change(deck, (d) => addCardToDeck(d, card.id, true)),
       );
       availableList.appendChild(item);
     }

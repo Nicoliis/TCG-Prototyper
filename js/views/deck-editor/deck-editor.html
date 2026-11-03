@@ -4,7 +4,8 @@
     <h2 class="deck-name-heading"></h2>
     <p class="deck-totals">
       <span class="deck-total-cards"></span> cards,
-      <span class="deck-distinct-cards"></span> distinct
+      <span class="deck-distinct-cards"></span> distinct,
+      <span class="deck-extra-cards"></span> in the extra deck
     </p>
     <p class="field-error" hidden></p>
 
@@ -13,6 +14,10 @@
         <h3>In this deck</h3>
         <p class="deck-entries-empty" hidden>No cards in this deck yet.</p>
         <ul class="deck-entry-list"></ul>
+        <h3>Extra deck</h3>
+        <p class="hint">Cards that start in the board's extra-deck zone instead of the deck (the zone is chosen in the board designer). Without such a zone they are shuffled into the deck.</p>
+        <p class="deck-extra-empty" hidden>No extra cards yet.</p>
+        <ul class="deck-extra-list"></ul>
       </div>
 
       <div class="deck-editor-column">
@@ -44,6 +49,7 @@
       <li class="available-card">
         <span class="available-card-summary"></span>
         <button type="button" class="available-card-add-button">Add</button>
+        <button type="button" class="available-card-extra-button">Add to extra</button>
       </li>
     </template>
   </section>
