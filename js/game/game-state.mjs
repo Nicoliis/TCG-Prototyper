@@ -144,9 +144,17 @@ function zoneName(board, key) {
   return zone ? zone.name : "a zone";
 }
 
-function entryFor(zone, entry, faceOverride) {
+const clamp01 = (n) => Math.min(1, Math.max(0, Number.isFinite(n) ? n : 0.5));
+
+// The card as it arrives in a zone. A card never keeps its stack or its spot from another zone.
+function entryFor(zone, entry, faceOverride, spot) {
   const faceUp = faceOverride ?? (zone.face === "keep" ? entry.faceUp : zone.face === "up");
-  return { ...entry, faceUp, rot: zone.face === "keep" ? entry.rot : 0 };
+  const arrived = { ...entry, faceUp, rot: zone.face === "keep" ? entry.rot : 0 };
+  delete arrived.under;
+  delete arrived.x;
+  delete arrived.y;
+  if (zone.layout === "free") Object.assign(arrived, { x: clamp01(spot?.x), y: clamp01(spot?.y) });
+  return arrived;
 }
 
 function withLog(next, by, text) {
@@ -263,15 +271,49 @@ export function applyEvent(state, event, ctx) {
       const found = find(next, event.uid);
       if (!found) return refuse(state, "That card is not there any more.");
       if (!canTake(board, by, found.key)) return refuse(state, "You cannot take cards from that zone.");
-      const dest = resolveDestination(next, board, by, found.entry, event.to);
+      // dropping onto another card of the table stacks the card there
+      let base = null;
+      let toKey = event.to;
+      if (event.onto) {
+        base = find(next, event.onto);
+        if (!base || base.entry.uid === event.uid) return refuse(state, "That card is not there any more.");
+        const baseSide = parseKey(base.key).side;
+        const baseZone = zoneDef(board, parseKey(base.key).zoneId);
+        if (!["grid", "free"].includes(baseZone.layout)) return refuse(state, "Cards cannot be stacked in that zone.");
+        if (baseSide !== by && baseSide !== "shared") return refuse(state, "You can only stack cards in your own zones or in shared zones.");
+        toKey = base.key;
+      }
+      const dest = resolveDestination(next, board, by, found.entry, toKey);
       if (dest.error) return refuse(state, dest.error);
-      next.zones[found.key].splice(found.index, 1);
-      const entry = entryFor(dest.zone, found.entry, event.faceUp);
+      // the card travels with the cards stacked on it
+      const followers = next.zones[found.key].filter((c) => c.under === event.uid);
+      next.zones[found.key] = next.zones[found.key].filter((c) => c.uid !== event.uid && c.under !== event.uid);
+      const entry = entryFor(dest.zone, found.entry, event.faceUp, event);
       const pile = next.zones[dest.key];
+      if (base) {
+        entry.under = base.entry.under ?? base.entry.uid;
+        if (entry.under === event.uid) return refuse(state, "A card cannot be stacked on itself.");
+      }
       if (event.where === "bottom") pile.unshift(entry);
       else pile.push(entry);
+      const stackable = ["grid", "free"].includes(dest.zone.layout);
+      for (const follower of followers) {
+        const moved = entryFor(dest.zone, follower, undefined, event);
+        if (stackable) moved.under = entry.under ?? event.uid; // stacks are one level deep: everything hangs from the bottom card
+        pile.push(moved);
+      }
       const known = entry.faceUp || found.entry.faceUp; // a card the table already saw keeps its name in the log
-      withLog(next, by, `${who} moved ${known ? nameOfCard(ctx, entry.cardId) : "a card"} from ${zoneName(board, found.key)} to ${zoneName(board, dest.key)}`);
+      const text = base
+        ? `${who} stacked ${known ? nameOfCard(ctx, entry.cardId) : "a card"} on ${base.entry.faceUp ? nameOfCard(ctx, base.entry.cardId) : "a card"}`
+        : `${who} moved ${known ? nameOfCard(ctx, entry.cardId) : "a card"} from ${zoneName(board, found.key)} to ${zoneName(board, dest.key)}`;
+      withLog(next, by, text);
+      return { ok: true, state: next };
+    }
+    case "unstack": {
+      const found = find(next, event.uid);
+      if (!found || !canTake(board, by, found.key)) return refuse(state, "That card is not there any more.");
+      for (const card of next.zones[found.key].filter((c) => c.uid === event.uid || c.under === event.uid)) delete card.under;
+      withLog(next, by, `${who} unstacked ${found.entry.faceUp ? nameOfCard(ctx, found.entry.cardId) : "a card"}`);
       return { ok: true, state: next };
     }
     case "moveAll": {
