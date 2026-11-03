@@ -1,4 +1,4 @@
-import { cardsInNumberOrder, findCardByNumber } from "../../models/card-numbering.mjs?v=30";
+import { cardsInNumberOrder, findCardByNumber } from "../../models/card-numbering.mjs?v=31";
 
 export function adjacentCard(cardType, number, direction) {
   const sorted = cardsInNumberOrder(cardType);
