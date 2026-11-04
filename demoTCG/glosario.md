@@ -11,11 +11,11 @@ Las entradas marcadas con 🧪 son una decisión por confirmar en partidas de pr
 ### Activar
 Informar que una carta usará un efecto. Un asistente **boca abajo** se revela al activar su efecto. Activar un efecto cuenta como acción y abre una cadena.
 
-### Agregar (una ficha)
-Poner una ficha en el campo, siempre como explorador **activo**.
+### Agregar (un token)
+Poner un token en el campo, siempre como explorador **activo**.
 - No es "jugar": las restricciones "no puedes jugar más exploradores" no la bloquean.
 - Si no hay zona libre, no se agrega nada.
-- Las fichas son exploradores de la dimensión que indique el efecto que las crea.
+- Los tokens son exploradores de la dimensión que indique el efecto que las crea.
 
 ### Anular (un ataque)
 El ataque termina sin cálculo de daño. El explorador atacante se considera que ya atacó este turno. No es una negación: no afecta a ningún efecto.
@@ -32,12 +32,12 @@ Enviar una carta de la mano al cementerio. Si el efecto descarta "al azar", elig
 ### Destruir
 Enviar un explorador del campo al cementerio.
 - Si se destruye un explorador activo, su asistente va **con él** al cementerio. 🧪
-- Las fichas desaparecen. Cuentan como destruidas.
+- Los tokens desaparecen. Cuentan como destruidas.
 - Destruir un asistente no afecta al explorador activo.
 
 ### Devolver a la mano
 La carta vuelve a la mano de su dueño.
-- Las fichas no se pueden devolver: desaparecen. (Un efecto que las "devuelve" no hace nada con ellas.)
+- Los tokens no se pueden devolver: desaparecen. (Un efecto que las "devuelve" no hace nada con ellas.)
 - Si se devuelve un explorador activo, su asistente va al cementerio (no se considera destruido). 🧪
 
 ### Elegir (objetivo)
@@ -53,7 +53,7 @@ Poner un explorador en el campo viniendo de la mano, el cementerio, el mazo o do
 - Por defecto se juega **activo** en una zona libre; si no hay zona libre, no se juega.
 - Si dice "asistiendo", se asiste (ver **Asistir**).
 - Jugar de la mano es la **jugada espontánea** del turno, una sola. Los efectos que "juegan" no la gastan.
-- Las restricciones "no puedes jugar más exploradores" bloquean la jugada espontánea y a los efectos que juegan; no bloquean agregar fichas.
+- Las restricciones "no puedes jugar más exploradores" bloquean la jugada espontánea y a los efectos que juegan; no bloquean agregar tokens.
 
 ### Negar
 La **activación** de un efecto no se resuelve, pero **sí** cuenta como activada (se usó su turno y se pagó el costo). Es la interrupción más fuerte del juego y por eso las cartas que niegan son pocas y caras.
@@ -75,7 +75,7 @@ Convenciones que las cartas no repiten, para que los textos sean cortos:
 
 - **Un efecto por línea.** Las etiquetas son **Normal**, **Trigger** y **Asistiendo**; el texto sin etiqueta es un efecto continuo.
 - **"Explorador" es explorador activo.** Un asistente se nombra "asistente".
-- **Todo es tuyo por defecto.** "Un Fantaspet", "1 explorador" o "1 ficha" son tuyos; lo del otro jugador dice "del oponente".
+- **Todo es tuyo por defecto.** "Un Fantaspet", "1 explorador" o "1 token" son tuyos; lo del otro jugador dice "del oponente".
 - **Asistiendo:** en un efecto Asistiendo, "el explorador" es **aquel al que la carta asiste**. "Esta carta" es el asistente.
 - **Duración:** ganar o perder PODER dura hasta el final del turno.
 - **Asistir:** boca abajo, salvo que el texto diga "boca arriba".

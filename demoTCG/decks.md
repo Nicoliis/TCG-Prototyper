@@ -10,7 +10,7 @@ Están pensados para que cada mazo enseñe una parte distinta del juego y para q
 |---|---|---|---|---|
 | **Fantaspet** · Niebla Persistente | Combo y trampas | Búsquedas y asistentes ocultos | Daño directo cada vez que se revela un asistente | Presión rápida antes de armar el tablero |
 | **Ugabuga** · Estampida de Piedra | Agresivo | Combate y costo de las restricciones | Daño directo y descartes | Tableros que anulan ataques |
-| **Ragnatica** · Telaraña Paciente | Control | Fichas, atracción y trampas | Quitar recursos y objetivos al oponente | Mazos que ignoran las fichas y buscan velocidad |
+| **Ragnatica** · Telaraña Paciente | Control | Tokens, atracción y trampas | Quitar recursos y objetivos al oponente | Mazos que ignoran los tokens y buscan velocidad |
 | **Baluarte** · Muralla Viviente | Aguantar | Atracción y asistentes como escudo | Reflejar daño y desgastar | Efectos que no eligen objetivo |
 
 Los cuatro incluyen 2 copias de **Grieta en emergente Valle Mudo**, una de las dos negaciones del juego (la otra es la Reina de Ragnatica), a propósito muy específica (solo contra búsquedas) y muy cara.
@@ -114,14 +114,14 @@ Antes de jugar, lee [ruleguides.md](ruleguides.md) y ten a mano el [glosario.md]
 
 **Composición:** 18 exploradores · 12 eventos.
 
-**Idea:** las fichas **Cría** son recurso y escudo. Casi todas las interrupciones de Ragnatica se pagan con fichas, no con cartas de la mano, y las fichas no se "juegan", así que las restricciones que bloquean jugar exploradores no las frenan. Ragnatica arma un tablero lleno de condiciones y deja que el oponente intente jugar a través.
+**Idea:** los tokens **Cría** son recurso y escudo. Casi todas las interrupciones de Ragnatica se pagan con tokens, no con cartas de la mano, y los tokens no se "juegan", así que las restricciones que bloquean jugar exploradores no las frenan. Ragnatica arma un tablero lleno de condiciones y deja que el oponente intente jugar a través.
 
 **Cómo se juega**
-- Starters: **Telarín** (una ficha), **Conflicto en emergente reino de Ragnatica** (dos fichas) e **Hilandera** (busca convirtiendo una ficha).
+- Starters: **Telarín** (un token), **Conflicto en emergente reino de Ragnatica** (dos tokens) e **Hilandera** (busca convirtiendo un token).
 - Señuelo: **Señuelo** tiene **Atracción de ataques** y no ataca. Con un asistente debajo, el oponente solo puede atacar a Señuelo y se mete en una trampa.
 - Asistente-trampa: **Capullo Silente** (si el explorador activo es atacado, devuelve al atacante a su mano y termina el ataque).
 - Interrupciones: **Viuda Gris** (anula un ataque), **Hilos cortados en Ragnatica**, **Emboscadora** (desde la mano, responde cuando el oponente juega un explorador).
-- Piezas: **Madre Telar** y **Reina de Ragnatica**. La Reina es la única negación general del juego (cualquier efecto de explorador que elija una carta tuya) y cuesta una carta de tu mano y una ficha cada vez.
+- Piezas: **Madre Telar** y **Reina de Ragnatica**. La Reina es la única negación general del juego (cualquier efecto de explorador que elija una carta tuya) y cuesta una carta de tu mano y un token cada vez.
 
 **Línea de ejemplo (la trampa)**
 1. Turno 1: juegas **Señuelo**. Atracción de ataques: cualquier ataque tiene que ir contra Señuelo.
@@ -129,12 +129,12 @@ Antes de jugar, lee [ruleguides.md](ruleguides.md) y ten a mano el [glosario.md]
 3. El oponente ataca a Señuelo (no tiene otra opción): el asistente se revela, Capullo devuelve al atacante a su mano y el ataque termina.
 
 **Línea de ejemplo (la Reina)**
-1. Turno 1: juegas **Telarín** y activas su efecto (una ficha). Activas **Conflicto en emergente reino de Ragnatica** (dos fichas más). Tienes tres fichas.
-2. Turno 2: activas la **Reina** desde la mano, destruyendo 2 fichas, y la juegas. Su restricción termina tu turno, pero el tablero queda con la Reina y 1 ficha.
+1. Turno 1: juegas **Telarín** y activas su efecto (un token). Activas **Conflicto en emergente reino de Ragnatica** (dos tokens más). Tienes tres tokens.
+2. Turno 2: activas la **Reina** desde la mano, destruyendo 2 tokens, y la juegas. Su restricción termina tu turno, pero el tablero queda con la Reina y 1 token.
 
-**Debilidades:** sin fichas todas las interrupciones se apagan. Lo que destruye a tus fichas sin que las pagues te deja sin combustible. Es el mazo más lento.
+**Debilidades:** sin tokens todas las interrupciones se apagan. Lo que destruye a tus tokens sin que las pagues te deja sin combustible. Es el mazo más lento.
 
-**Para jugarlo mejor:** no gastes fichas por gastar. La ficha que dejas en el campo también alimenta a **Viuda Gris**.
+**Para jugarlo mejor:** no gastes tokens por gastar. El token que dejas en el campo también alimenta a **Viuda Gris**.
 
 ### Lista (30 cartas)
 

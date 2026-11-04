@@ -38,7 +38,7 @@ Con 800 de vida y daño 1 a 1:
 
 | PODER | Qué es |
 |---|---|
-| 0-100 | Soporte, ficha o asistente-trampa. |
+| 0-100 | Soporte, token o asistente-trampa. |
 | 120-160 | Cuerpo normal. 150 es la carta de referencia sin restricción y con efectos flojos. |
 | 180-200 | Buen cuerpo; casi siempre con un costo (restricción o efecto que lo castiga). |
 | 250 | Pieza. Tres o cuatro golpes y casi terminas, pero entra con una restricción grave. |
@@ -92,7 +92,7 @@ Una restricción es una **desventaja obligatoria** que se aplica en simultáneo 
 ### Reglas de uso
 
 - **Una restricción no debe bloquear a su propia carta.** Un explorador con restricción no puede tener un efecto al entrar que la viole. Si el efecto es útil recién al turno siguiente, está bien. Los efectos que se activan **desde la mano** ocurren antes de entrar, así que no se ven afectados.
-- Las fichas no son "jugadas", así que "no jugar más exploradores" no las toca. Esa excepción es la ventaja de Ragnatica; no la rompas con restricciones que digan "agregar".
+- Los tokens no son "jugadas", así que "no jugar más exploradores" no las toca. Esa excepción es la ventaja de Ragnatica; no la rompas con restricciones que digan "agregar".
 - Las **restricciones permanentes** ("Esta carta no puede declarar ataques") pesan más que las del turno, por lo que si son severas, la carta debería ganar sola. Usa máximo una por carta.
 - Una restricción distinta le da **personalidad** a una carta. Antes de repetir "no puedes jugar más exploradores", pregúntate si hay otra que cuente mejor qué cuesta esa carta.
 
@@ -141,7 +141,7 @@ Atracción obliga al oponente a elegir como objetivo (de ataques, de efectos, o 
 Mantenerlas al mínimo. Hoy hay **dos** en todo el juego:
 
 - **Grieta en emergente Valle Mudo** (neutral): niega solo efectos que **buscan en el mazo**. Cuesta descartar una carta y destruir uno de tus exploradores.
-- **Reina de Ragnatica**: niega solo efectos de explorador que **eligen a una carta tuya**. Cuesta una carta de tu mano y una ficha cada vez, y viene con una restricción grave (termina tu turno).
+- **Reina de Ragnatica**: niega solo efectos de explorador que **eligen a una carta tuya**. Cuesta una carta de tu mano y un token cada vez, y viene con una restricción grave (termina tu turno).
 
 Si diseñas una tercera, debería ser **muy específica** (un tipo de efecto concreto) o **muy cara** (dos recursos distintos y una restricción).
 
@@ -189,7 +189,7 @@ El script que genera las cartas comprueba este presupuesto y falla si una carta 
 
 ### Vocabulario cerrado
 
-Usa siempre las mismas palabras (definidas en [glosario.md](glosario.md)): **destruir**, **descartar**, **exiliar**, **jugar** (explorador), **asistir**, **revelar**, **agregar** (ficha), **elegir**, **buscar**, **devolver a la mano**, **anular** (ataque), **negar** (efecto), **Atracción**, **Activa como**, **ganar / perder PODER**. No uses sinónimos, y no repitas en la carta los casos borde que ya explica el glosario.
+Usa siempre las mismas palabras (definidas en [glosario.md](glosario.md)): **destruir**, **descartar**, **exiliar**, **jugar** (explorador), **asistir**, **revelar**, **agregar** (token), **elegir**, **buscar**, **devolver a la mano**, **anular** (ataque), **negar** (efecto), **Atracción**, **Activa como**, **ganar / perder PODER**. No uses sinónimos, y no repitas en la carta los casos borde que ya explica el glosario.
 
 ### Condiciones de trigger
 
@@ -228,7 +228,7 @@ Que el mismo explorador aparezca varias veces y que haya alianzas raras se expli
 |---|---|---|
 | **Fantaspet** | Eterneblina | Mascotas espectrales. Búsqueda, recursión y asistentes ocultos. |
 | **Ugabuga** | Meseta y cuevas de Ugabuga | Tribus de piedra. Fuerza bruta, sacrificios, presión. |
-| **Ragnatica** | Reino de Ragnatica | Arácnidos tejedores. Fichas, señuelos y trampas. |
+| **Ragnatica** | Reino de Ragnatica | Arácnidos tejedores. Tokens, señuelos y trampas. |
 | **Baluarte** | Fortaleza emergente | Un personaje principal resistente sostenido por escuderos. |
 | **Neutral** | El propio Colapso | Viajeros y recursos que sirven a cualquiera. |
 
@@ -250,7 +250,7 @@ Los exploradores llevan nombres propios cortos o apodos (Gooboy, Cesarmill, Viud
 
 - Un mazo de 30 = **22 cartas de dimensión** (12 nombres distintos) + **8 neutrales** (5 nombres).
 - El pool neutral ofrece: robo y filtro (**Cartógrafo Errante**, **Brújula Rota**), recuperación (**Campamento…**), escape (**Retirada Táctica**), un cuerpo sin dimensión (**Mercenario del Colapso**) y la **Grieta** como interrupción anti-búsqueda.
-- Una dimensión nueva necesita: 8 exploradores, 4 eventos, un tipo de recurso propio (fichas, recursión, sacrificios, escuderos…) y una debilidad concreta que pueda explotar otro mazo.
+- Una dimensión nueva necesita: 8 exploradores, 4 eventos, un tipo de recurso propio (tokens, recursión, sacrificios, escuderos…) y una debilidad concreta que pueda explotar otro mazo.
 
 ## 10. Diseño visual
 

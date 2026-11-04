@@ -435,7 +435,7 @@
               "c59181e6-7ec5-47b1-89d9-2226de7238a6": "Telarín",
               "75e63c31-326e-41f3-99b6-8934c005c528": "Ragnatica",
               "928f4cc5-9723-4f30-a7b4-022a2f6101d8": "100",
-              "94fbef15-0238-4b38-becb-706973beec3b": "**Normal:** Agrega 1 ficha Cría (solo sin fichas Cría)."
+              "94fbef15-0238-4b38-becb-706973beec3b": "**Normal:** Agrega 1 token Cría (solo sin tokens Cría)."
             }
           },
           {
@@ -445,7 +445,7 @@
               "c59181e6-7ec5-47b1-89d9-2226de7238a6": "Hilandera",
               "75e63c31-326e-41f3-99b6-8934c005c528": "Ragnatica",
               "928f4cc5-9723-4f30-a7b4-022a2f6101d8": "120",
-              "94fbef15-0238-4b38-becb-706973beec3b": "**Normal:** Destruye 1 ficha Cría: busca 1 Ragnatica con PODER 200 o menos."
+              "94fbef15-0238-4b38-becb-706973beec3b": "**Normal:** Destruye 1 token Cría: busca 1 Ragnatica con PODER 200 o menos."
             }
           },
           {
@@ -455,7 +455,7 @@
               "c59181e6-7ec5-47b1-89d9-2226de7238a6": "Viuda Gris",
               "75e63c31-326e-41f3-99b6-8934c005c528": "Ragnatica",
               "928f4cc5-9723-4f30-a7b4-022a2f6101d8": "150",
-              "94fbef15-0238-4b38-becb-706973beec3b": "**Trigger:** Si un explorador del oponente declara un ataque, destruye 1 ficha Cría: anula ese ataque."
+              "94fbef15-0238-4b38-becb-706973beec3b": "**Trigger:** Si un explorador del oponente declara un ataque, destruye 1 token Cría: anula ese ataque."
             }
           },
           {
@@ -485,7 +485,7 @@
               "c59181e6-7ec5-47b1-89d9-2226de7238a6": "Cría de Ragnatica",
               "75e63c31-326e-41f3-99b6-8934c005c528": "Ragnatica",
               "928f4cc5-9723-4f30-a7b4-022a2f6101d8": "100",
-              "94fbef15-0238-4b38-becb-706973beec3b": "Ficha. Desaparece si deja el campo."
+              "94fbef15-0238-4b38-becb-706973beec3b": "Token. Desaparece si deja el campo."
             }
           },
           {
@@ -1000,7 +1000,7 @@
               "3aca7528-0978-4d38-956e-90cec047f12a": "Madre Telar",
               "09cacd12-2f61-4ead-8d54-0017e1009dc8": "Ragnatica",
               "ffd816b5-cf37-4c90-b9b4-397c1e8b0fab": "200",
-              "27fd7e91-cc5b-4459-80e4-6f91d467321f": "**Normal:** Destruye 2 fichas Cría: devuelve 1 explorador del oponente a su mano.",
+              "27fd7e91-cc5b-4459-80e4-6f91d467321f": "**Normal:** Destruye 2 tokens Cría: devuelve 1 explorador del oponente a su mano.",
               "9e921246-3583-4cd8-b033-fdaee2e72bda": "Después de entrar al campo> Si es tu turno: no puedes activar más efectos este turno."
             }
           },
@@ -1011,7 +1011,7 @@
               "3aca7528-0978-4d38-956e-90cec047f12a": "Reina de Ragnatica",
               "09cacd12-2f61-4ead-8d54-0017e1009dc8": "Ragnatica",
               "ffd816b5-cf37-4c90-b9b4-397c1e8b0fab": "250",
-              "27fd7e91-cc5b-4459-80e4-6f91d467321f": "**Normal:** (Desde tu mano) Destruye 2 fichas Cría: juega esta carta.\n**Trigger:** Si el oponente activa un efecto de explorador que elige a una carta tuya, descarta 1 carta y destruye 1 ficha Cría: niega esa activación.",
+              "27fd7e91-cc5b-4459-80e4-6f91d467321f": "**Normal:** (Desde tu mano) Destruye 2 tokens Cría: juega esta carta.\n**Trigger:** Si el oponente activa un efecto de explorador que elige a una carta tuya, descarta 1 carta y destruye 1 token Cría: niega esa activación.",
               "9e921246-3583-4cd8-b033-fdaee2e72bda": "Después de entrar al campo> Si es tu turno: se termina tu turno."
             }
           },
@@ -1407,7 +1407,7 @@
               "558cb85e-355d-4494-9472-94ea84ab45b6": "Cosecha en Ragnatica",
               "ca0f4103-25cc-4801-84a8-f77c3b900b23": "Ragnatica",
               "c6fc8bb8-99c4-4ad0-9198-749cbf3eecbf": "Lento",
-              "23230809-8948-4cd9-a0ab-95be568d0635": "**Normal:** Destruye 1 ficha Cría: roba 2 cartas.\n**Trigger:** Si una ficha Cría es destruida: roba 1 carta."
+              "23230809-8948-4cd9-a0ab-95be568d0635": "**Normal:** Destruye 1 token Cría: roba 2 cartas.\n**Trigger:** Si un token Cría es destruida: roba 1 carta."
             }
           },
           {
@@ -1854,7 +1854,7 @@
               "abf34194-c38e-4017-9bb6-e3e0a6aa9d1b": "Conflicto en emergente reino de Ragnatica",
               "83e3676d-991d-4335-b35d-3513fed85aca": "Ragnatica",
               "1e137fd1-a0db-4378-8fd1-be7cea66d77a": "Lento",
-              "dfe86b77-3e71-4921-8ebb-e17b9d93cd80": "**Normal:** Agrega 2 fichas Cría.\n**Trigger:** Si el oponente declara un ataque: agrega 1 ficha Cría.",
+              "dfe86b77-3e71-4921-8ebb-e17b9d93cd80": "**Normal:** Agrega 2 tokens Cría.\n**Trigger:** Si el oponente declara un ataque: agrega 1 token Cría.",
               "75afb43d-3be8-450f-93e9-6645aa707869": "Después de activar> Si es tu turno: no puedes jugar más exploradores este turno."
             }
           },
@@ -1865,7 +1865,7 @@
               "abf34194-c38e-4017-9bb6-e3e0a6aa9d1b": "Plaga en emergente Ragnatica",
               "83e3676d-991d-4335-b35d-3513fed85aca": "Ragnatica",
               "1e137fd1-a0db-4378-8fd1-be7cea66d77a": "Rápido",
-              "dfe86b77-3e71-4921-8ebb-e17b9d93cd80": "**Normal:** Destruye todas tus fichas Cría (mínimo 1): el oponente descarta 1 carta por cada una (máx. 3).",
+              "dfe86b77-3e71-4921-8ebb-e17b9d93cd80": "**Normal:** Destruye todos tus tokens Cría (mínimo 1): el oponente descarta 1 carta por cada una (máx. 3).",
               "75afb43d-3be8-450f-93e9-6645aa707869": "Después de activar> no puedes activar más efectos este turno."
             }
           },

@@ -9,8 +9,8 @@ Derrumbe en emergente cueva Ugabuga,Ugabuga,Rápido,"**Normal:** Descarta 1 cart
 **Trigger:** Si el oponente juega un explorador con PODER 100 o menos, descarta 1 Ugabuga: destrúyelo."
 Hilos cortados en Ragnatica,Ragnatica,Rápido,"**Normal:** Descarta 1 carta: devuelve a su mano 1 explorador del oponente con PODER 120 o menos.
 **Trigger:** Si el oponente juega un explorador, descarta 1 carta: devuelve ese explorador a su mano."
-Cosecha en Ragnatica,Ragnatica,Lento,"**Normal:** Destruye 1 ficha Cría: roba 2 cartas.
-**Trigger:** Si una ficha Cría es destruida: roba 1 carta."
+Cosecha en Ragnatica,Ragnatica,Lento,"**Normal:** Destruye 1 token Cría: roba 2 cartas.
+**Trigger:** Si un token Cría es destruida: roba 1 carta."
 Cerrad filas en emergente Baluarte,Baluarte,Rápido,"**Normal:** Elige 1 explorador con asistente: gana 50 PODER.
 **Trigger:** Si un explorador con asistente es atacado: el atacante pierde 50 PODER."
 Relevo de guardia en Baluarte,Baluarte,Rápido,"**Normal:** Reemplaza 1 asistente por 1 Baluarte de tu mano. El asistente reemplazado vuelve a tu mano.

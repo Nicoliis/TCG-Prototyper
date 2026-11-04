@@ -5,9 +5,9 @@ Procesión en emergente Eterneblina,Fantaspet,Lento,**Normal:** Juega hasta 2 Fa
 Estampida en emergente Ugabuga,Ugabuga,Lento,**Normal:** Elige 1 Ugabuga: puede declarar un segundo ataque este turno.,Después de activar> no puedes activar más efectos este turno.
 Banquete inaugural de aldea Ugabuga,Ugabuga,Lento,"**Normal:** Destruye 1 explorador: roba 2 cartas.
 **Trigger:** Si un Ugabuga es destruido: juega 1 Ugabuga con PODER 120 o menos de tu mano.",Después de activar> Si es tu turno: no puedes jugar más exploradores este turno.
-Conflicto en emergente reino de Ragnatica,Ragnatica,Lento,"**Normal:** Agrega 2 fichas Cría.
-**Trigger:** Si el oponente declara un ataque: agrega 1 ficha Cría.",Después de activar> Si es tu turno: no puedes jugar más exploradores este turno.
-Plaga en emergente Ragnatica,Ragnatica,Rápido,**Normal:** Destruye todas tus fichas Cría (mínimo 1): el oponente descarta 1 carta por cada una (máx. 3).,Después de activar> no puedes activar más efectos este turno.
+Conflicto en emergente reino de Ragnatica,Ragnatica,Lento,"**Normal:** Agrega 2 tokens Cría.
+**Trigger:** Si el oponente declara un ataque: agrega 1 token Cría.",Después de activar> Si es tu turno: no puedes jugar más exploradores este turno.
+Plaga en emergente Ragnatica,Ragnatica,Rápido,**Normal:** Destruye todos tus tokens Cría (mínimo 1): el oponente descarta 1 carta por cada una (máx. 3).,Después de activar> no puedes activar más efectos este turno.
 Reconstrucción en emergente Baluarte,Baluarte,Lento,"**Normal:** Juega 1 Baluarte de tu cementerio asistiendo a un explorador sin asistente.
 **Trigger:** Si un Baluarte es destruido: busca 1 Baluarte con PODER 120 o menos.",Después de activar> no puedes declarar ataques este turno.
 Campamento en emergente Tierra de Nadie,Neutral,Lento,**Normal:** Devuelve 1 explorador de tu cementerio a tu mano.,Después de activar> Si es tu turno: no puedes jugar más exploradores este turno.

@@ -1,6 +1,6 @@
 # Catálogo de cartas
 
-35 exploradores (incluye 1 ficha) y 20 eventos, repartidos en 4 dimensiones y un pool neutral.
+35 exploradores (incluye 1 token) y 20 eventos, repartidos en 4 dimensiones y un pool neutral.
 Generado a partir de los CSV (los CSV son la fuente editable; el rol es una nota de diseño y no se imprime en la carta).
 
 Hay **cuatro tipos de carta** en la app: *Explorador* y *Evento* (sin restricción, con la caja de efecto más alta) y *Explorador (con restricción)* y *Evento (con restricción)* (con la banda de restricción). El código de cada carta indica su tipo: `EXP`, `EXR`, `EVT`, `EVR`.
@@ -65,30 +65,30 @@ Tribus de piedra. Presión de combate a costa de sacrificios.
 
 ## Ragnatica
 
-Arácnidos tejedores. Fichas, señuelos y asistentes-trampa.
+Arácnidos tejedores. Tokens, señuelos y asistentes-trampa.
 
 ### Exploradores
 
 | Código | Carta | PODER | Rol | Efectos | Restricción |
 |---|---|---|---|---|---|
-| EXP-11 | **Telarín** | 100 | Starter | **Normal:** Agrega 1 ficha Cría (solo sin fichas Cría). | — |
-| EXP-12 | **Hilandera** | 120 | Starter | **Normal:** Destruye 1 ficha Cría: busca 1 Ragnatica con PODER 200 o menos. | — |
-| EXP-13 | **Viuda Gris** | 150 | Interrupción | **Trigger:** Si un explorador del oponente declara un ataque, destruye 1 ficha Cría: anula ese ataque. | — |
+| EXP-11 | **Telarín** | 100 | Starter | **Normal:** Agrega 1 token Cría (solo sin tokens Cría). | — |
+| EXP-12 | **Hilandera** | 120 | Starter | **Normal:** Destruye 1 token Cría: busca 1 Ragnatica con PODER 200 o menos. | — |
+| EXP-13 | **Viuda Gris** | 150 | Interrupción | **Trigger:** Si un explorador del oponente declara un ataque, destruye 1 token Cría: anula ese ataque. | — |
 | EXP-14 | **Capullo Silente** | 0 | Interrupción | **Asistiendo:** Si el explorador es atacado: devuelve al atacante a su mano. El ataque termina. | — |
 | EXP-15 | **Emboscadora** | 150 | Extender | **Trigger:** (Desde tu mano) Si el oponente juega un explorador: juega esta carta. Ese explorador no puede declarar ataques este turno. | — |
 | EXR-7 | **Señuelo** | 100 | Interrupción | **Atracción** de ataques. | Esta carta no puede declarar ataques. |
-| EXR-8 | **Madre Telar** | 200 | Pieza | **Normal:** Destruye 2 fichas Cría: devuelve 1 explorador del oponente a su mano. | Después de entrar al campo> Si es tu turno: no puedes activar más efectos este turno. |
-| EXR-9 | **Reina de Ragnatica** | 250 | Pieza | **Normal:** (Desde tu mano) Destruye 2 fichas Cría: juega esta carta.<br>**Trigger:** Si el oponente activa un efecto de explorador que elige a una carta tuya, descarta 1 carta y destruye 1 ficha Cría: niega esa activación. | Después de entrar al campo> Si es tu turno: se termina tu turno. |
-| EXP-16 | **Cría de Ragnatica** | 100 | Ficha | Ficha. Desaparece si deja el campo. | — |
+| EXR-8 | **Madre Telar** | 200 | Pieza | **Normal:** Destruye 2 tokens Cría: devuelve 1 explorador del oponente a su mano. | Después de entrar al campo> Si es tu turno: no puedes activar más efectos este turno. |
+| EXR-9 | **Reina de Ragnatica** | 250 | Pieza | **Normal:** (Desde tu mano) Destruye 2 tokens Cría: juega esta carta.<br>**Trigger:** Si el oponente activa un efecto de explorador que elige a una carta tuya, descarta 1 carta y destruye 1 token Cría: niega esa activación. | Después de entrar al campo> Si es tu turno: se termina tu turno. |
+| EXP-16 | **Cría de Ragnatica** | 100 | Token | Token. Desaparece si deja el campo. | — |
 
 ### Eventos
 
 | Código | Carta | Velocidad | Rol | Efectos | Restricción |
 |---|---|---|---|---|---|
-| EVR-5 | **Conflicto en emergente reino de Ragnatica** | Lento | Starter | **Normal:** Agrega 2 fichas Cría.<br>**Trigger:** Si el oponente declara un ataque: agrega 1 ficha Cría. | Después de activar> Si es tu turno: no puedes jugar más exploradores este turno. |
+| EVR-5 | **Conflicto en emergente reino de Ragnatica** | Lento | Starter | **Normal:** Agrega 2 tokens Cría.<br>**Trigger:** Si el oponente declara un ataque: agrega 1 token Cría. | Después de activar> Si es tu turno: no puedes jugar más exploradores este turno. |
 | EVT-5 | **Hilos cortados en Ragnatica** | Rápido | Interrupción | **Normal:** Descarta 1 carta: devuelve a su mano 1 explorador del oponente con PODER 120 o menos.<br>**Trigger:** Si el oponente juega un explorador, descarta 1 carta: devuelve ese explorador a su mano. | — |
-| EVT-6 | **Cosecha en Ragnatica** | Lento | Extender | **Normal:** Destruye 1 ficha Cría: roba 2 cartas.<br>**Trigger:** Si una ficha Cría es destruida: roba 1 carta. | — |
-| EVR-6 | **Plaga en emergente Ragnatica** | Rápido | Interrupción | **Normal:** Destruye todas tus fichas Cría (mínimo 1): el oponente descarta 1 carta por cada una (máx. 3). | Después de activar> no puedes activar más efectos este turno. |
+| EVT-6 | **Cosecha en Ragnatica** | Lento | Extender | **Normal:** Destruye 1 token Cría: roba 2 cartas.<br>**Trigger:** Si un token Cría es destruida: roba 1 carta. | — |
+| EVR-6 | **Plaga en emergente Ragnatica** | Rápido | Interrupción | **Normal:** Destruye todos tus tokens Cría (mínimo 1): el oponente descarta 1 carta por cada una (máx. 3). | Después de activar> no puedes activar más efectos este turno. |
 
 ## Baluarte
 

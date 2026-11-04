@@ -17,7 +17,7 @@ Cada jugador empieza con 800 puntos de vida.
 ## 2. Qué necesitas
 
 - 1 mazo de **30 cartas** por jugador, con **máximo 3 copias del mismo nombre**.
-- Algo para anotar la vida, y marcadores para las fichas (monedas o cubos).
+- Algo para anotar la vida, y marcadores para los tokens (monedas o cubos).
 
 ## 3. Tipos de carta
 
@@ -70,15 +70,15 @@ El asistente es la mecánica distintiva de este juego: un explorador "sostiene" 
 - Si un explorador activo **deja el campo** (destruido, devuelto a la mano, exiliado), su asistente **va al cementerio** con él. Se considera destruido solo si el activo fue destruido. 🧪
 - Un asistente puede ser destruido, devuelto o reemplazado por efectos, sin afectar al activo. Si un explorador activo **se queda sin asistente**, es una condición que otros efectos pueden esperar ("Si [carta] se queda sin asistente…").
 
-### Fichas
+### Tokens
 
-Una **ficha** es un explorador que no viene de ninguna carta (por ejemplo, la "Cría de Ragnatica").
+Una **token** es un explorador que no viene de ninguna carta (por ejemplo, la "Cría de Ragnatica").
 Se representa con un marcador y sus valores salen del efecto que la crea.
 
-- Las fichas se **agregan** al campo, no se "juegan": las restricciones del tipo "no puedes jugar más exploradores" no las bloquean.
-- Las fichas siempre son exploradores **activos**.
-- Si no hay una zona libre, no se puede agregar la ficha.
-- Una ficha nunca va a la mano, al mazo ni al cementerio: si deja el campo, desaparece. Pero **sí** se considera destruida si el efecto dice "destruir".
+- Los tokens se **agregan** al campo, no se "juegan": las restricciones del tipo "no puedes jugar más exploradores" no las bloquean.
+- Los tokens siempre son exploradores **activos**.
+- Si no hay una zona libre, no se puede agregar el token.
+- Un token nunca va a la mano, al mazo ni al cementerio: si deja el campo, desaparece. Pero **sí** se considera destruida si el efecto dice "destruir".
 
 ## 5. Preparación
 
@@ -177,12 +177,12 @@ Resumen. Los casos borde de cada una están en [glosario.md](glosario.md).
 | **Asistir** | Poner una carta debajo de un explorador activo como su asistente. |
 | **Revelar** | Mostrar una carta (si estaba boca abajo, queda boca arriba). |
 | **Activar** | Informar que una carta usará un efecto (un asistente boca abajo se revela al activar). |
-| **Agregar** | Poner una ficha en el campo. |
+| **Agregar** | Poner un token en el campo. |
 | **Elegir** | Elegir un objetivo al **activar**. El efecto "elige". |
 | **Buscar** | Mecánica de búsqueda en el mazo (sección 11). |
 | **Atracción** | Obliga a elegir como objetivo a ciertas cartas. |
 | **Activa como `<nombre>`** | Para la regla de una vez por turno por nombre, esta carta cuenta como si se llamara `<nombre>` (ejemplo: **Activa como Escudero**). |
-| **Devolver a la mano** | La carta vuelve a la mano de su dueño. Las fichas no se pueden devolver. |
+| **Devolver a la mano** | La carta vuelve a la mano de su dueño. Los tokens no se pueden devolver. |
 | **Anular** | Un ataque anulado termina sin daño. |
 | **Negar** | La activación de un efecto no se resuelve, pero **sí** cuenta como activada. |
 
@@ -236,7 +236,7 @@ Una condición se describe con tres partes:
 
 ### Acción
 
-- **Modificación del tablero**: destruir, devolver a la mano, negar, cambiar PODER, agregar una ficha…
+- **Modificación del tablero**: destruir, devolver a la mano, negar, cambiar PODER, agregar un token…
 - **Acción de jugador**: declarar un ataque, jugar un explorador, revelar una carta, activar un efecto, descartar, buscar, elegir una carta…
 - **Cambio de fase**: pasar de una fase a otra. Abre una cadena permitiendo triggers y efectos rápidos.
 
@@ -319,7 +319,7 @@ Cosas que cerré para tener un demo jugable y que conviene revisar jugando:
 2. **Sin mulligan.** Si las manos iniciales salen malas, probar con un único mulligan (devolver, barajar y robar 4).
 3. **Primer jugador sin Fase de Batalla:** lo interpreté como solo en su primer turno.
 4. **Mano máxima de 7.** Para que robar cartas tenga un costo de oportunidad.
-5. **Las fichas no son "jugadas".** Ragnatica depende de esto.
+5. **Los tokens no son "jugadas".** Ragnatica depende de esto.
 6. **Jugar asistiendo es la jugada espontánea del turno** y se puede hacer boca arriba o boca abajo. Sin esto, los asistentes solo entrarían por efectos.
 7. **Si el explorador activo deja el campo, su asistente va al cementerio.** Alternativa: que el asistente pase a activo si hay zona libre.
 8. **Los asistentes solo aplican su efecto Asistiendo.** Alternativa: que conserven también su efecto Trigger.

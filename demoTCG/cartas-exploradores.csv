@@ -13,12 +13,12 @@ Pedrusco,Ugabuga,100,**Trigger:** Si esta carta es destruida en combate: destruy
 Chamán Ugabu,Ugabuga,120,"**Normal:** Descarta 1 carta: devuelve 1 Ugabuga de tu cementerio a tu mano.
 **Trigger:** Si un Ugabuga es destruido en combate: roba 1 carta."
 Cazador Ugabu,Ugabuga,150,**Trigger:** Si esta carta destruye un explorador en combate: el oponente descarta 1 carta al azar.
-Telarín,Ragnatica,100,**Normal:** Agrega 1 ficha Cría (solo sin fichas Cría).
-Hilandera,Ragnatica,120,**Normal:** Destruye 1 ficha Cría: busca 1 Ragnatica con PODER 200 o menos.
-Viuda Gris,Ragnatica,150,"**Trigger:** Si un explorador del oponente declara un ataque, destruye 1 ficha Cría: anula ese ataque."
+Telarín,Ragnatica,100,**Normal:** Agrega 1 token Cría (solo sin tokens Cría).
+Hilandera,Ragnatica,120,**Normal:** Destruye 1 token Cría: busca 1 Ragnatica con PODER 200 o menos.
+Viuda Gris,Ragnatica,150,"**Trigger:** Si un explorador del oponente declara un ataque, destruye 1 token Cría: anula ese ataque."
 Capullo Silente,Ragnatica,0,**Asistiendo:** Si el explorador es atacado: devuelve al atacante a su mano. El ataque termina.
 Emboscadora,Ragnatica,150,**Trigger:** (Desde tu mano) Si el oponente juega un explorador: juega esta carta. Ese explorador no puede declarar ataques este turno.
-Cría de Ragnatica,Ragnatica,100,Ficha. Desaparece si deja el campo.
+Cría de Ragnatica,Ragnatica,100,Token. Desaparece si deja el campo.
 Rodelero,Baluarte,160,"**Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo asistido por esta carta.
 **Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asístelo con esta carta.
 **Asistiendo:** (Activa como **Escudero**) Si el explorador es atacado: gana 20 PODER."
