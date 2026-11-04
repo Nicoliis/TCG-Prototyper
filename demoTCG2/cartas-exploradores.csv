@@ -6,7 +6,7 @@ Boolly,Fantaspet,100,"**Trigger:** (Desde tu mano) Si un Fantaspet es destruido:
 Cesarmill,Fantaspet,150,"Tiene +50 PODER por cada 3 cartas de tu cementerio (máx. +250).
 **Normal:** Busca 1 Fantaspet y juégalo asistiendo a esta carta (solo sin asistente)."
 Koalma,Fantaspet,100,"**Normal:** Exilia 1 carta de tu cementerio: devuelve 1 Fantaspet de tu cementerio a tu mano.
-**Asistiendo:** Si el explorador es atacado: el atacante pierde 100 PODER este turno."
+**Asistiendo:** Si el explorador es atacado: inflige 100 de daño al atacante."
 Talkatak,Fantaspet,150,**Normal:** Reemplaza 1 asistente por 1 Fantaspet de tu mano. El asistente reemplazado va a tu cementerio.
 Dragging,Fantaspet,50,**Asistiendo:** Si esta carta es revelada: destruye al atacante. Esta carta va a tu cementerio.
 Espectro Guardián,Fantaspet,200,"Tiene +50 PODER mientras tengas 6 o más cartas en tu cementerio.
@@ -32,16 +32,16 @@ Capullo Silente,Ragnatica,100,**Asistiendo:** Si el explorador es atacado: devue
 Cría de Ragnatica,Ragnatica,100,Token. Desaparece si deja el campo.
 Rodelero,Baluarte,200,"**Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo asistido por esta carta.
 **Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asístelo con esta carta.
-**Asistiendo:** (Activa como **Escudero**) Si el explorador es atacado: gana 100 PODER este turno."
+**Asistiendo:** (Activa como **Escudero**) Si el explorador es atacado: gana 50 PODER."
 Alabardero,Baluarte,150,"**Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo asistido por esta carta.
 **Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asístelo con esta carta.
-**Asistiendo:** (Activa como **Escudero**) Si el explorador es atacado: el atacante pierde 100 PODER este turno."
+**Asistiendo:** (Activa como **Escudero**) Si el explorador es atacado: inflige 100 de daño al atacante."
 Armero,Baluarte,150,"**Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo asistido por esta carta.
 **Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asístelo con esta carta.
 **Asistiendo:** (Activa como **Escudero**) Si esta carta es destruida: el explorador gana 100 PODER."
 Ballestero,Baluarte,100,"**Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo asistido por esta carta.
 **Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asístelo con esta carta.
-**Trigger:** (Activa como **Escudero**) Si el oponente declara un ataque: ese explorador pierde 100 PODER este turno."
+**Trigger:** (Activa como **Escudero**) Si el oponente declara un ataque: inflige 100 de daño a ese explorador."
 Heraldo,Baluarte,100,"**Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo asistido por esta carta.
 **Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asístelo con esta carta.
 **Asistiendo:** (Activa como **Escudero**) Si esta carta es destruida: devuelve 1 Escudero de tu cementerio a tu mano."

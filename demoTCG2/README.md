@@ -8,7 +8,7 @@ Segundo juego de demostración para Cardgame Prototyper. Comparte mundo, dimensi
 |---|---|---|
 | Objetivo | Bajar la vida del oponente de 800 a 0 | Empezar tu turno con 1000 de PODER en el campo |
 | Combate | Se comparan PODER; el menor se destruye | En un solo sentido: el atacante pone daño igual a su PODER y el explorador se destruye cuando su PODER (*total − daño*) llega a 0 |
-| PODER | Hasta el final del turno (por defecto) | **Permanente** (por defecto); "este turno" se escribe |
+| PODER | Efectos "este turno" posibles | Solo **potenciar** (permanente), **infligir daño** y **curar** |
 | Mazo | 30 cartas | **50 cartas** (38 de dimensión + 12 neutrales) |
 | Campo | 5 zonas | 6 zonas |
 | Restricciones | Frecuentes | Poco comunes |

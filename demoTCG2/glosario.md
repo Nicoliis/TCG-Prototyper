@@ -12,7 +12,7 @@ Las entradas con 🧪 son decisiones por confirmar en partidas de prueba.
 - **"Explorador" es explorador activo.** Un asistente se nombra "asistente".
 - **Todo es tuyo por defecto.** Lo del otro jugador dice "del oponente".
 - **Asistiendo:** "el explorador" es aquel al que la carta asiste; "esta carta" es el asistente.
-- **PODER permanente:** ganar PODER dura mientras el explorador siga en el campo (marcadores), salvo que diga **"este turno"**.
+- **PODER:** ganar PODER dura mientras el explorador siga en el campo (marcadores). Perder PODER es recibir daño.
 - **Asistir:** boca abajo, salvo que diga "boca arriba".
 
 ---
@@ -38,11 +38,14 @@ Suma del **PODER** de tus exploradores **activos** (tokens incluidos). Es lo que
 - El daño lo reduce. Un explorador de 250 con 100 de daño aporta 150.
 - Los asistentes no suman.
 
-### Ganar / perder PODER
-Cambia el PODER total de un explorador.
-- **Ganar PODER** pone marcadores de PODER agregado y es **permanente** mientras el explorador siga en el campo, salvo "este turno". Con "este turno" no se usan marcadores: se anota el bono y se descarta al final del turno.
-- Los cambios se suman. Un efecto que **fija** el PODER (por ejemplo "su PODER es 0") se aplica después de los que suman o restan.
-- Si el PODER total baja por debajo de lo que corresponde al daño que ya tiene, el PODER llega a 0 y el explorador se destruye.
+### Potenciar (ganar PODER)
+**"Gana X PODER"** pone X/50 marcadores de PODER agregado (a la izquierda de la carta) y suma X al PODER total.
+- Es **permanente** mientras el explorador siga en el campo.
+- Es la única forma de subir el PODER con marcadores. Los efectos continuos ("Tiene +N PODER") suman sin usarlos.
+
+### Perder PODER no existe
+Sobre el PODER solo hay tres efectos: **potenciar**, **infligir daño** y **curar**. Perder PODER es **recibir daño**. No hay bonos ni pérdidas "este turno".
+- Si el daño iguala o supera el PODER total del explorador, su PODER llega a 0 y se destruye.
 
 ### Tiene +N PODER
 Efecto continuo: mientras se cumpla la condición, suma N al PODER total. No usa marcadores. "Por cada…" cuenta de nuevo cada vez (por ejemplo, +50 por cada 3 cartas del cementerio es +50 con 3, +100 con 6, y así). Si hay un máximo, "(máx. +250)" se refiere al bono, no al PODER.

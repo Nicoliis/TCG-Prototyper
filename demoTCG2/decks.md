@@ -31,7 +31,7 @@ Antes de jugar, lee [ruleguides.md](ruleguides.md) y ten a mano el [glosario.md]
 **Línea de ejemplo (turno 6)**
 Tienes 9 cartas en el cementerio, 4 de ellas Fantaspet. **Cesarmill** tiene +150 (300), **Espectro Guardián** +50 (250), **Rey de la Niebla** +100 (300) y **Gooboy** 150: **1000**. Los asistentes ocultos (Dragging, Koalma) cubren al que sea atacado hasta tu turno.
 
-**Cómo frena al otro:** un atacante contra un explorador con asistente se topa con **Dragging** (destruido), **Koalma** (pierde 100 PODER) o **Gooboy** (se sacrifica por el explorador). Cada trampa llena el cementerio.
+**Cómo frena al otro:** un atacante contra un explorador con asistente se topa con **Dragging** (destruido), **Koalma** (le inflige 100 de daño) o **Gooboy** (se sacrifica por el explorador). Cada trampa llena el cementerio.
 
 **Supervivencia:** **Espectro Guardián** y **Presencia en Eterneblina** usan **Sobrevive con 50**: un ataque que lo mataría lo deja con 50 de PODER, a la espera de curarse o de que otra carta lo cubra.
 
@@ -164,10 +164,10 @@ Tienes **Reina** (350), **Madre Telar** (200) y tres tokens Cría de 150: **1000
 
 | Escudero | PODER | Efecto extra (activa como Escudero) |
 |---|---|---|
-| Rodelero | 200 | Asistiendo: si el explorador es atacado, gana 100 PODER este turno. |
-| Alabardero | 150 | Asistiendo: si el explorador es atacado, el atacante pierde 100 PODER este turno. |
+| Rodelero | 200 | Asistiendo: si el explorador es atacado, gana 50 PODER. |
+| Alabardero | 150 | Asistiendo: si el explorador es atacado, inflige 100 de daño al atacante. |
 | Armero | 150 | Asistiendo: si esta carta es destruida, el explorador gana 100 PODER. |
-| Ballestero | 100 | Trigger (jugado como activo): si el oponente declara un ataque, ese explorador pierde 100 PODER este turno. |
+| Ballestero | 100 | Trigger (jugado como activo): si el oponente declara un ataque, inflige 100 de daño a ese explorador. |
 | Heraldo | 100 | Asistiendo: si esta carta es destruida, devuelve 1 Escudero del cementerio a tu mano. |
 
 **La secuencia**

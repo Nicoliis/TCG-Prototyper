@@ -23,7 +23,7 @@ Mascotas espectrales de Eterneblina. Cementerio como recurso y asistentes oculto
 | EXP-2 | **Gooboy** | 150 | Extender | **Asistiendo:** Si el explorador fuera a ser destruido: destruye esta carta en su lugar. | — |
 | EXP-3 | **Boolly** | 100 | Extender | **Trigger:** (Desde tu mano) Si un Fantaspet es destruido: juega esta carta boca arriba, asistiendo a un explorador sin asistente. | — |
 | EXP-4 | **Cesarmill** | 150 | Pieza | Tiene +50 PODER por cada 3 cartas de tu cementerio (máx. +250).<br>**Normal:** Busca 1 Fantaspet y juégalo asistiendo a esta carta (solo sin asistente). | — |
-| EXP-5 | **Koalma** | 100 | Extender | **Normal:** Exilia 1 carta de tu cementerio: devuelve 1 Fantaspet de tu cementerio a tu mano.<br>**Asistiendo:** Si el explorador es atacado: el atacante pierde 100 PODER este turno. | — |
+| EXP-5 | **Koalma** | 100 | Extender | **Normal:** Exilia 1 carta de tu cementerio: devuelve 1 Fantaspet de tu cementerio a tu mano.<br>**Asistiendo:** Si el explorador es atacado: inflige 100 de daño al atacante. | — |
 | EXP-6 | **Talkatak** | 150 | Interrupción | **Normal:** Reemplaza 1 asistente por 1 Fantaspet de tu mano. El asistente reemplazado va a tu cementerio. | — |
 | EXP-7 | **Dragging** | 50 | Interrupción | **Asistiendo:** Si esta carta es revelada: destruye al atacante. Esta carta va a tu cementerio. | — |
 | EXP-8 | **Espectro Guardián** | 200 | Pieza | Tiene +50 PODER mientras tengas 6 o más cartas en tu cementerio.<br>**Trigger:** Si esta carta fuera a ser destruida por daño: sobrevive con 50.<br>**Trigger:** Si esta carta es destruida: devuelve 1 Fantaspet de tu cementerio a tu mano. | — |
@@ -35,7 +35,7 @@ Mascotas espectrales de Eterneblina. Cementerio como recurso y asistentes oculto
 |---|---|---|---|---|---|
 | EVT-1 | **Susurros en Eterneblina** | Rápido | Extender | **Normal:** Descarta 1 carta: devuelve 1 Fantaspet de tu cementerio a tu mano.<br>**Trigger:** Si un Fantaspet fuera a ser destruido: devuélvelo a tu mano en su lugar. | — |
 | EVT-2 | **Refugio en emergente Eterneblina** | Lento | Starter | **Normal:** Revela 1 Fantaspet de tu mano: busca 1 Fantaspet con distinto nombre.<br>**Trigger:** Si un Fantaspet es destruido: busca 1 Fantaspet con PODER 150 o menos. | — |
-| EVT-3 | **Presencia en Eterneblina** | Rápido | Interrupción | **Normal:** Elige 1 Fantaspet: gana 100 PODER este turno.<br>**Trigger:** Si un Fantaspet fuera a ser destruido por daño: sobrevive con 50. | — |
+| EVT-3 | **Presencia en Eterneblina** | Rápido | Interrupción | **Normal:** Elige 1 Fantaspet: gana 100 PODER.<br>**Trigger:** Si un Fantaspet fuera a ser destruido por daño: sobrevive con 50. | — |
 | EVR-1 | **Procesión en emergente Eterneblina** | Lento | Pieza | **Normal:** Juega hasta 2 Fantaspet con distinto nombre de tu cementerio. Sus efectos se niegan este turno. | Después de activar> se termina tu turno. |
 
 ## Ugabuga
@@ -61,7 +61,7 @@ Tribus de piedra. Cuerpos enormes, sacrificios y borrado de tablero.
 | Código | Carta | Velocidad | Rol | Efectos | Restricción |
 |---|---|---|---|---|---|
 | EVT-4 | **Estampida en emergente Ugabuga** | Lento | Extender | **Normal:** Elige 1 Ugabuga: puede declarar un segundo ataque este turno. | — |
-| EVT-5 | **Grito de guerra Ugabuga** | Rápido | Interrupción | **Normal:** Elige 1 Ugabuga: gana 100 PODER este turno.<br>**Trigger:** Si un Ugabuga es atacado: gana 150 PODER este turno. | — |
+| EVT-5 | **Grito de guerra Ugabuga** | Rápido | Interrupción | **Normal:** Elige 1 Ugabuga: gana 100 PODER.<br>**Trigger:** Si un Ugabuga es atacado: gana 150 PODER. | — |
 | EVR-2 | **Derrumbe en emergente cueva Ugabuga** | Lento | Pieza | **Normal:** Descarta 1 carta: destruye todos los exploradores con PODER 200 o menos. Roba 1 carta por cada Ugabuga destruido. | Después de activar> no puedes declarar ataques este turno. |
 | EVT-6 | **Banquete inaugural de aldea Ugabuga** | Lento | Starter | **Normal:** Destruye 1 explorador: roba 2 cartas.<br>**Trigger:** Si un Ugabuga es destruido: juega 1 Ugabuga con PODER 200 o menos de tu mano. | — |
 | EVR-3 | **Colapso de la meseta Ugabuga** | Lento | Pieza | **Normal:** Destruye todos los exploradores. Cada jugador descarta 1 carta. | Después de activar> se termina tu turno. |
@@ -104,10 +104,10 @@ Fortaleza emergente. Un personaje principal que crece solo, apuntalado por Escud
 | Código | Carta | PODER | Rol | Efectos | Restricción |
 |---|---|---|---|---|---|
 | EXR-6 | **Aegis, Custodio del Baluarte** | 200 | Pieza | **Atracción** de ataques y efectos.<br>Mientras tenga asistente, no puede ser destruida por efectos.<br>**Trigger:** Al comienzo de tu turno: esta carta gana 50 PODER (máx. +200). | Después de entrar al campo> Si es tu turno: se termina tu turno. Solo 1 copia. |
-| EXP-24 | **Rodelero** | 200 | Starter | **Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo asistido por esta carta.<br>**Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asístelo con esta carta.<br>**Asistiendo:** (Activa como **Escudero**) Si el explorador es atacado: gana 100 PODER este turno. | — |
-| EXP-25 | **Alabardero** | 150 | Starter | **Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo asistido por esta carta.<br>**Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asístelo con esta carta.<br>**Asistiendo:** (Activa como **Escudero**) Si el explorador es atacado: el atacante pierde 100 PODER este turno. | — |
+| EXP-24 | **Rodelero** | 200 | Starter | **Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo asistido por esta carta.<br>**Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asístelo con esta carta.<br>**Asistiendo:** (Activa como **Escudero**) Si el explorador es atacado: gana 50 PODER. | — |
+| EXP-25 | **Alabardero** | 150 | Starter | **Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo asistido por esta carta.<br>**Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asístelo con esta carta.<br>**Asistiendo:** (Activa como **Escudero**) Si el explorador es atacado: inflige 100 de daño al atacante. | — |
 | EXP-26 | **Armero** | 150 | Starter | **Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo asistido por esta carta.<br>**Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asístelo con esta carta.<br>**Asistiendo:** (Activa como **Escudero**) Si esta carta es destruida: el explorador gana 100 PODER. | — |
-| EXP-27 | **Ballestero** | 100 | Starter | **Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo asistido por esta carta.<br>**Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asístelo con esta carta.<br>**Trigger:** (Activa como **Escudero**) Si el oponente declara un ataque: ese explorador pierde 100 PODER este turno. | — |
+| EXP-27 | **Ballestero** | 100 | Starter | **Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo asistido por esta carta.<br>**Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asístelo con esta carta.<br>**Trigger:** (Activa como **Escudero**) Si el oponente declara un ataque: inflige 100 de daño a ese explorador. | — |
 | EXP-28 | **Heraldo** | 100 | Starter | **Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo asistido por esta carta.<br>**Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asístelo con esta carta.<br>**Asistiendo:** (Activa como **Escudero**) Si esta carta es destruida: devuelve 1 Escudero de tu cementerio a tu mano. | — |
 | EXR-7 | **Archivista del Baluarte** | 100 | Starter | **Normal:** Busca 1 Baluarte. | Después de entrar al campo> descarta 1 carta. |
 | EXP-29 | **Centinela del Baluarte** | 150 | Extender | **Normal:** Descarta 1 carta: juega 1 Baluarte de tu cementerio asistiendo a un explorador sin asistente. | — |
@@ -118,10 +118,10 @@ Fortaleza emergente. Un personaje principal que crece solo, apuntalado por Escud
 
 | Código | Carta | Velocidad | Rol | Efectos | Restricción |
 |---|---|---|---|---|---|
-| EVT-11 | **Cerrad filas en emergente Baluarte** | Rápido | Interrupción | **Normal:** Elige 1 explorador con asistente: gana 100 PODER este turno y cura todo su daño.<br>**Trigger:** Si un explorador con asistente es atacado: el atacante pierde 100 PODER este turno. | — |
+| EVT-11 | **Cerrad filas en emergente Baluarte** | Rápido | Interrupción | **Normal:** Elige 1 explorador con asistente: gana 100 PODER y cura todo su daño.<br>**Trigger:** Si un explorador con asistente es atacado: inflige 100 de daño al atacante. | — |
 | EVT-12 | **Relevo de guardia en Baluarte** | Rápido | Extender | **Normal:** Reemplaza 1 asistente por 1 Baluarte de tu mano. El asistente reemplazado vuelve a tu mano.<br>**Trigger:** Si un asistente fuera a ser destruido: devuélvelo a tu mano en su lugar. | — |
 | EVT-13 | **Reconstrucción en emergente Baluarte** | Lento | Extender | **Normal:** Juega 1 Baluarte de tu cementerio asistiendo a un explorador sin asistente.<br>**Trigger:** Si un Baluarte es destruido: busca 1 Baluarte con PODER 150 o menos. | — |
-| EVT-14 | **Represalia en Baluarte** | Rápido | Interrupción | **Normal:** Elige 1 explorador del oponente: pierde 100 PODER este turno.<br>**Trigger:** Si un Baluarte es destruido por un explorador del oponente: inflige 200 de daño a ese explorador. | — |
+| EVT-14 | **Represalia en Baluarte** | Rápido | Interrupción | **Normal:** Elige 1 explorador del oponente: inflige 100 de daño.<br>**Trigger:** Si un Baluarte es destruido por un explorador del oponente: inflige 200 de daño a ese explorador. | — |
 | EVT-15 | **Refuerzo de la Muralla** | Lento | Extender | **Normal:** Elige 1 Baluarte: gana 100 PODER. | — |
 
 ## Neutral

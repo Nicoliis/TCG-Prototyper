@@ -11,7 +11,7 @@ Principios:
 1. **Cada mazo es una forma distinta de llegar a 1000.** El objetivo permite estilos muy diferentes y cada dimensión encarna uno (sección 2).
 2. **Las cartas se juegan una después de otra.** Cada carta debe abrir la puerta a la siguiente (busca, juega, destruye, reemplaza) para que el mazo sea una **secuencia** y no una pila de cartas sueltas. Dominar el orden es dominar el mazo.
 3. **Toda interacción trae un efecto secundario.** Las cartas que anulan, devuelven, destruyen o niegan siempre hacen **algo más** (agregan un token, roban, llenan el cementerio, curan). Así nunca están muertas en la mano y no se sienten como un "no" puro.
-4. **El PODER es permanente, y cada punto cuenta.** El PODER de un explorador es siempre *PODER total − daño*: los bonos duran (marcadores de PODER agregado) y el daño le resta al tablero del rival. Los bonos "este turno" son solo para combatir.
+4. **El PODER es permanente, y cada punto cuenta.** El PODER de un explorador es siempre *PODER total − daño*: los bonos duran (marcadores de PODER agregado) y el daño le resta al tablero del rival. **Solo existen tres efectos sobre el PODER: potenciar, infligir daño y curar.** Perder PODER es recibir daño; no hay bonos ni pérdidas "este turno".
 5. **Las restricciones son poco comunes.** El costo de una carta fuerte suele estar en su efecto, en la cadena o en lo que hay que sacrificar, no en una restricción. Cuando hay una, es una decisión.
 6. **Los asistentes siguen siendo la mecánica distintiva.** No suman al objetivo pero absorben daño, así que cada uno es un costo de tablero a cambio de una trampa o un escudo.
 7. **Casi no hay "NO".** Las negaciones son pocas y caras (Reina de Ragnatica, Grieta).
@@ -107,7 +107,7 @@ Una interrupción tiene dos partes: el **efecto principal** (frenar) y el **efec
 | Retirada Táctica | Devuelve a tu mano y termina el ataque | Roba 1 carta |
 | Grieta | Niega una búsqueda | Roba 1 carta |
 | Derrumbe | Destruye todo con PODER ≤ 200 | Roba por cada Ugabuga destruido |
-| Cerrad filas | +100 PODER este turno | Cura todo el daño |
+| Cerrad filas | +100 PODER permanente | Cura todo el daño |
 
 Pautas:
 
@@ -202,14 +202,14 @@ Para recortar: usa las convenciones de lectura; un efecto, una condición, una a
 
 ### Vocabulario cerrado
 
-**destruir**, **descartar**, **exiliar**, **jugar**, **asistir**, **revelar**, **agregar** (token), **elegir**, **buscar**, **devolver a la mano**, **anular** (ataque), **negar** (efecto), **Atracción**, **Activa como**, **ganar / perder PODER**, **infligir daño**, **curar**, **sobrevive con X**. No uses sinónimos, y no escribas "destruido en combate".
+**destruir**, **descartar**, **exiliar**, **jugar**, **asistir**, **revelar**, **agregar** (token), **elegir**, **buscar**, **devolver a la mano**, **anular** (ataque), **negar** (efecto), **Atracción**, **Activa como**, **ganar PODER** (potenciar), **infligir daño**, **curar**, **sobrevive con X**. No uses sinónimos, y no escribas "destruido en combate".
 
 ### Lista de revisión para una carta nueva
 
 1. ¿Qué **secuencia** abre o continúa? ¿Qué pasa si la interrumpen?
 2. Si es una interrupción: ¿tiene un **efecto secundario** relevante para su mazo?
 3. ¿Su PODER y su costo valen para llegar a 1000? Una carta de 100 necesita un efecto muy bueno.
-4. ¿Los bonos son permanentes o "este turno"? ¿Está bien?
+4. ¿El efecto sobre el PODER es potenciar, daño o curar? (No existe perder PODER ni bonos temporales.)
 5. Si tiene restricción: ¿es realmente necesaria? ¿No bloquea su efecto?
 6. Si busca: ¿puede **fallar**?
 7. ¿Usa el vocabulario cerrado y **entra en la caja**?
