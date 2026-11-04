@@ -12,7 +12,7 @@ Las partes marcadas con 🧪 son decisiones tomadas para poder jugar el demo y q
 
 ## 1. Objetivo
 
-**Al comienzo de tu turno, antes de robar, si el PODER del tablero es 1000 o más, ganas.**
+Para ganar una partida de Colapso, debes tener 1000 o más puntos de poder en el campo al comenzar tu turno, antes de levantar.
 
 - El **PODER del tablero** es la suma del **PODER** de tus exploradores en **primera fila** (tokens incluidos). El PODER de un explorador es siempre **PODER total − daño** (ver *Marcadores*, sección 7), así que **el daño que tengan encima le resta al tablero**.
 - Las **barracas no suman**: son la reserva y el taller de combos.
