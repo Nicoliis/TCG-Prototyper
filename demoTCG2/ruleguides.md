@@ -12,9 +12,9 @@ Las partes marcadas con 🧪 son decisiones tomadas para poder jugar el demo y q
 
 ## 1. Objetivo
 
-**Al comienzo de tu turno, antes de robar, si el PODER total de tus exploradores activos es 1000 o más, ganas.**
+**Al comienzo de tu turno, antes de robar, si el PODER del tablero es 1000 o más, ganas.**
 
-- El **PODER total** es la suma del PODER actual de tus exploradores **activos** (tokens incluidos). Cuentan los bonos permanentes y los efectos continuos; no cuentan los que duran "este turno" (ya terminaron). El daño que tengan encima **no** lo reduce. 🧪
+- El **PODER del tablero** es la suma del **PODER** de tus exploradores **activos** (tokens incluidos). El PODER de un explorador es siempre **PODER total − daño** (ver *Marcadores*, sección 6), así que **el daño que tengan encima le resta al tablero**.
 - Los **asistentes no suman**: son cartas de apoyo.
 - Esta comprobación no abre cadena. Tu oponente tuvo **todo su turno** para romper tu tablero.
 - También pierdes si tienes que robar y no te quedan cartas en el mazo.
@@ -23,7 +23,7 @@ Las partes marcadas con 🧪 son decisiones tomadas para poder jugar el demo y q
 ## 2. Qué necesitas
 
 - 1 mazo de **50 cartas** por jugador, con **máximo 3 copias del mismo nombre**.
-- Marcadores para el **daño** (cubos) y para los tokens (monedas).
+- Marcadores para el **daño** y para los tokens.
 
 ## 3. Tipos de carta
 
@@ -82,20 +82,45 @@ Una **token** es un explorador sin carta (por ejemplo, la "Cría de Ragnatica": 
 5. **Principal 2.** Opcional. Igual que Principal 1.
 6. **Final.** Descartas hasta quedar en 7 cartas y terminan los efectos "este turno".
 
+### Marcadores: PODER agregado y daño
+
+Cada explorador (activo o asistente) lleva marcadores de dos tipos. **Un marcador vale 50.** Son los mismos marcadores para los dos, y se distinguen por el lado de la carta donde se ponen:
+
+| Marcador | Dónde | Efecto |
+|---|---|---|
+| **PODER agregado** | A la **izquierda** de la carta | Suma 50 al PODER total. Lo ponen los efectos que "ganan PODER" de forma permanente. |
+| **Daño** | A la **derecha** de la carta | Resta 50 al PODER. Lo ponen los ataques y los efectos que "infligen daño". |
+
+Los marcadores también pueden ser **fichas de dos caras**: una con una espada (PODER agregado) y otra con un golpe (daño), que de paso sirven de moneda para los efectos al azar.
+
+El PODER de un explorador se calcula siempre así:
+
+| Valor | Cómo se calcula |
+|---|---|
+| **PODER base** | El impreso en la carta. |
+| **PODER agregado** | Los marcadores de la izquierda × 50. |
+| **PODER total** | PODER base + PODER agregado + efectos continuos ("Tiene +50 PODER por cada…"). |
+| **PODER** | **PODER total − daño.** Es el único que cuenta para todo: atacar, el objetivo, los criterios de las cartas y la destrucción. |
+
+- Un explorador cuyo **PODER llega a 0 o menos** es **destruido** de inmediato.
+- Los efectos "este turno" no usan marcadores: se aplican mientras dura el turno y se anotan aparte (un dado o una moneda).
+- Los marcadores desaparecen cuando la carta deja el campo.
+- Fuera del campo (mano, mazo, cementerio) no hay marcadores y los criterios como "con PODER 150 o menos" miran el PODER base.
+
 ### Combate: en una dirección y sumando daño
 
 1. **Declaras un ataque** con un explorador activo tuyo que no haya atacado este turno, contra un explorador activo del oponente (respetando la **Atracción**). Si el oponente no tiene exploradores, no hay ataque.
 2. Si el objetivo tiene asistente, el asistente se **revela**.
 3. Se abre una cadena. Si el objetivo ya no está al terminar, puedes re-declarar uno nuevo o anular el ataque.
 4. Si el objetivo tiene asistente, su controlador elige defender **CON** o **SIN** asistencia.
-5. **Daño:** el atacante pone sobre el objetivo tanto **daño** como su PODER actual. **El atacante no recibe nada.**
+5. **Daño:** el atacante pone sobre el objetivo tantos marcadores de **daño** como su PODER (50 de PODER = 1 marcador). **El atacante no recibe nada.** Un atacante dañado golpea más débil, porque su PODER ya descuenta su daño.
    - **SIN asistencia:** el daño va al explorador atacado.
    - **CON asistencia:** el daño va al **asistente**, que se comporta como un explorador con su propio PODER; el explorador no recibe nada.
-6. Un explorador (o asistente) cuyo daño **iguala o supera** su PODER es **destruido** de inmediato. Lo que le queda de PODER (su PODER menos su daño) es su **PODER restante**.
+6. Si el PODER del objetivo llega a **0 o menos**, es **destruido** de inmediato.
 
-El **daño se acumula** mientras la carta esté en el campo: unos exploradores pequeños pueden destruir a uno grande en varios ataques o en un mismo turno. El daño se quita con efectos que **curan**, y desaparece si la carta deja el campo. Si un efecto le quita PODER a un explorador y su daño pasa a ser mayor, se destruye.
+El **daño se acumula** mientras la carta esté en el campo: unos exploradores pequeños pueden destruir a uno grande en varios ataques o en un mismo turno. El daño se quita con efectos que **curan**. Si un efecto le quita PODER a un explorador y su daño pasa a ser igual o mayor que su PODER total, se destruye.
 
-> **Idea clave:** atacar casi nunca es gratis para quien defiende, pero tampoco expone al atacante. Por eso se ataca para **bajarle el PODER total al otro** antes de su turno.
+> **Idea clave:** atacar casi nunca expone al atacante, y **cada marcador de daño le baja 50 al tablero del otro**. Se ataca para destruir, pero también para **bajarle el PODER del tablero** antes de su turno, y se cura para devolvérselo.
 
 ## 7. Efectos
 
@@ -103,7 +128,7 @@ El **daño se acumula** mientras la carta esté en el campo: unos exploradores p
 
 - Cada efecto va en su propia línea. Etiquetas: **Normal** (lo activas tú), **Trigger** (reacciona), **Asistiendo** (solo funciona mientras la carta asiste). El texto sin etiqueta es un efecto continuo.
 - "Explorador" es explorador activo; las cartas que menciona son **tuyas** salvo que diga "del oponente".
-- **Ganar o perder PODER es permanente** mientras el explorador siga en el campo, salvo que el texto diga **"este turno"**. (El objetivo se mide al comienzo de tu turno, así que los bonos "este turno" solo sirven para combatir.)
+- **Ganar PODER es permanente** (pone marcadores de PODER agregado) mientras el explorador siga en el campo, salvo que el texto diga **"este turno"**. (El objetivo se mide al comienzo de tu turno, así que los bonos "este turno" solo sirven para combatir.)
 - Asistir es boca abajo, salvo que el texto diga "boca arriba".
 - En un efecto Asistiendo, "el explorador" es aquel al que la carta asiste.
 
@@ -132,7 +157,7 @@ El **daño se acumula** mientras la carta esté en el campo: unos exploradores p
 | **Atracción** | Obliga a elegir como objetivo a ciertas cartas. |
 | **Infligir daño** | Poner marcadores de daño sobre un explorador. |
 | **Curar** | Quitar marcadores de daño. |
-| **Sobrevive con X** | Evita la destrucción por daño: al explorador le quedan X de PODER restante. |
+| **Sobrevive con X** | Evita la destrucción por daño: al explorador le quedan X de PODER. |
 | **Activa como `<nombre>`** | Para la regla de una vez por turno, la carta cuenta con ese nombre. |
 | **Anular / Negar** | Un ataque anulado termina; la activación negada no se resuelve pero sí cuenta. |
 
@@ -166,11 +191,12 @@ Buscar es **la mecánica de toda búsqueda**: las cartas solo dicen "Busca 1 [cr
 
 ## 12. Resumen rápido
 
-- Gana quien **empiece su turno con 1000 de PODER** en exploradores activos. No hay puntos de vida.
+- Gana quien **empiece su turno con 1000 de PODER del tablero** (suma del PODER de sus exploradores activos). No hay puntos de vida.
 - Mazo de **50**, máximo **3** copias por nombre. Mano máxima **7**. **6** zonas de explorador.
-- El combate es **en una dirección**: el atacante pone daño igual a su PODER, el defensor no responde. El explorador se destruye cuando su daño **iguala o supera** su PODER.
+- **PODER = PODER total − daño**, y PODER total = PODER base + PODER agregado. Los marcadores (50 cada uno) van a la izquierda (PODER agregado) y a la derecha (daño).
+- El combate es **en una dirección**: el atacante pone daño igual a su PODER, el defensor no responde. El explorador se destruye cuando su PODER llega a 0.
 - Los asistentes no suman al objetivo, pero reciben el daño si eliges defender CON asistencia.
-- Ganar o perder PODER es **permanente** salvo "este turno".
+- Ganar PODER es **permanente** (marcadores) salvo "este turno".
 - Todo efecto es **una vez por turno por nombre**.
 - Todo puede disparar una **cadena**.
 
@@ -178,8 +204,10 @@ Buscar es **la mecánica de toda búsqueda**: las cartas solo dicen "Busca 1 [cr
 
 ## Decisiones confirmadas
 
-- **Objetivo: 1000 de PODER total al comienzo de tu turno.** Sin puntos de vida.
-- **Combate estilo Pokémon:** un solo sentido, el daño se suma hasta igualar o superar el PODER.
+- **Objetivo: 1000 de PODER del tablero al comienzo de tu turno.** Sin puntos de vida.
+- **PODER = PODER total − daño**, con PODER total = base + agregado. El daño le resta al tablero.
+- **Los mismos marcadores sirven para PODER agregado y daño**, de 50 cada uno, uno a cada lado de la carta.
+- **Combate estilo Pokémon:** un solo sentido, el daño se suma hasta que el PODER llega a 0.
 - **No hay "destruido en combate":** lo que distingue un combate es el daño. Las cartas que protegen usan **Sobrevive con X** (ver glosario) y las que castigan hablan de **daño**.
 - **Mismo mundo y dimensiones que el demo 1**, reescritos para el nuevo objetivo.
 - **PODER de 50 en 50**, sin cartas de 50 salvo efectos muy buenos.
@@ -189,13 +217,14 @@ Buscar es **la mecánica de toda búsqueda**: las cartas solo dicen "Busca 1 [cr
 
 ## Decisiones por probar 🧪
 
-1. **El daño no reduce el PODER total.** Alternativa: que el PODER contado sea PODER − daño.
-2. **Se destruye con daño igual o mayor.** Si los combates matan demasiado rápido, pasar a "estrictamente mayor".
+1. **Un marcador vale 50.** Si se necesita más precisión, usar marcadores de 25 (los PODER seguirían de 50 en 50).
+2. **Un atacante dañado golpea más débil** (su PODER descuenta el daño). Alternativa: que ataque con su PODER total.
 3. **El daño es igual al PODER del atacante.** Alternativa: la mitad, para que los combates sean más lentos.
-4. **6 zonas y objetivo 1000.** Si el juego dura muy poco, subir a 1200; si no termina nunca, bajar a 900.
-5. **Los asistentes no suman.** Alternativa: que sumen a mitad de valor.
-6. **PODER permanente por defecto.** Si los mazos crecen demasiado rápido, hacer que los bonos pierdan fuerza o que "este turno" sea la norma en eventos.
-7. **Sin mulligan, mano inicial de 5.**
-8. **Primer jugador sin Fase de Batalla** en su primer turno.
-9. **Un asistente por explorador.**
-10. **Atracción solo restringe al oponente** y solo al elegir objetivos.
+4. **Los efectos "este turno" no usan marcadores.** Si se olvidan mucho, usar un tercer tipo de marcador.
+5. **6 zonas y objetivo 1000.** Si el juego dura muy poco, subir a 1200; si no termina nunca, bajar a 900.
+6. **Los asistentes no suman.** Alternativa: que sumen a mitad de valor.
+7. **PODER agregado permanente por defecto.** Si los mazos crecen demasiado rápido, hacer que "este turno" sea la norma en eventos.
+8. **Sin mulligan, mano inicial de 5.**
+9. **Primer jugador sin Fase de Batalla** en su primer turno.
+10. **Un asistente por explorador.**
+11. **Atracción solo restringe al oponente** y solo al elegir objetivos.

@@ -7,7 +7,7 @@ Segundo juego de demostración para Cardgame Prototyper. Comparte mundo, dimensi
 | | Colapso (demo 1) | Umbral (demo 2) |
 |---|---|---|
 | Objetivo | Bajar la vida del oponente de 800 a 0 | Empezar tu turno con 1000 de PODER en el campo |
-| Combate | Se comparan PODER; el menor se destruye | En un solo sentido: el atacante pone daño igual a su PODER y el explorador se destruye cuando su daño **iguala o supera** su PODER |
+| Combate | Se comparan PODER; el menor se destruye | En un solo sentido: el atacante pone daño igual a su PODER y el explorador se destruye cuando su PODER (*total − daño*) llega a 0 |
 | PODER | Hasta el final del turno (por defecto) | **Permanente** (por defecto); "este turno" se escribe |
 | Mazo | 30 cartas | **50 cartas** (38 de dimensión + 12 neutrales) |
 | Campo | 5 zonas | 6 zonas |
@@ -20,7 +20,7 @@ Segundo juego de demostración para Cardgame Prototyper. Comparte mundo, dimensi
 |---|---|
 | [ruleguides.md](ruleguides.md) | **Cómo se juega.** Objetivo, turno, combate por daño, efectos, cadenas. |
 | [designguide.md](designguide.md) | **Cómo se diseña.** Estilos de juego, secuencias, interacción con efecto secundario, escala de PODER. |
-| [glosario.md](glosario.md) | Lo nuevo del demo 2 (PODER total, daño, curar, Activa como). El resto hereda del [glosario del demo 1](../demoTCG/glosario.md). |
+| [glosario.md](glosario.md) | Lo nuevo del demo 2 (PODER base/agregado/total, daño, curar, Activa como). El resto hereda del [glosario del demo 1](../demoTCG/glosario.md). |
 | [cards.md](cards.md) | Catálogo completo: 40 exploradores (1 token) y 23 eventos. |
 | [decks.md](decks.md) | Cuatro mazos de 50 cartas, con su secuencia y una línea de ejemplo. |
 | `umbral.json` | Proyecto para **importar en la app**: 4 tipos de carta, todas las cartas y los 4 mazos. |

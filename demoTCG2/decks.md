@@ -33,7 +33,7 @@ Tienes 9 cartas en el cementerio, 4 de ellas Fantaspet. **Cesarmill** tiene +150
 
 **Cómo frena al otro:** un atacante contra un explorador con asistente se topa con **Dragging** (destruido), **Koalma** (pierde 100 PODER) o **Gooboy** (se sacrifica por el explorador). Cada trampa llena el cementerio.
 
-**Supervivencia:** **Espectro Guardián** y **Presencia en Eterneblina** usan **Sobrevive con 50**: un ataque que lo mataría lo deja con 50 de PODER restante, a la espera de curarse o de que otra carta lo cubra.
+**Supervivencia:** **Espectro Guardián** y **Presencia en Eterneblina** usan **Sobrevive con 50**: un ataque que lo mataría lo deja con 50 de PODER, a la espera de curarse o de que otra carta lo cubra.
 
 **Debilidades:** al principio tiene poco PODER y poco cementerio. Si te exilian o te quitan el cementerio, los cuerpos grandes se quedan en su base. Las trampas funcionan solo si el oponente ataca.
 
@@ -179,7 +179,7 @@ Tienes **Reina** (350), **Madre Telar** (200) y tres tokens Cría de 150: **1000
 **Línea de ejemplo (turno 5)**
 **Aegis** 300 (+50 del Sargento = 350), **Rodelero** 200 (+50 = 250), **Sargento** 200 y **Armero** 150 (+50 = 200): **1000**. Todos los ataques deben ir contra Aegis, que lleva a su asistente como escudo: si lo atacan con 250, eliges defender CON asistencia y el asistente recibe el daño; Aegis no sufre nada.
 
-**Supervivencia:** **Torre Viva** (250) sobrevive con 100 y cura 100 al comienzo de tu turno, así que los ataques se desgastan contra ella.
+**Supervivencia:** **Torre Viva** (250) sobrevive con 100 y cura 100 al comienzo de tu turno, así que los ataques se desgastan contra ella. Como el daño le resta PODER al tablero, curar vale tanto como sumar.
 
 **Debilidades:** es lento y depende de Aegis: los efectos que no eligen objetivo (Colapso, Derrumbe) lo ignoran, y un borrado le gana en tiempo. Sin Escuderos en la mano, Aegis queda desnudo.
 

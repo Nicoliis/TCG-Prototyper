@@ -12,52 +12,63 @@ Las entradas con 🧪 son decisiones por confirmar en partidas de prueba.
 - **"Explorador" es explorador activo.** Un asistente se nombra "asistente".
 - **Todo es tuyo por defecto.** Lo del otro jugador dice "del oponente".
 - **Asistiendo:** "el explorador" es aquel al que la carta asiste; "esta carta" es el asistente.
-- **PODER permanente:** ganar o perder PODER dura mientras el explorador siga en el campo, salvo que diga **"este turno"**.
+- **PODER permanente:** ganar PODER dura mientras el explorador siga en el campo (marcadores), salvo que diga **"este turno"**.
 - **Asistir:** boca abajo, salvo que diga "boca arriba".
 
 ---
 
 ## Valores
 
-### PODER total
-Suma del PODER actual de tus exploradores **activos** (tokens incluidos). Es lo que se compara con 1000 al comienzo de tu turno.
-- Cuentan los bonos permanentes y los efectos continuos. No cuentan los efectos "este turno".
-- El **daño no lo reduce**. 🧪
+### PODER base, agregado, total y PODER
+Cada explorador tiene cuatro valores. Todos salen del PODER impreso y de los **marcadores** (cada marcador vale **50**):
+
+| Valor | Cómo se calcula |
+|---|---|
+| **PODER base** | El impreso en la carta. |
+| **PODER agregado** | Los marcadores de PODER agregado (a la **izquierda** de la carta) × 50. |
+| **PODER total** | PODER base + PODER agregado + efectos continuos. |
+| **PODER** | **PODER total − daño.** Es el valor que cuenta para atacar, para el objetivo, para los criterios y para la destrucción. |
+
+- Los marcadores son los mismos para el PODER agregado y el daño. El PODER agregado va a la izquierda y el daño a la derecha. También pueden ser fichas de dos caras: espada (PODER agregado) y golpe (daño).
+- Fuera del campo no hay marcadores y los criterios ("con PODER 150 o menos") miran el PODER base.
+- Un explorador cuyo **PODER llega a 0 o menos** se destruye de inmediato.
+
+### PODER del tablero
+Suma del **PODER** de tus exploradores **activos** (tokens incluidos). Es lo que se compara con 1000 al comienzo de tu turno.
+- El daño lo reduce. Un explorador de 250 con 100 de daño aporta 150.
 - Los asistentes no suman.
 
 ### Ganar / perder PODER
-Cambia el PODER de un explorador.
-- **Permanente** mientras el explorador siga en el campo, salvo "este turno".
+Cambia el PODER total de un explorador.
+- **Ganar PODER** pone marcadores de PODER agregado y es **permanente** mientras el explorador siga en el campo, salvo "este turno". Con "este turno" no se usan marcadores: se anota el bono y se descarta al final del turno.
 - Los cambios se suman. Un efecto que **fija** el PODER (por ejemplo "su PODER es 0") se aplica después de los que suman o restan.
-- El PODER nunca baja de 0.
-- Si el PODER baja por debajo del daño que tiene el explorador, se destruye.
+- Si el PODER total baja por debajo de lo que corresponde al daño que ya tiene, el PODER llega a 0 y el explorador se destruye.
 
 ### Tiene +N PODER
-Efecto continuo: mientras se cumpla la condición, el explorador tiene N de PODER más. "Por cada…" cuenta de nuevo cada vez (por ejemplo, +50 por cada 3 cartas del cementerio es +50 con 3, +100 con 6, y así). Si hay un máximo, "(máx. +250)" se refiere al bono, no al PODER total.
+Efecto continuo: mientras se cumpla la condición, suma N al PODER total. No usa marcadores. "Por cada…" cuenta de nuevo cada vez (por ejemplo, +50 por cada 3 cartas del cementerio es +50 con 3, +100 con 6, y así). Si hay un máximo, "(máx. +250)" se refiere al bono, no al PODER.
 
 ---
 
 ## Daño
 
 ### Daño
-Marcadores sobre un explorador. Lo pone un **ataque** (daño igual al PODER del atacante) o un efecto que dice **"inflige X de daño"**.
+Marcadores de **daño** (a la **derecha** de la carta), de 50 cada uno. Los pone un **ataque** (daño igual al PODER del atacante) o un efecto que dice **"inflige X de daño"**.
+- Resta 50 al PODER por marcador. Cuando el PODER llega a 0 o menos, el explorador se destruye.
 - Se acumula mientras el explorador siga en el campo.
-- Un explorador cuyo daño **iguala o supera** su PODER se destruye de inmediato.
-- **PODER restante** es su PODER menos su daño. Un explorador de 200 con 150 de daño tiene 50 de PODER restante.
 - Si el explorador deja el campo, su daño desaparece.
-- El daño no es una pérdida de PODER: no cambia el PODER total, pero acerca al explorador a la destrucción.
+- El daño **sí** reduce el PODER del tablero y también la fuerza de ataque del explorador dañado.
 
 ### Infligir daño
-Poner X marcadores de daño sobre un explorador. Es un efecto: puede elegir objetivo (y estar sujeto a una **Atracción** de efectos).
+Poner X de daño (X/50 marcadores) sobre un explorador. Es un efecto: puede elegir objetivo (y estar sujeto a una **Atracción** de efectos).
 
 ### Curar
-**"Cura X de daño"** quita hasta X marcadores. **"Cura todo el daño"** los quita todos.
+**"Cura X de daño"** quita hasta X de daño (X/50 marcadores). **"Cura todo el daño"** los quita todos. Curar devuelve PODER al explorador y al tablero.
 
 ### Sobrevive con X
 Efecto que evita una destrucción **por daño**. Se usa en un trigger preventivo: **"Si esta carta fuera a ser destruida por daño: sobrevive con 50."**
 
-- Cuando el daño que va a recibir el explorador igualaría o superaría su PODER, el daño total se **limita** al máximo que lo deja con **X de PODER restante**. El exceso se pierde.
-- Si el explorador ya tiene X o menos de PODER restante, no hace nada y se destruye.
+- Cuando el daño que va a recibir el explorador dejaría su PODER en 0 o menos, el daño total se **limita** al máximo que lo deja con **X de PODER**. El exceso se pierde.
+- Si el explorador ya tiene X o menos de PODER, no hace nada y se destruye.
 - Solo protege contra **daño**. No evita otras destrucciones.
 - Es un efecto y se activa en una cadena, así que cuenta para la regla de una vez por turno por nombre y se puede negar o responder.
 - Si el daño ya fue puesto, no se puede "sobrevivir" después: hay que activarlo antes de que se resuelva (trigger preventivo).
@@ -70,9 +81,9 @@ Cada vez que le pones daño, pones el doble. Se aplica al daño de ataques y de 
 ## Asistente en combate
 
 - Al ser atacado un explorador con asistente, el asistente se **revela** y el defensor elige:
-  - **CON asistencia:** el daño va al **asistente**. Si el daño del asistente iguala o supera su PODER, se destruye; el explorador no recibe nada.
+  - **CON asistencia:** el daño va al **asistente**. Si el PODER del asistente llega a 0, se destruye; el explorador no recibe nada.
   - **SIN asistencia:** el daño va al explorador.
-- Un asistente que recibe daño lo conserva mientras siga asistiendo.
+- Un asistente que recibe daño lo conserva mientras siga asistiendo (los marcadores se quedan debajo o al lado de su carta).
 - Un efecto que dice "el explorador" en Asistiendo se refiere al activo, no al asistente.
 
 ---

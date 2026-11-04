@@ -11,7 +11,7 @@ Principios:
 1. **Cada mazo es una forma distinta de llegar a 1000.** El objetivo permite estilos muy diferentes y cada dimensión encarna uno (sección 2).
 2. **Las cartas se juegan una después de otra.** Cada carta debe abrir la puerta a la siguiente (busca, juega, destruye, reemplaza) para que el mazo sea una **secuencia** y no una pila de cartas sueltas. Dominar el orden es dominar el mazo.
 3. **Toda interacción trae un efecto secundario.** Las cartas que anulan, devuelven, destruyen o niegan siempre hacen **algo más** (agregan un token, roban, llenan el cementerio, curan). Así nunca están muertas en la mano y no se sienten como un "no" puro.
-4. **El PODER es permanente, y cada punto cuenta.** Como el objetivo se mide al comienzo del turno, los bonos duran. Los bonos "este turno" son solo para combatir.
+4. **El PODER es permanente, y cada punto cuenta.** El PODER de un explorador es siempre *PODER total − daño*: los bonos duran (marcadores de PODER agregado) y el daño le resta al tablero del rival. Los bonos "este turno" son solo para combatir.
 5. **Las restricciones son poco comunes.** El costo de una carta fuerte suele estar en su efecto, en la cadena o en lo que hay que sacrificar, no en una restricción. Cuando hay una, es una decisión.
 6. **Los asistentes siguen siendo la mecánica distintiva.** No suman al objetivo pero absorben daño, así que cada uno es un costo de tablero a cambio de una trampa o un escudo.
 7. **Casi no hay "NO".** Las negaciones son pocas y caras (Reina de Ragnatica, Grieta).
@@ -44,7 +44,7 @@ Un mazo nuevo debería poder describirse como una fila de esta tabla. Cada estil
 |---|---|
 | Nombre | Corto. |
 | Dimensión | Fantaspet, Ugabuga, Ragnatica, Baluarte, Neutral. |
-| PODER | Múltiplo de 50. **150** es el cuerpo normal. |
+| PODER base | Múltiplo de 50. **150** es el cuerpo normal. Durante la partida, PODER = base + agregado − daño. |
 | Efecto | Etiquetas `**Normal:**`, `**Trigger:**`, `**Asistiendo:**`, un efecto por línea. Continuos sin etiqueta. Máximo 3 efectos. |
 | Restricción | Opcional y poco común. |
 
@@ -117,7 +117,7 @@ Pautas:
 
 ## 7. Daño y supervivencia
 
-El combate es en un solo sentido y el daño se acumula, así que **no existe "destruido en combate"**: lo que cuenta es el **daño**. Las cartas hablan de daño y de supervivencia, no de combates:
+El combate es en un solo sentido y el daño se acumula, así que **no existe "destruido en combate"**: lo que cuenta es el **daño**. Las cartas hablan de daño y de supervivencia, no de combates. Como el daño le resta PODER al tablero, **curar vale tanto como sumar** y **atacar sirve aunque no destruya**:
 
 | Para… | Se escribe | Ejemplo |
 |---|---|---|
@@ -128,7 +128,7 @@ El combate es en un solo sentido y el daño se acumula, así que **no existe "de
 
 Pautas para **Sobrevive con X**:
 
-- X es el **PODER restante**: 50 es una vida de seguridad, 100 es mucha. Más de 100 casi nunca.
+- X es el **PODER que le queda** al explorador: 50 es una vida de seguridad, 100 es mucha. Más de 100 casi nunca.
 - Es un **trigger preventivo** (cuenta para una vez por turno por nombre y se puede responder), así que protege **una vez por turno**, no siempre.
 - Va bien en cuerpos **sólidos** (200-250) y en eventos de protección; en cuerpos de 50-100 vale poco.
 - Solo detiene **daño**. Los efectos de destruir siguen funcionando, así que mantienen su papel de respuesta.
