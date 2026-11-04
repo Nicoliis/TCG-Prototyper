@@ -7,7 +7,8 @@
 
 export const ZONE_ROLES = ["deck", "hand", "discard"];
 export const ZONE_LAYOUTS = ["pile", "stack", "spread", "grid", "free"];
-export const ZONE_FACES = ["up", "down", "keep"];
+export const ZONE_FACES = ["up", "down", "choose"];
+export const ZONE_ORIENTATIONS = ["vertical", "sideways", "choose"];
 export const ZONE_VISIBILITIES = ["public", "private", "hidden"];
 export const ZONE_AREAS = ["player", "shared"];
 
@@ -21,7 +22,12 @@ export const LAYOUT_LABELS = {
 export const FACE_LABELS = {
   up: "Face up (Shift-drop plays it face down)",
   down: "Face down (Shift-drop plays it face up)",
-  keep: "Keep the card's current side",
+  choose: "Choose (the card keeps its side; Shift-drop flips it)",
+};
+export const ORIENTATION_LABELS = {
+  vertical: "Vertical",
+  sideways: "Sideways",
+  choose: "Choose (the card keeps its turn; turn it from its menu)",
 };
 export const VISIBILITY_LABELS = {
   public: "Public (everyone sees face-up cards)",
@@ -70,6 +76,7 @@ export function createZone(fields = {}) {
     h: 1,
     layout: "stack",
     face: "up",
+    orientation: "vertical",
     visibility: "public",
     extra: false,
     ...fields,
@@ -216,7 +223,13 @@ export function normalizeBoard(board) {
     zone.id ??= crypto.randomUUID();
     zone.area = ZONE_AREAS.includes(zone.area) ? zone.area : "player";
     zone.layout = ZONE_LAYOUTS.includes(zone.layout) ? zone.layout : "stack";
+    // boards saved before the orientation list had one setting, "keep", that meant both choices
+    if (zone.face === "keep") {
+      zone.face = "choose";
+      zone.orientation ??= "choose";
+    }
     zone.face = ZONE_FACES.includes(zone.face) ? zone.face : "up";
+    zone.orientation = ZONE_ORIENTATIONS.includes(zone.orientation) ? zone.orientation : "vertical";
     zone.visibility = ZONE_VISIBILITIES.includes(zone.visibility) ? zone.visibility : "public";
     zone.role = ZONE_ROLES.includes(zone.role) ? zone.role : null;
     zone.extra = Boolean(zone.extra) && !zone.role && zone.area === "player";

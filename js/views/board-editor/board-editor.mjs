@@ -14,9 +14,11 @@ import {
   ZONE_AREAS,
   ZONE_LAYOUTS,
   ZONE_FACES,
+  ZONE_ORIENTATIONS,
   ZONE_VISIBILITIES,
   LAYOUT_LABELS,
   FACE_LABELS,
+  ORIENTATION_LABELS,
   VISIBILITY_LABELS,
 } from "../../models/board.mjs?v=33";
 
@@ -64,6 +66,7 @@ export async function mountBoardEditor(root, storage, projectId, boardId, onBack
 
   fillSelect(zoneForm.area, ZONE_AREAS, { player: "Each player (mirrored)", shared: "Shared (middle of the table)" });
   fillSelect(zoneForm.layout, ZONE_LAYOUTS, LAYOUT_LABELS);
+  fillSelect(zoneForm.orientation, ZONE_ORIENTATIONS, ORIENTATION_LABELS);
   fillSelect(zoneForm.face, ZONE_FACES, FACE_LABELS);
   fillSelect(zoneForm.visibility, ZONE_VISIBILITIES, VISIBILITY_LABELS);
 
@@ -202,7 +205,7 @@ export async function mountBoardEditor(root, storage, projectId, boardId, onBack
     zoneForm.hidden = !zone;
     zoneEmpty.hidden = Boolean(zone);
     if (!zone) return;
-    for (const key of ["name", "area", "col", "row", "w", "h", "layout", "face", "visibility"]) zoneForm[key].value = zone[key];
+    for (const key of ["name", "area", "col", "row", "w", "h", "layout", "orientation", "face", "visibility"]) zoneForm[key].value = zone[key];
     zoneForm.extra.checked = Boolean(zone.extra);
     zoneForm.extra.disabled = Boolean(zone.role) || zone.area !== "player";
     zoneForm.area.disabled = Boolean(zone.role);
@@ -225,6 +228,7 @@ export async function mountBoardEditor(root, storage, projectId, boardId, onBack
       w: Number(zoneForm.w.value),
       h: Number(zoneForm.h.value),
       layout: zoneForm.layout.value,
+      orientation: zoneForm.orientation.value,
       face: zoneForm.face.value,
       visibility: zoneForm.visibility.value,
       extra: zoneForm.extra.checked,

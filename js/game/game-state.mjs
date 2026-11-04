@@ -153,8 +153,9 @@ const clamp01 = (n) => Math.min(1, Math.max(0, Number.isFinite(n) ? n : 0.5));
 
 // The card as it arrives in a zone. A card never keeps its stack or its spot from another zone.
 function entryFor(zone, entry, faceOverride, spot) {
-  const faceUp = faceOverride ?? (zone.face === "keep" ? entry.faceUp : zone.face === "up");
-  const arrived = { ...entry, faceUp, rot: zone.face === "keep" ? entry.rot : 0 };
+  const faceUp = faceOverride ?? (zone.face === "choose" ? entry.faceUp : zone.face === "up");
+  const rot = zone.orientation === "choose" ? entry.rot : zone.orientation === "sideways" ? 90 : 0;
+  const arrived = { ...entry, faceUp, rot };
   delete arrived.under;
   delete arrived.x;
   delete arrived.y;

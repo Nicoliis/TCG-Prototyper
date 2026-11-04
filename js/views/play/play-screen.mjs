@@ -392,7 +392,7 @@ export async function mountPlay(root, storage, options, onBack) {
     if (x !== undefined) Object.assign(event, { x, y });
     if (shift) {
       const zone = ctx.board.zones.find((z) => z.id === parseKey(toKey).zoneId);
-      const defaultUp = zone.face === "keep" ? entry.faceUp : zone.face === "up";
+      const defaultUp = zone.face === "choose" ? entry.faceUp : zone.face === "up";
       event.faceUp = !defaultUp;
     }
     act(event);
