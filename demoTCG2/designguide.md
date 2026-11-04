@@ -1,10 +1,10 @@
-# Umbral: guía de diseño
+# Colapso (modo tablero): guía de diseño
 
-Para quien diseñe cartas nuevas (o quiera entender por qué las actuales son así). Las reglas de juego están en [ruleguides.md](ruleguides.md) y el significado de cada palabra en [glosario.md](glosario.md). El demo 1 ([Colapso](../demoTCG/designguide.md)) comparte mundo, motor de cadenas y vocabulario; aquí solo se explica lo que cambia.
+Para quien diseñe cartas nuevas (o quiera entender por qué las actuales son así). Las reglas de juego están en [ruleguides.md](ruleguides.md) y el significado de cada palabra en [glosario.md](glosario.md). El demo 1 ([Colapso, modo vida](../demoTCG/designguide.md)) comparte mundo, motor de cadenas y vocabulario; aquí solo se explica lo que cambia.
 
 ## 1. Filosofía
 
-**El objetivo es una carrera por construir.** Ganas si empiezas tu turno con **1000 de PODER** en el campo, así que cada jugador tiene dos trabajos a la vez: **llegar a 1000** y **evitar que el otro llegue**. El oponente tiene un turno completo entre que llegas y ganas, y esa ventana es donde pasa el juego.
+**El objetivo es una carrera por construir.** Ganas si empiezas tu turno con **1000 de PODER** en la primera fila, así que cada jugador tiene dos trabajos a la vez: **llegar a 1000** y **evitar que el otro llegue**. El oponente tiene un turno completo entre que llegas y ganas, y esa ventana es donde pasa el juego.
 
 Principios:
 
@@ -13,9 +13,10 @@ Principios:
 3. **Toda interacción trae un efecto secundario.** Las cartas que anulan, devuelven, destruyen o niegan siempre hacen **algo más** (agregan un token, roban, llenan el cementerio, curan). Así nunca están muertas en la mano y no se sienten como un "no" puro.
 4. **El PODER es permanente, y cada punto cuenta.** El PODER de un explorador es siempre *PODER total − daño*: los bonos duran (marcadores de PODER agregado) y el daño le resta al tablero del rival. **Solo existen tres efectos sobre el PODER: potenciar, infligir daño y curar.** Perder PODER es recibir daño; no hay bonos ni pérdidas "este turno".
 5. **Las restricciones son poco comunes.** El costo de una carta fuerte suele estar en su efecto, en la cadena o en lo que hay que sacrificar, no en una restricción. Cuando hay una, es una decisión.
-6. **Los asistentes siguen siendo la mecánica distintiva.** No suman al objetivo pero absorben daño, así que cada uno es un costo de tablero a cambio de una trampa o un escudo.
-7. **Casi no hay "NO".** Las negaciones son pocas y caras (Reina de Ragnatica, Grieta).
-8. **Una vez por turno, por nombre.** Sumar copias no multiplica el efecto.
+6. **Las dos filas y las dos posiciones son la mecánica distintiva.** La primera fila suma y ataca; las barracas guardan los combos, las trampas y los cuerpos en espera. Las cartas **no se apilan**, y la posición elegida al entrar **no cambia**.
+7. **En guardia es el efecto fuerte; Asistiendo es el combo.** Lo primero se gana con un lugar en la primera fila; lo segundo se paga con cartas.
+8. **Casi no hay "NO".** Las negaciones son pocas y caras (Reina de Ragnatica, Grieta).
+9. **Una vez por turno, por nombre.** Sumar copias no multiplica el efecto.
 
 ## 2. Estilos de juego
 
@@ -24,8 +25,8 @@ Principios:
 | **Inundar** | Muchos tokens baratos con bonos | Cada interrupción agrega más tokens | Ragnatica |
 | **Arrasar y reconstruir** | Pocos cuerpos enormes tras borrar el tablero | Destruye lo que el otro armó | Ugabuga |
 | **Ascenso constante** | Puntos "fiables" que crecen solos | Atracción: todo el daño va a un solo lugar | Baluarte |
-| **Cementerio** | Cuerpos que crecen con las cartas del cementerio | Asistentes-trampa | Fantaspet |
-| **Bajo PODER, mucha interrupción** | Ganar tiempo hasta tener el tablero | Anular, devolver, reemplazar | Cartas neutrales y asistentes de todas las dimensiones |
+| **Cementerio** | Cuerpos que crecen con las cartas del cementerio | Trampas de las barracas | Fantaspet |
+| **Bajo PODER, mucha interrupción** | Ganar tiempo hasta tener el tablero | Anular, devolver, reemplazar | Cartas neutrales y trampas de las barracas |
 
 Un mazo nuevo debería poder describirse como una fila de esta tabla. Cada estilo tiene una **debilidad concreta** que otro estilo puede explotar:
 
@@ -45,7 +46,7 @@ Un mazo nuevo debería poder describirse como una fila de esta tabla. Cada estil
 | Nombre | Corto. |
 | Dimensión | Fantaspet, Ugabuga, Ragnatica, Baluarte, Neutral. |
 | PODER base | Múltiplo de 50. **150** es el cuerpo normal. Durante la partida, PODER = base + agregado − daño. |
-| Efecto | Etiquetas `**Normal:**`, `**Trigger:**`, `**Asistiendo:**`, un efecto por línea. Continuos sin etiqueta. Máximo 3 efectos. |
+| Efecto | Etiquetas `**En guardia:**`, `**Asistiendo:**`, `**Normal:**` (desde la mano) y `**Trigger:**`, un efecto por línea. Continuos sin etiqueta. Máximo 3 efectos. |
 | Restricción | Opcional y poco común. |
 
 ### Evento
@@ -54,11 +55,11 @@ Como un explorador, sin PODER y con **velocidad** (Rápido o Lento). Tiene dos m
 
 ### Escala de PODER
 
-El tablero necesita ~170 por zona (6 zonas), así que:
+La primera fila necesita ~170 por lugar (6 lugares), así que:
 
 | PODER | Qué es | Condición |
 |---|---|---|
-| 50-100 | Soporte | Solo con un efecto muy bueno (Dragging 50: destruye al atacante; Lance-elot 100: +100 al asistido). |
+| 50-100 | Soporte | Solo con un efecto muy bueno (Dragging 50: trampa que destruye al atacante; Lance-elot 100: +100 permanente a cambio de destruirse). |
 | 150 | Cuerpo normal | Efectos flojos o de apoyo. |
 | 200 | Cuerpo sólido | Un efecto útil. |
 | 250-300 | Pieza | Un costo real: sacrificio (Monstaa), cementerio, restricción. |
@@ -76,7 +77,7 @@ Regla de oro: **una carta de 50 o 100 debe valer lo que le falta**. Cuantos más
 
 | Mazo | Starters | Extenders | Piezas | Interrupciones |
 |---|---|---|---|---|
-| Fantaspet | 10 | 16 | 11 | 13 |
+| Fantaspet | 10 | 19 | 11 | 10 |
 | Ugabuga | 10 | 15 | 13 | 12 |
 | Ragnatica | 16 | 10 | 4 | 20 |
 | Baluarte | 19 | 15 | 6 | 10 |
@@ -101,9 +102,9 @@ Una interrupción tiene dos partes: el **efecto principal** (frenar) y el **efec
 
 | Carta | Principal | Secundario |
 |---|---|---|
-| Viuda Gris | Anula un ataque | Agrega un token Cría |
-| Capullo Silente | Devuelve al atacante a su mano | Agrega un token Cría |
-| Dragging | Destruye al atacante | Se destruye (llena el cementerio) |
+| Viuda Gris | Anula un ataque (se destruye) | Agrega un token Cría |
+| Capullo Silente | Devuelve al atacante a su mano (se destruye) | Agrega un token Cría |
+| Dragging | Destruye al atacante (descartando 1 carta) | Se destruye (llena el cementerio) |
 | Retirada Táctica | Devuelve a tu mano y termina el ataque | Roba 1 carta |
 | Grieta | Niega una búsqueda | Roba 1 carta |
 | Derrumbe | Destruye todo con PODER ≤ 200 | Roba por cada Ugabuga destruido |
@@ -140,16 +141,16 @@ Como todo es permanente y el daño baja el tablero, las cantidades se miden en m
 | Efecto | Referencia | Notas |
 |---|---|---|
 | **Potenciar** | **+50** es una ayuda; **+100** es una carta entera de valor | Un evento que potencia +100 debe tener algo más; un cuerpo que se potencia a sí mismo, un máximo (Aegis, +200). |
-| **Infligir daño** (efecto) | **50** en un asistente o cuerpo barato; **100-200** en un evento | Es daño real: baja el tablero del rival y debilita al atacante. |
+| **Infligir daño** (efecto) | **50** en una trampa o cuerpo barato; **100-200** en un evento | Es daño real: baja el tablero del rival y debilita al atacante. |
 | **Curar** | **100** al comienzo del turno (Torre Viva) o **todo** en un evento | Curar es potenciar: cuanto más daño haya en juego, más vale. |
 
 ## 8. Restricciones (poco comunes)
 
-Libres, obligatorias y simultáneas con la acción que las revela. Solo **12 de las 63 cartas** las llevan. Se reservan para:
+Libres, obligatorias y simultáneas con la acción que las revela (**al entrar a primera fila** o **después de activar**). Solo **10 de las 63 cartas** las llevan. Se reservan para:
 
-- **Piezas de 250-300** (Monstaa destruye uno de tus exploradores, Aegis termina tu turno).
+- **Piezas de 250-300** (Monstaa destruye uno de tus exploradores al entrar, Aegis termina tu turno).
 - **Cartas con un efecto muy fuerte de borrado** (Colapso de la meseta termina tu turno; Derrumbe te impide atacar).
-- **Efectos de búsqueda baratos** (Archivista descarta una carta).
+- **Cartas neutrales muy rápidas** (Mercenario del Colapso entra desde la mano sin gastar la jugada, pero no puedes activar más efectos este turno).
 
 Pautas:
 
@@ -157,18 +158,46 @@ Pautas:
 - Las restricciones **permanentes** ("Esta carta no puede declarar ataques", "recibe el doble de daño") pesan más que las del turno: máximo una por carta.
 - Una restricción distinta le da personalidad. Antes de repetir "no puedes jugar más exploradores", pregúntate si hay otra que cuente mejor qué cuesta la carta.
 
-## 9. Asistentes y Atracción
+## 9. Primera fila, barracas y posiciones
 
-Los asistentes **no suman** al objetivo, así que cada uno es una decisión: pierdes el espacio de un cuerpo (en zonas no, porque no ocupan zona, pero sí una carta de tu mano) a cambio de una trampa, un escudo o un bono.
+El tablero tiene **dos filas** y cada carta elige una **posición** al entrar. Esa decisión es el corazón del diseño:
+
+| Posición | Dónde | Qué ofrece | Qué cuesta |
+|---|---|---|---|
+| **En guardia, primera fila** | 6 lugares | **Suma al 1000**, ataca, activa el efecto **En guardia** (el más fuerte) | Una sola carta por turno de la mano, más la promoción |
+| **En guardia, barracas** | 6 lugares | Espera, boca abajo o arriba, su **promoción** | No suma ni hace nada hasta ser promovida |
+| **Asistiendo, barracas** | 6 lugares | Activa el efecto **Asistiendo** (combos y trampas) | No suma ni ataca, y **no se puede mover** a la primera fila |
+
+Una misma carta puede tener un efecto En guardia y uno Asistiendo (Telarín, Talkatak): el jugador **elige para qué la usa** al jugarla, y no puede volver atrás.
+
+### Efectos En guardia (los fuertes)
+
+- Son **siempre Lentos** y solo funcionan desde la **primera fila**: hay que ganarse el lugar.
+- Son el **pago** de tener la carta en la fila: agregan tokens, buscan, curan, potencian.
+- Si el efecto es muy bueno, se acompaña de un costo (descartar, destruir una carta de las barracas).
+
+### Efectos Asistiendo (los de combo)
+
+Sirven para **empezar y extender** combos. Reglas de diseño:
+
+1. **Requieren mover cartas.** El costo es el límite: **destruir esta carta y otra**, **descartar una carta**, **devolver esta y otra a la mano**. Un efecto Asistiendo sin costo está mal diseñado.
+2. **Mueven cartas, no suman PODER.** Buscan, recuperan, juegan o agregan tokens; no sustituyen a los cuerpos de la primera fila.
+3. **Pueden ser trampas.** Un **Trigger (Asistiendo)** responde a un ataque desde las barracas, boca abajo. Casi siempre se destruye al activarse.
 
 | Familia | Qué hace | Ejemplos |
 |---|---|---|
-| **Escudo** | Recibe el daño por el activo (defender CON asistencia). | Cualquier asistente con PODER alto; Aegis lo aprovecha. |
-| **Trampa** | Se revela al ser atacado y castiga. | Dragging, Koalma, Capullo Silente. |
-| **Refuerzo** | Suma PODER al activo. | Lance-elot (+100), Armero (+50 al caer). |
-| **Generador** | Pone asistentes. | Cesarmill, Boolly, Talkatak, Centinela, Reconstrucción. |
+| **Combo** | Busca, recupera o juega pagando con cartas | Plumifer, Ugalito, Hilandera, Archivista, Centinela, Gooboy, Talkatak |
+| **Trampa** | Responde a un ataque, boca abajo, y suele destruirse | Dragging, Koalma, Viuda Gris, Capullo Silente, Alabardero |
+| **Refuerzo** | Se sacrifica para potenciar | Lance-elot (+100 permanente), Armero (+50 al caer) |
+| **Generador** | Agrega tokens o cuerpos | Nido Vivo, Telarín, Boolly |
 
-**Atracción de ataques / efectos:** obliga al oponente a elegir como objetivo a las cartas con ella. Úsala como **punto focal** ("todo va contra Aegis") y acompáñala siempre de una desventaja o una debilidad (ignora lo que no elige objetivo; Van-guard recibe el doble de daño y no ataca).
+### Cuerpos en espera
+
+Los cuerpos grandes (250-300) viven **boca abajo y en guardia en las barracas** hasta la promoción: Triturador entra con su efecto "al entrar a primera fila" y sorprende. La promoción es la ventana donde se arma el tablero que hay que romper en el turno del oponente.
+
+### Atracción
+
+**Atracción de ataques / efectos:** obliga al oponente a elegir como objetivo a las cartas con ella (solo en la primera fila). Úsala como **punto focal** ("todo va contra Aegis") y acompáñala siempre de una desventaja o una debilidad (ignora lo que no elige objetivo; Van-guard recibe el doble de daño y no ataca).
 
 ### Límites compartidos: "Activa como…"
 
@@ -183,18 +212,33 @@ Dos negaciones en todo el juego, ambas con efecto secundario:
 
 La búsqueda es una **mecánica** (ver [glosario del demo 1](../demoTCG/glosario.md#buscar)): las cartas solo dicen "Busca 1 [criterio]". Un criterio debe poder **fallar**, y un fallo consume el uso del turno.
 
+### Búsquedas estrechas
+
+**Nunca "busca 1 de este arquetipo".** El criterio debe ser **específico**, para que haga falta **saltar por varios aros** y encadenar cartas hasta la pieza deseada. Los criterios del demo:
+
+| Criterio | Ejemplos |
+|---|---|
+| PODER exacto o tope | "Fantaspet con PODER 100 o menos", "Ugabuga con PODER 150", "Ugabuga con PODER 250 o más" |
+| Tipo de efecto | "con efecto Asistiendo", "evento Ragnatica Lento" |
+| Relación con otra carta | "con el mismo PODER y distinto nombre" que una carta de tu mano (se revela como costo) |
+| Dos criterios a la vez | "Baluarte con PODER 150 o menos y efecto Asistiendo" |
+
+Cada búsqueda lleva a un **subconjunto de 3-5 cartas**, y la carta encontrada abre la siguiente. Así el mazo se juega como una cadena de pasos, y una búsqueda interrumpida o fallida corta la secuencia.
+
 ## 11. Escribir el texto de una carta
 
 ### Plantillas
 
 ```
-Normal:       **Normal:** [Costo:] Efecto.
-Trigger:      **Trigger:** Si [condición][, costo]: Efecto.
-Asistiendo:   **Asistiendo:** Si [condición]: Efecto.    (o un efecto continuo)
-Desde la mano:  **Normal:** (Desde tu mano) [Costo:] Efecto.
+Normal:       **Normal:** [Costo:] Efecto.                        (eventos, o "(Desde tu mano)")
+En guardia:   **En guardia:** [Costo:] Efecto.                    (siempre Lento, desde la primera fila)
+Asistiendo:   **Asistiendo:** Costo: Efecto.                      (costo que mueve cartas)
+Trigger:      **Trigger:** Si [condición][, costo]: Efecto.       (primera fila)
+Trampa:       **Trigger:** (Asistiendo) Si [condición][, costo]: Efecto.
+Desde la mano:  **Trigger:** (Desde tu mano) Si [condición]: Efecto.
 Continuo:     Texto sin etiqueta: Tiene +N PODER por cada…; Mientras [condición], [efecto].
 Comienzo:     **Trigger:** Al comienzo de tu turno: Efecto.
-Restricción:  Después de entrar al campo> [Si es tu turno:] consecuencia.
+Restricción:  Al entrar a primera fila> [Si es tu turno:] consecuencia.
 ```
 
 **Cada efecto va en su propia línea.** Usa **negrita** con `**…**`.
@@ -212,7 +256,7 @@ Para recortar: usa las convenciones de lectura; un efecto, una condición, una a
 
 ### Vocabulario cerrado
 
-**destruir**, **descartar**, **exiliar**, **jugar**, **asistir**, **revelar**, **agregar** (token), **elegir**, **buscar**, **devolver a la mano**, **anular** (ataque), **negar** (efecto), **Atracción**, **Activa como**, **ganar PODER** (potenciar), **infligir daño**, **curar**, **sobrevive con X**. No uses sinónimos, y no escribas "destruido en combate".
+**destruir**, **descartar**, **exiliar**, **jugar** (y **jugar asistiendo**), **revelar**, **agregar** (token), **elegir**, **buscar**, **devolver a la mano**, **anular** (ataque), **negar** (efecto), **Atracción**, **Activa como**, **ganar PODER** (potenciar), **infligir daño**, **curar**, **sobrevive con X**, **primera fila**, **barracas**, **en guardia**, **asistiendo**, **entra a primera fila**. No uses sinónimos, y no escribas "destruido en combate".
 
 ### Lista de revisión para una carta nueva
 
@@ -220,9 +264,10 @@ Para recortar: usa las convenciones de lectura; un efecto, una condición, una a
 2. Si es una interrupción: ¿tiene un **efecto secundario** relevante para su mazo?
 3. ¿Su PODER y su costo valen para llegar a 1000? Una carta de 100 necesita un efecto muy bueno.
 4. ¿El efecto sobre el PODER es potenciar, daño o curar? (No existe perder PODER ni bonos temporales.)
-5. Si tiene restricción: ¿es realmente necesaria? ¿No bloquea su efecto?
-6. Si busca: ¿puede **fallar**?
-7. ¿Usa el vocabulario cerrado y **entra en la caja**?
+5. ¿Es un efecto **En guardia** (fuerte, desde la primera fila) o **Asistiendo** (combo, con un costo que mueve cartas)?
+6. Si tiene restricción: ¿es realmente necesaria? ¿No bloquea su efecto?
+7. Si busca: ¿el criterio es **estrecho** (3-5 cartas) y puede **fallar**?
+8. ¿Usa el vocabulario cerrado y **entra en la caja**?
 
 ## 12. Pool neutral y estructura de un mazo
 
