@@ -1,8 +1,8 @@
 nombre,dimension,velocidad,efecto
 Susurros en Eterneblina,Fantaspet,Rápido,"**Normal:** Descarta 1 carta: devuelve 1 Fantaspet de tu cementerio a tu mano.
 **Trigger:** Si un Fantaspet fuera a ser destruido: devuélvelo a tu mano en su lugar."
-Refugio en emergente Eterneblina,Fantaspet,Lento,"**Normal:** Revela 1 Fantaspet de tu mano: busca 1 Fantaspet con distinto nombre.
-**Trigger:** Si un Fantaspet es destruido: busca 1 Fantaspet con PODER 150 o menos."
+Refugio en emergente Eterneblina,Fantaspet,Lento,"**Normal:** Revela 1 Fantaspet de tu mano: busca 1 Fantaspet con el mismo PODER y distinto nombre.
+**Trigger:** Si un Fantaspet es destruido: busca 1 Fantaspet con PODER 100 o menos."
 Presencia en Eterneblina,Fantaspet,Rápido,"**Normal:** Elige 1 Fantaspet: gana 50 PODER.
 **Trigger:** Si un Fantaspet fuera a ser destruido por daño: sobrevive con 50."
 Estampida en emergente Ugabuga,Ugabuga,Lento,**Normal:** Elige 1 Ugabuga: puede declarar un segundo ataque este turno.
@@ -15,12 +15,12 @@ Conflicto en emergente reino de Ragnatica,Ragnatica,Lento,"**Normal:** Agrega 2 
 Telar de urgencia en Ragnatica,Ragnatica,Lento,**Normal:** Descarta 1 carta: agrega 2 tokens Cría.
 Hilos cortados en Ragnatica,Ragnatica,Rápido,**Normal:** Devuelve a su mano 1 explorador del oponente. Agrega 1 token Cría.
 Crianza en Ragnatica,Ragnatica,Lento,**Normal:** Elige 1 token Cría: gana 50 PODER.
-Cerrad filas en emergente Baluarte,Baluarte,Rápido,"**Normal:** Elige 1 explorador con asistente: gana 50 PODER y cura todo su daño.
-**Trigger:** Si un explorador con asistente es atacado: inflige 100 de daño al atacante."
-Relevo de guardia en Baluarte,Baluarte,Rápido,"**Normal:** Reemplaza 1 asistente por 1 Baluarte de tu mano. El asistente reemplazado vuelve a tu mano.
-**Trigger:** Si un asistente fuera a ser destruido: devuélvelo a tu mano en su lugar."
-Reconstrucción en emergente Baluarte,Baluarte,Lento,"**Normal:** Juega 1 Baluarte de tu cementerio asistiendo a un explorador sin asistente.
-**Trigger:** Si un Baluarte es destruido: busca 1 Baluarte con PODER 150 o menos."
+Cerrad filas en emergente Baluarte,Baluarte,Rápido,"**Normal:** Elige 1 Baluarte: gana 50 PODER y cura todo su daño.
+**Trigger:** Si un Baluarte es atacado: inflige 100 de daño al atacante."
+Relevo de guardia en Baluarte,Baluarte,Rápido,"**Normal:** Devuelve 1 carta de tus barracas a tu mano: juega 1 Baluarte de tu mano asistiendo.
+**Trigger:** Si una carta de tus barracas fuera a ser destruida: devuélvela a tu mano en su lugar."
+Reconstrucción en emergente Baluarte,Baluarte,Lento,"**Normal:** Juega 1 Baluarte de tu cementerio asistiendo.
+**Trigger:** Si un Baluarte es destruido: busca 1 Baluarte con PODER 150 o menos y efecto Asistiendo."
 Represalia en Baluarte,Baluarte,Rápido,"**Normal:** Elige 1 explorador del oponente: inflige 100 de daño.
 **Trigger:** Si un Baluarte es destruido por un explorador del oponente: inflige 200 de daño a ese explorador."
 Refuerzo de la Muralla,Baluarte,Lento,**Normal:** Elige 1 Baluarte: gana 100 PODER.

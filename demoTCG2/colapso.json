@@ -1,38 +1,38 @@
 {
   "cardgamePrototyperExport": "project",
   "formatVersion": 1,
-  "exportedAt": "2026-11-04T13:28:29.298Z",
+  "exportedAt": "2026-11-04T20:13:03.423Z",
   "project": {
-    "name": "Umbral",
+    "name": "Colapso (tablero)",
     "cardTypes": [
       {
-        "id": "b351b377-b795-457c-9840-a184e7bc8ed2",
+        "id": "bc02530f-6bc8-41b2-a1e2-39d072d14750",
         "name": "Explorador",
         "width": 240,
         "height": 336,
         "properties": [
           {
-            "id": "63c88eed-643d-4c56-bb8e-453c12edf07f",
+            "id": "1aae702a-cd23-4a59-a9bf-e154f2f87816",
             "name": "nombre",
             "sampleValue": "Sample",
             "type": "line"
           },
           {
-            "id": "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77",
+            "id": "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e",
             "name": "dimension",
             "sampleValue": "Fantaspet",
             "type": "line"
           },
           {
-            "id": "b7f061d3-3c8b-48bf-98b1-a275ef347593",
+            "id": "72542265-a824-4649-af65-1cf56cedd34c",
             "name": "poder",
             "sampleValue": "150",
             "type": "integer"
           },
           {
-            "id": "c2fd2738-051c-4793-a907-bfb245d26fce",
+            "id": "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e",
             "name": "efecto",
-            "sampleValue": "**Normal:** Efecto de ejemplo.\n**Trigger:** Si ocurre algo: pasa algo.",
+            "sampleValue": "**En guardia:** Efecto de ejemplo.\n**Asistiendo:** Costo: efecto.",
             "type": "text"
           }
         ],
@@ -71,7 +71,7 @@
               "overflow": "wrap"
             },
             "text": "",
-            "id": "fe1bcaa1-5b98-4f25-91b8-16c334676aeb"
+            "id": "480d48cc-7a05-4b88-82a9-2c40d98fc585"
           },
           {
             "kind": "text",
@@ -107,7 +107,7 @@
               "overflow": "squash"
             },
             "template": "{nombre}",
-            "id": "11069a43-7e7d-46a6-82e9-29ffca8dcb46"
+            "id": "2084057f-8754-4635-93d5-6deb9b8b31dc"
           },
           {
             "kind": "text",
@@ -143,7 +143,7 @@
               "overflow": "squash"
             },
             "template": "{dimension}",
-            "id": "8a227707-e0e7-44a4-9363-ef3e1aeb56e7"
+            "id": "0ef14564-1bb0-4f08-9211-066b27c99497"
           },
           {
             "kind": "text",
@@ -179,7 +179,7 @@
               "overflow": "squash"
             },
             "template": "EXPLORADOR",
-            "id": "40dba089-74fa-44c0-82e4-5f9a050dcf1c"
+            "id": "28ae2e17-f5a7-49f2-a1c8-e5cb173dcfd6"
           },
           {
             "kind": "label",
@@ -215,7 +215,7 @@
               "overflow": "wrap"
             },
             "text": "ARTE",
-            "id": "abbd3fdd-c2cc-4565-bbd8-b180403ec689"
+            "id": "f57016f5-1b1b-48c5-af15-fb231d6563a8"
           },
           {
             "kind": "text",
@@ -251,7 +251,7 @@
               "overflow": "squash"
             },
             "template": "{poder}",
-            "id": "27b78c33-e908-4f0e-9da8-7cf67b35c662"
+            "id": "e548847a-b531-4afe-9dd5-a748976719ab"
           },
           {
             "kind": "text",
@@ -289,7 +289,7 @@
               "paragraphSpacing": 3
             },
             "template": "{efecto}",
-            "id": "a66af847-c97b-4ce6-ba6e-f279f32900fe"
+            "id": "c2193994-317d-4a20-9761-ebe60aaf1cde"
           },
           {
             "kind": "text",
@@ -325,367 +325,387 @@
               "overflow": "wrap"
             },
             "template": "EXP-{ID}",
-            "id": "d6ebf868-38d1-47ca-b7c6-4e048add77cd"
+            "id": "c91cc1ef-fcff-42d8-b605-5166c957b411"
           }
         ],
         "cards": [
           {
-            "id": "599c921f-7258-4147-8492-0ca7742ff4f1",
+            "id": "09ea22f1-769c-4bd7-9505-a9dbf6e92db2",
             "number": 1,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Plumifer",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Fantaspet",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "100",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "**Normal:** Destruye esta carta.\n**Trigger:** Si esta carta es destruida: busca 1 Fantaspet con PODER 150 o menos."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Plumifer",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Fantaspet",
+              "72542265-a824-4649-af65-1cf56cedd34c": "100",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "**Asistiendo:** Destruye esta carta: busca 1 Fantaspet con PODER 100 o menos y efecto Asistiendo."
             }
           },
           {
-            "id": "c7bc122b-3e96-40b8-8898-4821a50f854a",
+            "id": "ae26bb25-0219-4b83-ac91-b83133a8ebef",
             "number": 2,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Gooboy",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Fantaspet",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "150",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "**Asistiendo:** Si el explorador fuera a ser destruido: destruye esta carta en su lugar."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Boolly",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Fantaspet",
+              "72542265-a824-4649-af65-1cf56cedd34c": "100",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "**Trigger:** (Desde tu mano) Si un Fantaspet es destruido: juega esta carta asistiendo.\n**Asistiendo:** Descarta 1 carta: devuelve 1 Fantaspet con PODER 100 o menos de tu cementerio a tu mano."
             }
           },
           {
-            "id": "09a56df4-0dd6-40f0-accd-8ddf22f65b55",
+            "id": "4d5991e9-0c0f-49d8-8cde-5dc87fd33cdc",
             "number": 3,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Boolly",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Fantaspet",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "100",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "**Trigger:** (Desde tu mano) Si un Fantaspet es destruido: juega esta carta boca arriba, asistiendo a un explorador sin asistente."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Gooboy",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Fantaspet",
+              "72542265-a824-4649-af65-1cf56cedd34c": "150",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "**Asistiendo:** Destruye esta carta y 1 carta de tus barracas: juega 1 Fantaspet con PODER 150 o menos de tu cementerio.\n**Trigger:** Si un Fantaspet fuera a ser destruido por daño: destruye esta carta en su lugar."
             }
           },
           {
-            "id": "34c2d7d6-7fc3-4998-9de6-fb1c41675ead",
+            "id": "4632e1ad-ac32-4e04-806c-f5ace10fff7e",
             "number": 4,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Cesarmill",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Fantaspet",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "150",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "Tiene +50 PODER por cada 3 cartas de tu cementerio (máx. +250).\n**Normal:** Busca 1 Fantaspet y juégalo asistiendo a esta carta (solo sin asistente)."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Cesarmill",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Fantaspet",
+              "72542265-a824-4649-af65-1cf56cedd34c": "150",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "Tiene +50 PODER por cada 3 cartas de tu cementerio (máx. +250).\n**En guardia:** Destruye 1 carta de tus barracas: busca 1 Fantaspet con efecto Asistiendo y juégalo asistiendo."
             }
           },
           {
-            "id": "b8b37e77-6e5b-48c6-b737-e9d0c1f70c05",
+            "id": "a6755f67-e8b3-4a03-8522-99295206bbbb",
             "number": 5,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Koalma",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Fantaspet",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "100",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "**Normal:** Exilia 1 carta de tu cementerio: devuelve 1 Fantaspet de tu cementerio a tu mano.\n**Asistiendo:** Si el explorador es atacado: inflige 100 de daño al atacante."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Koalma",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Fantaspet",
+              "72542265-a824-4649-af65-1cf56cedd34c": "100",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "**Asistiendo:** Exilia 1 carta de tu cementerio: devuelve 1 Fantaspet de tu cementerio a tu mano.\n**Trigger:** (Asistiendo) Si el oponente declara un ataque: inflige 100 de daño al atacante."
             }
           },
           {
-            "id": "3e2b66e4-f34b-44f7-bd80-4300d0387624",
+            "id": "8b808c82-ab6c-4c42-a565-9d98aa769af6",
             "number": 6,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Talkatak",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Fantaspet",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "150",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "**Normal:** Reemplaza 1 asistente por 1 Fantaspet de tu mano. El asistente reemplazado va a tu cementerio."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Talkatak",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Fantaspet",
+              "72542265-a824-4649-af65-1cf56cedd34c": "150",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "**Asistiendo:** Destruye esta carta y 1 carta de tus barracas: juega 1 Fantaspet de tu mano.\n**En guardia:** Destruye 1 carta de tus barracas: cura 100 de daño a 1 Fantaspet."
             }
           },
           {
-            "id": "ab52aabb-f8fe-40fb-b5d0-0431f2c65abf",
+            "id": "f50bc260-5c49-43ca-975d-f7e98fb551b9",
             "number": 7,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Dragging",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Fantaspet",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "50",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "**Asistiendo:** Si esta carta es revelada: destruye al atacante. Esta carta va a tu cementerio."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Dragging",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Fantaspet",
+              "72542265-a824-4649-af65-1cf56cedd34c": "50",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "**Trigger:** (Asistiendo) Si el oponente declara un ataque, descarta 1 carta: destruye al atacante. Esta carta va a tu cementerio."
             }
           },
           {
-            "id": "217a0544-a134-4ae8-ae13-a1d578028d38",
+            "id": "75891756-64fd-4394-8d81-9c43b894331b",
             "number": 8,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Espectro Guardián",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Fantaspet",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "200",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "Tiene +50 PODER mientras tengas 6 o más cartas en tu cementerio.\n**Trigger:** Si esta carta fuera a ser destruida por daño: sobrevive con 50.\n**Trigger:** Si esta carta es destruida: devuelve 1 Fantaspet de tu cementerio a tu mano."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Espectro Guardián",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Fantaspet",
+              "72542265-a824-4649-af65-1cf56cedd34c": "200",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "Tiene +50 PODER mientras tengas 6 o más cartas en tu cementerio.\n**Trigger:** Si esta carta fuera a ser destruida por daño: sobrevive con 50.\n**Trigger:** Si esta carta es destruida: devuelve 1 Fantaspet de tu cementerio a tu mano."
             }
           },
           {
-            "id": "868788c9-4523-467d-973e-58fd674e276f",
+            "id": "c91e9fd5-35d4-41e3-ae2e-28a1d3f9f80c",
             "number": 9,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Ugalito",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Ugabuga",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "100",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "**Normal:** Descarta 1 carta: busca 1 Ugabuga."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Ugalito",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Ugabuga",
+              "72542265-a824-4649-af65-1cf56cedd34c": "100",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "**Asistiendo:** Descarta 1 carta: busca 1 Ugabuga con PODER 150 y efecto Asistiendo."
             }
           },
           {
-            "id": "bdcbf000-4c7a-4e53-8b01-50c14f99976e",
+            "id": "fdcb820e-1d31-43bf-afcc-c296274c50a0",
             "number": 10,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Chamán Ugabu",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Ugabuga",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "150",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "**Normal:** Descarta 1 carta: devuelve 1 Ugabuga de tu cementerio a tu mano.\n**Trigger:** Si un Ugabuga es destruido: roba 1 carta."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Chamán Ugabu",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Ugabuga",
+              "72542265-a824-4649-af65-1cf56cedd34c": "150",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "**Asistiendo:** Descarta 1 carta: devuelve 1 Ugabuga de tu cementerio a tu mano.\n**Trigger:** Si un Ugabuga es destruido: roba 1 carta."
             }
           },
           {
-            "id": "2afdc42d-6781-4451-990b-37e6340d04b1",
+            "id": "c771611b-0f24-44fb-8a1d-aaf4170e86d0",
             "number": 11,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Pedrusco",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Ugabuga",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "150",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "**Trigger:** Si esta carta es destruida: destruye 1 explorador del oponente con PODER 200 o menos."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Pedrusco",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Ugabuga",
+              "72542265-a824-4649-af65-1cf56cedd34c": "150",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "**Asistiendo:** Descarta 1 carta: busca 1 Ugabuga con PODER 250 o más.\n**Trigger:** Si esta carta es destruida: destruye 1 explorador del oponente con PODER 200 o menos."
             }
           },
           {
-            "id": "ac657122-f34d-4658-8dd3-deb1ca9bee5c",
+            "id": "88226324-fcac-4578-9316-8ee267d4103f",
             "number": 12,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Cazador Ugabu",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Ugabuga",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "200",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "**Trigger:** Si el daño de esta carta destruye un explorador: el oponente descarta 1 carta al azar."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Cazador Ugabu",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Ugabuga",
+              "72542265-a824-4649-af65-1cf56cedd34c": "200",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "**Trigger:** Si el daño de esta carta destruye un explorador: el oponente descarta 1 carta al azar."
             }
           },
           {
-            "id": "6cf33d12-f163-4288-8fc4-9e17d06f8abc",
+            "id": "94160943-d9bb-460d-8987-215817307a26",
             "number": 13,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Balanced",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Ugabuga",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "200",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "**Trigger:** Si esta carta fuera a ser destruida por daño: sobrevive con 50."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Balanced",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Ugabuga",
+              "72542265-a824-4649-af65-1cf56cedd34c": "200",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "**Trigger:** Si esta carta fuera a ser destruida por daño: sobrevive con 50."
             }
           },
           {
-            "id": "1d106e04-818a-44a4-b822-9833b77563d8",
+            "id": "ac07782c-ec99-4617-bc79-5d1c6e2c8a00",
             "number": 14,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Triturador",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Ugabuga",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "250",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "**Trigger:** Si esta carta es jugada: destruye todos los demás exploradores con PODER 150 o menos."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Triturador",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Ugabuga",
+              "72542265-a824-4649-af65-1cf56cedd34c": "250",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "**Trigger:** Si esta carta entra a primera fila: destruye todos los demás exploradores con PODER 150 o menos."
             }
           },
           {
-            "id": "8f68808f-f6e3-4852-85d5-e6009fec8b9e",
+            "id": "eab0efa7-e345-44c9-bc28-83ef5af7dc16",
             "number": 15,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Telarín",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Ragnatica",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "100",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "**Normal:** Agrega 1 token Cría."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Lance-elot",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Ugabuga",
+              "72542265-a824-4649-af65-1cf56cedd34c": "100",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "**Asistiendo:** Destruye esta carta: elige 1 Ugabuga: gana 100 PODER."
             }
           },
           {
-            "id": "3480b20d-b233-4b7c-9649-9ac3ea784cb8",
+            "id": "de0843e2-cf2e-422b-9cd1-f9ec524ba16f",
             "number": 16,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Hilandera",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Ragnatica",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "150",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "**Normal:** Destruye 1 token Cría: busca 1 Ragnatica con PODER 200 o menos."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Telarín",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Ragnatica",
+              "72542265-a824-4649-af65-1cf56cedd34c": "100",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "**En guardia:** Agrega 1 token Cría.\n**Asistiendo:** Destruye esta carta: busca 1 evento Ragnatica Lento."
             }
           },
           {
-            "id": "f8b37cb1-9e1d-44d5-8cb8-12e79987defc",
+            "id": "3773fea2-160b-49bf-923f-c88f91cf50e1",
             "number": 17,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Madre Telar",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Ragnatica",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "200",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "Los tokens Cría tienen +50 PODER.\n**Normal:** Descarta 1 carta: agrega 2 tokens Cría."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Hilandera",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Ragnatica",
+              "72542265-a824-4649-af65-1cf56cedd34c": "150",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "**Asistiendo:** Destruye 1 token Cría: busca 1 Ragnatica con PODER 150 o menos y efecto Asistiendo."
             }
           },
           {
-            "id": "77a9ca15-9b8d-4a7a-af2a-4b54b62c7265",
+            "id": "32540d39-11b1-4842-a38e-cb11b28b2e72",
             "number": 18,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Nido Vivo",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Ragnatica",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "150",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "**Trigger:** Si un token Cría es destruida: roba 1 carta."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Madre Telar",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Ragnatica",
+              "72542265-a824-4649-af65-1cf56cedd34c": "200",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "Los tokens Cría tienen +50 PODER.\n**En guardia:** Descarta 1 carta: agrega 2 tokens Cría."
             }
           },
           {
-            "id": "9b30ae33-9f74-4705-9b54-bdd5ac73a9c9",
+            "id": "eebda606-2914-4c98-afde-fe145fc197e9",
             "number": 19,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Reina de Ragnatica",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Ragnatica",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "250",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "Mientras controles 3 o más tokens Cría, esta carta tiene +100 PODER.\n**Trigger:** Si el oponente activa un efecto de explorador que elige a una carta tuya, destruye 1 token Cría: niega esa activación. Agrega 1 token Cría."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Nido Vivo",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Ragnatica",
+              "72542265-a824-4649-af65-1cf56cedd34c": "150",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "**Trigger:** Si un token Cría es destruido: roba 1 carta.\n**Asistiendo:** Destruye esta carta: agrega 2 tokens Cría."
             }
           },
           {
-            "id": "3fd25a20-a56c-4064-b5ce-1026bba137f7",
+            "id": "9a0c2759-ae5f-4943-95ab-e5cf09738e74",
             "number": 20,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Viuda Gris",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Ragnatica",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "150",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "**Trigger:** Si un explorador del oponente declara un ataque: anula ese ataque. Agrega 1 token Cría."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Reina de Ragnatica",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Ragnatica",
+              "72542265-a824-4649-af65-1cf56cedd34c": "250",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "Mientras controles 3 o más tokens Cría, esta carta tiene +100 PODER.\n**Trigger:** Si el oponente activa un efecto de explorador que elige a una carta tuya, destruye 1 token Cría: niega esa activación. Agrega 1 token Cría."
             }
           },
           {
-            "id": "dcbff133-c6db-4552-9762-76299692799f",
+            "id": "7e3701ea-8aba-41b5-8ae7-e01fed4a4be8",
             "number": 21,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Emboscadora",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Ragnatica",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "150",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "**Trigger:** (Desde tu mano) Si el oponente juega un explorador: juega esta carta. Agrega 1 token Cría."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Viuda Gris",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Ragnatica",
+              "72542265-a824-4649-af65-1cf56cedd34c": "150",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "**Trigger:** (Asistiendo) Si el oponente declara un ataque, destruye esta carta: anula ese ataque. Agrega 1 token Cría."
             }
           },
           {
-            "id": "67309fb7-2ff1-4c66-946a-31d56d923b5f",
+            "id": "09ebf914-f6c3-4b3b-9f24-43912d295766",
             "number": 22,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Capullo Silente",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Ragnatica",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "100",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "**Asistiendo:** Si el explorador es atacado: devuelve al atacante a su mano. Agrega 1 token Cría."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Emboscadora",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Ragnatica",
+              "72542265-a824-4649-af65-1cf56cedd34c": "150",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "**Trigger:** (Desde tu mano) Si el oponente juega un explorador: juega esta carta. Agrega 1 token Cría."
             }
           },
           {
-            "id": "04567637-8116-48ea-ad44-6fa93e22aee3",
+            "id": "9b6290ab-9101-407c-856c-bd544ee63ca9",
             "number": 23,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Cría de Ragnatica",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Ragnatica",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "100",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "Token. Desaparece si deja el campo."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Capullo Silente",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Ragnatica",
+              "72542265-a824-4649-af65-1cf56cedd34c": "100",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "**Trigger:** (Asistiendo) Si el oponente declara un ataque, destruye esta carta: devuelve al atacante a su mano. Agrega 1 token Cría."
             }
           },
           {
-            "id": "d5bf84bd-fba4-4025-9c58-9c5466ed3b1b",
+            "id": "b3eb0fa1-843a-4666-b989-4a5d7c43c765",
             "number": 24,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Rodelero",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Baluarte",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "200",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "**Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo asistido por esta carta.\n**Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asístelo con esta carta.\n**Asistiendo:** (Activa como **Escudero**) Si el explorador es atacado: gana 50 PODER."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Cría de Ragnatica",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Ragnatica",
+              "72542265-a824-4649-af65-1cf56cedd34c": "100",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "Token. Siempre en guardia. Desaparece si deja el campo."
             }
           },
           {
-            "id": "bd4d4238-f316-41dd-8a85-cc80734933e0",
+            "id": "858e1923-bf07-4d4b-9119-2aea0ef25d6c",
             "number": 25,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Alabardero",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Baluarte",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "150",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "**Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo asistido por esta carta.\n**Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asístelo con esta carta.\n**Asistiendo:** (Activa como **Escudero**) Si el explorador es atacado: inflige 50 de daño al atacante."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Rodelero",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Baluarte",
+              "72542265-a824-4649-af65-1cf56cedd34c": "200",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "**Asistiendo:** Si no controlas a Aegis, descarta 1 carta: juega 1 Aegis de tu mazo.\n**En guardia:** (Activa como **Escudero**) Elige 1 Baluarte: gana 50 PODER."
             }
           },
           {
-            "id": "867c2617-ae79-4130-a4c8-03ee57eee82b",
+            "id": "2d50caac-60b9-4478-84a2-3e4af66d685e",
             "number": 26,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Armero",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Baluarte",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "150",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "**Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo asistido por esta carta.\n**Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asístelo con esta carta.\n**Asistiendo:** (Activa como **Escudero**) Si esta carta es destruida: el explorador gana 50 PODER."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Alabardero",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Baluarte",
+              "72542265-a824-4649-af65-1cf56cedd34c": "150",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "**Asistiendo:** Si no controlas a Aegis, descarta 1 carta: juega 1 Aegis de tu mazo.\n**Trigger:** (Asistiendo) (Activa como **Escudero**) Si el oponente declara un ataque: inflige 50 de daño al atacante."
             }
           },
           {
-            "id": "809eb67c-a905-4060-8ce1-f7de8d3386d3",
+            "id": "5c638c4e-6bc3-4f66-bd29-48b7f3da1b91",
             "number": 27,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Ballestero",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Baluarte",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "100",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "**Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo asistido por esta carta.\n**Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asístelo con esta carta.\n**Trigger:** (Activa como **Escudero**) Si el oponente declara un ataque: inflige 50 de daño a ese explorador."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Armero",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Baluarte",
+              "72542265-a824-4649-af65-1cf56cedd34c": "150",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "**Asistiendo:** Si no controlas a Aegis, descarta 1 carta: juega 1 Aegis de tu mazo.\n**Trigger:** (Asistiendo) (Activa como **Escudero**) Si esta carta es destruida: elige 1 Baluarte: gana 50 PODER."
             }
           },
           {
-            "id": "d36a0c6d-dc16-40c5-897c-417a847f2069",
+            "id": "4a9b76c6-84e7-4e02-b4a1-46dbd3ef0b3e",
             "number": 28,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Heraldo",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Baluarte",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "100",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "**Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo asistido por esta carta.\n**Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asístelo con esta carta.\n**Asistiendo:** (Activa como **Escudero**) Si esta carta es destruida: devuelve 1 Escudero de tu cementerio a tu mano."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Ballestero",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Baluarte",
+              "72542265-a824-4649-af65-1cf56cedd34c": "100",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "**Asistiendo:** Si no controlas a Aegis, descarta 1 carta: juega 1 Aegis de tu mazo.\n**Trigger:** (Activa como **Escudero**) Si el oponente declara un ataque: inflige 50 de daño al atacante."
             }
           },
           {
-            "id": "61db2cd8-41a6-415d-be6c-3c112768a219",
+            "id": "14341a0c-a9db-4304-a749-84e3fc8aee40",
             "number": 29,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Centinela del Baluarte",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Baluarte",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "150",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "**Normal:** Descarta 1 carta: juega 1 Baluarte de tu cementerio asistiendo a un explorador sin asistente."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Heraldo",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Baluarte",
+              "72542265-a824-4649-af65-1cf56cedd34c": "100",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "**Asistiendo:** Si no controlas a Aegis, descarta 1 carta: juega 1 Aegis de tu mazo.\n**Trigger:** (Asistiendo) (Activa como **Escudero**) Si esta carta es destruida: devuelve 1 Escudero de tu cementerio a tu mano."
             }
           },
           {
-            "id": "e258528a-ce18-4608-90f2-887d0c70e8b1",
+            "id": "438dca7f-1d7a-45a2-a2ca-71918e99a9e3",
             "number": 30,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Sargento de la Muralla",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Baluarte",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "200",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "Los demás Baluarte tienen +50 PODER."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Archivista del Baluarte",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Baluarte",
+              "72542265-a824-4649-af65-1cf56cedd34c": "100",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "**Asistiendo:** Descarta 1 carta: busca 1 Baluarte con PODER 150 o menos y efecto Asistiendo."
             }
           },
           {
-            "id": "a3a4dd16-8014-4e3d-ab1d-3c4e85b095fc",
+            "id": "0987b968-7fc9-4c4e-a933-a93030b81b6a",
             "number": 31,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Torre Viva",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Baluarte",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "250",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "**Trigger:** Al comienzo de tu turno: cura 100 de daño a 1 explorador.\n**Trigger:** Si esta carta fuera a ser destruida por daño: sobrevive con 100."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Centinela del Baluarte",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Baluarte",
+              "72542265-a824-4649-af65-1cf56cedd34c": "150",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "**Asistiendo:** Descarta 1 carta: juega 1 Baluarte de tu cementerio asistiendo."
             }
           },
           {
-            "id": "683f6a01-3196-4507-b7e1-9f89eba21287",
+            "id": "bb85860c-b224-4f9e-aaea-062489498336",
             "number": 32,
             "values": {
-              "63c88eed-643d-4c56-bb8e-453c12edf07f": "Cartógrafo Errante",
-              "41b35f4d-8839-43a5-b7a3-a0fcf6fdba77": "Neutral",
-              "b7f061d3-3c8b-48bf-98b1-a275ef347593": "150",
-              "c2fd2738-051c-4793-a907-bfb245d26fce": "**Normal:** Roba 1 carta, luego descarta 1 carta."
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Sargento de la Muralla",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Baluarte",
+              "72542265-a824-4649-af65-1cf56cedd34c": "200",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "Los demás Baluarte tienen +50 PODER."
+            }
+          },
+          {
+            "id": "5cc294ee-d1d8-4dd0-a792-a63d1087b002",
+            "number": 33,
+            "values": {
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Torre Viva",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Baluarte",
+              "72542265-a824-4649-af65-1cf56cedd34c": "250",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "**Trigger:** Al comienzo de tu turno: cura 100 de daño a 1 explorador.\n**Trigger:** Si esta carta fuera a ser destruida por daño: sobrevive con 100."
+            }
+          },
+          {
+            "id": "db2e909c-36c3-43e3-8973-79eea3e9862b",
+            "number": 34,
+            "values": {
+              "1aae702a-cd23-4a59-a9bf-e154f2f87816": "Cartógrafo Errante",
+              "9dd9d0d0-0d5e-4cb3-8a76-19e166ea938e": "Neutral",
+              "72542265-a824-4649-af65-1cf56cedd34c": "150",
+              "ab1f8516-c4a6-4d9d-9272-f436c9ff9f6e": "**En guardia:** Roba 1 carta, luego descarta 1 carta."
             }
           }
         ],
-        "nextCardNumber": 33
+        "nextCardNumber": 35
       },
       {
-        "id": "9fd8aae1-f6ae-4fc7-9b92-492b11a60439",
+        "id": "cf6c9ee5-4915-479e-b0af-6bac8b656c71",
         "name": "Explorador (con restricción)",
         "width": 240,
         "height": 336,
         "properties": [
           {
-            "id": "9cd6a39b-6ec8-4b5f-836d-c19455f052c4",
+            "id": "e947f269-a00d-4f71-8dc9-76cf4e1c811d",
             "name": "nombre",
             "sampleValue": "Sample",
             "type": "line"
           },
           {
-            "id": "593b4579-8272-4d3a-9842-fc9544eaa2df",
+            "id": "a93320be-6c83-4c6e-8f6e-82a16f6cb819",
             "name": "dimension",
             "sampleValue": "Fantaspet",
             "type": "line"
           },
           {
-            "id": "e76765e1-52a1-4670-940d-21a62714f103",
+            "id": "29a03196-d3c2-4ba3-8838-69edeb416dc4",
             "name": "poder",
             "sampleValue": "150",
             "type": "integer"
           },
           {
-            "id": "bb367475-903b-41a3-aa67-4099e85bd7a9",
+            "id": "c5a2f2d2-79ef-4c78-abab-89d445fea6d9",
             "name": "efecto",
-            "sampleValue": "**Normal:** Efecto de ejemplo.\n**Trigger:** Si ocurre algo: pasa algo.",
+            "sampleValue": "**En guardia:** Efecto de ejemplo.\n**Asistiendo:** Costo: efecto.",
             "type": "text"
           },
           {
-            "id": "45d14b5e-dbb5-45f5-82b0-b19cb82c7a1a",
+            "id": "f8bb56ff-09ec-4f36-89bd-8a6f264f8cf8",
             "name": "restriccion",
-            "sampleValue": "Después de entrar al campo> Si es tu turno: se termina tu turno.",
+            "sampleValue": "Al entrar a primera fila> Si es tu turno: se termina tu turno.",
             "type": "text"
           }
         ],
@@ -724,7 +744,7 @@
               "overflow": "wrap"
             },
             "text": "",
-            "id": "43efdf51-0e18-45c2-9bab-2ad2f9898ef1"
+            "id": "db04cc31-fbad-4ae7-851d-d87763ee6739"
           },
           {
             "kind": "text",
@@ -760,7 +780,7 @@
               "overflow": "squash"
             },
             "template": "{nombre}",
-            "id": "6d55ff89-8cfb-4f16-9dd4-d1fedd3d4e58"
+            "id": "5bcb3437-d61c-469f-8178-cdee561ae6ef"
           },
           {
             "kind": "text",
@@ -796,7 +816,7 @@
               "overflow": "squash"
             },
             "template": "{dimension}",
-            "id": "505f1df8-144c-47bf-ad67-049279735565"
+            "id": "8ed8d45d-c76f-4764-b137-f3a421ea0ea0"
           },
           {
             "kind": "text",
@@ -832,7 +852,7 @@
               "overflow": "squash"
             },
             "template": "EXPLORADOR",
-            "id": "bcb41525-414c-4be9-a124-4e99a73dbbdf"
+            "id": "8762c2c1-4e20-47b4-a7a0-102bf3c18e54"
           },
           {
             "kind": "label",
@@ -868,7 +888,7 @@
               "overflow": "wrap"
             },
             "text": "ARTE",
-            "id": "ec475e51-9c5e-4245-b370-5e6a12c31805"
+            "id": "7c53d4f2-84c5-462e-8a5b-6b3e5c2176f3"
           },
           {
             "kind": "text",
@@ -904,7 +924,7 @@
               "overflow": "squash"
             },
             "template": "{poder}",
-            "id": "1e4e7a39-ec72-4d61-b96d-d05d023e1cf8"
+            "id": "775136f5-4518-4986-ba72-5a18529850e7"
           },
           {
             "kind": "text",
@@ -942,7 +962,7 @@
               "paragraphSpacing": 3
             },
             "template": "{efecto}",
-            "id": "dbe1f260-a0ef-4b6f-a16d-436ca7583d46"
+            "id": "cb6aacee-7bff-4ec7-9f41-f8d03d0fbf89"
           },
           {
             "kind": "text",
@@ -978,7 +998,7 @@
               "overflow": "wrap"
             },
             "template": "{restriccion}",
-            "id": "a7539d95-cefb-412d-8768-38a44a967866"
+            "id": "3c30804f-588a-489c-ad7e-a14648129dc6"
           },
           {
             "kind": "text",
@@ -1014,128 +1034,106 @@
               "overflow": "wrap"
             },
             "template": "EXR-{ID}",
-            "id": "5e6b32a3-9f5c-4f7d-b2a6-bc8c80b857b7"
+            "id": "1a6f58aa-112f-40c5-b513-504a534a81b8"
           }
         ],
         "cards": [
           {
-            "id": "3f1ec70c-e25e-4385-b445-f505729be7cd",
+            "id": "d16b406f-9ab4-46d1-b367-bbdab44ff7eb",
             "number": 1,
             "values": {
-              "9cd6a39b-6ec8-4b5f-836d-c19455f052c4": "Rey de la Niebla",
-              "593b4579-8272-4d3a-9842-fc9544eaa2df": "Fantaspet",
-              "e76765e1-52a1-4670-940d-21a62714f103": "200",
-              "bb367475-903b-41a3-aa67-4099e85bd7a9": "Tiene +50 PODER por cada 2 Fantaspet de tu cementerio (máx. +250).",
-              "45d14b5e-dbb5-45f5-82b0-b19cb82c7a1a": "Después de entrar al campo> Si es tu turno: descarta 1 carta."
+              "e947f269-a00d-4f71-8dc9-76cf4e1c811d": "Rey de la Niebla",
+              "a93320be-6c83-4c6e-8f6e-82a16f6cb819": "Fantaspet",
+              "29a03196-d3c2-4ba3-8838-69edeb416dc4": "200",
+              "c5a2f2d2-79ef-4c78-abab-89d445fea6d9": "Tiene +50 PODER por cada 2 Fantaspet de tu cementerio (máx. +250).",
+              "f8bb56ff-09ec-4f36-89bd-8a6f264f8cf8": "Al entrar a primera fila> Si es tu turno: descarta 1 carta."
             }
           },
           {
-            "id": "2de2465f-d48d-4431-904a-4f1789031e3d",
+            "id": "4df83800-ea8e-4bfb-b890-5b3cb0ad3614",
             "number": 2,
             "values": {
-              "9cd6a39b-6ec8-4b5f-836d-c19455f052c4": "Monstaa",
-              "593b4579-8272-4d3a-9842-fc9544eaa2df": "Ugabuga",
-              "e76765e1-52a1-4670-940d-21a62714f103": "300",
-              "45d14b5e-dbb5-45f5-82b0-b19cb82c7a1a": "Después de entrar al campo> destruye 1 explorador tuyo. Si no puedes, se destruye."
+              "e947f269-a00d-4f71-8dc9-76cf4e1c811d": "Monstaa",
+              "a93320be-6c83-4c6e-8f6e-82a16f6cb819": "Ugabuga",
+              "29a03196-d3c2-4ba3-8838-69edeb416dc4": "300",
+              "f8bb56ff-09ec-4f36-89bd-8a6f264f8cf8": "Al entrar a primera fila> destruye 1 explorador tuyo. Si no puedes, se destruye."
             }
           },
           {
-            "id": "d3222630-6328-4f96-8a9a-9e7c91152516",
+            "id": "908b21c6-9f59-47e6-a67d-9a0a49f6b957",
             "number": 3,
             "values": {
-              "9cd6a39b-6ec8-4b5f-836d-c19455f052c4": "Lance-elot",
-              "593b4579-8272-4d3a-9842-fc9544eaa2df": "Ugabuga",
-              "e76765e1-52a1-4670-940d-21a62714f103": "100",
-              "bb367475-903b-41a3-aa67-4099e85bd7a9": "**Asistiendo:** El explorador tiene +100 PODER.",
-              "45d14b5e-dbb5-45f5-82b0-b19cb82c7a1a": "Esta carta no puede declarar ataques."
+              "e947f269-a00d-4f71-8dc9-76cf4e1c811d": "Van-guard",
+              "a93320be-6c83-4c6e-8f6e-82a16f6cb819": "Ugabuga",
+              "29a03196-d3c2-4ba3-8838-69edeb416dc4": "300",
+              "c5a2f2d2-79ef-4c78-abab-89d445fea6d9": "**Atracción** de ataques.",
+              "f8bb56ff-09ec-4f36-89bd-8a6f264f8cf8": "No puede declarar ataques. Recibe el doble de daño."
             }
           },
           {
-            "id": "0e0e7603-ec30-459a-a7c8-426bb76f4c43",
+            "id": "d1cd00a0-c77f-4e3e-9968-3c74425c0201",
             "number": 4,
             "values": {
-              "9cd6a39b-6ec8-4b5f-836d-c19455f052c4": "Van-guard",
-              "593b4579-8272-4d3a-9842-fc9544eaa2df": "Ugabuga",
-              "e76765e1-52a1-4670-940d-21a62714f103": "300",
-              "bb367475-903b-41a3-aa67-4099e85bd7a9": "**Atracción** de ataques.",
-              "45d14b5e-dbb5-45f5-82b0-b19cb82c7a1a": "No puede declarar ataques. Recibe el doble de daño."
+              "e947f269-a00d-4f71-8dc9-76cf4e1c811d": "Señuelo",
+              "a93320be-6c83-4c6e-8f6e-82a16f6cb819": "Ragnatica",
+              "29a03196-d3c2-4ba3-8838-69edeb416dc4": "100",
+              "c5a2f2d2-79ef-4c78-abab-89d445fea6d9": "**Atracción** de ataques.\n**En guardia:** Agrega 1 token Cría.",
+              "f8bb56ff-09ec-4f36-89bd-8a6f264f8cf8": "Esta carta no puede declarar ataques."
             }
           },
           {
-            "id": "b0bb5721-470c-4073-88bb-d3400d0b81cd",
+            "id": "54300683-c6f8-40ea-997c-30b661a5b813",
             "number": 5,
             "values": {
-              "9cd6a39b-6ec8-4b5f-836d-c19455f052c4": "Señuelo",
-              "593b4579-8272-4d3a-9842-fc9544eaa2df": "Ragnatica",
-              "e76765e1-52a1-4670-940d-21a62714f103": "100",
-              "bb367475-903b-41a3-aa67-4099e85bd7a9": "**Atracción** de ataques.\n**Normal:** Agrega 1 token Cría.",
-              "45d14b5e-dbb5-45f5-82b0-b19cb82c7a1a": "Esta carta no puede declarar ataques."
+              "e947f269-a00d-4f71-8dc9-76cf4e1c811d": "Aegis, Custodio del Baluarte",
+              "a93320be-6c83-4c6e-8f6e-82a16f6cb819": "Baluarte",
+              "29a03196-d3c2-4ba3-8838-69edeb416dc4": "200",
+              "c5a2f2d2-79ef-4c78-abab-89d445fea6d9": "**Atracción** de ataques y efectos.\nMientras tengas 1 Escudero en tus barracas, no puede ser destruida por efectos.\n**Trigger:** Al comienzo de tu turno: esta carta gana 50 PODER (máx. +200).",
+              "f8bb56ff-09ec-4f36-89bd-8a6f264f8cf8": "Al entrar a primera fila> Si es tu turno: se termina tu turno. Solo 1 copia."
             }
           },
           {
-            "id": "cee319c0-a85c-466d-81af-4fab46c6ba89",
+            "id": "bfdb9dca-db79-4d41-b6e8-0cd7f3e94fc9",
             "number": 6,
             "values": {
-              "9cd6a39b-6ec8-4b5f-836d-c19455f052c4": "Aegis, Custodio del Baluarte",
-              "593b4579-8272-4d3a-9842-fc9544eaa2df": "Baluarte",
-              "e76765e1-52a1-4670-940d-21a62714f103": "200",
-              "bb367475-903b-41a3-aa67-4099e85bd7a9": "**Atracción** de ataques y efectos.\nMientras tenga asistente, no puede ser destruida por efectos.\n**Trigger:** Al comienzo de tu turno: esta carta gana 50 PODER (máx. +200).",
-              "45d14b5e-dbb5-45f5-82b0-b19cb82c7a1a": "Después de entrar al campo> Si es tu turno: se termina tu turno. Solo 1 copia."
-            }
-          },
-          {
-            "id": "b0434492-0b28-4d70-990e-2809dc855a8d",
-            "number": 7,
-            "values": {
-              "9cd6a39b-6ec8-4b5f-836d-c19455f052c4": "Archivista del Baluarte",
-              "593b4579-8272-4d3a-9842-fc9544eaa2df": "Baluarte",
-              "e76765e1-52a1-4670-940d-21a62714f103": "100",
-              "bb367475-903b-41a3-aa67-4099e85bd7a9": "**Normal:** Busca 1 Baluarte.",
-              "45d14b5e-dbb5-45f5-82b0-b19cb82c7a1a": "Después de entrar al campo> descarta 1 carta."
-            }
-          },
-          {
-            "id": "d227c397-b4cb-464b-9a04-8a729a6ee2dd",
-            "number": 8,
-            "values": {
-              "9cd6a39b-6ec8-4b5f-836d-c19455f052c4": "Mercenario del Colapso",
-              "593b4579-8272-4d3a-9842-fc9544eaa2df": "Neutral",
-              "e76765e1-52a1-4670-940d-21a62714f103": "250",
-              "bb367475-903b-41a3-aa67-4099e85bd7a9": "**Normal:** (Desde tu mano) Descarta 1 carta: juega esta carta.",
-              "45d14b5e-dbb5-45f5-82b0-b19cb82c7a1a": "Después de entrar al campo> Si es tu turno: no puedes activar más efectos este turno."
+              "e947f269-a00d-4f71-8dc9-76cf4e1c811d": "Mercenario del Colapso",
+              "a93320be-6c83-4c6e-8f6e-82a16f6cb819": "Neutral",
+              "29a03196-d3c2-4ba3-8838-69edeb416dc4": "250",
+              "c5a2f2d2-79ef-4c78-abab-89d445fea6d9": "**Normal:** (Desde tu mano) Descarta 1 carta: juega esta carta.",
+              "f8bb56ff-09ec-4f36-89bd-8a6f264f8cf8": "Al entrar a primera fila> Si es tu turno: no puedes activar más efectos este turno."
             }
           }
         ],
-        "nextCardNumber": 9
+        "nextCardNumber": 7
       },
       {
-        "id": "2bf5be26-4c45-41c3-a0d7-e4cc773beeda",
+        "id": "5a92c1d1-927b-40ad-91b0-f5a71d1bd683",
         "name": "Evento",
         "width": 240,
         "height": 336,
         "properties": [
           {
-            "id": "1d13dca6-4ca3-44e1-802a-dc8e5c7f3fed",
+            "id": "75007f38-a07c-437c-9bda-c4d30c7a8524",
             "name": "nombre",
             "sampleValue": "Sample",
             "type": "line"
           },
           {
-            "id": "420ffe13-8325-43cb-8002-ae8aae725635",
+            "id": "82e2d11e-b58d-4eee-8f0a-5d883221998b",
             "name": "dimension",
             "sampleValue": "Fantaspet",
             "type": "line"
           },
           {
-            "id": "a493cbcc-f645-402c-a3d9-1a930d09bd2a",
+            "id": "7507b87c-0dd0-4723-9d05-0784780eab0e",
             "name": "velocidad",
             "sampleValue": "Rápido",
             "type": "line"
           },
           {
-            "id": "c86cffb3-bd72-41f5-80da-f210e6531aec",
+            "id": "7ae503a0-f2eb-4dbf-9673-1bf36cbb0d73",
             "name": "efecto",
-            "sampleValue": "**Normal:** Efecto de ejemplo.\n**Trigger:** Si ocurre algo: pasa algo.",
+            "sampleValue": "**En guardia:** Efecto de ejemplo.\n**Asistiendo:** Costo: efecto.",
             "type": "text"
           }
         ],
@@ -1174,7 +1172,7 @@
               "overflow": "wrap"
             },
             "text": "",
-            "id": "1113fc82-6263-414b-96cf-e25d1bbd9a14"
+            "id": "a058c78d-de42-4d7e-a255-9f857697a958"
           },
           {
             "kind": "text",
@@ -1210,7 +1208,7 @@
               "overflow": "squash"
             },
             "template": "{nombre}",
-            "id": "61ac122a-a919-414a-99f6-88d89bef93a5"
+            "id": "c69ae525-67d6-4c48-87f6-66272709eeeb"
           },
           {
             "kind": "text",
@@ -1246,7 +1244,7 @@
               "overflow": "squash"
             },
             "template": "{dimension}",
-            "id": "85be7d2d-141c-4a71-963e-90ff9113b2f7"
+            "id": "6b4723e4-6895-4d79-a310-d5ba6a04972f"
           },
           {
             "kind": "text",
@@ -1282,7 +1280,7 @@
               "overflow": "squash"
             },
             "template": "EVENTO · {velocidad}",
-            "id": "40844ad1-d4fc-468b-9d90-9ff3b5d39316"
+            "id": "49e3d7f2-ba2c-4287-a526-75eedbe6786c"
           },
           {
             "kind": "label",
@@ -1318,7 +1316,7 @@
               "overflow": "wrap"
             },
             "text": "ARTE",
-            "id": "e8348987-7b7b-430b-a37d-638302dea357"
+            "id": "52bcf841-873b-484a-8a04-a417fb4fd02b"
           },
           {
             "kind": "text",
@@ -1356,7 +1354,7 @@
               "paragraphSpacing": 3
             },
             "template": "{efecto}",
-            "id": "a56798f0-0071-4e6d-a2f3-ec60a4f0016c"
+            "id": "2a1ea390-1592-4b2c-8fc0-dd2b53074fd0"
           },
           {
             "kind": "text",
@@ -1392,235 +1390,235 @@
               "overflow": "wrap"
             },
             "template": "EVT-{ID}",
-            "id": "9862a6c2-3265-4281-8d17-94f32d9fb859"
+            "id": "c5682964-3fde-469a-8177-6922e1b95342"
           }
         ],
         "cards": [
           {
-            "id": "061af304-72b9-4f4a-b0a9-70fdea2c5076",
+            "id": "0a135c06-1474-429f-a811-d37f0e8ae390",
             "number": 1,
             "values": {
-              "1d13dca6-4ca3-44e1-802a-dc8e5c7f3fed": "Susurros en Eterneblina",
-              "420ffe13-8325-43cb-8002-ae8aae725635": "Fantaspet",
-              "a493cbcc-f645-402c-a3d9-1a930d09bd2a": "Rápido",
-              "c86cffb3-bd72-41f5-80da-f210e6531aec": "**Normal:** Descarta 1 carta: devuelve 1 Fantaspet de tu cementerio a tu mano.\n**Trigger:** Si un Fantaspet fuera a ser destruido: devuélvelo a tu mano en su lugar."
+              "75007f38-a07c-437c-9bda-c4d30c7a8524": "Susurros en Eterneblina",
+              "82e2d11e-b58d-4eee-8f0a-5d883221998b": "Fantaspet",
+              "7507b87c-0dd0-4723-9d05-0784780eab0e": "Rápido",
+              "7ae503a0-f2eb-4dbf-9673-1bf36cbb0d73": "**Normal:** Descarta 1 carta: devuelve 1 Fantaspet de tu cementerio a tu mano.\n**Trigger:** Si un Fantaspet fuera a ser destruido: devuélvelo a tu mano en su lugar."
             }
           },
           {
-            "id": "18b81fcf-66d2-4090-b023-2f52fbed6e99",
+            "id": "97b1f612-e1b2-4a79-8a65-fd80d744f0de",
             "number": 2,
             "values": {
-              "1d13dca6-4ca3-44e1-802a-dc8e5c7f3fed": "Refugio en emergente Eterneblina",
-              "420ffe13-8325-43cb-8002-ae8aae725635": "Fantaspet",
-              "a493cbcc-f645-402c-a3d9-1a930d09bd2a": "Lento",
-              "c86cffb3-bd72-41f5-80da-f210e6531aec": "**Normal:** Revela 1 Fantaspet de tu mano: busca 1 Fantaspet con distinto nombre.\n**Trigger:** Si un Fantaspet es destruido: busca 1 Fantaspet con PODER 150 o menos."
+              "75007f38-a07c-437c-9bda-c4d30c7a8524": "Refugio en emergente Eterneblina",
+              "82e2d11e-b58d-4eee-8f0a-5d883221998b": "Fantaspet",
+              "7507b87c-0dd0-4723-9d05-0784780eab0e": "Lento",
+              "7ae503a0-f2eb-4dbf-9673-1bf36cbb0d73": "**Normal:** Revela 1 Fantaspet de tu mano: busca 1 Fantaspet con el mismo PODER y distinto nombre.\n**Trigger:** Si un Fantaspet es destruido: busca 1 Fantaspet con PODER 100 o menos."
             }
           },
           {
-            "id": "72151a91-5dff-4d0f-bc85-4fea52478d67",
+            "id": "be7bfab1-851b-4bc9-ae97-b8fcfa0ba557",
             "number": 3,
             "values": {
-              "1d13dca6-4ca3-44e1-802a-dc8e5c7f3fed": "Presencia en Eterneblina",
-              "420ffe13-8325-43cb-8002-ae8aae725635": "Fantaspet",
-              "a493cbcc-f645-402c-a3d9-1a930d09bd2a": "Rápido",
-              "c86cffb3-bd72-41f5-80da-f210e6531aec": "**Normal:** Elige 1 Fantaspet: gana 50 PODER.\n**Trigger:** Si un Fantaspet fuera a ser destruido por daño: sobrevive con 50."
+              "75007f38-a07c-437c-9bda-c4d30c7a8524": "Presencia en Eterneblina",
+              "82e2d11e-b58d-4eee-8f0a-5d883221998b": "Fantaspet",
+              "7507b87c-0dd0-4723-9d05-0784780eab0e": "Rápido",
+              "7ae503a0-f2eb-4dbf-9673-1bf36cbb0d73": "**Normal:** Elige 1 Fantaspet: gana 50 PODER.\n**Trigger:** Si un Fantaspet fuera a ser destruido por daño: sobrevive con 50."
             }
           },
           {
-            "id": "d202e81a-961d-4e0e-b80e-9cf7d76230b9",
+            "id": "41eae774-19ae-4c6d-bea0-2efbb9c7a2ea",
             "number": 4,
             "values": {
-              "1d13dca6-4ca3-44e1-802a-dc8e5c7f3fed": "Estampida en emergente Ugabuga",
-              "420ffe13-8325-43cb-8002-ae8aae725635": "Ugabuga",
-              "a493cbcc-f645-402c-a3d9-1a930d09bd2a": "Lento",
-              "c86cffb3-bd72-41f5-80da-f210e6531aec": "**Normal:** Elige 1 Ugabuga: puede declarar un segundo ataque este turno."
+              "75007f38-a07c-437c-9bda-c4d30c7a8524": "Estampida en emergente Ugabuga",
+              "82e2d11e-b58d-4eee-8f0a-5d883221998b": "Ugabuga",
+              "7507b87c-0dd0-4723-9d05-0784780eab0e": "Lento",
+              "7ae503a0-f2eb-4dbf-9673-1bf36cbb0d73": "**Normal:** Elige 1 Ugabuga: puede declarar un segundo ataque este turno."
             }
           },
           {
-            "id": "789e7490-f001-449d-9b77-86476c4018a8",
+            "id": "77ab0ec7-649d-4a08-86d7-57234b931391",
             "number": 5,
             "values": {
-              "1d13dca6-4ca3-44e1-802a-dc8e5c7f3fed": "Grito de guerra Ugabuga",
-              "420ffe13-8325-43cb-8002-ae8aae725635": "Ugabuga",
-              "a493cbcc-f645-402c-a3d9-1a930d09bd2a": "Rápido",
-              "c86cffb3-bd72-41f5-80da-f210e6531aec": "**Normal:** Elige 1 Ugabuga: gana 50 PODER.\n**Trigger:** Si un Ugabuga es atacado: gana 100 PODER."
+              "75007f38-a07c-437c-9bda-c4d30c7a8524": "Grito de guerra Ugabuga",
+              "82e2d11e-b58d-4eee-8f0a-5d883221998b": "Ugabuga",
+              "7507b87c-0dd0-4723-9d05-0784780eab0e": "Rápido",
+              "7ae503a0-f2eb-4dbf-9673-1bf36cbb0d73": "**Normal:** Elige 1 Ugabuga: gana 50 PODER.\n**Trigger:** Si un Ugabuga es atacado: gana 100 PODER."
             }
           },
           {
-            "id": "80d0e89a-b6cb-4a1e-86bf-cb9d0a1aedf1",
+            "id": "c1c3dbd8-282b-4fc2-b743-dc670188b0f8",
             "number": 6,
             "values": {
-              "1d13dca6-4ca3-44e1-802a-dc8e5c7f3fed": "Banquete inaugural de aldea Ugabuga",
-              "420ffe13-8325-43cb-8002-ae8aae725635": "Ugabuga",
-              "a493cbcc-f645-402c-a3d9-1a930d09bd2a": "Lento",
-              "c86cffb3-bd72-41f5-80da-f210e6531aec": "**Normal:** Destruye 1 explorador: roba 2 cartas.\n**Trigger:** Si un Ugabuga es destruido: juega 1 Ugabuga con PODER 200 o menos de tu mano."
+              "75007f38-a07c-437c-9bda-c4d30c7a8524": "Banquete inaugural de aldea Ugabuga",
+              "82e2d11e-b58d-4eee-8f0a-5d883221998b": "Ugabuga",
+              "7507b87c-0dd0-4723-9d05-0784780eab0e": "Lento",
+              "7ae503a0-f2eb-4dbf-9673-1bf36cbb0d73": "**Normal:** Destruye 1 explorador: roba 2 cartas.\n**Trigger:** Si un Ugabuga es destruido: juega 1 Ugabuga con PODER 200 o menos de tu mano."
             }
           },
           {
-            "id": "e424e02f-da63-4984-ac95-4b07e97f5660",
+            "id": "8975ddd1-22be-4dfc-8c21-e73da3cc4427",
             "number": 7,
             "values": {
-              "1d13dca6-4ca3-44e1-802a-dc8e5c7f3fed": "Conflicto en emergente reino de Ragnatica",
-              "420ffe13-8325-43cb-8002-ae8aae725635": "Ragnatica",
-              "a493cbcc-f645-402c-a3d9-1a930d09bd2a": "Lento",
-              "c86cffb3-bd72-41f5-80da-f210e6531aec": "**Normal:** Agrega 2 tokens Cría.\n**Trigger:** Si el oponente declara un ataque: agrega 1 token Cría."
+              "75007f38-a07c-437c-9bda-c4d30c7a8524": "Conflicto en emergente reino de Ragnatica",
+              "82e2d11e-b58d-4eee-8f0a-5d883221998b": "Ragnatica",
+              "7507b87c-0dd0-4723-9d05-0784780eab0e": "Lento",
+              "7ae503a0-f2eb-4dbf-9673-1bf36cbb0d73": "**Normal:** Agrega 2 tokens Cría.\n**Trigger:** Si el oponente declara un ataque: agrega 1 token Cría."
             }
           },
           {
-            "id": "2554515c-87ec-4789-94cc-463a7a2590f0",
+            "id": "8a62f1eb-3327-4a71-a41d-8cb6ff2d3237",
             "number": 8,
             "values": {
-              "1d13dca6-4ca3-44e1-802a-dc8e5c7f3fed": "Telar de urgencia en Ragnatica",
-              "420ffe13-8325-43cb-8002-ae8aae725635": "Ragnatica",
-              "a493cbcc-f645-402c-a3d9-1a930d09bd2a": "Lento",
-              "c86cffb3-bd72-41f5-80da-f210e6531aec": "**Normal:** Descarta 1 carta: agrega 2 tokens Cría."
+              "75007f38-a07c-437c-9bda-c4d30c7a8524": "Telar de urgencia en Ragnatica",
+              "82e2d11e-b58d-4eee-8f0a-5d883221998b": "Ragnatica",
+              "7507b87c-0dd0-4723-9d05-0784780eab0e": "Lento",
+              "7ae503a0-f2eb-4dbf-9673-1bf36cbb0d73": "**Normal:** Descarta 1 carta: agrega 2 tokens Cría."
             }
           },
           {
-            "id": "2cdc640d-724b-479c-a918-6325efff689d",
+            "id": "4a19edd7-fcd0-419f-8033-bddf194c782e",
             "number": 9,
             "values": {
-              "1d13dca6-4ca3-44e1-802a-dc8e5c7f3fed": "Hilos cortados en Ragnatica",
-              "420ffe13-8325-43cb-8002-ae8aae725635": "Ragnatica",
-              "a493cbcc-f645-402c-a3d9-1a930d09bd2a": "Rápido",
-              "c86cffb3-bd72-41f5-80da-f210e6531aec": "**Normal:** Devuelve a su mano 1 explorador del oponente. Agrega 1 token Cría."
+              "75007f38-a07c-437c-9bda-c4d30c7a8524": "Hilos cortados en Ragnatica",
+              "82e2d11e-b58d-4eee-8f0a-5d883221998b": "Ragnatica",
+              "7507b87c-0dd0-4723-9d05-0784780eab0e": "Rápido",
+              "7ae503a0-f2eb-4dbf-9673-1bf36cbb0d73": "**Normal:** Devuelve a su mano 1 explorador del oponente. Agrega 1 token Cría."
             }
           },
           {
-            "id": "7c36abbf-e206-4d22-b23f-3042011f89b1",
+            "id": "e104039f-83ef-4e06-9f26-69e854fbfda8",
             "number": 10,
             "values": {
-              "1d13dca6-4ca3-44e1-802a-dc8e5c7f3fed": "Crianza en Ragnatica",
-              "420ffe13-8325-43cb-8002-ae8aae725635": "Ragnatica",
-              "a493cbcc-f645-402c-a3d9-1a930d09bd2a": "Lento",
-              "c86cffb3-bd72-41f5-80da-f210e6531aec": "**Normal:** Elige 1 token Cría: gana 50 PODER."
+              "75007f38-a07c-437c-9bda-c4d30c7a8524": "Crianza en Ragnatica",
+              "82e2d11e-b58d-4eee-8f0a-5d883221998b": "Ragnatica",
+              "7507b87c-0dd0-4723-9d05-0784780eab0e": "Lento",
+              "7ae503a0-f2eb-4dbf-9673-1bf36cbb0d73": "**Normal:** Elige 1 token Cría: gana 50 PODER."
             }
           },
           {
-            "id": "0c33bc4a-46f3-4847-895d-986082fc546e",
+            "id": "73edd503-7f47-4a51-871b-e40ee237f5eb",
             "number": 11,
             "values": {
-              "1d13dca6-4ca3-44e1-802a-dc8e5c7f3fed": "Cerrad filas en emergente Baluarte",
-              "420ffe13-8325-43cb-8002-ae8aae725635": "Baluarte",
-              "a493cbcc-f645-402c-a3d9-1a930d09bd2a": "Rápido",
-              "c86cffb3-bd72-41f5-80da-f210e6531aec": "**Normal:** Elige 1 explorador con asistente: gana 50 PODER y cura todo su daño.\n**Trigger:** Si un explorador con asistente es atacado: inflige 100 de daño al atacante."
+              "75007f38-a07c-437c-9bda-c4d30c7a8524": "Cerrad filas en emergente Baluarte",
+              "82e2d11e-b58d-4eee-8f0a-5d883221998b": "Baluarte",
+              "7507b87c-0dd0-4723-9d05-0784780eab0e": "Rápido",
+              "7ae503a0-f2eb-4dbf-9673-1bf36cbb0d73": "**Normal:** Elige 1 Baluarte: gana 50 PODER y cura todo su daño.\n**Trigger:** Si un Baluarte es atacado: inflige 100 de daño al atacante."
             }
           },
           {
-            "id": "fce9cd05-5b95-4bb6-b49d-ffb03ba7798a",
+            "id": "3f944ae9-bf57-452c-a2f2-2898179f95d5",
             "number": 12,
             "values": {
-              "1d13dca6-4ca3-44e1-802a-dc8e5c7f3fed": "Relevo de guardia en Baluarte",
-              "420ffe13-8325-43cb-8002-ae8aae725635": "Baluarte",
-              "a493cbcc-f645-402c-a3d9-1a930d09bd2a": "Rápido",
-              "c86cffb3-bd72-41f5-80da-f210e6531aec": "**Normal:** Reemplaza 1 asistente por 1 Baluarte de tu mano. El asistente reemplazado vuelve a tu mano.\n**Trigger:** Si un asistente fuera a ser destruido: devuélvelo a tu mano en su lugar."
+              "75007f38-a07c-437c-9bda-c4d30c7a8524": "Relevo de guardia en Baluarte",
+              "82e2d11e-b58d-4eee-8f0a-5d883221998b": "Baluarte",
+              "7507b87c-0dd0-4723-9d05-0784780eab0e": "Rápido",
+              "7ae503a0-f2eb-4dbf-9673-1bf36cbb0d73": "**Normal:** Devuelve 1 carta de tus barracas a tu mano: juega 1 Baluarte de tu mano asistiendo.\n**Trigger:** Si una carta de tus barracas fuera a ser destruida: devuélvela a tu mano en su lugar."
             }
           },
           {
-            "id": "3c84a518-e172-4148-b48c-c6e8f988a09f",
+            "id": "4406a4ff-3910-4e23-90b4-c1520e06ea6f",
             "number": 13,
             "values": {
-              "1d13dca6-4ca3-44e1-802a-dc8e5c7f3fed": "Reconstrucción en emergente Baluarte",
-              "420ffe13-8325-43cb-8002-ae8aae725635": "Baluarte",
-              "a493cbcc-f645-402c-a3d9-1a930d09bd2a": "Lento",
-              "c86cffb3-bd72-41f5-80da-f210e6531aec": "**Normal:** Juega 1 Baluarte de tu cementerio asistiendo a un explorador sin asistente.\n**Trigger:** Si un Baluarte es destruido: busca 1 Baluarte con PODER 150 o menos."
+              "75007f38-a07c-437c-9bda-c4d30c7a8524": "Reconstrucción en emergente Baluarte",
+              "82e2d11e-b58d-4eee-8f0a-5d883221998b": "Baluarte",
+              "7507b87c-0dd0-4723-9d05-0784780eab0e": "Lento",
+              "7ae503a0-f2eb-4dbf-9673-1bf36cbb0d73": "**Normal:** Juega 1 Baluarte de tu cementerio asistiendo.\n**Trigger:** Si un Baluarte es destruido: busca 1 Baluarte con PODER 150 o menos y efecto Asistiendo."
             }
           },
           {
-            "id": "1f2b122e-8350-48f5-a01b-1b707c327917",
+            "id": "36c79f98-8187-4451-8f33-258a93b04507",
             "number": 14,
             "values": {
-              "1d13dca6-4ca3-44e1-802a-dc8e5c7f3fed": "Represalia en Baluarte",
-              "420ffe13-8325-43cb-8002-ae8aae725635": "Baluarte",
-              "a493cbcc-f645-402c-a3d9-1a930d09bd2a": "Rápido",
-              "c86cffb3-bd72-41f5-80da-f210e6531aec": "**Normal:** Elige 1 explorador del oponente: inflige 100 de daño.\n**Trigger:** Si un Baluarte es destruido por un explorador del oponente: inflige 200 de daño a ese explorador."
+              "75007f38-a07c-437c-9bda-c4d30c7a8524": "Represalia en Baluarte",
+              "82e2d11e-b58d-4eee-8f0a-5d883221998b": "Baluarte",
+              "7507b87c-0dd0-4723-9d05-0784780eab0e": "Rápido",
+              "7ae503a0-f2eb-4dbf-9673-1bf36cbb0d73": "**Normal:** Elige 1 explorador del oponente: inflige 100 de daño.\n**Trigger:** Si un Baluarte es destruido por un explorador del oponente: inflige 200 de daño a ese explorador."
             }
           },
           {
-            "id": "abb5b088-bb6b-46d2-9707-da1efb916efc",
+            "id": "0eae56c9-97d6-4e91-81c9-b5eca81c672d",
             "number": 15,
             "values": {
-              "1d13dca6-4ca3-44e1-802a-dc8e5c7f3fed": "Refuerzo de la Muralla",
-              "420ffe13-8325-43cb-8002-ae8aae725635": "Baluarte",
-              "a493cbcc-f645-402c-a3d9-1a930d09bd2a": "Lento",
-              "c86cffb3-bd72-41f5-80da-f210e6531aec": "**Normal:** Elige 1 Baluarte: gana 100 PODER."
+              "75007f38-a07c-437c-9bda-c4d30c7a8524": "Refuerzo de la Muralla",
+              "82e2d11e-b58d-4eee-8f0a-5d883221998b": "Baluarte",
+              "7507b87c-0dd0-4723-9d05-0784780eab0e": "Lento",
+              "7ae503a0-f2eb-4dbf-9673-1bf36cbb0d73": "**Normal:** Elige 1 Baluarte: gana 100 PODER."
             }
           },
           {
-            "id": "ad6b9715-20aa-40f5-8395-af78e2afd18e",
+            "id": "df3c6230-1932-4a8c-bfb6-35cfa049d8ec",
             "number": 16,
             "values": {
-              "1d13dca6-4ca3-44e1-802a-dc8e5c7f3fed": "Brújula Rota",
-              "420ffe13-8325-43cb-8002-ae8aae725635": "Neutral",
-              "a493cbcc-f645-402c-a3d9-1a930d09bd2a": "Lento",
-              "c86cffb3-bd72-41f5-80da-f210e6531aec": "**Normal:** Roba 2 cartas, luego descarta 2 cartas.\n**Trigger:** Si una carta falla en la búsqueda: roba 1 carta."
+              "75007f38-a07c-437c-9bda-c4d30c7a8524": "Brújula Rota",
+              "82e2d11e-b58d-4eee-8f0a-5d883221998b": "Neutral",
+              "7507b87c-0dd0-4723-9d05-0784780eab0e": "Lento",
+              "7ae503a0-f2eb-4dbf-9673-1bf36cbb0d73": "**Normal:** Roba 2 cartas, luego descarta 2 cartas.\n**Trigger:** Si una carta falla en la búsqueda: roba 1 carta."
             }
           },
           {
-            "id": "8b7b9f7f-4e25-4f40-99ca-03c8eaacae95",
+            "id": "0bc07c80-9444-43a1-a4f8-60a990cc54e6",
             "number": 17,
             "values": {
-              "1d13dca6-4ca3-44e1-802a-dc8e5c7f3fed": "Retirada Táctica",
-              "420ffe13-8325-43cb-8002-ae8aae725635": "Neutral",
-              "a493cbcc-f645-402c-a3d9-1a930d09bd2a": "Rápido",
-              "c86cffb3-bd72-41f5-80da-f210e6531aec": "**Normal:** Devuelve 1 explorador a tu mano.\n**Trigger:** Si un explorador es atacado: devuélvelo a tu mano. El ataque termina. Roba 1 carta."
+              "75007f38-a07c-437c-9bda-c4d30c7a8524": "Retirada Táctica",
+              "82e2d11e-b58d-4eee-8f0a-5d883221998b": "Neutral",
+              "7507b87c-0dd0-4723-9d05-0784780eab0e": "Rápido",
+              "7ae503a0-f2eb-4dbf-9673-1bf36cbb0d73": "**Normal:** Devuelve 1 explorador a tu mano.\n**Trigger:** Si un explorador es atacado: devuélvelo a tu mano. El ataque termina. Roba 1 carta."
             }
           },
           {
-            "id": "f6c8b835-db9f-4615-a8fe-d8e24ef92577",
+            "id": "76daff79-28ac-4373-8336-15b29390bd94",
             "number": 18,
             "values": {
-              "1d13dca6-4ca3-44e1-802a-dc8e5c7f3fed": "Grieta en emergente Valle Mudo",
-              "420ffe13-8325-43cb-8002-ae8aae725635": "Neutral",
-              "a493cbcc-f645-402c-a3d9-1a930d09bd2a": "Rápido",
-              "c86cffb3-bd72-41f5-80da-f210e6531aec": "**Trigger:** Si el oponente activa un efecto que busca, descarta 1 carta: niega esa activación. Roba 1 carta."
+              "75007f38-a07c-437c-9bda-c4d30c7a8524": "Grieta en emergente Valle Mudo",
+              "82e2d11e-b58d-4eee-8f0a-5d883221998b": "Neutral",
+              "7507b87c-0dd0-4723-9d05-0784780eab0e": "Rápido",
+              "7ae503a0-f2eb-4dbf-9673-1bf36cbb0d73": "**Trigger:** Si el oponente activa un efecto que busca, descarta 1 carta: niega esa activación. Roba 1 carta."
             }
           },
           {
-            "id": "9276094e-6b08-47ff-98d3-f8aaf55632fc",
+            "id": "8063d235-3b37-4bdf-bf13-5eb72e5eb0e5",
             "number": 19,
             "values": {
-              "1d13dca6-4ca3-44e1-802a-dc8e5c7f3fed": "Botiquín del Colapso",
-              "420ffe13-8325-43cb-8002-ae8aae725635": "Neutral",
-              "a493cbcc-f645-402c-a3d9-1a930d09bd2a": "Lento",
-              "c86cffb3-bd72-41f5-80da-f210e6531aec": "**Normal:** Cura todo el daño de 1 explorador. Roba 1 carta."
+              "75007f38-a07c-437c-9bda-c4d30c7a8524": "Botiquín del Colapso",
+              "82e2d11e-b58d-4eee-8f0a-5d883221998b": "Neutral",
+              "7507b87c-0dd0-4723-9d05-0784780eab0e": "Lento",
+              "7ae503a0-f2eb-4dbf-9673-1bf36cbb0d73": "**Normal:** Cura todo el daño de 1 explorador. Roba 1 carta."
             }
           }
         ],
         "nextCardNumber": 20
       },
       {
-        "id": "96c9fe9d-ee06-47e1-9d03-0e020fe0f0cf",
+        "id": "f86b1382-9588-4a56-89d5-040578bc4731",
         "name": "Evento (con restricción)",
         "width": 240,
         "height": 336,
         "properties": [
           {
-            "id": "39660cd8-04b9-44c0-bb4e-3b555dfe05e1",
+            "id": "cbe6b906-4242-476a-bc26-f21738ae3661",
             "name": "nombre",
             "sampleValue": "Sample",
             "type": "line"
           },
           {
-            "id": "75f4a851-9bf5-4c7f-89e8-ca7cfb9aaab8",
+            "id": "8dab295d-0d3d-407a-af1b-b1b4a6bc06d9",
             "name": "dimension",
             "sampleValue": "Fantaspet",
             "type": "line"
           },
           {
-            "id": "be35e62a-1594-4b71-b7c5-2485edd5963a",
+            "id": "9ca3ab33-652c-4ffe-9b9d-1f896a0c11e6",
             "name": "velocidad",
             "sampleValue": "Rápido",
             "type": "line"
           },
           {
-            "id": "411e0a2d-8463-47d9-8dc8-a4abe0723283",
+            "id": "b39fed06-9ff8-472e-80aa-a3c4b18e2ada",
             "name": "efecto",
-            "sampleValue": "**Normal:** Efecto de ejemplo.\n**Trigger:** Si ocurre algo: pasa algo.",
+            "sampleValue": "**En guardia:** Efecto de ejemplo.\n**Asistiendo:** Costo: efecto.",
             "type": "text"
           },
           {
-            "id": "ff719c48-404b-4aa8-92aa-f9c90d8bb5ca",
+            "id": "3141198f-f72a-4900-a06f-6441a1098021",
             "name": "restriccion",
             "sampleValue": "Después de activar> Se termina tu turno.",
             "type": "text"
@@ -1661,7 +1659,7 @@
               "overflow": "wrap"
             },
             "text": "",
-            "id": "6360f16f-101a-4c0f-8c75-84449bcb2925"
+            "id": "1c21fd14-e05c-42eb-95bb-1c6f648a4a34"
           },
           {
             "kind": "text",
@@ -1697,7 +1695,7 @@
               "overflow": "squash"
             },
             "template": "{nombre}",
-            "id": "d91776a2-0dd9-4204-bd07-a1e5a5bfe7ae"
+            "id": "de5b0831-0765-4d21-b0b9-4af1567b2ce6"
           },
           {
             "kind": "text",
@@ -1733,7 +1731,7 @@
               "overflow": "squash"
             },
             "template": "{dimension}",
-            "id": "9706fe5c-c5b0-4cca-977b-73b598b6265d"
+            "id": "591304cb-fba4-4aad-8b51-908b42bd79a0"
           },
           {
             "kind": "text",
@@ -1769,7 +1767,7 @@
               "overflow": "squash"
             },
             "template": "EVENTO · {velocidad}",
-            "id": "4fd94851-198b-4312-99bd-af57b1976a27"
+            "id": "7b71b106-7bd8-4232-86e5-a56ee6bf9030"
           },
           {
             "kind": "label",
@@ -1805,7 +1803,7 @@
               "overflow": "wrap"
             },
             "text": "ARTE",
-            "id": "09b5fbca-8747-4049-88e6-ec05f99a7847"
+            "id": "3826268e-8b8f-4113-8fe3-312e03368e80"
           },
           {
             "kind": "text",
@@ -1843,7 +1841,7 @@
               "paragraphSpacing": 3
             },
             "template": "{efecto}",
-            "id": "2a5de97e-4122-47f4-a30c-64e97a655bdb"
+            "id": "014aff52-c6d7-4446-9089-12999218533c"
           },
           {
             "kind": "text",
@@ -1879,7 +1877,7 @@
               "overflow": "wrap"
             },
             "template": "{restriccion}",
-            "id": "39b893ed-27fa-49a1-a614-965c93ab1508"
+            "id": "1c889f04-be9b-441c-acb4-d275629942c0"
           },
           {
             "kind": "text",
@@ -1915,52 +1913,52 @@
               "overflow": "wrap"
             },
             "template": "EVR-{ID}",
-            "id": "38a94dd9-e86c-49aa-b8e2-3a1e218f8586"
+            "id": "cd54fac7-0362-4ee4-89dc-b098233af6ee"
           }
         ],
         "cards": [
           {
-            "id": "f6aec5b9-0a66-4e49-b2d5-133f32a384d9",
+            "id": "544f8179-1a1e-41bc-920f-23a1289dfbb7",
             "number": 1,
             "values": {
-              "39660cd8-04b9-44c0-bb4e-3b555dfe05e1": "Procesión en emergente Eterneblina",
-              "75f4a851-9bf5-4c7f-89e8-ca7cfb9aaab8": "Fantaspet",
-              "be35e62a-1594-4b71-b7c5-2485edd5963a": "Lento",
-              "411e0a2d-8463-47d9-8dc8-a4abe0723283": "**Normal:** Juega hasta 2 Fantaspet con distinto nombre de tu cementerio. Sus efectos se niegan este turno.",
-              "ff719c48-404b-4aa8-92aa-f9c90d8bb5ca": "Después de activar> se termina tu turno."
+              "cbe6b906-4242-476a-bc26-f21738ae3661": "Procesión en emergente Eterneblina",
+              "8dab295d-0d3d-407a-af1b-b1b4a6bc06d9": "Fantaspet",
+              "9ca3ab33-652c-4ffe-9b9d-1f896a0c11e6": "Lento",
+              "b39fed06-9ff8-472e-80aa-a3c4b18e2ada": "**Normal:** Juega hasta 2 Fantaspet con distinto nombre de tu cementerio. Sus efectos se niegan este turno.",
+              "3141198f-f72a-4900-a06f-6441a1098021": "Después de activar> se termina tu turno."
             }
           },
           {
-            "id": "ad51bc29-e13f-4c7b-9870-bf1e63b68d16",
+            "id": "26e028e6-efca-4d54-a943-51198a5a53a1",
             "number": 2,
             "values": {
-              "39660cd8-04b9-44c0-bb4e-3b555dfe05e1": "Derrumbe en emergente cueva Ugabuga",
-              "75f4a851-9bf5-4c7f-89e8-ca7cfb9aaab8": "Ugabuga",
-              "be35e62a-1594-4b71-b7c5-2485edd5963a": "Lento",
-              "411e0a2d-8463-47d9-8dc8-a4abe0723283": "**Normal:** Descarta 1 carta: destruye todos los exploradores con PODER 200 o menos. Roba 1 carta por cada Ugabuga destruido.",
-              "ff719c48-404b-4aa8-92aa-f9c90d8bb5ca": "Después de activar> no puedes declarar ataques este turno."
+              "cbe6b906-4242-476a-bc26-f21738ae3661": "Derrumbe en emergente cueva Ugabuga",
+              "8dab295d-0d3d-407a-af1b-b1b4a6bc06d9": "Ugabuga",
+              "9ca3ab33-652c-4ffe-9b9d-1f896a0c11e6": "Lento",
+              "b39fed06-9ff8-472e-80aa-a3c4b18e2ada": "**Normal:** Descarta 1 carta: destruye todos los exploradores con PODER 200 o menos. Roba 1 carta por cada Ugabuga destruido.",
+              "3141198f-f72a-4900-a06f-6441a1098021": "Después de activar> no puedes declarar ataques este turno."
             }
           },
           {
-            "id": "179d481b-fd1e-4d6d-94b9-8e3de7d9d968",
+            "id": "bc89fe2d-5923-47d2-86ea-24a14830dad4",
             "number": 3,
             "values": {
-              "39660cd8-04b9-44c0-bb4e-3b555dfe05e1": "Colapso de la meseta Ugabuga",
-              "75f4a851-9bf5-4c7f-89e8-ca7cfb9aaab8": "Ugabuga",
-              "be35e62a-1594-4b71-b7c5-2485edd5963a": "Lento",
-              "411e0a2d-8463-47d9-8dc8-a4abe0723283": "**Normal:** Destruye todos los exploradores. Cada jugador descarta 1 carta.",
-              "ff719c48-404b-4aa8-92aa-f9c90d8bb5ca": "Después de activar> se termina tu turno."
+              "cbe6b906-4242-476a-bc26-f21738ae3661": "Colapso de la meseta Ugabuga",
+              "8dab295d-0d3d-407a-af1b-b1b4a6bc06d9": "Ugabuga",
+              "9ca3ab33-652c-4ffe-9b9d-1f896a0c11e6": "Lento",
+              "b39fed06-9ff8-472e-80aa-a3c4b18e2ada": "**Normal:** Destruye todos los exploradores. Cada jugador descarta 1 carta.",
+              "3141198f-f72a-4900-a06f-6441a1098021": "Después de activar> se termina tu turno."
             }
           },
           {
-            "id": "f94caecc-4e65-47f1-b61e-02b39c063da3",
+            "id": "4791f37f-91fc-452e-8049-9e75217a7c30",
             "number": 4,
             "values": {
-              "39660cd8-04b9-44c0-bb4e-3b555dfe05e1": "Plaga en emergente Ragnatica",
-              "75f4a851-9bf5-4c7f-89e8-ca7cfb9aaab8": "Ragnatica",
-              "be35e62a-1594-4b71-b7c5-2485edd5963a": "Rápido",
-              "411e0a2d-8463-47d9-8dc8-a4abe0723283": "**Normal:** Destruye todos tus tokens Cría (mínimo 1): el oponente descarta 1 carta por cada una (máx. 3).",
-              "ff719c48-404b-4aa8-92aa-f9c90d8bb5ca": "Después de activar> no puedes activar más efectos este turno."
+              "cbe6b906-4242-476a-bc26-f21738ae3661": "Plaga en emergente Ragnatica",
+              "8dab295d-0d3d-407a-af1b-b1b4a6bc06d9": "Ragnatica",
+              "9ca3ab33-652c-4ffe-9b9d-1f896a0c11e6": "Rápido",
+              "b39fed06-9ff8-472e-80aa-a3c4b18e2ada": "**Normal:** Destruye todos tus tokens Cría (mínimo 1): el oponente descarta 1 carta por cada una (máx. 3).",
+              "3141198f-f72a-4900-a06f-6441a1098021": "Después de activar> no puedes activar más efectos este turno."
             }
           }
         ],
@@ -1969,345 +1967,345 @@
     ],
     "decks": [
       {
-        "id": "f2425747-be70-483c-bdeb-bcb8f599d9dd",
+        "id": "b3e59e02-8f08-4e66-999a-4d3db511e366",
         "name": "Fantaspet · Niebla Persistente",
         "entries": [
           {
-            "cardId": "599c921f-7258-4147-8492-0ca7742ff4f1",
+            "cardId": "09ea22f1-769c-4bd7-9505-a9dbf6e92db2",
             "count": 3
           },
           {
-            "cardId": "c7bc122b-3e96-40b8-8898-4821a50f854a",
+            "cardId": "ae26bb25-0219-4b83-ac91-b83133a8ebef",
             "count": 3
           },
           {
-            "cardId": "09a56df4-0dd6-40f0-accd-8ddf22f65b55",
+            "cardId": "4d5991e9-0c0f-49d8-8cde-5dc87fd33cdc",
             "count": 3
           },
           {
-            "cardId": "34c2d7d6-7fc3-4998-9de6-fb1c41675ead",
+            "cardId": "4632e1ad-ac32-4e04-806c-f5ace10fff7e",
             "count": 3
           },
           {
-            "cardId": "b8b37e77-6e5b-48c6-b737-e9d0c1f70c05",
+            "cardId": "a6755f67-e8b3-4a03-8522-99295206bbbb",
             "count": 3
           },
           {
-            "cardId": "3e2b66e4-f34b-44f7-bd80-4300d0387624",
+            "cardId": "8b808c82-ab6c-4c42-a565-9d98aa769af6",
             "count": 3
           },
           {
-            "cardId": "ab52aabb-f8fe-40fb-b5d0-0431f2c65abf",
+            "cardId": "f50bc260-5c49-43ca-975d-f7e98fb551b9",
             "count": 3
           },
           {
-            "cardId": "217a0544-a134-4ae8-ae13-a1d578028d38",
+            "cardId": "75891756-64fd-4394-8d81-9c43b894331b",
             "count": 3
           },
           {
-            "cardId": "3f1ec70c-e25e-4385-b445-f505729be7cd",
+            "cardId": "d16b406f-9ab4-46d1-b367-bbdab44ff7eb",
             "count": 2
           },
           {
-            "cardId": "061af304-72b9-4f4a-b0a9-70fdea2c5076",
+            "cardId": "0a135c06-1474-429f-a811-d37f0e8ae390",
             "count": 3
           },
           {
-            "cardId": "18b81fcf-66d2-4090-b023-2f52fbed6e99",
+            "cardId": "97b1f612-e1b2-4a79-8a65-fd80d744f0de",
             "count": 3
           },
           {
-            "cardId": "72151a91-5dff-4d0f-bc85-4fea52478d67",
+            "cardId": "be7bfab1-851b-4bc9-ae97-b8fcfa0ba557",
             "count": 3
           },
           {
-            "cardId": "f6aec5b9-0a66-4e49-b2d5-133f32a384d9",
+            "cardId": "544f8179-1a1e-41bc-920f-23a1289dfbb7",
             "count": 3
           },
           {
-            "cardId": "683f6a01-3196-4507-b7e1-9f89eba21287",
+            "cardId": "db2e909c-36c3-43e3-8973-79eea3e9862b",
             "count": 2
           },
           {
-            "cardId": "d227c397-b4cb-464b-9a04-8a729a6ee2dd",
+            "cardId": "bfdb9dca-db79-4d41-b6e8-0cd7f3e94fc9",
             "count": 2
           },
           {
-            "cardId": "ad6b9715-20aa-40f5-8395-af78e2afd18e",
+            "cardId": "df3c6230-1932-4a8c-bfb6-35cfa049d8ec",
             "count": 2
           },
           {
-            "cardId": "8b7b9f7f-4e25-4f40-99ca-03c8eaacae95",
+            "cardId": "0bc07c80-9444-43a1-a4f8-60a990cc54e6",
             "count": 2
           },
           {
-            "cardId": "f6c8b835-db9f-4615-a8fe-d8e24ef92577",
+            "cardId": "76daff79-28ac-4373-8336-15b29390bd94",
             "count": 2
           },
           {
-            "cardId": "9276094e-6b08-47ff-98d3-f8aaf55632fc",
+            "cardId": "8063d235-3b37-4bdf-bf13-5eb72e5eb0e5",
             "count": 2
           }
         ]
       },
       {
-        "id": "9de62f5f-cf10-4f50-bf5e-3f45d22ebfb8",
+        "id": "aaa4b0f4-c4ec-4e32-bad3-e1e824a784ba",
         "name": "Ugabuga · Estampida de Piedra",
         "entries": [
           {
-            "cardId": "868788c9-4523-467d-973e-58fd674e276f",
+            "cardId": "c91e9fd5-35d4-41e3-ae2e-28a1d3f9f80c",
             "count": 3
           },
           {
-            "cardId": "bdcbf000-4c7a-4e53-8b01-50c14f99976e",
+            "cardId": "fdcb820e-1d31-43bf-afcc-c296274c50a0",
             "count": 3
           },
           {
-            "cardId": "2afdc42d-6781-4451-990b-37e6340d04b1",
+            "cardId": "c771611b-0f24-44fb-8a1d-aaf4170e86d0",
             "count": 3
           },
           {
-            "cardId": "ac657122-f34d-4658-8dd3-deb1ca9bee5c",
+            "cardId": "88226324-fcac-4578-9316-8ee267d4103f",
             "count": 2
           },
           {
-            "cardId": "6cf33d12-f163-4288-8fc4-9e17d06f8abc",
+            "cardId": "94160943-d9bb-460d-8987-215817307a26",
             "count": 3
           },
           {
-            "cardId": "1d106e04-818a-44a4-b822-9833b77563d8",
+            "cardId": "ac07782c-ec99-4617-bc79-5d1c6e2c8a00",
             "count": 3
           },
           {
-            "cardId": "2de2465f-d48d-4431-904a-4f1789031e3d",
+            "cardId": "4df83800-ea8e-4bfb-b890-5b3cb0ad3614",
             "count": 3
           },
           {
-            "cardId": "d3222630-6328-4f96-8a9a-9e7c91152516",
+            "cardId": "eab0efa7-e345-44c9-bc28-83ef5af7dc16",
             "count": 3
           },
           {
-            "cardId": "0e0e7603-ec30-459a-a7c8-426bb76f4c43",
+            "cardId": "908b21c6-9f59-47e6-a67d-9a0a49f6b957",
             "count": 2
           },
           {
-            "cardId": "d202e81a-961d-4e0e-b80e-9cf7d76230b9",
+            "cardId": "41eae774-19ae-4c6d-bea0-2efbb9c7a2ea",
             "count": 2
           },
           {
-            "cardId": "789e7490-f001-449d-9b77-86476c4018a8",
+            "cardId": "77ab0ec7-649d-4a08-86d7-57234b931391",
             "count": 3
           },
           {
-            "cardId": "ad51bc29-e13f-4c7b-9870-bf1e63b68d16",
+            "cardId": "26e028e6-efca-4d54-a943-51198a5a53a1",
             "count": 3
           },
           {
-            "cardId": "80d0e89a-b6cb-4a1e-86bf-cb9d0a1aedf1",
+            "cardId": "c1c3dbd8-282b-4fc2-b743-dc670188b0f8",
             "count": 3
           },
           {
-            "cardId": "179d481b-fd1e-4d6d-94b9-8e3de7d9d968",
+            "cardId": "bc89fe2d-5923-47d2-86ea-24a14830dad4",
             "count": 2
           },
           {
-            "cardId": "683f6a01-3196-4507-b7e1-9f89eba21287",
+            "cardId": "db2e909c-36c3-43e3-8973-79eea3e9862b",
             "count": 2
           },
           {
-            "cardId": "d227c397-b4cb-464b-9a04-8a729a6ee2dd",
+            "cardId": "bfdb9dca-db79-4d41-b6e8-0cd7f3e94fc9",
             "count": 2
           },
           {
-            "cardId": "ad6b9715-20aa-40f5-8395-af78e2afd18e",
+            "cardId": "df3c6230-1932-4a8c-bfb6-35cfa049d8ec",
             "count": 2
           },
           {
-            "cardId": "8b7b9f7f-4e25-4f40-99ca-03c8eaacae95",
+            "cardId": "0bc07c80-9444-43a1-a4f8-60a990cc54e6",
             "count": 2
           },
           {
-            "cardId": "f6c8b835-db9f-4615-a8fe-d8e24ef92577",
+            "cardId": "76daff79-28ac-4373-8336-15b29390bd94",
             "count": 2
           },
           {
-            "cardId": "9276094e-6b08-47ff-98d3-f8aaf55632fc",
+            "cardId": "8063d235-3b37-4bdf-bf13-5eb72e5eb0e5",
             "count": 2
           }
         ]
       },
       {
-        "id": "ad829c6e-acf9-4d70-a3b7-04875b2b8161",
+        "id": "eb779104-e385-4cd7-9f8c-7e7d272113e6",
         "name": "Ragnatica · Telaraña Paciente",
         "entries": [
           {
-            "cardId": "8f68808f-f6e3-4852-85d5-e6009fec8b9e",
+            "cardId": "de0843e2-cf2e-422b-9cd1-f9ec524ba16f",
             "count": 3
           },
           {
-            "cardId": "3480b20d-b233-4b7c-9649-9ac3ea784cb8",
+            "cardId": "3773fea2-160b-49bf-923f-c88f91cf50e1",
             "count": 3
           },
           {
-            "cardId": "f8b37cb1-9e1d-44d5-8cb8-12e79987defc",
+            "cardId": "32540d39-11b1-4842-a38e-cb11b28b2e72",
             "count": 3
           },
           {
-            "cardId": "77a9ca15-9b8d-4a7a-af2a-4b54b62c7265",
+            "cardId": "eebda606-2914-4c98-afde-fe145fc197e9",
             "count": 3
           },
           {
-            "cardId": "9b30ae33-9f74-4705-9b54-bdd5ac73a9c9",
+            "cardId": "9a0c2759-ae5f-4943-95ab-e5cf09738e74",
             "count": 1
           },
           {
-            "cardId": "3fd25a20-a56c-4064-b5ce-1026bba137f7",
+            "cardId": "7e3701ea-8aba-41b5-8ae7-e01fed4a4be8",
             "count": 2
           },
           {
-            "cardId": "dcbff133-c6db-4552-9762-76299692799f",
+            "cardId": "09ebf914-f6c3-4b3b-9f24-43912d295766",
             "count": 3
           },
           {
-            "cardId": "b0bb5721-470c-4073-88bb-d3400d0b81cd",
+            "cardId": "d1cd00a0-c77f-4e3e-9968-3c74425c0201",
             "count": 2
           },
           {
-            "cardId": "67309fb7-2ff1-4c66-946a-31d56d923b5f",
+            "cardId": "9b6290ab-9101-407c-856c-bd544ee63ca9",
             "count": 3
           },
           {
-            "cardId": "e424e02f-da63-4984-ac95-4b07e97f5660",
+            "cardId": "8975ddd1-22be-4dfc-8c21-e73da3cc4427",
             "count": 3
           },
           {
-            "cardId": "2554515c-87ec-4789-94cc-463a7a2590f0",
+            "cardId": "8a62f1eb-3327-4a71-a41d-8cb6ff2d3237",
             "count": 3
           },
           {
-            "cardId": "2cdc640d-724b-479c-a918-6325efff689d",
+            "cardId": "4a19edd7-fcd0-419f-8033-bddf194c782e",
             "count": 3
           },
           {
-            "cardId": "7c36abbf-e206-4d22-b23f-3042011f89b1",
+            "cardId": "e104039f-83ef-4e06-9f26-69e854fbfda8",
             "count": 3
           },
           {
-            "cardId": "f94caecc-4e65-47f1-b61e-02b39c063da3",
+            "cardId": "4791f37f-91fc-452e-8049-9e75217a7c30",
             "count": 3
           },
           {
-            "cardId": "683f6a01-3196-4507-b7e1-9f89eba21287",
+            "cardId": "db2e909c-36c3-43e3-8973-79eea3e9862b",
             "count": 2
           },
           {
-            "cardId": "d227c397-b4cb-464b-9a04-8a729a6ee2dd",
+            "cardId": "bfdb9dca-db79-4d41-b6e8-0cd7f3e94fc9",
             "count": 2
           },
           {
-            "cardId": "ad6b9715-20aa-40f5-8395-af78e2afd18e",
+            "cardId": "df3c6230-1932-4a8c-bfb6-35cfa049d8ec",
             "count": 2
           },
           {
-            "cardId": "8b7b9f7f-4e25-4f40-99ca-03c8eaacae95",
+            "cardId": "0bc07c80-9444-43a1-a4f8-60a990cc54e6",
             "count": 2
           },
           {
-            "cardId": "f6c8b835-db9f-4615-a8fe-d8e24ef92577",
+            "cardId": "76daff79-28ac-4373-8336-15b29390bd94",
             "count": 2
           },
           {
-            "cardId": "9276094e-6b08-47ff-98d3-f8aaf55632fc",
+            "cardId": "8063d235-3b37-4bdf-bf13-5eb72e5eb0e5",
             "count": 2
           }
         ]
       },
       {
-        "id": "a1ed8cfa-54c4-4f56-b1e9-cd47d47a1df2",
+        "id": "e3b3f4ea-2937-4a51-9593-9577059caf07",
         "name": "Baluarte · Muralla Viviente",
         "entries": [
           {
-            "cardId": "cee319c0-a85c-466d-81af-4fab46c6ba89",
+            "cardId": "54300683-c6f8-40ea-997c-30b661a5b813",
             "count": 2
           },
           {
-            "cardId": "d5bf84bd-fba4-4025-9c58-9c5466ed3b1b",
+            "cardId": "858e1923-bf07-4d4b-9119-2aea0ef25d6c",
             "count": 3
           },
           {
-            "cardId": "bd4d4238-f316-41dd-8a85-cc80734933e0",
+            "cardId": "2d50caac-60b9-4478-84a2-3e4af66d685e",
             "count": 3
           },
           {
-            "cardId": "867c2617-ae79-4130-a4c8-03ee57eee82b",
+            "cardId": "5c638c4e-6bc3-4f66-bd29-48b7f3da1b91",
             "count": 3
           },
           {
-            "cardId": "809eb67c-a905-4060-8ce1-f7de8d3386d3",
+            "cardId": "4a9b76c6-84e7-4e02-b4a1-46dbd3ef0b3e",
             "count": 2
           },
           {
-            "cardId": "d36a0c6d-dc16-40c5-897c-417a847f2069",
+            "cardId": "14341a0c-a9db-4304-a749-84e3fc8aee40",
             "count": 2
           },
           {
-            "cardId": "b0434492-0b28-4d70-990e-2809dc855a8d",
+            "cardId": "438dca7f-1d7a-45a2-a2ca-71918e99a9e3",
             "count": 2
           },
           {
-            "cardId": "61db2cd8-41a6-415d-be6c-3c112768a219",
+            "cardId": "0987b968-7fc9-4c4e-a933-a93030b81b6a",
             "count": 3
           },
           {
-            "cardId": "e258528a-ce18-4608-90f2-887d0c70e8b1",
+            "cardId": "bb85860c-b224-4f9e-aaea-062489498336",
             "count": 2
           },
           {
-            "cardId": "a3a4dd16-8014-4e3d-ab1d-3c4e85b095fc",
+            "cardId": "5cc294ee-d1d8-4dd0-a792-a63d1087b002",
             "count": 2
           },
           {
-            "cardId": "0c33bc4a-46f3-4847-895d-986082fc546e",
+            "cardId": "73edd503-7f47-4a51-871b-e40ee237f5eb",
             "count": 3
           },
           {
-            "cardId": "fce9cd05-5b95-4bb6-b49d-ffb03ba7798a",
+            "cardId": "3f944ae9-bf57-452c-a2f2-2898179f95d5",
             "count": 3
           },
           {
-            "cardId": "3c84a518-e172-4148-b48c-c6e8f988a09f",
+            "cardId": "4406a4ff-3910-4e23-90b4-c1520e06ea6f",
             "count": 3
           },
           {
-            "cardId": "1f2b122e-8350-48f5-a01b-1b707c327917",
+            "cardId": "36c79f98-8187-4451-8f33-258a93b04507",
             "count": 3
           },
           {
-            "cardId": "abb5b088-bb6b-46d2-9707-da1efb916efc",
+            "cardId": "0eae56c9-97d6-4e91-81c9-b5eca81c672d",
             "count": 2
           },
           {
-            "cardId": "683f6a01-3196-4507-b7e1-9f89eba21287",
+            "cardId": "db2e909c-36c3-43e3-8973-79eea3e9862b",
             "count": 2
           },
           {
-            "cardId": "d227c397-b4cb-464b-9a04-8a729a6ee2dd",
+            "cardId": "bfdb9dca-db79-4d41-b6e8-0cd7f3e94fc9",
             "count": 2
           },
           {
-            "cardId": "ad6b9715-20aa-40f5-8395-af78e2afd18e",
+            "cardId": "df3c6230-1932-4a8c-bfb6-35cfa049d8ec",
             "count": 2
           },
           {
-            "cardId": "8b7b9f7f-4e25-4f40-99ca-03c8eaacae95",
+            "cardId": "0bc07c80-9444-43a1-a4f8-60a990cc54e6",
             "count": 2
           },
           {
-            "cardId": "f6c8b835-db9f-4615-a8fe-d8e24ef92577",
+            "cardId": "76daff79-28ac-4373-8336-15b29390bd94",
             "count": 2
           },
           {
-            "cardId": "9276094e-6b08-47ff-98d3-f8aaf55632fc",
+            "cardId": "8063d235-3b37-4bdf-bf13-5eb72e5eb0e5",
             "count": 2
           }
         ]
