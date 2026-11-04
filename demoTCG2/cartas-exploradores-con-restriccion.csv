@@ -4,7 +4,7 @@ Monstaa,Ugabuga,300,,"Después de entrar al campo> destruye 1 explorador tuyo. S
 Lance-elot,Ugabuga,100,**Asistiendo:** El explorador tiene +100 PODER.,Esta carta no puede declarar ataques.
 Van-guard,Ugabuga,300,**Atracción** de ataques.,No puede declarar ataques. Recibe el doble de daño.
 Señuelo,Ragnatica,100,"**Atracción** de ataques.
-**Normal:** Agrega 1 ficha Cría.",Esta carta no puede declarar ataques.
+**Normal:** Agrega 1 token Cría.",Esta carta no puede declarar ataques.
 "Aegis, Custodio del Baluarte",Baluarte,200,"**Atracción** de ataques y efectos.
 Mientras tenga asistente, no puede ser destruida por efectos.
 **Trigger:** Al comienzo de tu turno: esta carta gana 50 PODER (máx. +200).",Después de entrar al campo> Si es tu turno: se termina tu turno. Solo 1 copia.

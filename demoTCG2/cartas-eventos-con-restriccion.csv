@@ -2,4 +2,4 @@ nombre,dimension,velocidad,efecto,restriccion
 Procesión en emergente Eterneblina,Fantaspet,Lento,**Normal:** Juega hasta 2 Fantaspet con distinto nombre de tu cementerio. Sus efectos se niegan este turno.,Después de activar> se termina tu turno.
 Derrumbe en emergente cueva Ugabuga,Ugabuga,Lento,**Normal:** Descarta 1 carta: destruye todos los exploradores con PODER 200 o menos. Roba 1 carta por cada Ugabuga destruido.,Después de activar> no puedes declarar ataques este turno.
 Colapso de la meseta Ugabuga,Ugabuga,Lento,**Normal:** Destruye todos los exploradores. Cada jugador descarta 1 carta.,Después de activar> se termina tu turno.
-Plaga en emergente Ragnatica,Ragnatica,Rápido,**Normal:** Destruye todas tus fichas Cría (mínimo 1): el oponente descarta 1 carta por cada una (máx. 3).,Después de activar> no puedes activar más efectos este turno.
+Plaga en emergente Ragnatica,Ragnatica,Rápido,**Normal:** Destruye todos tus tokens Cría (mínimo 1): el oponente descarta 1 carta por cada una (máx. 3).,Después de activar> no puedes activar más efectos este turno.

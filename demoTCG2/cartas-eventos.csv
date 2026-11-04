@@ -10,11 +10,11 @@ Grito de guerra Ugabuga,Ugabuga,Rápido,"**Normal:** Elige 1 Ugabuga: gana 100 P
 **Trigger:** Si un Ugabuga es atacado: gana 150 PODER este turno."
 Banquete inaugural de aldea Ugabuga,Ugabuga,Lento,"**Normal:** Destruye 1 explorador: roba 2 cartas.
 **Trigger:** Si un Ugabuga es destruido: juega 1 Ugabuga con PODER 200 o menos de tu mano."
-Conflicto en emergente reino de Ragnatica,Ragnatica,Lento,"**Normal:** Agrega 2 fichas Cría.
-**Trigger:** Si el oponente declara un ataque: agrega 1 ficha Cría."
-Telar de urgencia en Ragnatica,Ragnatica,Lento,**Normal:** Descarta 1 carta: agrega 2 fichas Cría.
-Hilos cortados en Ragnatica,Ragnatica,Rápido,**Normal:** Devuelve a su mano 1 explorador del oponente. Agrega 1 ficha Cría.
-Crianza en Ragnatica,Ragnatica,Lento,**Normal:** Elige 1 ficha Cría: gana 100 PODER.
+Conflicto en emergente reino de Ragnatica,Ragnatica,Lento,"**Normal:** Agrega 2 tokens Cría.
+**Trigger:** Si el oponente declara un ataque: agrega 1 token Cría."
+Telar de urgencia en Ragnatica,Ragnatica,Lento,**Normal:** Descarta 1 carta: agrega 2 tokens Cría.
+Hilos cortados en Ragnatica,Ragnatica,Rápido,**Normal:** Devuelve a su mano 1 explorador del oponente. Agrega 1 token Cría.
+Crianza en Ragnatica,Ragnatica,Lento,**Normal:** Elige 1 token Cría: gana 100 PODER.
 Cerrad filas en emergente Baluarte,Baluarte,Rápido,"**Normal:** Elige 1 explorador con asistente: gana 100 PODER este turno y cura todo su daño.
 **Trigger:** Si un explorador con asistente es atacado: el atacante pierde 100 PODER este turno."
 Relevo de guardia en Baluarte,Baluarte,Rápido,"**Normal:** Reemplaza 1 asistente por 1 Baluarte de tu mano. El asistente reemplazado vuelve a tu mano.

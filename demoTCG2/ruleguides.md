@@ -6,7 +6,7 @@ Esta guía explica **cómo se juega**. Para el porqué de las cartas y cómo esc
 
 Las partes marcadas con 🧪 son decisiones tomadas para poder jugar el demo y que deberían confirmarse en partidas de prueba (hay una lista al final).
 
-**Qué cambia respecto al demo 1:** el objetivo (sección 1), el combate (sección 6), el PODER de los efectos (sección 7) y el tamaño del mazo y del campo. Todo lo demás (cadenas, triggers, búsqueda, asistentes, fichas, Atracción) funciona igual y se resume aquí.
+**Qué cambia respecto al demo 1:** el objetivo (sección 1), el combate (sección 6), el PODER de los efectos (sección 7) y el tamaño del mazo y del campo. Todo lo demás (cadenas, triggers, búsqueda, asistentes, tokens, Atracción) funciona igual y se resume aquí.
 
 ---
 
@@ -14,7 +14,7 @@ Las partes marcadas con 🧪 son decisiones tomadas para poder jugar el demo y q
 
 **Al comienzo de tu turno, antes de robar, si el PODER total de tus exploradores activos es 1000 o más, ganas.**
 
-- El **PODER total** es la suma del PODER actual de tus exploradores **activos** (fichas incluidas). Cuentan los bonos permanentes y los efectos continuos; no cuentan los que duran "este turno" (ya terminaron). El daño que tengan encima **no** lo reduce. 🧪
+- El **PODER total** es la suma del PODER actual de tus exploradores **activos** (tokens incluidos). Cuentan los bonos permanentes y los efectos continuos; no cuentan los que duran "este turno" (ya terminaron). El daño que tengan encima **no** lo reduce. 🧪
 - Los **asistentes no suman**: son cartas de apoyo.
 - Esta comprobación no abre cadena. Tu oponente tuvo **todo su turno** para romper tu tablero.
 - También pierdes si tienes que robar y no te quedan cartas en el mazo.
@@ -23,7 +23,7 @@ Las partes marcadas con 🧪 son decisiones tomadas para poder jugar el demo y q
 ## 2. Qué necesitas
 
 - 1 mazo de **50 cartas** por jugador, con **máximo 3 copias del mismo nombre**.
-- Marcadores para el **daño** (cubos) y para las fichas (monedas).
+- Marcadores para el **daño** (cubos) y para los tokens (monedas).
 
 ## 3. Tipos de carta
 
@@ -64,9 +64,9 @@ Un explorador en el campo está **activo** (vertical, en una zona) o **asistiend
 - Un asistente solo aplica su efecto **Asistiendo**. Un asistente **boca abajo** no tiene efecto hasta que se **revela** (cuando su activo es atacado, cuando activa su efecto o cuando otro efecto lo revela).
 - Si el activo deja el campo, su asistente **va al cementerio** con él. 🧪
 
-### Fichas
+### Tokens
 
-Una **ficha** es un explorador sin carta (por ejemplo, la "Cría de Ragnatica": 100 de PODER). Se **agrega**, no se juega: las restricciones del tipo "no puedes jugar más exploradores" no la bloquean. Siempre es activa, ocupa una zona y, si deja el campo, desaparece (aunque cuenta como destruida si el efecto dice "destruir").
+Una **token** es un explorador sin carta (por ejemplo, la "Cría de Ragnatica": 100 de PODER). Se **agrega**, no se juega: las restricciones del tipo "no puedes jugar más exploradores" no la bloquean. Siempre es activa, ocupa una zona y, si deja el campo, desaparece (aunque cuenta como destruida si el efecto dice "destruir").
 
 ## 5. Preparación
 
@@ -126,7 +126,7 @@ El **daño se acumula** mientras la carta esté en el campo: unos exploradores p
 | **Jugar** | Poner un explorador en el campo, activo o asistiendo. |
 | **Asistir** | Poner una carta debajo de un activo como su asistente. |
 | **Revelar** | Mostrar una carta (queda boca arriba). |
-| **Agregar** | Poner una ficha en el campo. |
+| **Agregar** | Poner un token en el campo. |
 | **Elegir** | Elegir un objetivo al activar. |
 | **Buscar** | Mecánica de búsqueda en el mazo (sección 11). |
 | **Atracción** | Obliga a elegir como objetivo a ciertas cartas. |

@@ -8,7 +8,7 @@ El objetivo de todos es empezar tu turno con **1000 de PODER** en el campo ([rul
 |---|---|---|---|---|
 | **Fantaspet** · Niebla Persistente | Cementerio | Cuerpos que crecen con las cartas del cementerio | Asistentes ocultos que destruyen o debilitan al atacante | Quien lo ahoga antes de llenar el cementerio, o lo exilia |
 | **Ugabuga** · Estampida de Piedra | Arrasar y reconstruir | Pocos cuerpos enormes (250-300) tras borrar el tablero | Destruye todo lo que el otro armó | Mazos con muchos cuerpos baratos que se recuperan rápido |
-| **Ragnatica** · Telaraña Paciente | Inundar | Muchas fichas Cría con PODER extra | Anula ataques y devuelve a la mano, y cada vez agrega fichas | Borrados de tablero y daño en área |
+| **Ragnatica** · Telaraña Paciente | Inundar | Muchos tokens Cría con PODER extra | Anula ataques y devuelve a la mano, y cada vez agrega tokens | Borrados de tablero y daño en área |
 | **Baluarte** · Muralla Viviente | Ascenso constante | Un personaje que crece solo y soldados que lo apuntalan | Atracción: solo se puede atacar a Aegis | Efectos que no eligen objetivo y quien llega a 1000 antes |
 
 Un cuarto estilo, **bajo PODER con mucha interrupción**, vive en las cartas neutrales y en los asistentes-trampa: son cartas que dan tiempo, no que ganan.
@@ -82,7 +82,7 @@ Tienes 9 cartas en el cementerio, 4 de ellas Fantaspet. **Cesarmill** tiene +150
 
 **Supervivencia:** **Balanced** (200) sobrevive con 50: es un cuerpo que cuesta rematar.
 
-**Debilidades:** el borrado también te cuesta cartas, y un oponente que se recupera rápido (Ragnatica con fichas) llega primero a 1000. Monstaa se destruye si no tiene a quién sacrificar.
+**Debilidades:** el borrado también te cuesta cartas, y un oponente que se recupera rápido (Ragnatica con tokens) llega primero a 1000. Monstaa se destruye si no tiene a quién sacrificar.
 
 ### Lista (50 cartas)
 
@@ -113,21 +113,21 @@ Tienes 9 cartas en el cementerio, 4 de ellas Fantaspet. **Cesarmill** tiene +150
 
 **Composición:** 27 exploradores · 23 eventos.
 
-**Idea:** inundar el campo con fichas **Cría** (100 de PODER, 150 con **Madre Telar**) y dejar que el oponente lidie con ello. Las fichas no se "juegan", así que no gastan tu jugada del turno, y casi todas las interrupciones de Ragnatica **agregan una ficha** a cambio.
+**Idea:** inundar el campo con tokens **Cría** (100 de PODER, 150 con **Madre Telar**) y dejar que el oponente lidie con ello. Los tokens no se "juegan", así que no gastan tu jugada del turno, y casi todas las interrupciones de Ragnatica **agregan un token** a cambio.
 
 **La secuencia**
-1. **Telarín**, **Conflicto** y **Telar de urgencia** agregan fichas (1, 2 y 2).
-2. **Madre Telar** da +50 PODER a todas las fichas y agrega 2 más a cambio de una carta.
-3. **Crianza** engorda una ficha (+100) y **Nido Vivo** roba cuando una ficha cae.
-4. **Hilandera** convierte una ficha en una búsqueda para encontrar la pieza que falta.
-5. **Reina de Ragnatica** (250, +100 con 3 o más fichas) cierra la secuencia y niega lo que intente romper tu tablero.
+1. **Telarín**, **Conflicto** y **Telar de urgencia** agregan tokens (1, 2 y 2).
+2. **Madre Telar** da +50 PODER a todos los tokens y agrega 2 más a cambio de una carta.
+3. **Crianza** engorda un token (+100) y **Nido Vivo** roba cuando un token cae.
+4. **Hilandera** convierte un token en una búsqueda para encontrar la pieza que falta.
+5. **Reina de Ragnatica** (250, +100 con 3 o más tokens) cierra la secuencia y niega lo que intente romper tu tablero.
 
 **Línea de ejemplo (turno 5)**
-Tienes **Reina** (350), **Madre Telar** (200) y tres fichas Cría de 150: **1000**. La interrupción no gasta tu tablero: **Viuda Gris** anula un ataque y agrega una ficha, **Capullo Silente** devuelve al atacante a su mano y agrega otra.
+Tienes **Reina** (350), **Madre Telar** (200) y tres tokens Cría de 150: **1000**. La interrupción no gasta tu tablero: **Viuda Gris** anula un ataque y agrega un token, **Capullo Silente** devuelve al atacante a su mano y agrega otra.
 
-**Cómo frena al otro:** cada interrupción de Ragnatica (Viuda Gris, Emboscadora, Capullo Silente, Hilos cortados, Señuelo) frena y **agrega una ficha**, así que cuanto más lo molesten, más rápido llegas a 1000.
+**Cómo frena al otro:** cada interrupción de Ragnatica (Viuda Gris, Emboscadora, Capullo Silente, Hilos cortados, Señuelo) frena y **agrega un token**, así que cuanto más lo molesten, más rápido llegas a 1000.
 
-**Debilidades:** un borrado de tablero (Colapso, Derrumbe) elimina todas las fichas de golpe, y el daño en área también. Sin Madre Telar las fichas valen 100 y se necesitan 10.
+**Debilidades:** un borrado de tablero (Colapso, Derrumbe) elimina todos los tokens de golpe, y el daño en área también. Sin Madre Telar los tokens valen 100 y se necesitan 10.
 
 ### Lista (50 cartas)
 

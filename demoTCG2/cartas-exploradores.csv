@@ -19,17 +19,17 @@ Pedrusco,Ugabuga,150,**Trigger:** Si esta carta es destruida: destruye 1 explora
 Cazador Ugabu,Ugabuga,200,**Trigger:** Si el daño de esta carta destruye un explorador: el oponente descarta 1 carta al azar.
 Balanced,Ugabuga,200,**Trigger:** Si esta carta fuera a ser destruida por daño: sobrevive con 50.
 Triturador,Ugabuga,250,**Trigger:** Si esta carta es jugada: destruye todos los demás exploradores con PODER 150 o menos.
-Telarín,Ragnatica,100,**Normal:** Agrega 1 ficha Cría.
-Hilandera,Ragnatica,150,**Normal:** Destruye 1 ficha Cría: busca 1 Ragnatica con PODER 200 o menos.
-Madre Telar,Ragnatica,200,"Las fichas Cría tienen +50 PODER.
-**Normal:** Descarta 1 carta: agrega 2 fichas Cría."
-Nido Vivo,Ragnatica,150,**Trigger:** Si una ficha Cría es destruida: roba 1 carta.
-Reina de Ragnatica,Ragnatica,250,"Mientras controles 3 o más fichas Cría, esta carta tiene +100 PODER.
-**Trigger:** Si el oponente activa un efecto de explorador que elige a una carta tuya, destruye 1 ficha Cría: niega esa activación. Agrega 1 ficha Cría."
-Viuda Gris,Ragnatica,150,**Trigger:** Si un explorador del oponente declara un ataque: anula ese ataque. Agrega 1 ficha Cría.
-Emboscadora,Ragnatica,150,**Trigger:** (Desde tu mano) Si el oponente juega un explorador: juega esta carta. Agrega 1 ficha Cría.
-Capullo Silente,Ragnatica,100,**Asistiendo:** Si el explorador es atacado: devuelve al atacante a su mano. Agrega 1 ficha Cría.
-Cría de Ragnatica,Ragnatica,100,Ficha. Desaparece si deja el campo.
+Telarín,Ragnatica,100,**Normal:** Agrega 1 token Cría.
+Hilandera,Ragnatica,150,**Normal:** Destruye 1 token Cría: busca 1 Ragnatica con PODER 200 o menos.
+Madre Telar,Ragnatica,200,"Los tokens Cría tienen +50 PODER.
+**Normal:** Descarta 1 carta: agrega 2 tokens Cría."
+Nido Vivo,Ragnatica,150,**Trigger:** Si un token Cría es destruida: roba 1 carta.
+Reina de Ragnatica,Ragnatica,250,"Mientras controles 3 o más tokens Cría, esta carta tiene +100 PODER.
+**Trigger:** Si el oponente activa un efecto de explorador que elige a una carta tuya, destruye 1 token Cría: niega esa activación. Agrega 1 token Cría."
+Viuda Gris,Ragnatica,150,**Trigger:** Si un explorador del oponente declara un ataque: anula ese ataque. Agrega 1 token Cría.
+Emboscadora,Ragnatica,150,**Trigger:** (Desde tu mano) Si el oponente juega un explorador: juega esta carta. Agrega 1 token Cría.
+Capullo Silente,Ragnatica,100,**Asistiendo:** Si el explorador es atacado: devuelve al atacante a su mano. Agrega 1 token Cría.
+Cría de Ragnatica,Ragnatica,100,Token. Desaparece si deja el campo.
 Rodelero,Baluarte,200,"**Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo asistido por esta carta.
 **Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asístelo con esta carta.
 **Asistiendo:** (Activa como **Escudero**) Si el explorador es atacado: gana 100 PODER este turno."

@@ -20,7 +20,7 @@ Las entradas con 🧪 son decisiones por confirmar en partidas de prueba.
 ## Valores
 
 ### PODER total
-Suma del PODER actual de tus exploradores **activos** (fichas incluidas). Es lo que se compara con 1000 al comienzo de tu turno.
+Suma del PODER actual de tus exploradores **activos** (tokens incluidos). Es lo que se compara con 1000 al comienzo de tu turno.
 - Cuentan los bonos permanentes y los efectos continuos. No cuentan los efectos "este turno".
 - El **daño no lo reduce**. 🧪
 - Los asistentes no suman.
@@ -93,7 +93,7 @@ Ejemplo, los **Escuderos** del Baluarte (Rodelero, Alabardero, Armero, Ballester
 ## Efectos de cementerio
 
 - **"Por cada carta de tu cementerio"** cuenta todas las cartas (exploradores y eventos). **"Por cada Fantaspet de tu cementerio"** cuenta solo las de esa dimensión.
-- Las fichas no van al cementerio, así que no cuentan.
+- Los tokens no van al cementerio, así que no cuentan.
 - Exiliar o devolver cartas del cementerio baja el contador de inmediato.
 
 ---

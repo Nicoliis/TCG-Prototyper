@@ -10,7 +10,7 @@ Principios:
 
 1. **Cada mazo es una forma distinta de llegar a 1000.** El objetivo permite estilos muy diferentes y cada dimensión encarna uno (sección 2).
 2. **Las cartas se juegan una después de otra.** Cada carta debe abrir la puerta a la siguiente (busca, juega, destruye, reemplaza) para que el mazo sea una **secuencia** y no una pila de cartas sueltas. Dominar el orden es dominar el mazo.
-3. **Toda interacción trae un efecto secundario.** Las cartas que anulan, devuelven, destruyen o niegan siempre hacen **algo más** (agregan una ficha, roban, llenan el cementerio, curan). Así nunca están muertas en la mano y no se sienten como un "no" puro.
+3. **Toda interacción trae un efecto secundario.** Las cartas que anulan, devuelven, destruyen o niegan siempre hacen **algo más** (agregan un token, roban, llenan el cementerio, curan). Así nunca están muertas en la mano y no se sienten como un "no" puro.
 4. **El PODER es permanente, y cada punto cuenta.** Como el objetivo se mide al comienzo del turno, los bonos duran. Los bonos "este turno" son solo para combatir.
 5. **Las restricciones son poco comunes.** El costo de una carta fuerte suele estar en su efecto, en la cadena o en lo que hay que sacrificar, no en una restricción. Cuando hay una, es una decisión.
 6. **Los asistentes siguen siendo la mecánica distintiva.** No suman al objetivo pero absorben daño, así que cada uno es un costo de tablero a cambio de una trampa o un escudo.
@@ -21,7 +21,7 @@ Principios:
 
 | Estilo | Cómo llega a 1000 | Cómo frena | Dimensión |
 |---|---|---|---|
-| **Inundar** | Muchas fichas baratas con bonos | Cada interrupción agrega más fichas | Ragnatica |
+| **Inundar** | Muchos tokens baratos con bonos | Cada interrupción agrega más tokens | Ragnatica |
 | **Arrasar y reconstruir** | Pocos cuerpos enormes tras borrar el tablero | Destruye lo que el otro armó | Ugabuga |
 | **Ascenso constante** | Puntos "fiables" que crecen solos | Atracción: todo el daño va a un solo lugar | Baluarte |
 | **Cementerio** | Cuerpos que crecen con las cartas del cementerio | Asistentes-trampa | Fantaspet |
@@ -31,7 +31,7 @@ Un mazo nuevo debería poder describirse como una fila de esta tabla. Cada estil
 
 | Estilo | Le gana | Pierde contra |
 |---|---|---|
-| Inundar | Ascenso, Cementerio (por velocidad) | Arrasar (borra las fichas) |
+| Inundar | Ascenso, Cementerio (por velocidad) | Arrasar (borra los tokens) |
 | Arrasar | Inundar | Ascenso (su personaje no cae) |
 | Ascenso | Arrasar | Inundar (más rápido), efectos que no eligen objetivo |
 | Cementerio | Ascenso (lo ahoga) | Inundar (presión), exilio |
@@ -81,7 +81,7 @@ Regla de oro: **una carta de 50 o 100 debe valer lo que le falta**. Cuantos más
 | Ragnatica | 16 | 10 | 4 | 20 |
 | Baluarte | 19 | 15 | 6 | 10 |
 
-Ragnatica tiene muchos starters e interrupciones porque casi todas las fichas se agregan "gratis"; Ugabuga tiene muchas piezas porque su plan es llegar con cuerpos enormes. Las desviaciones de los mazos iniciales son a propósito.
+Ragnatica tiene muchos starters e interrupciones porque casi todos los tokens se agregan "gratis"; Ugabuga tiene muchas piezas porque su plan es llegar con cuerpos enormes. Las desviaciones de los mazos iniciales son a propósito.
 
 ## 5. La secuencia como regla de diseño
 
@@ -101,8 +101,8 @@ Una interrupción tiene dos partes: el **efecto principal** (frenar) y el **efec
 
 | Carta | Principal | Secundario |
 |---|---|---|
-| Viuda Gris | Anula un ataque | Agrega una ficha Cría |
-| Capullo Silente | Devuelve al atacante a su mano | Agrega una ficha Cría |
+| Viuda Gris | Anula un ataque | Agrega un token Cría |
+| Capullo Silente | Devuelve al atacante a su mano | Agrega un token Cría |
 | Dragging | Destruye al atacante | Se destruye (llena el cementerio) |
 | Retirada Táctica | Devuelve a tu mano y termina el ataque | Roba 1 carta |
 | Grieta | Niega una búsqueda | Roba 1 carta |
@@ -111,7 +111,7 @@ Una interrupción tiene dos partes: el **efecto principal** (frenar) y el **efec
 
 Pautas:
 
-- El efecto secundario debe ser **relevante para el mazo** (fichas en Ragnatica, cementerio en Fantaspet), no un "roba 1 carta" genérico.
+- El efecto secundario debe ser **relevante para el mazo** (tokens en Ragnatica, cementerio en Fantaspet), no un "roba 1 carta" genérico.
 - Si el secundario es demasiado bueno, la carta se juega aunque no haga falta frenar. Eso es aceptable **si** el principal sigue siendo su razón de ser.
 - Una interrupción sin secundario debería ser **muy barata** (Presencia en Eterneblina) o **muy específica**.
 
@@ -169,7 +169,7 @@ Cuando varias cartas distintas comparten un límite, **no se escribe el límite 
 Dos negaciones en todo el juego, ambas con efecto secundario:
 
 - **Grieta en emergente Valle Mudo** (neutral): niega solo efectos que **buscan**; roba 1 carta.
-- **Reina de Ragnatica**: niega solo efectos de explorador que **eligen a una carta tuya**; agrega una ficha Cría.
+- **Reina de Ragnatica**: niega solo efectos de explorador que **eligen a una carta tuya**; agrega un token Cría.
 
 La búsqueda es una **mecánica** (ver [glosario del demo 1](../demoTCG/glosario.md#buscar)): las cartas solo dicen "Busca 1 [criterio]". Un criterio debe poder **fallar**, y un fallo consume el uso del turno.
 
@@ -202,7 +202,7 @@ Para recortar: usa las convenciones de lectura; un efecto, una condición, una a
 
 ### Vocabulario cerrado
 
-**destruir**, **descartar**, **exiliar**, **jugar**, **asistir**, **revelar**, **agregar** (ficha), **elegir**, **buscar**, **devolver a la mano**, **anular** (ataque), **negar** (efecto), **Atracción**, **Activa como**, **ganar / perder PODER**, **infligir daño**, **curar**, **sobrevive con X**. No uses sinónimos, y no escribas "destruido en combate".
+**destruir**, **descartar**, **exiliar**, **jugar**, **asistir**, **revelar**, **agregar** (token), **elegir**, **buscar**, **devolver a la mano**, **anular** (ataque), **negar** (efecto), **Atracción**, **Activa como**, **ganar / perder PODER**, **infligir daño**, **curar**, **sobrevive con X**. No uses sinónimos, y no escribas "destruido en combate".
 
 ### Lista de revisión para una carta nueva
 

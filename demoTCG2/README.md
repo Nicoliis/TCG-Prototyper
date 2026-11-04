@@ -21,7 +21,7 @@ Segundo juego de demostración para Cardgame Prototyper. Comparte mundo, dimensi
 | [ruleguides.md](ruleguides.md) | **Cómo se juega.** Objetivo, turno, combate por daño, efectos, cadenas. |
 | [designguide.md](designguide.md) | **Cómo se diseña.** Estilos de juego, secuencias, interacción con efecto secundario, escala de PODER. |
 | [glosario.md](glosario.md) | Lo nuevo del demo 2 (PODER total, daño, curar, Activa como). El resto hereda del [glosario del demo 1](../demoTCG/glosario.md). |
-| [cards.md](cards.md) | Catálogo completo: 40 exploradores (1 ficha) y 23 eventos. |
+| [cards.md](cards.md) | Catálogo completo: 40 exploradores (1 token) y 23 eventos. |
 | [decks.md](decks.md) | Cuatro mazos de 50 cartas, con su secuencia y una línea de ejemplo. |
 | `umbral.json` | Proyecto para **importar en la app**: 4 tipos de carta, todas las cartas y los 4 mazos. |
 | `cartas-*.csv` | Exploradores y eventos, con y sin restricción, para el importador de CSV (uno por tipo de carta). |
@@ -32,7 +32,7 @@ Segundo juego de demostración para Cardgame Prototyper. Comparte mundo, dimensi
 |---|---|---|
 | **Fantaspet** · Niebla Persistente | Cementerio | Cuerpos que crecen con las cartas del cementerio |
 | **Ugabuga** · Estampida de Piedra | Arrasar y reconstruir | Pocos cuerpos enormes tras borrar el tablero |
-| **Ragnatica** · Telaraña Paciente | Inundar | Muchas fichas Cría con PODER extra |
+| **Ragnatica** · Telaraña Paciente | Inundar | Muchos tokens Cría con PODER extra |
 | **Baluarte** · Muralla Viviente | Ascenso constante | Un personaje que crece solo y soldados que lo apuntalan |
 
 Empieza leyendo [ruleguides.md](ruleguides.md) y después elige un mazo en [decks.md](decks.md). La lista de decisiones por confirmar en partidas de prueba está al final de las reglas.
