@@ -586,6 +586,8 @@ button:disabled {
 .drag-ghost {
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5);
   cursor: grabbing;
+  /* it is a clone of a .gcard: without this it would glide after the pointer (jitter) and fly in from the corner */
+  transition: none;
 }
 
 .game-side {

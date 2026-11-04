@@ -237,7 +237,12 @@ export function createGameView(container, { templates, handlers }) {
       Object.assign(drag.ghost.style, { position: "fixed", left: "0", top: "0", margin: "0", zIndex: "9999", pointerEvents: "none", transformOrigin: "top left", width: `${drag.source.offsetWidth}px`, height: `${drag.source.offsetHeight}px` });
       document.body.append(drag.ghost);
     }
-    drag.ghost.style.transform = `translate(${event.clientX - drag.offset.x * scale}px, ${event.clientY - drag.offset.y * scale}px) scale(${scale})${drag.source.classList.contains("rotated") ? " rotate(90deg)" : ""}`;
+    // the ghost rotates about its top-left corner, while the grab offset was measured on the rotated card's bounding box:
+    // a quarter turn about the corner swings the card one (scaled) height to the left, so shift it back
+    const rotated = drag.source.classList.contains("rotated");
+    const x = event.clientX - drag.offset.x * scale + (rotated ? drag.source.offsetHeight * scale : 0);
+    const y = event.clientY - drag.offset.y * scale;
+    drag.ghost.style.transform = `translate(${x}px, ${y}px) scale(${scale})${rotated ? " rotate(90deg)" : ""}`;
     boardEl.querySelectorAll(".drop-target").forEach((n) => n.classList.remove("drop-target"));
     dropTargetAt(event.clientX, event.clientY)?.classList.add("drop-target");
   }
