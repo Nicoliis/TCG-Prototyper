@@ -1,21 +1,21 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=33";
-import { addCard, removeCard, getCards, getCardValue, setCardValue } from "../../models/card.mjs?v=33";
-import { cardsInNumberOrder, findCardByNumber } from "../../models/card-numbering.mjs?v=33";
-import { cardValuesByName } from "../../models/print-selection.mjs?v=33";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=34";
+import { addCard, removeCard, getCards, getCardValue, setCardValue } from "../../models/card.mjs?v=34";
+import { cardsInNumberOrder, findCardByNumber } from "../../models/card-numbering.mjs?v=34";
+import { cardValuesByName } from "../../models/print-selection.mjs?v=34";
 import {
   applyTransform,
   applyElementStyle,
   applyDepth,
   renderPreview,
-} from "../card-type-editor/layout-element.mjs?v=33";
-import { applyTextFit } from "../card-type-editor/text-fit.mjs?v=33";
-import { adjacentCard, positionOf, resolveGoTo, cardToShowAfterDelete } from "./card-navigation.mjs?v=33";
-import { loadTypedInputTemplates, createTypedInput } from "./typed-input.mjs?v=33";
+} from "../card-type-editor/layout-element.mjs?v=34";
+import { applyTextFit } from "../card-type-editor/text-fit.mjs?v=34";
+import { adjacentCard, positionOf, resolveGoTo, cardToShowAfterDelete } from "./card-navigation.mjs?v=34";
+import { loadTypedInputTemplates, createTypedInput } from "./typed-input.mjs?v=34";
 
 let templatePromise;
 
 export async function mountCardEditor(root, storage, projectId, cardTypeId, startNumber, onBack) {
-  const template = await (templatePromise ??= loadFragment("js/views/card-editor/card-editor.html?v=33"));
+  const template = await (templatePromise ??= loadFragment("js/views/card-editor/card-editor.html?v=34"));
   const view = cloneTemplate(template);
   const section = view.querySelector(".card-editor-view");
   const inputTemplates = await loadTypedInputTemplates();

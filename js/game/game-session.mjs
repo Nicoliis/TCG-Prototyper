@@ -10,8 +10,8 @@
 //   session.hello(name)            joiner: introduce itself when the link opens
 //
 // Messages: hello, snapshot, intent, event, resync, refused.
-import { applyEvent, prepareEvent, cleanName } from "./game-state.mjs?v=33";
-import { makeContext, validatePack } from "./game-pack.mjs?v=33";
+import { applyEvent, prepareEvent, cleanName } from "./game-state.mjs?v=34";
+import { makeContext, validatePack } from "./game-pack.mjs?v=34";
 
 export const ROLE_CREATOR = 0;
 export const ROLE_JOINER = 1;
