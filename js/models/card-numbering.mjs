@@ -1,5 +1,5 @@
-import { DEFAULT_PROPERTY_TYPE } from "./property-types.mjs?v=31";
-import { normalizeBoard } from "./board.mjs?v=31";
+import { DEFAULT_PROPERTY_TYPE } from "./property-types.mjs?v=32";
+import { normalizeBoard } from "./board.mjs?v=32";
 
 export const ID_PROPERTY = Object.freeze({ id: "__id__", name: "ID", type: "integer", builtin: true });
 

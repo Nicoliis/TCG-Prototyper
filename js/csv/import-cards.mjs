@@ -1,6 +1,6 @@
-import { getCards, createCard, getCardValue, setCardValue } from "../models/card.mjs?v=31";
-import { ID_PROPERTY, nextNumber } from "../models/card-numbering.mjs?v=31";
-import { validateValue } from "../models/property-types.mjs?v=31";
+import { getCards, createCard, getCardValue, setCardValue } from "../models/card.mjs?v=32";
+import { ID_PROPERTY, nextNumber } from "../models/card-numbering.mjs?v=32";
+import { validateValue } from "../models/property-types.mjs?v=32";
 
 function normalize(value) {
   return (value ?? "").trim().toLowerCase();

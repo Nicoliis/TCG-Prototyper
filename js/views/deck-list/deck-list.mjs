@@ -1,11 +1,11 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=31";
-import { mountDeckEditor } from "../deck-editor/deck-editor.mjs?v=31";
-import { getDecks, createDeck } from "../../models/deck.mjs?v=31";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=32";
+import { mountDeckEditor } from "../deck-editor/deck-editor.mjs?v=32";
+import { getDecks, createDeck } from "../../models/deck.mjs?v=32";
 
 let templatePromise;
 
 export async function mountDeckList(root, storage, projectId, onBack) {
-  const template = await (templatePromise ??= loadFragment("js/views/deck-list/deck-list.html?v=31"));
+  const template = await (templatePromise ??= loadFragment("js/views/deck-list/deck-list.html?v=32"));
   const view = cloneTemplate(template);
   const section = view.querySelector(".deck-list-view");
 

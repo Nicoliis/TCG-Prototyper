@@ -6,9 +6,9 @@
 //   const view = createGameView(container, { templates, handlers })
 //   model    = { state, ctx, viewer, selectedUid }
 //   handlers = { onCardMenu(uid, key, rect), onZoneMenu(key, rect), onMove(uid, toKey, { shift, x, y, onto }), onHover(entry | null) }
-import { h } from "../dom.mjs?v=31";
-import { cardFaceElement, cardBackElement, fitSize } from "../board/card-view.mjs?v=31";
-import { cardView, zoneKey } from "../../game/game-state.mjs?v=31";
+import { h } from "../dom.mjs?v=32";
+import { cardFaceElement, cardBackElement, fitSize } from "../board/card-view.mjs?v=32";
+import { cardView, zoneKey } from "../../game/game-state.mjs?v=32";
 
 const GAP = 6;
 const AREA_GAP = 18;
