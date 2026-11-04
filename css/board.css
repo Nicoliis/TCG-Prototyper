@@ -454,6 +454,7 @@ button:disabled {
   min-height: 0;
   display: flex;
   gap: var(--space-3);
+  position: relative;
 }
 
 .game-stage {
@@ -685,13 +686,18 @@ button:disabled {
   margin: var(--space-1) 0;
 }
 
+/* covers the table only: the side column (card preview, log) stays visible and readable while browsing */
 .browse-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 9000;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: calc(24rem + var(--space-3));
+  z-index: 20;
   display: grid;
   place-items: center;
   background: rgba(0, 0, 0, 0.5);
+  border-radius: var(--radius-md);
 }
 
 .browse-overlay[hidden] {
@@ -699,8 +705,8 @@ button:disabled {
 }
 
 .browse-panel {
-  width: min(56rem, 94vw);
-  max-height: 84vh;
+  width: min(56rem, 94%);
+  max-height: 94%;
   overflow-y: auto;
   padding: var(--space-4);
   background: var(--color-surface);
@@ -733,5 +739,11 @@ button:disabled {
   .board-editor-panel,
   .game-side {
     width: 100%;
+  }
+
+  .browse-overlay {
+    right: 0;
+    bottom: auto;
+    height: 60%;
   }
 }

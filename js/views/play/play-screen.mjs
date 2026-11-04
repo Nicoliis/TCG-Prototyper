@@ -366,7 +366,7 @@ export async function mountPlay(root, storage, options, onBack) {
     const stage = h("div", { class: "game-stage" });
     const browse = h("div", { class: "browse-overlay", hidden: true });
     body.replaceChildren(
-      h("div", { class: "game-layout" }, bar, h("div", { class: "game-main" }, stage, h("aside", { class: "game-side" }, preview, h("h3", {}, "Log"), logEl)), browse),
+      h("div", { class: "game-layout" }, bar, h("div", { class: "game-main" }, stage, h("aside", { class: "game-side" }, preview, h("h3", {}, "Log"), logEl), browse)),
     );
     room.ui = { ...room.ui, bar, preview, logEl, browse };
     room.gameView = createGameView(stage, {
