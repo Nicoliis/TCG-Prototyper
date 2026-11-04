@@ -1,0 +1,32 @@
+nombre,dimension,velocidad,efecto
+Susurros en Eterneblina,Fantaspet,Rápido,"**Normal:** Descarta 1 carta: devuelve 1 Fantaspet de tu cementerio a tu mano.
+**Trigger:** Si un Fantaspet fuera a ser destruido: devuélvelo a tu mano en su lugar."
+Refugio en emergente Eterneblina,Fantaspet,Lento,"**Normal:** Revela 1 Fantaspet de tu mano: busca 1 Fantaspet con distinto nombre.
+**Trigger:** Si un Fantaspet es destruido: busca 1 Fantaspet con PODER 150 o menos."
+Presencia en Eterneblina,Fantaspet,Rápido,"**Normal:** Elige 1 Fantaspet: gana 100 PODER este turno.
+**Trigger:** Si un Fantaspet fuera a ser destruido por daño: sobrevive con 50."
+Estampida en emergente Ugabuga,Ugabuga,Lento,**Normal:** Elige 1 Ugabuga: puede declarar un segundo ataque este turno.
+Grito de guerra Ugabuga,Ugabuga,Rápido,"**Normal:** Elige 1 Ugabuga: gana 100 PODER este turno.
+**Trigger:** Si un Ugabuga es atacado: gana 150 PODER este turno."
+Banquete inaugural de aldea Ugabuga,Ugabuga,Lento,"**Normal:** Destruye 1 explorador: roba 2 cartas.
+**Trigger:** Si un Ugabuga es destruido: juega 1 Ugabuga con PODER 200 o menos de tu mano."
+Conflicto en emergente reino de Ragnatica,Ragnatica,Lento,"**Normal:** Agrega 2 fichas Cría.
+**Trigger:** Si el oponente declara un ataque: agrega 1 ficha Cría."
+Telar de urgencia en Ragnatica,Ragnatica,Lento,**Normal:** Descarta 1 carta: agrega 2 fichas Cría.
+Hilos cortados en Ragnatica,Ragnatica,Rápido,**Normal:** Devuelve a su mano 1 explorador del oponente. Agrega 1 ficha Cría.
+Crianza en Ragnatica,Ragnatica,Lento,**Normal:** Elige 1 ficha Cría: gana 100 PODER.
+Cerrad filas en emergente Baluarte,Baluarte,Rápido,"**Normal:** Elige 1 explorador con asistente: gana 100 PODER este turno y cura todo su daño.
+**Trigger:** Si un explorador con asistente es atacado: el atacante pierde 100 PODER este turno."
+Relevo de guardia en Baluarte,Baluarte,Rápido,"**Normal:** Reemplaza 1 asistente por 1 Baluarte de tu mano. El asistente reemplazado vuelve a tu mano.
+**Trigger:** Si un asistente fuera a ser destruido: devuélvelo a tu mano en su lugar."
+Reconstrucción en emergente Baluarte,Baluarte,Lento,"**Normal:** Juega 1 Baluarte de tu cementerio asistiendo a un explorador sin asistente.
+**Trigger:** Si un Baluarte es destruido: busca 1 Baluarte con PODER 150 o menos."
+Represalia en Baluarte,Baluarte,Rápido,"**Normal:** Elige 1 explorador del oponente: pierde 100 PODER este turno.
+**Trigger:** Si un Baluarte es destruido por un explorador del oponente: inflige 200 de daño a ese explorador."
+Refuerzo de la Muralla,Baluarte,Lento,**Normal:** Elige 1 Baluarte: gana 100 PODER.
+Brújula Rota,Neutral,Lento,"**Normal:** Roba 2 cartas, luego descarta 2 cartas.
+**Trigger:** Si una carta falla en la búsqueda: roba 1 carta."
+Retirada Táctica,Neutral,Rápido,"**Normal:** Devuelve 1 explorador a tu mano.
+**Trigger:** Si un explorador es atacado: devuélvelo a tu mano. El ataque termina. Roba 1 carta."
+Grieta en emergente Valle Mudo,Neutral,Rápido,"**Trigger:** Si el oponente activa un efecto que busca, descarta 1 carta: niega esa activación. Roba 1 carta."
+Botiquín del Colapso,Neutral,Lento,**Normal:** Cura todo el daño de 1 explorador. Roba 1 carta.

@@ -1,0 +1,52 @@
+nombre,dimension,poder,efecto
+Plumifer,Fantaspet,100,"**Normal:** Destruye esta carta.
+**Trigger:** Si esta carta es destruida: busca 1 Fantaspet con PODER 150 o menos."
+Gooboy,Fantaspet,150,**Asistiendo:** Si el explorador fuera a ser destruido: destruye esta carta en su lugar.
+Boolly,Fantaspet,100,"**Trigger:** (Desde tu mano) Si un Fantaspet es destruido: juega esta carta boca arriba, asistiendo a un explorador sin asistente."
+Cesarmill,Fantaspet,150,"Tiene +50 PODER por cada 3 cartas de tu cementerio (máx. +250).
+**Normal:** Busca 1 Fantaspet y juégalo asistiendo a esta carta (solo sin asistente)."
+Koalma,Fantaspet,100,"**Normal:** Exilia 1 carta de tu cementerio: devuelve 1 Fantaspet de tu cementerio a tu mano.
+**Asistiendo:** Si el explorador es atacado: el atacante pierde 100 PODER este turno."
+Talkatak,Fantaspet,150,**Normal:** Reemplaza 1 asistente por 1 Fantaspet de tu mano. El asistente reemplazado va a tu cementerio.
+Dragging,Fantaspet,50,**Asistiendo:** Si esta carta es revelada: destruye al atacante. Esta carta va a tu cementerio.
+Espectro Guardián,Fantaspet,200,"Tiene +50 PODER mientras tengas 6 o más cartas en tu cementerio.
+**Trigger:** Si esta carta fuera a ser destruida por daño: sobrevive con 50.
+**Trigger:** Si esta carta es destruida: devuelve 1 Fantaspet de tu cementerio a tu mano."
+Ugalito,Ugabuga,100,**Normal:** Descarta 1 carta: busca 1 Ugabuga.
+Chamán Ugabu,Ugabuga,150,"**Normal:** Descarta 1 carta: devuelve 1 Ugabuga de tu cementerio a tu mano.
+**Trigger:** Si un Ugabuga es destruido: roba 1 carta."
+Pedrusco,Ugabuga,150,**Trigger:** Si esta carta es destruida: destruye 1 explorador del oponente con PODER 200 o menos.
+Cazador Ugabu,Ugabuga,200,**Trigger:** Si el daño de esta carta destruye un explorador: el oponente descarta 1 carta al azar.
+Balanced,Ugabuga,200,**Trigger:** Si esta carta fuera a ser destruida por daño: sobrevive con 50.
+Triturador,Ugabuga,250,**Trigger:** Si esta carta es jugada: destruye todos los demás exploradores con PODER 150 o menos.
+Telarín,Ragnatica,100,**Normal:** Agrega 1 ficha Cría.
+Hilandera,Ragnatica,150,**Normal:** Destruye 1 ficha Cría: busca 1 Ragnatica con PODER 200 o menos.
+Madre Telar,Ragnatica,200,"Las fichas Cría tienen +50 PODER.
+**Normal:** Descarta 1 carta: agrega 2 fichas Cría."
+Nido Vivo,Ragnatica,150,**Trigger:** Si una ficha Cría es destruida: roba 1 carta.
+Reina de Ragnatica,Ragnatica,250,"Mientras controles 3 o más fichas Cría, esta carta tiene +100 PODER.
+**Trigger:** Si el oponente activa un efecto de explorador que elige a una carta tuya, destruye 1 ficha Cría: niega esa activación. Agrega 1 ficha Cría."
+Viuda Gris,Ragnatica,150,**Trigger:** Si un explorador del oponente declara un ataque: anula ese ataque. Agrega 1 ficha Cría.
+Emboscadora,Ragnatica,150,**Trigger:** (Desde tu mano) Si el oponente juega un explorador: juega esta carta. Agrega 1 ficha Cría.
+Capullo Silente,Ragnatica,100,**Asistiendo:** Si el explorador es atacado: devuelve al atacante a su mano. Agrega 1 ficha Cría.
+Cría de Ragnatica,Ragnatica,100,Ficha. Desaparece si deja el campo.
+Rodelero,Baluarte,200,"**Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo asistido por esta carta.
+**Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asístelo con esta carta.
+**Asistiendo:** (Activa como **Escudero**) Si el explorador es atacado: gana 100 PODER este turno."
+Alabardero,Baluarte,150,"**Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo asistido por esta carta.
+**Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asístelo con esta carta.
+**Asistiendo:** (Activa como **Escudero**) Si el explorador es atacado: el atacante pierde 100 PODER este turno."
+Armero,Baluarte,150,"**Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo asistido por esta carta.
+**Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asístelo con esta carta.
+**Asistiendo:** (Activa como **Escudero**) Si esta carta es destruida: el explorador gana 100 PODER."
+Ballestero,Baluarte,100,"**Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo asistido por esta carta.
+**Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asístelo con esta carta.
+**Trigger:** (Activa como **Escudero**) Si el oponente declara un ataque: ese explorador pierde 100 PODER este turno."
+Heraldo,Baluarte,100,"**Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo asistido por esta carta.
+**Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asístelo con esta carta.
+**Asistiendo:** (Activa como **Escudero**) Si esta carta es destruida: devuelve 1 Escudero de tu cementerio a tu mano."
+Centinela del Baluarte,Baluarte,150,**Normal:** Descarta 1 carta: juega 1 Baluarte de tu cementerio asistiendo a un explorador sin asistente.
+Sargento de la Muralla,Baluarte,200,Los demás Baluarte tienen +50 PODER.
+Torre Viva,Baluarte,250,"**Trigger:** Al comienzo de tu turno: cura 100 de daño a 1 explorador.
+**Trigger:** Si esta carta fuera a ser destruida por daño: sobrevive con 100."
+Cartógrafo Errante,Neutral,150,"**Normal:** Roba 1 carta, luego descarta 1 carta."

@@ -1,0 +1,12 @@
+nombre,dimension,poder,efecto,restriccion
+Rey de la Niebla,Fantaspet,200,Tiene +50 PODER por cada 2 Fantaspet de tu cementerio (máx. +250).,Después de entrar al campo> Si es tu turno: descarta 1 carta.
+Monstaa,Ugabuga,300,,"Después de entrar al campo> destruye 1 explorador tuyo. Si no puedes, se destruye."
+Lance-elot,Ugabuga,100,**Asistiendo:** El explorador tiene +100 PODER.,Esta carta no puede declarar ataques.
+Van-guard,Ugabuga,300,**Atracción** de ataques.,No puede declarar ataques. Recibe el doble de daño.
+Señuelo,Ragnatica,100,"**Atracción** de ataques.
+**Normal:** Agrega 1 ficha Cría.",Esta carta no puede declarar ataques.
+"Aegis, Custodio del Baluarte",Baluarte,200,"**Atracción** de ataques y efectos.
+Mientras tenga asistente, no puede ser destruida por efectos.
+**Trigger:** Al comienzo de tu turno: esta carta gana 50 PODER (máx. +200).",Después de entrar al campo> Si es tu turno: se termina tu turno. Solo 1 copia.
+Archivista del Baluarte,Baluarte,100,**Normal:** Busca 1 Baluarte.,Después de entrar al campo> descarta 1 carta.
+Mercenario del Colapso,Neutral,250,**Normal:** (Desde tu mano) Descarta 1 carta: juega esta carta.,Después de entrar al campo> Si es tu turno: no puedes activar más efectos este turno.
