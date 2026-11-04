@@ -1,12 +1,12 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=32";
-import { getCards, addCard, removeCard, getCardValue, setCardValue } from "../../models/card.mjs?v=32";
-import { ID_PROPERTY } from "../../models/card-numbering.mjs?v=32";
-import { loadTypedInputTemplates, createTypedInput } from "../card-editor/typed-input.mjs?v=32";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=33";
+import { getCards, addCard, removeCard, getCardValue, setCardValue } from "../../models/card.mjs?v=33";
+import { ID_PROPERTY } from "../../models/card-numbering.mjs?v=33";
+import { loadTypedInputTemplates, createTypedInput } from "../card-editor/typed-input.mjs?v=33";
 
 let templatePromise;
 
 export async function mountCardTable(root, storage, projectId, cardTypeId, onBack, onEditCard) {
-  const template = await (templatePromise ??= loadFragment("js/views/card-table/card-table.html?v=32"));
+  const template = await (templatePromise ??= loadFragment("js/views/card-table/card-table.html?v=33"));
   const view = cloneTemplate(template);
   const section = view.querySelector(".card-table-view");
   const inputTemplates = await loadTypedInputTemplates();

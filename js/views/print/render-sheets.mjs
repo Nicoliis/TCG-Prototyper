@@ -1,13 +1,13 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=32";
-import { PAPER_SIZES, layoutSheets } from "../../models/sheet-layout.mjs?v=32";
-import { renderPrintCard } from "./render-card.mjs?v=32";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=33";
+import { PAPER_SIZES, layoutSheets } from "../../models/sheet-layout.mjs?v=33";
+import { renderPrintCard } from "./render-card.mjs?v=33";
 
 const GUIDE_OUTSET_PX = 3;
 
 let templatesPromise;
 
 export async function loadPrintTemplates() {
-  const fragmentTemplate = await (templatesPromise ??= loadFragment("js/views/print/print-sheet.html?v=32"));
+  const fragmentTemplate = await (templatesPromise ??= loadFragment("js/views/print/print-sheet.html?v=33"));
   const fragment = cloneTemplate(fragmentTemplate);
   return {
     page: fragment.querySelector(".print-page-template"),

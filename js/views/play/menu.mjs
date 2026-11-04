@@ -1,5 +1,5 @@
 // A small popup menu next to an element. items: [{ label, onClick, disabled }, { heading: "text" }, { separator: true }]
-import { h } from "../dom.mjs?v=32";
+import { h } from "../dom.mjs?v=33";
 
 let openMenu = null;
 
