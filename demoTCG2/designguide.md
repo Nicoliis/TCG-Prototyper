@@ -107,7 +107,7 @@ Una interrupción tiene dos partes: el **efecto principal** (frenar) y el **efec
 | Retirada Táctica | Devuelve a tu mano y termina el ataque | Roba 1 carta |
 | Grieta | Niega una búsqueda | Roba 1 carta |
 | Derrumbe | Destruye todo con PODER ≤ 200 | Roba por cada Ugabuga destruido |
-| Cerrad filas | +100 PODER permanente | Cura todo el daño |
+| Cerrad filas | +50 PODER permanente | Cura todo el daño |
 
 Pautas:
 
@@ -133,6 +133,16 @@ Pautas para **Sobrevive con X**:
 - Va bien en cuerpos **sólidos** (200-250) y en eventos de protección; en cuerpos de 50-100 vale poco.
 - Solo detiene **daño**. Los efectos de destruir siguen funcionando, así que mantienen su papel de respuesta.
 
+### Cuánto potenciar, dañar y curar
+
+Como todo es permanente y el daño baja el tablero, las cantidades se miden en marcadores (50 cada uno):
+
+| Efecto | Referencia | Notas |
+|---|---|---|
+| **Potenciar** | **+50** es una ayuda; **+100** es una carta entera de valor | Un evento que potencia +100 debe tener algo más; un cuerpo que se potencia a sí mismo, un máximo (Aegis, +200). |
+| **Infligir daño** (efecto) | **50** en un asistente o cuerpo barato; **100-200** en un evento | Es daño real: baja el tablero del rival y debilita al atacante. |
+| **Curar** | **100** al comienzo del turno (Torre Viva) o **todo** en un evento | Curar es potenciar: cuanto más daño haya en juego, más vale. |
+
 ## 8. Restricciones (poco comunes)
 
 Libres, obligatorias y simultáneas con la acción que las revela. Solo **12 de las 63 cartas** las llevan. Se reservan para:
@@ -155,7 +165,7 @@ Los asistentes **no suman** al objetivo, así que cada uno es una decisión: pie
 |---|---|---|
 | **Escudo** | Recibe el daño por el activo (defender CON asistencia). | Cualquier asistente con PODER alto; Aegis lo aprovecha. |
 | **Trampa** | Se revela al ser atacado y castiga. | Dragging, Koalma, Capullo Silente. |
-| **Refuerzo** | Suma PODER al activo. | Lance-elot (+100), Armero (+100 al caer). |
+| **Refuerzo** | Suma PODER al activo. | Lance-elot (+100), Armero (+50 al caer). |
 | **Generador** | Pone asistentes. | Cesarmill, Boolly, Talkatak, Centinela, Reconstrucción. |
 
 **Atracción de ataques / efectos:** obliga al oponente a elegir como objetivo a las cartas con ella. Úsala como **punto focal** ("todo va contra Aegis") y acompáñala siempre de una desventaja o una debilidad (ignora lo que no elige objetivo; Van-guard recibe el doble de daño y no ataca).

@@ -35,13 +35,13 @@ Rodelero,Baluarte,200,"**Trigger:** Si esta carta es jugada activa desde tu mano
 **Asistiendo:** (Activa como **Escudero**) Si el explorador es atacado: gana 50 PODER."
 Alabardero,Baluarte,150,"**Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo asistido por esta carta.
 **Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asístelo con esta carta.
-**Asistiendo:** (Activa como **Escudero**) Si el explorador es atacado: inflige 100 de daño al atacante."
+**Asistiendo:** (Activa como **Escudero**) Si el explorador es atacado: inflige 50 de daño al atacante."
 Armero,Baluarte,150,"**Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo asistido por esta carta.
 **Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asístelo con esta carta.
-**Asistiendo:** (Activa como **Escudero**) Si esta carta es destruida: el explorador gana 100 PODER."
+**Asistiendo:** (Activa como **Escudero**) Si esta carta es destruida: el explorador gana 50 PODER."
 Ballestero,Baluarte,100,"**Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo asistido por esta carta.
 **Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asístelo con esta carta.
-**Trigger:** (Activa como **Escudero**) Si el oponente declara un ataque: inflige 100 de daño a ese explorador."
+**Trigger:** (Activa como **Escudero**) Si el oponente declara un ataque: inflige 50 de daño a ese explorador."
 Heraldo,Baluarte,100,"**Trigger:** Si esta carta es jugada activa desde tu mano: juega 1 Aegis de tu mazo asistido por esta carta.
 **Trigger:** (Desde tu mano) Si Aegis se queda sin asistente: asístelo con esta carta.
 **Asistiendo:** (Activa como **Escudero**) Si esta carta es destruida: devuelve 1 Escudero de tu cementerio a tu mano."

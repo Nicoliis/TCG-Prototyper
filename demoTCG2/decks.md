@@ -118,7 +118,7 @@ Tienes 9 cartas en el cementerio, 4 de ellas Fantaspet. **Cesarmill** tiene +150
 **La secuencia**
 1. **Telarín**, **Conflicto** y **Telar de urgencia** agregan tokens (1, 2 y 2).
 2. **Madre Telar** da +50 PODER a todos los tokens y agrega 2 más a cambio de una carta.
-3. **Crianza** engorda un token (+100) y **Nido Vivo** roba cuando un token cae.
+3. **Crianza** engorda un token (+50) y **Nido Vivo** roba cuando un token cae.
 4. **Hilandera** convierte un token en una búsqueda para encontrar la pieza que falta.
 5. **Reina de Ragnatica** (250, +100 con 3 o más tokens) cierra la secuencia y niega lo que intente romper tu tablero.
 
@@ -165,9 +165,9 @@ Tienes **Reina** (350), **Madre Telar** (200) y tres tokens Cría de 150: **1000
 | Escudero | PODER | Efecto extra (activa como Escudero) |
 |---|---|---|
 | Rodelero | 200 | Asistiendo: si el explorador es atacado, gana 50 PODER. |
-| Alabardero | 150 | Asistiendo: si el explorador es atacado, inflige 100 de daño al atacante. |
-| Armero | 150 | Asistiendo: si esta carta es destruida, el explorador gana 100 PODER. |
-| Ballestero | 100 | Trigger (jugado como activo): si el oponente declara un ataque, inflige 100 de daño a ese explorador. |
+| Alabardero | 150 | Asistiendo: si el explorador es atacado, inflige 50 de daño al atacante. |
+| Armero | 150 | Asistiendo: si esta carta es destruida, el explorador gana 50 PODER. |
+| Ballestero | 100 | Trigger (jugado como activo): si el oponente declara un ataque, inflige 50 de daño a ese explorador. |
 | Heraldo | 100 | Asistiendo: si esta carta es destruida, devuelve 1 Escudero del cementerio a tu mano. |
 
 **La secuencia**
