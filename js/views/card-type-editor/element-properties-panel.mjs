@@ -1,4 +1,4 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=36";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=37";
 import {
   setElementStyle,
   getElementStyle,
@@ -6,10 +6,10 @@ import {
   setTextStyle,
   getTextStyle,
   getElementName,
-} from "../../models/card-type.mjs?v=36";
-import { substitute } from "../../templating/substitute.mjs?v=36";
-import { renderFormatted } from "./formatted-text.mjs?v=36";
-import { setUpTabs, activeTab, selectTab, setUpSegmented, setSegmentedValue } from "./tabs.mjs?v=36";
+} from "../../models/card-type.mjs?v=37";
+import { substitute } from "../../templating/substitute.mjs?v=37";
+import { renderFormatted } from "./formatted-text.mjs?v=37";
+import { setUpTabs, activeTab, selectTab, setUpSegmented, setSegmentedValue } from "./tabs.mjs?v=37";
 
 const CONTENT_FIELD_BY_KIND = {
   text: { label: "Template", placeholder: "{property} template" },
@@ -24,7 +24,7 @@ let templatePromise;
 
 export async function mountElementPropertiesPanel(container) {
   const template = await (templatePromise ??= loadFragment(
-    "js/views/card-type-editor/element-properties-panel.html?v=36",
+    "js/views/card-type-editor/element-properties-panel.html?v=37",
   ));
   const panel = cloneTemplate(template).firstElementChild;
   container.appendChild(panel);

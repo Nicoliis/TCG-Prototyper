@@ -1,7 +1,7 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=36";
-import { parseCsv } from "../../csv/parse-csv.mjs?v=36";
-import { importCards } from "../../csv/import-cards.mjs?v=36";
-import { getSchema } from "../../models/card-numbering.mjs?v=36";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=37";
+import { parseCsv } from "../../csv/parse-csv.mjs?v=37";
+import { importCards } from "../../csv/import-cards.mjs?v=37";
+import { getSchema } from "../../models/card-numbering.mjs?v=37";
 
 let templatePromise;
 
@@ -10,7 +10,7 @@ function listOrNone(items) {
 }
 
 export async function mountCsvImport(root, storage, projectId, cardTypeId, onBack, onOpenTable) {
-  const template = await (templatePromise ??= loadFragment("js/views/csv-import/csv-import.html?v=36"));
+  const template = await (templatePromise ??= loadFragment("js/views/csv-import/csv-import.html?v=37"));
   const view = cloneTemplate(template);
   const section = view.querySelector(".csv-import-view");
 

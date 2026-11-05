@@ -1,8 +1,8 @@
 // Draws cards on a board, reusing the print renderer so a card on the table looks exactly like the card as designed.
 // A drawn face is rendered once (off screen, so its text can be fitted) and then cloned for every later use.
-import { loadPrintTemplates } from "../print/render-sheets.mjs?v=36";
-import { renderPrintCard } from "../print/render-card.mjs?v=36";
-import { h } from "../dom.mjs?v=36";
+import { loadPrintTemplates } from "../print/render-sheets.mjs?v=37";
+import { renderPrintCard } from "../print/render-card.mjs?v=37";
+import { h } from "../dom.mjs?v=37";
 
 let templatesPromise;
 let stage;

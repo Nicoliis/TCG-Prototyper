@@ -1,17 +1,17 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=36";
-import { mountCardTypeEditor } from "../card-type-editor/card-type-editor.mjs?v=36";
-import { mountCardTable } from "../card-table/card-table.mjs?v=36";
-import { mountCardEditor } from "../card-editor/card-editor.mjs?v=36";
-import { mountDeckList } from "../deck-list/deck-list.mjs?v=36";
-import { mountBoardList } from "../board-list/board-list.mjs?v=36";
-import { mountPrintScreen } from "../print/print-screen.mjs?v=36";
-import { mountCsvImport } from "../csv-import/csv-import.mjs?v=36";
-import { createCardType } from "../../models/card-type.mjs?v=36";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=37";
+import { mountCardTypeEditor } from "../card-type-editor/card-type-editor.mjs?v=37";
+import { mountCardTable } from "../card-table/card-table.mjs?v=37";
+import { mountCardEditor } from "../card-editor/card-editor.mjs?v=37";
+import { mountDeckList } from "../deck-list/deck-list.mjs?v=37";
+import { mountBoardList } from "../board-list/board-list.mjs?v=37";
+import { mountPrintScreen } from "../print/print-screen.mjs?v=37";
+import { mountCsvImport } from "../csv-import/csv-import.mjs?v=37";
+import { createCardType } from "../../models/card-type.mjs?v=37";
 
 let templatePromise;
 
 export async function mountCardTypeList(root, storage, projectId, onBack) {
-  const template = await (templatePromise ??= loadFragment("js/views/card-type-list/card-type-list.html?v=36"));
+  const template = await (templatePromise ??= loadFragment("js/views/card-type-list/card-type-list.html?v=37"));
   const view = cloneTemplate(template);
   const section = view.querySelector(".card-type-list-view");
 

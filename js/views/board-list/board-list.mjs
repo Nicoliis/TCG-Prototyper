@@ -1,12 +1,12 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=36";
-import { mountBoardEditor } from "../board-editor/board-editor.mjs?v=36";
-import { mountPlay } from "../play/play-screen.mjs?v=36";
-import { getBoards, createBoard, cloneBoard } from "../../models/board.mjs?v=36";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=37";
+import { mountBoardEditor } from "../board-editor/board-editor.mjs?v=37";
+import { mountPlay } from "../play/play-screen.mjs?v=37";
+import { getBoards, createBoard, cloneBoard } from "../../models/board.mjs?v=37";
 
 let templatePromise;
 
 export async function mountBoardList(root, storage, projectId, onBack) {
-  const template = await (templatePromise ??= loadFragment("js/views/board-list/board-list.html?v=36"));
+  const template = await (templatePromise ??= loadFragment("js/views/board-list/board-list.html?v=37"));
   const view = cloneTemplate(template);
   const section = view.querySelector(".board-list-view");
 

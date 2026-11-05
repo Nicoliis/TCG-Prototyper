@@ -1,5 +1,5 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=36";
-import { h } from "../dom.mjs?v=36";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=37";
+import { h } from "../dom.mjs?v=37";
 import {
   getBoards,
   addZone,
@@ -20,7 +20,7 @@ import {
   FACE_LABELS,
   ORIENTATION_LABELS,
   VISIBILITY_LABELS,
-} from "../../models/board.mjs?v=36";
+} from "../../models/board.mjs?v=37";
 
 const CELL_PX = 62; // width of one cell in the designer
 const GAP_PX = 4;
@@ -38,7 +38,7 @@ function fillSelect(select, values, labels = {}) {
 }
 
 export async function mountBoardEditor(root, storage, projectId, boardId, onBack) {
-  const template = await (templatePromise ??= loadFragment("js/views/board-editor/board-editor.html?v=36"));
+  const template = await (templatePromise ??= loadFragment("js/views/board-editor/board-editor.html?v=37"));
   const view = cloneTemplate(template);
   const section = view.querySelector(".board-editor-view");
 
