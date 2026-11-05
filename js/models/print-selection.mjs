@@ -1,5 +1,5 @@
-import { findCard } from "./deck.mjs?v=34";
-import { ID_PROPERTY } from "./card-numbering.mjs?v=34";
+import { findCard } from "./deck.mjs?v=35";
+import { ID_PROPERTY } from "./card-numbering.mjs?v=35";
 
 export function selectionFromDeck(deck) {
   return { entries: deck.entries.map((entry) => ({ cardId: entry.cardId, count: entry.count })) };

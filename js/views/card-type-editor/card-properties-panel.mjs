@@ -1,5 +1,5 @@
-import { addProperty, removeProperty, setPropertyType, countInvalidValues, elementsUsingProperty } from "../../models/card-type.mjs?v=34";
-import { PROPERTY_TYPES, PROPERTY_TYPE_LABELS } from "../../models/property-types.mjs?v=34";
+import { addProperty, removeProperty, setPropertyType, countInvalidValues, elementsUsingProperty } from "../../models/card-type.mjs?v=35";
+import { PROPERTY_TYPES, PROPERTY_TYPE_LABELS } from "../../models/property-types.mjs?v=35";
 
 export function setUpCardPropertiesPanel(section, cardType, persist, refreshAllPreviews) {
   const list = section.querySelector(".property-list:not(.property-list--builtin)");
