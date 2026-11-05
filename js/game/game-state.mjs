@@ -152,9 +152,9 @@ function zoneName(board, key) {
 const clamp01 = (n) => Math.min(1, Math.max(0, Number.isFinite(n) ? n : 0.5));
 
 // The card as it arrives in a zone. A card never keeps its stack or its spot from another zone.
-function entryFor(zone, entry, faceOverride, spot) {
+function entryFor(zone, entry, faceOverride, spot, rotOverride) {
   const faceUp = faceOverride ?? (zone.face === "choose" ? entry.faceUp : zone.face === "up");
-  const rot = zone.orientation === "choose" ? entry.rot : zone.orientation === "sideways" ? 90 : 0;
+  const rot = rotOverride === 0 || rotOverride === 90 ? rotOverride : zone.orientation === "choose" ? entry.rot : zone.orientation === "sideways" ? 90 : 0;
   const arrived = { ...entry, faceUp, rot };
   delete arrived.under;
   delete arrived.x;
@@ -306,7 +306,7 @@ export function applyEvent(state, event, ctx) {
       // the card travels with the cards stacked on it
       const followers = next.zones[found.key].filter((c) => c.under === event.uid);
       next.zones[found.key] = next.zones[found.key].filter((c) => c.uid !== event.uid && c.under !== event.uid);
-      const entry = entryFor(dest.zone, found.entry, event.faceUp, event);
+      const entry = entryFor(dest.zone, found.entry, event.faceUp, event, event.rot);
       const pile = next.zones[dest.key];
       if (base) {
         entry.under = base.entry.under ?? base.entry.uid;

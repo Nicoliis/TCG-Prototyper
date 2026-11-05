@@ -11,7 +11,7 @@ import { createGameSession, ROLE_CREATOR, ROLE_JOINER } from "../../game/game-se
 import { createLink } from "../../net/link.mjs?v=35";
 import { loadCardTemplates, cardFaceElement, fitSize } from "../board/card-view.mjs?v=35";
 import { createGameView, buildCardNode } from "./game-view.mjs?v=35";
-import { showMenu, closeMenu } from "./menu.mjs?v=35";
+import { showMenu, showChoice, closeMenu } from "./menu.mjs?v=35";
 
 const NAME_KEY = "tcg-prototyper-player-name";
 const LOG_SHOWN = 80;
@@ -382,7 +382,7 @@ export async function mountPlay(root, storage, options, onBack) {
 
   // A card dropped on a zone (or on another card). Zones only set a default side; Shift plays the opposite.
   // Grid zones also get the cell it was dropped on (cx, cy) and spread zones the place in the row (index).
-  function playCard(uid, toKey, { shift = false, x, y, cx, cy, index, onto } = {}) {
+  function playCard(uid, toKey, { shift = false, x, y, cx, cy, index, onto, at } = {}) {
     const state = stateOf();
     const ctx = ctxOf();
     let entry = null;
@@ -393,12 +393,22 @@ export async function mountPlay(root, storage, options, onBack) {
     if (x !== undefined) Object.assign(event, { x, y });
     if (cx !== undefined) Object.assign(event, { cx, cy });
     if (index !== undefined) event.index = index;
-    if (shift) {
-      const zone = ctx.board.zones.find((z) => z.id === parseKey(toKey).zoneId);
-      const defaultUp = zone.face === "choose" ? entry.faceUp : zone.face === "up";
-      event.faceUp = !defaultUp;
-    }
-    act(event);
+    const zone = ctx.board.zones.find((z) => z.id === parseKey(toKey).zoneId);
+    const askFace = zone.face === "choose";
+    const askTurn = zone.orientation === "choose";
+    if (shift && !askFace) event.faceUp = zone.face !== "up";
+    if (!askFace && !askTurn) return act(event);
+    // "choose": a square of options right where the card was dropped
+    const faces = askFace ? [true, false] : [undefined];
+    const turns = askTurn ? [0, 90] : [undefined];
+    const cells = [];
+    faces.forEach((faceUp, row) =>
+      turns.forEach((rot, col) => {
+        const label = [faceUp === undefined ? null : faceUp ? "Face up" : "Face down", rot === undefined ? null : rot ? "sideways" : "straight"].filter(Boolean).join(", ");
+        cells.push({ label, row, col, onClick: () => act({ ...event, ...(faceUp === undefined ? {} : { faceUp }), ...(rot === undefined ? {} : { rot }) }) });
+      }),
+    );
+    showChoice(at?.x ?? window.innerWidth / 2, at?.y ?? window.innerHeight / 2, turns.length, faces.length, cells);
   }
 
   function showPreview(cardId) {

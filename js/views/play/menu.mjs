@@ -19,6 +19,42 @@ function onKey(event) {
   if (event.key === "Escape") closeMenu();
 }
 
+// A small square of up to 4 options centred on a point (the drop). cells: [{ label, col, row, onClick }], laid out
+// in a cols x rows grid (1 or 2 each); the square is clamped to stay inside the window.
+export function showChoice(x, y, cols, rows, cells) {
+  closeMenu();
+  const menu = h(
+    "div",
+    { class: "ctx-menu choice-menu", role: "menu", style: { gridTemplateColumns: `repeat(${cols}, 1fr)`, gridTemplateRows: `repeat(${rows}, 1fr)` } },
+    cells.map((cell) =>
+      h(
+        "button",
+        {
+          type: "button",
+          role: "menuitem",
+          class: "ctx-item choice-item",
+          style: { gridColumn: String(cell.col + 1), gridRow: String(cell.row + 1) },
+          onclick: () => {
+            closeMenu();
+            cell.onClick?.();
+          },
+        },
+        cell.label,
+      ),
+    ),
+  );
+  document.body.append(menu);
+  const left = Math.min(Math.max(8, x - menu.offsetWidth / 2), window.innerWidth - menu.offsetWidth - 8);
+  const top = Math.min(Math.max(8, y - menu.offsetHeight / 2), window.innerHeight - menu.offsetHeight - 8);
+  menu.style.left = `${left}px`;
+  menu.style.top = `${top}px`;
+  openMenu = menu;
+  setTimeout(() => {
+    document.addEventListener("pointerdown", onOutside, true);
+    document.addEventListener("keydown", onKey, true);
+  });
+}
+
 export function showMenu(rect, items) {
   closeMenu();
   const menu = h(

@@ -283,7 +283,7 @@ export function createGameView(container, { templates, handlers }) {
     if (!target) return;
     const info = zoneNodes.get(target.dataset.key);
     if (onto && onto.dataset.key === target.dataset.key) {
-      return handlers.onMove(uid, target.dataset.key, { shift, onto: onto.dataset.uid });
+      return handlers.onMove(uid, target.dataset.key, { shift, onto: onto.dataset.uid, at: { x: event.clientX, y: event.clientY } });
     }
     const spot = {};
     if (info.zone.layout === "free") {
@@ -318,7 +318,7 @@ export function createGameView(container, { templates, handlers }) {
       spot.index = index;
     }
     const sortable = info.zone.layout === "free" || info.zone.layout === "grid" || info.zone.layout === "spread";
-    if (target.dataset.key !== fromKey || sortable) handlers.onMove(uid, target.dataset.key, { shift, ...spot });
+    if (target.dataset.key !== fromKey || sortable) handlers.onMove(uid, target.dataset.key, { shift, at: { x: event.clientX, y: event.clientY }, ...spot });
   }
 
   // another card of a stackable zone under the pointer (not the one being dragged, nor one stacked on it)
