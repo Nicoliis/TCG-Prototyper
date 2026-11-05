@@ -398,17 +398,15 @@ export async function mountPlay(root, storage, options, onBack) {
     const askTurn = zone.orientation === "choose";
     if (shift && !askFace) event.faceUp = zone.face !== "up";
     if (!askFace && !askTurn) return act(event);
-    // "choose": a square of options right where the card was dropped
-    const faces = askFace ? [true, false] : [undefined];
-    const turns = askTurn ? [0, 90] : [undefined];
+    // "choose": a square of 4 options right where the card was dropped; the ones the zone does not allow are greyed
     const cells = [];
-    faces.forEach((faceUp, row) =>
-      turns.forEach((rot, col) => {
-        const label = [faceUp === undefined ? null : faceUp ? "Face up" : "Face down", rot === undefined ? null : rot ? "sideways" : "straight"].filter(Boolean).join(", ");
-        cells.push({ label, row, col, onClick: () => act({ ...event, ...(faceUp === undefined ? {} : { faceUp }), ...(rot === undefined ? {} : { rot }) }) });
+    [true, false].forEach((faceUp, row) =>
+      [0, 90].forEach((rot, col) => {
+        const allowed = (askFace || faceUp === (zone.face === "up")) && (askTurn || rot === (zone.orientation === "sideways" ? 90 : 0));
+        cells.push({ label: `${faceUp ? "Face up" : "Face down"}, ${rot ? "sideways" : "straight"}`, row, col, disabled: !allowed, onClick: () => act({ ...event, faceUp, rot }) });
       }),
     );
-    showChoice(at?.x ?? window.innerWidth / 2, at?.y ?? window.innerHeight / 2, turns.length, faces.length, cells);
+    showChoice(at?.x ?? window.innerWidth / 2, at?.y ?? window.innerHeight / 2, 2, 2, cells);
   }
 
   function showPreview(cardId) {

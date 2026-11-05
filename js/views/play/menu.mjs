@@ -33,6 +33,7 @@ export function showChoice(x, y, cols, rows, cells) {
           type: "button",
           role: "menuitem",
           class: "ctx-item choice-item",
+          disabled: cell.disabled,
           style: { gridColumn: String(cell.col + 1), gridRow: String(cell.row + 1) },
           onclick: () => {
             closeMenu();

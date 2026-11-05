@@ -680,6 +680,11 @@ button:disabled {
   border-radius: var(--radius-sm);
 }
 
+.ctx-item:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
 .ctx-item:hover:not(:disabled),
 .ctx-item:focus-visible {
   background: var(--color-accent);
