@@ -1,10 +1,10 @@
-import { StorageAdapter } from "./storage-adapter.mjs?v=35";
-import { createProject, validateProjectName, cloneProjectForDuplicate } from "../models/project.mjs?v=35";
-import { validateCardTypeName } from "../models/card-type.mjs?v=35";
-import { upsertDeck, removeDeck, pruneDecks } from "../models/deck.mjs?v=35";
-import { upsertBoard, removeBoard } from "../models/board.mjs?v=35";
-import { normalizeProject } from "../models/card-numbering.mjs?v=35";
-import { validateExportEnvelope, buildProjectFromImport } from "../models/project-export.mjs?v=35";
+import { StorageAdapter } from "./storage-adapter.mjs?v=36";
+import { createProject, validateProjectName, cloneProjectForDuplicate } from "../models/project.mjs?v=36";
+import { validateCardTypeName } from "../models/card-type.mjs?v=36";
+import { upsertDeck, removeDeck, pruneDecks } from "../models/deck.mjs?v=36";
+import { upsertBoard, removeBoard } from "../models/board.mjs?v=36";
+import { normalizeProject } from "../models/card-numbering.mjs?v=36";
+import { validateExportEnvelope, buildProjectFromImport } from "../models/project-export.mjs?v=36";
 
 const DB_VERSION = 1;
 const STORE_NAME = "projects";

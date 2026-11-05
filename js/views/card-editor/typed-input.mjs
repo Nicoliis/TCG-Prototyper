@@ -1,10 +1,10 @@
-import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=35";
-import { validateValue } from "../../models/property-types.mjs?v=35";
+import { loadFragment, cloneTemplate } from "../load-fragment.mjs?v=36";
+import { validateValue } from "../../models/property-types.mjs?v=36";
 
 let templatePromise;
 
 export async function loadTypedInputTemplates() {
-  const template = await (templatePromise ??= loadFragment("js/views/card-editor/typed-inputs.html?v=35"));
+  const template = await (templatePromise ??= loadFragment("js/views/card-editor/typed-inputs.html?v=36"));
   return cloneTemplate(template).querySelector(".typed-input-templates");
 }
 

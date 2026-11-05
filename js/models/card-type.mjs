@@ -1,5 +1,5 @@
-import { DEFAULT_PROPERTY_TYPE, validatePropertyType, validateValue } from "./property-types.mjs?v=35";
-import { ID_PROPERTY } from "./card-numbering.mjs?v=35";
+import { DEFAULT_PROPERTY_TYPE, validatePropertyType, validateValue } from "./property-types.mjs?v=36";
+import { ID_PROPERTY } from "./card-numbering.mjs?v=36";
 
 const ELEMENT_KINDS =["text", "image", "label", "icon"];
 

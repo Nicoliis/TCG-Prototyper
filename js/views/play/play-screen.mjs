@@ -3,15 +3,15 @@
 //
 //   mountPlay(root, storage, { mode: "practice" | "host", projectId, boardId }, onBack)
 //   mountPlay(root, storage, { mode: "join" }, onBack)
-import { h } from "../dom.mjs?v=35";
-import { getBoards } from "../../models/board.mjs?v=35";
-import { buildPack } from "../../game/game-pack.mjs?v=35";
-import { newGame, zoneKey, parseKey, roleZone, cardView } from "../../game/game-state.mjs?v=35";
-import { createGameSession, ROLE_CREATOR, ROLE_JOINER } from "../../game/game-session.mjs?v=35";
-import { createLink } from "../../net/link.mjs?v=35";
-import { loadCardTemplates, cardFaceElement, fitSize } from "../board/card-view.mjs?v=35";
-import { createGameView, buildCardNode } from "./game-view.mjs?v=35";
-import { showMenu, showChoice, closeMenu } from "./menu.mjs?v=35";
+import { h } from "../dom.mjs?v=36";
+import { getBoards } from "../../models/board.mjs?v=36";
+import { buildPack } from "../../game/game-pack.mjs?v=36";
+import { newGame, zoneKey, parseKey, roleZone, cardView } from "../../game/game-state.mjs?v=36";
+import { createGameSession, ROLE_CREATOR, ROLE_JOINER } from "../../game/game-session.mjs?v=36";
+import { createLink } from "../../net/link.mjs?v=36";
+import { loadCardTemplates, cardFaceElement, fitSize } from "../board/card-view.mjs?v=36";
+import { createGameView, buildCardNode } from "./game-view.mjs?v=36";
+import { showMenu, showChoice, closeMenu } from "./menu.mjs?v=36";
 
 const NAME_KEY = "tcg-prototyper-player-name";
 const LOG_SHOWN = 80;
