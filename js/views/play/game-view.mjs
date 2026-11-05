@@ -40,10 +40,22 @@ function placeCards(zone, cards, cw, ch, zw, zh, dir) {
   const spots = new Array(count).fill(null);
   const stackable = zone.layout === "grid" || zone.layout === "free";
   const baseIndex = new Map(cards.map((c, i) => [c.uid, i]));
-  let slotCounter = 0;
   const gridCols = Math.max(1, Math.round((zw + GAP) / (cw + GAP)));
   const gridRows = Math.max(1, Math.round((zh + GAP) / (ch + GAP)));
   const children = new Map(); // base uid -> how many cards are stacked on it so far
+  const explicit = new Map(); // grid: uid -> cell the card was dropped on
+  const taken = new Set();
+  let freeSlot = 0;
+  if (zone.layout === "grid") {
+    for (const card of cards) {
+      if (card.under && baseIndex.has(card.under)) continue;
+      if (!Number.isInteger(card.cx) || !Number.isInteger(card.cy)) continue;
+      const slot = Math.min(card.cy, gridRows - 1) * gridCols + Math.min(card.cx, gridCols - 1);
+      if (taken.has(slot)) continue;
+      explicit.set(card.uid, slot);
+      taken.add(slot);
+    }
+  }
   for (let i = 0; i < count; i++) {
     const card = cards[i];
     if (stackable && card.under && baseIndex.has(card.under)) continue; // placed after its base
@@ -66,12 +78,21 @@ function placeCards(zone, cards, cw, ch, zw, zh, dir) {
         spots[i] = { x: (card.x ?? 0.5) * Math.max(0, zw - cw), y: (card.y ?? 0.5) * Math.max(0, zh - ch) };
         break;
       default: {
-        // grid: square cells in reading order; extra cards beyond the cells pile up on the last cell
+        // grid: a card snaps to the cell it was dropped on; the others fill the free cells in reading order
+        // (from its owner's side of the table); extra cards beyond the cells pile up on the last cell
         const capacity = gridCols * gridRows;
-        const slot = slotCounter % capacity;
-        const over = Math.floor(slotCounter / capacity) * STACK_OFFSET;
-        spots[i] = { x: (slot % gridCols) * (cw + GAP) + over, y: Math.floor(slot / gridCols) * (ch + GAP) + over };
-        slotCounter += 1;
+        let slot;
+        let over = 0;
+        if (explicit.has(card.uid)) slot = explicit.get(card.uid);
+        else {
+          while (taken.has(freeSlot)) freeSlot += 1;
+          slot = freeSlot % capacity;
+          over = Math.floor(freeSlot / capacity) * STACK_OFFSET;
+          freeSlot += 1;
+        }
+        const col = dir < 0 ? gridCols - 1 - (slot % gridCols) : slot % gridCols;
+        const row = dir < 0 ? gridRows - 1 - Math.floor(slot / gridCols) : Math.floor(slot / gridCols);
+        spots[i] = { x: col * (cw + GAP) + over, y: row * (ch + GAP) + over };
       }
     }
   }
@@ -178,7 +199,7 @@ export function createGameView(container, { templates, handlers }) {
     const { zone, width, height, mirrored } = info;
     const board = ctx.board;
     const views = cards.map((entry) => cardView(board, viewer, key, entry));
-    const signature = JSON.stringify([cards.map((c, i) => [c.uid, c.cardId, c.faceUp, c.rot, c.under ?? null, c.x ?? null, c.y ?? null, views[i]]), model.selectedUid && cards.some((c) => c.uid === model.selectedUid) ? model.selectedUid : null]);
+    const signature = JSON.stringify([cards.map((c, i) => [c.uid, c.cardId, c.faceUp, c.rot, c.under ?? null, c.x ?? null, c.y ?? null, c.cx ?? null, c.cy ?? null, views[i]]), model.selectedUid && cards.some((c) => c.uid === model.selectedUid) ? model.selectedUid : null]);
     if (signature === info.signature) return;
     info.signature = signature;
 
@@ -274,7 +295,30 @@ export function createGameView(container, { templates, handlers }) {
       spot.x = (centreX - cell.w / 2) / Math.max(1, info.width - cell.w);
       spot.y = (centreY - cell.h / 2) / Math.max(1, info.height - cell.h);
     }
-    if (target.dataset.key !== fromKey || info.zone.layout === "free") handlers.onMove(uid, target.dataset.key, { shift, ...spot });
+    if (info.zone.layout === "grid") {
+      // the cell under the card's centre, counted from the owner's side of the table
+      const zoneRect = target.getBoundingClientRect();
+      const centreX = (event.clientX - zoneRect.left) / scale - (grab.x - source.offsetWidth / 2);
+      const centreY = (event.clientY - zoneRect.top) / scale - (grab.y - source.offsetHeight / 2);
+      const cols = Math.max(1, Math.round((info.width + GAP) / (cellW + GAP)));
+      const rows = Math.max(1, Math.round((info.height + GAP) / (cellH + GAP)));
+      const col = Math.min(cols - 1, Math.max(0, Math.floor(centreX / (cellW + GAP))));
+      const row = Math.min(rows - 1, Math.max(0, Math.floor(centreY / (cellH + GAP))));
+      spot.cx = info.mirrored ? cols - 1 - col : col;
+      spot.cy = info.mirrored ? rows - 1 - row : row;
+    }
+    if (info.zone.layout === "spread") {
+      // sorting: the card goes after every other card whose centre is left of the pointer
+      let index = 0;
+      for (const other of info.cardsEl.querySelectorAll(".gcard")) {
+        if (other.dataset.uid === uid) continue;
+        const box = other.getBoundingClientRect();
+        if (box.left + box.width / 2 < event.clientX) index += 1;
+      }
+      spot.index = index;
+    }
+    const sortable = info.zone.layout === "free" || info.zone.layout === "grid" || info.zone.layout === "spread";
+    if (target.dataset.key !== fromKey || sortable) handlers.onMove(uid, target.dataset.key, { shift, ...spot });
   }
 
   // another card of a stackable zone under the pointer (not the one being dragged, nor one stacked on it)

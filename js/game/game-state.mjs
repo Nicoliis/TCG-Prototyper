@@ -159,6 +159,11 @@ function entryFor(zone, entry, faceOverride, spot) {
   delete arrived.under;
   delete arrived.x;
   delete arrived.y;
+  delete arrived.cx;
+  delete arrived.cy;
+  if (zone.layout === "grid" && Number.isInteger(spot?.cx) && Number.isInteger(spot?.cy) && spot.cx >= 0 && spot.cy >= 0) {
+    Object.assign(arrived, { cx: spot.cx, cy: spot.cy });
+  }
   if (zone.layout === "free") Object.assign(arrived, { x: clamp01(spot?.x), y: clamp01(spot?.y) });
   return arrived;
 }
@@ -308,6 +313,7 @@ export function applyEvent(state, event, ctx) {
         if (entry.under === event.uid) return refuse(state, "A card cannot be stacked on itself.");
       }
       if (event.where === "bottom") pile.unshift(entry);
+      else if (dest.zone.layout === "spread" && Number.isInteger(event.index)) pile.splice(Math.min(Math.max(event.index, 0), pile.length), 0, entry);
       else pile.push(entry);
       const stackable = ["grid", "free"].includes(dest.zone.layout);
       for (const follower of followers) {

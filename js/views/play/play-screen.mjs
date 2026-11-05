@@ -381,7 +381,8 @@ export async function mountPlay(root, storage, options, onBack) {
   }
 
   // A card dropped on a zone (or on another card). Zones only set a default side; Shift plays the opposite.
-  function playCard(uid, toKey, { shift = false, x, y, onto } = {}) {
+  // Grid zones also get the cell it was dropped on (cx, cy) and spread zones the place in the row (index).
+  function playCard(uid, toKey, { shift = false, x, y, cx, cy, index, onto } = {}) {
     const state = stateOf();
     const ctx = ctxOf();
     let entry = null;
@@ -390,6 +391,8 @@ export async function mountPlay(root, storage, options, onBack) {
     const event = { kind: "move", uid, to: toKey };
     if (onto) event.onto = onto;
     if (x !== undefined) Object.assign(event, { x, y });
+    if (cx !== undefined) Object.assign(event, { cx, cy });
+    if (index !== undefined) event.index = index;
     if (shift) {
       const zone = ctx.board.zones.find((z) => z.id === parseKey(toKey).zoneId);
       const defaultUp = zone.face === "choose" ? entry.faceUp : zone.face === "up";
